@@ -12,6 +12,7 @@
         "consoletvs/charts": "^6.5",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "^6.2",
+        "laravel/nexmo-notification-channel": "^2.3",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^1.2",
         "mcamara/laravel-localization": "^1.5"

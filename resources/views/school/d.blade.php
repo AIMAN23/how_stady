@@ -3,7 +3,7 @@
 @section('content')
         @include('include.navbarhome')
 <div class="content">
-	<div class="row col-">
+	<div class="row m-0">
 		<div class="card col-md-3 bg-info pl-0 pr-0" style="height: 100%;">
 			<div class="card-body">
 				<div class="">
