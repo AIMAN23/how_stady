@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class SchoolController extends Controller
+class AddressController extends Controller
 {
     //
-    public function SchoolAddress(Request $r)
+    public function AddressSchool(Request $r)
     {
         // return $r;
         $data = $r->session()->all();

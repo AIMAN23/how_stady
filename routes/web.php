@@ -73,3 +73,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 		return View::make('test');
 	});
 });
+
+############################# hasOne adress and belongsTo school#####################
+Route::get('address-school', 'AddressController@AddressSchool')->name('address.school');
+Route::get('school-address', 'SchoolController@SchoolAddress')->name('school.address');
+############################# hasOne adress and belongsTo school#####################
