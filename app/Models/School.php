@@ -8,7 +8,17 @@ class School extends Model
 {
     //
     protected $fillable = [
-        'name', 'uuid','phone','wep','tel','logo','email','Address_id', 'password',//'created_at',
+        'id',
+        'name',
+        'uuid',
+        'phone',
+        'wep',
+        'tell',
+        'logo',
+        'email',
+        'address_id',
+        'password',
+        'created_at','updated_at'
     ];
 }
 
