@@ -22,7 +22,7 @@ class CreateSchoolsTable extends Migration
             $table->mediumInteger('tell')->unique();
             $table->string('logo')->nullable();
             $table->string('email')->nullable();
-            $table->string('address_id')->unsigned()->nullable();
+            $table->integer('address_id')->unsigned();
             $table->string('password')->nullable();
             $table->timestamps();
         });
