@@ -28,8 +28,9 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
 
-   
-                        @guest
+                        
+                        @if(Auth::guest('admin'))
+                        
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('lang.Login') }}</a>
                             </li>
@@ -56,7 +57,7 @@
                                     </form>
                                 </div>
                             </li>
-                        @endguest
+                        @endif
                     </ul>
                 </div>
             </div>

@@ -21,9 +21,9 @@ class CreateSchoolsTable extends Migration
             $table->string('wep')->nullable();
             $table->mediumInteger('tell')->unique();
             $table->string('logo')->nullable();
-            $table->string('email')->nullable();
+            $table->string('email')->unique();
             $table->integer('address_id')->unsigned();
-            $table->string('password')->nullable();
+            $table->string('password');
             $table->timestamps();
         });
     }

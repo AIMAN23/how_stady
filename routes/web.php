@@ -1,6 +1,5 @@
 <?php
 
-use App\User;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,7 +26,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 	Auth::routes();
 
 
-	Route::get('/new',function(){return view('school.form');})->name('new');
+	Route::get('/new',function(){return view('school.form');})->name('new')->middleware('auth:admin');;
 	Route::get('/d',function(){return view('school.d');})->name('d');
 	Route::get('/dashbord',function(){return view('school.dashbord');})->name('dashbord');
 	Route::get('/emplooyee',function(){return view('school.dashbord.emplooyee');})->name('emplooyee');
@@ -78,3 +77,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 Route::get('address-school', 'AddressController@AddressSchool')->name('address.school');
 Route::get('school-address', 'SchoolController@SchoolAddress')->name('school.address');
 ############################# hasOne adress and belongsTo school#####################
+Route::view('loginSchool','Authusers.loginSchool');
+// Route::post('login-School','Authusers\LoginController@loginSchool')->name('loginSchool');
+Route::post('login-School','LoginController@loginSchool')->name('loginSchool');
+Route::view('Gapp','layouts.Gapp')->name('Gapp');
+Route::post('logout-School','LoginController@logoutSchool')->name('logoutSchool');

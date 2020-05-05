@@ -9,6 +9,10 @@
 	<body>
 		<div id="con">
 			<div id="menu">
+				<form action="{{ route('logoutSchool') }}" method="POST" class="">
+					@csrf
+					<input type="submit" class="" value="logout">
+				</form>
 				
 				<!--<h1 id="name"> نظام المتابعة المدرسي  </h1>-->
 				<a href="#" class="name">ghadajameel66@gmail.com‬‏</a>
@@ -63,4 +67,4 @@
 		</div>
 	</body>
 	<script src="#"></script>
-</html>س
+</html>
