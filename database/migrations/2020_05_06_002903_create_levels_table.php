@@ -15,6 +15,12 @@ class CreateLevelsTable extends Migration
     {
         Schema::create('levels', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('name')->comment('اسم المرحلة');
+            $table->string('description')->nullable();
+            // relation
+            $table->integer('school_id')->unsigned();
+            $table->integer('supervisor_id')->unsigned()->comment('مشرف المرحلة');
+            // timestamp
             $table->timestamps();
         });
     }

@@ -5,7 +5,7 @@
     <div class="row">   
         <form action="{{ route('loginSchool') }}" method="POST" class="form-control">
             @csrf
-            <input type="text" name='email' class="form-control">
+            <input type="text" name='usercode' class="form-control">
             <input type="text" name='password' class="form-control">
             <input type="submit" class="">
             @if ($errors->any())
@@ -24,28 +24,46 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-            @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-                <div class="card-header">{{ __('Login_Admin_School') }}</div>
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
+                <div class="float-left">
+                    <p>
+                         <hr>
+                        {{ session('datalogin.taypuser') ?? ''}} <br>
+                        {{ session('datalogin.backurl') ?? ''}} <br>
+                        {{ session('datalogin.oldurl') ?? ''}} <br>
+                    </p>
+                </div>
+                <div class="card-header">
+                    <div class="pr-2 float-left"><a class="btn btn-primary" href="{{ session('datalogin.backurl') ?? session('datalogin.oldurl')  }}">{{ __('lang.back') }}</a></div>
+                    <h2 class="">{{ __('Login_Admin_School') }}</h2>
+                </div>
 
                 <div class="card-body">
+                    <!--  -->
+                        <a class="btn btn-primary" href="tel:+967772540888">tel</a>
+                        <a class="btn btn-primary" href="mailto:alyosofi36@gmil.com">send Email</a>
+                        
+                    <!--  -->
+                    
                     <form method="POST" action="{{ route('loginSchool') }}">
                         @csrf
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                        
+                            <label for="usercode" class="col-md-4 col-form-label text-md-right">{{ __('usercode') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                <input id="usercode" type="usercode" class="form-control @error('usercode') is-invalid @enderror" name="usercode" value="{{ old('usercode') }}" required autocomplete="usercode" autofocus>
 
-                                @error('email')
+                                @error('usercode')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

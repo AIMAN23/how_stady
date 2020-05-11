@@ -1,4 +1,4 @@
-</body>
+
 <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
 
 <script src="{{ asset('js/app.js') }}" type="text/javascript" ></script>
@@ -9,4 +9,3 @@
     </script>
 
 <script type="text/javascript" src="{{ asset('js/jquery.min.js') }}"></script>
-</html>
