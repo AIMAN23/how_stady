@@ -49,6 +49,11 @@ class School extends Authenticatable
     {
         //return $this->belongsToMany('App\Models\Teacher','school_teacher','school_id','teacher_id','id','id');
     }
+    ############ classrooms in school 
+    public function classrooms()
+    {
+        return $this->hasMany('App\Models\Classroom','school_id','id');
+    }
     
 }
 

@@ -39,5 +39,10 @@ class Teacher extends Model
         // session()->put('school_id','school_id');
         //return $this->belongsToMany('App\Models\School','school_teacher','teacher_id','school_id','id','id');
     }
+    ########### Teacher supervisor classroom one to one
+    public function classroom()
+    {
+        return $this->hasOne('App\Models\Classroom','teacher_id','id');
+    }
     
 }
