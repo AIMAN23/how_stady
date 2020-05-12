@@ -69,5 +69,10 @@ class School extends Authenticatable
     {
         return $this->hasOne('App\Models\Financial','school_id');
     }
+    ############ Agent in school
+    public function agent()
+    {
+        return $this->hasOne('App\Models\Agent','school_id');
+    }
 }
 
