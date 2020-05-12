@@ -16,6 +16,17 @@ class CreateManagersTable extends Migration
         // مجريشن جدول المدراء للمدارس
         Schema::create('managers', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->uuid('uuid')->unique();
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('mobile')->unique();
+            $table->string('password');
+            $table->rememberToken();
+            // relation
+            $table->string('school_id')->unsigned();
+            $table->string('address_id')->unsigned();
+            // timestamp
             $table->timestamps();
         });
     }

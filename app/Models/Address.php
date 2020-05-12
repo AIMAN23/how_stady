@@ -48,4 +48,9 @@ class Address extends Model
         {
             return $this->hasOne('App\Models\Agent','address_id');
         }
+    ##############  address for Manager #######
+        public function manager()
+        {
+            return $this->hasOne('App\Models\Manager','address_id');
+        }
 }

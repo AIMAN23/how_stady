@@ -74,5 +74,10 @@ class School extends Authenticatable
     {
         return $this->hasOne('App\Models\Agent','school_id');
     }
+    ############ Manager in school
+    public function manager()
+    {
+        return $this->hasOne('App\Models\Manager','school_id');
+    }
 }
 
