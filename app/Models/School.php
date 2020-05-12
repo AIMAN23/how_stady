@@ -64,5 +64,10 @@ class School extends Authenticatable
     {
         return $this->hasOne('App\Models\Secretary','school_id');
     }
+    ############ Financial in school
+    public function financial()
+    {
+        return $this->hasOne('App\Models\Financial','school_id');
+    }
 }
 
