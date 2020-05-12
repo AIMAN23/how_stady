@@ -29,4 +29,14 @@ class Address extends Model
     {
         return $this->hasOne('App\Models\Supervisor','address_id');
     }
+    ############ address for Specialist #######
+    public function specialist()
+    {
+        return $this->hasOne('App\Models\Specialist','address_id');
+    }
+    ############ address for Secretary #######
+    public function secretary()
+    {
+        return $this->hasOne('App\Models\Secretary','address_id');
+    }
 }

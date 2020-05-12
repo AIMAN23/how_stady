@@ -54,6 +54,15 @@ class School extends Authenticatable
     {
         return $this->hasMany('App\Models\Classroom','school_id','id');
     }
-    
+    ############ Specialist in school
+    public function specialist()
+    {
+        return $this->hasOne('App\Models\Specialist','school_id');
+    }
+    ############ Secretary in school
+    public function secretary()
+    {
+        return $this->hasOne('App\Models\Secretary','school_id');
+    }
 }
 
