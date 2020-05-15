@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Http\Request;
+// use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -98,3 +98,4 @@ Route::view('Gapp','layouts.Gapp')->name('Gapp')->middleware('auth:admin');
 Route::post('login-School','LoginController@login')->name('loginSchool');
 Route::post('logout-School','LoginController@logout')->name('logoutSchool');
 ############################
+Route::get('testarry/{t}/{s}/{m}','addressController@test')->name('showloginSchool');

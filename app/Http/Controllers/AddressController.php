@@ -24,4 +24,14 @@ class AddressController extends Controller
             // $address= Address::with('school')->find('1');
             // return response()->json($address);
     }
+    // use controller;
+    public function test(Request $request){
+        return [
+            $this->Degree($request->t),
+            $this->semester($request->s),
+            $this->Month($request->m),
+        
+        ];
+    //    return $this->testarry($request->t,$request->s,$request->m);   
+    }
 }
