@@ -30,5 +30,10 @@ class Subjcte extends Model
     {
         return $this->belongsTo('App\Models\Teacher','teacher_id');
     }
+    ############ Degrees  كل درجات المادة
+    public function degrees()
+    {
+        return $this->belongsTo('App\Models\Degree','subjcte_id');
+    }
     
 }

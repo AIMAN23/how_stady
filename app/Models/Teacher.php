@@ -44,5 +44,14 @@ class Teacher extends Model
     {
         return $this->hasOne('App\Models\Classroom','teacher_id','id');
     }
-    
+    ############  attendance كل  التحضير الذي اظافة المعلم لطلابة
+    public function attendance()
+    {
+        return $this->hasMany('App\Models\StudentAttendance','teacher_id');
+    }
+    ############  attendance كل  التعليقات الذي اظافة المعلم لطلابة
+    public function commends()
+    {
+        return $this->hasMany('App\Models\TeacherCommend','teacher_id');
+    }
 }

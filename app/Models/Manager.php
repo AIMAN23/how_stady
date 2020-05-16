@@ -23,17 +23,17 @@ class Manager extends Model
     public $timestamps = true;
     
     ##############   Start Relationes     ##############
-     ############ Manager address
+     ############ Manager address عنوان مدير المدرسة
         public function address()
         {
             return $this->belongsTo('App\Models\Address','address_id');
         }
-     ###########   Manager school
+     ###########   Manager school  المدرسة للمدير
         public function school()
         {
-            return $this->belongsTo('App\Models\School','school_id','id','id');
+            return $this->belongsTo('App\Models\School','school_id');
         }
-     ###########   ...
+     ###########  
     
     
     ##############   end Relationes     ##############
