@@ -25,10 +25,17 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 	Auth::routes();
 	###### نهاية الروابط الاساسية للموقع ######
 	
+	### بداية الروابط تجريبية ##
+	 ######### الروابط الخاصة بعرض المخطط التجريبي #####
+			Route::get('chart-line', 'ChartController@chartLine');
+			Route::get('chart-line-ajax', 'ChartController@chartLineAjax');
+	 #######
+	### نهاية روابط تجريبية ##
+
+
 	##############بداية الروابط للمستخدمين ###############
 
-
-
+	
 	##############نهاية الروابط للمستخدمين  ###############
 
 });
