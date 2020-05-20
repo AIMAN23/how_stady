@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'You are logged in' => 'لانت الان مسجل الدخول',
+    'You are logged in' => 'انت الان مسجل الدخول',
     'home' => 'الصفحة الرئيسية',
     'New_School' => 'حساب مدرسه جديد',
     'namepro'=>'متابعة الطلاب',
@@ -32,8 +32,8 @@ return [
     'emplooyee_name_en'=>'الاسم انجليزي',
     'emplooyee_email'=>'الايميل',
     'emplooyee_logo'=>'الصوره الشخصية',
-    ''=>'',
-    ''=>'',
+    'select the tayp user'=>'اختر نوع المستخدم',
+    'usre tayp'=>'نوع المستخدم',
     ''=>'',
     ''=>'',
     ''=>'',
