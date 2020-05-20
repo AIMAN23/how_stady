@@ -16,7 +16,7 @@
                     </div>
                 @endif
                 <div class="card-header">{{ __('Login') }}</div>
-<label for="">{{ session('backUrl') }}</label>
+                <label for="">{{ session('backUrl') }}</label>
                 <div class="card-body">
                     <form method="POST" action="{{ route('switch.login') }}">
                         @csrf
@@ -26,7 +26,7 @@
 
                             <div class="col-md-6">
                                 <select class="form-control" name="tayp-login">
-                                    <option value="nell" selected> نوع المستخدم</option>
+                                    <option value="nell" selected> {{ __('lang.usre tayp') }}</option>
                                     <option value="student">طالب</option>
                                     <option value="teacher">معلم</option>
                                     <option value="admin">Admin</option>

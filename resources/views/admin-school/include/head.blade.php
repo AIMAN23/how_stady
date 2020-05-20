@@ -17,15 +17,15 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     
     <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
     <!-- Styles -->
     <link href="{{ asset('css/icons.min.css') }}" rel="stylesheet">
 
 
-    {{-- <style>
+    <style>
         
 
             .full-height {
@@ -69,5 +69,5 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
-    </style> --}}
+    </style>
 

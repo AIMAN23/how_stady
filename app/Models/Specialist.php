@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-// مودل إخصائي المدرسة
+## مودل إخصائي المدرسة
 class Specialist extends Model 
 {
     protected $table = "specialists";

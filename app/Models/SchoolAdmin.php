@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
+## مودل مسئول النظام للمدرسة
 class SchoolAdmin extends Model
 {
     protected $fillable = ['id','name','mobile','email','status','image_id','address_id','school_id',];

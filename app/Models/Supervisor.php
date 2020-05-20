@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
+## مودل المشرف للمرحلة الدراسية
 class Supervisor extends Model
 {
     protected $fillable =[

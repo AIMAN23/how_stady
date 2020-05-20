@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-// مودل السكرتارية للمدرسة
+## مودل السكرتارية للمدرسة
 class Secretary extends Model
 {
     protected $table = "secretaries";

@@ -23,8 +23,8 @@ class CreateSupervisorsTable extends Migration
             $table->string('password');
             $table->rememberToken();
             // relation
-            $table->string('school_id')->unsigned();
-            $table->string('address_id')->unsigned();
+            $table->bigInteger('school_id')->unsigned();
+            $table->bigInteger('address_id')->unsigned();
             // timestamp
             $table->timestamps();
         });

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Image extends Model
 {
+    ## مودل الصور
     protected $fillable = ['id','img'];
     protected $table = "images";
     protected $hidden =['created_at','updated_at'];

@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
+## مودل المعلم
 class Teacher extends Model
 {
     //

@@ -23,7 +23,7 @@ class CreateTeachersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             // relation 
-            $table->integer('address_id')->unsigned();
+            $table->bigInteger('address_id')->unsigned();
             // timestamp
             $table->timestamps();
         });

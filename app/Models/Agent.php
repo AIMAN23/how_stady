@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-// مودل وكيل المدرسة
+## مودل وكيل المدرسة
 class Agent extends Model
 {
     protected $table = "agents";
@@ -33,7 +33,7 @@ class Agent extends Model
         {
             return $this->belongsTo('App\Models\School','school_id','id','id');
         }
-     ###########   ...
+     ###########  
     
     
     ##############   end Relationes     ##############

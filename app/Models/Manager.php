@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-// مودل المدير للمدرسة
+## مودل المدير للمدرسة
 class Manager extends Model
 {
     protected $table = "managers";
