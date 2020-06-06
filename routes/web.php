@@ -1,11 +1,12 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+use Symfony\Component\HttpFoundation\Request;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 // هاذا الراوت الاساسي الي بيعمل تغير للغت الموقع كامل اي راوت في امشروع نظيفة داخل هاذا الراوت
 ##['prefix' => LaravelLocalization::setLocale()] تقوم بتغير الغة حسب اختيار المستخدم
-
+// 
 Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 {
 	/*
@@ -21,14 +22,19 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 	
 	###### بداية الروابط الاساسية للموقع ######
 	Route::get('/', function () { return view('welcome'); })->name('welcome');
+	Route::post('/', function (Request $request) { 
+		return  $request;
+	
+	})->name('switch.login');
+
 	Route::get('/home', 'HomeController@index')->name('home');
 	Auth::routes();
 	###### نهاية الروابط الاساسية للموقع ######
 	
 	### بداية الروابط تجريبية ##
 	 ######### الروابط الخاصة بعرض المخطط التجريبي #####
-			Route::get('chart-line', 'ChartController@chartLine');
-			Route::get('chart-line-ajax', 'ChartController@chartLineAjax');
+			// Route::get('chart-line', 'ChartController@chartLine');
+			// Route::get('chart-line-ajax', 'ChartController@chartLineAjax');
 	 #######
 	### نهاية روابط تجريبية ##
 
