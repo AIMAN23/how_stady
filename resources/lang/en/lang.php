@@ -12,6 +12,16 @@ return [
     | you want to customize your views to better match your application.
     |
     */
+    'lang'  =>  'اللغة',
+    'NotesApp'  =>  'HowStudy',
+    // 'NotesApp'=>'NoteAb',
+    'welcome'=>[
+        'What People Says'  =>  'What People Says',
+        'What Is Dope App?' =>  'What Is HowStudy App?',
+        'hi'                =>  "Hi, I'm HowStudy app.",
+        'descrption'        =>  'Ultimate solution to make stunning mobile app landing around the world. Lorem ipsum dolor, sit amet consectetur adipisicing.',
+        'next'=>'Next',
+    ],
 
     'You are logged in' => 'You are logged in!',
     'home' => 'home page',
@@ -33,7 +43,7 @@ return [
     'emplooyee_email'=>'Email',
     'emplooyee_logo'=>'Logo',
     'select the tayp user'=>'select the tayp user',
-    'usre tayp'=>'usre tayp',
+    'usre tayp'=>'user tayp',
     ''=>'',
     ''=>'',
     ''=>'',
