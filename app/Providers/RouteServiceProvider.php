@@ -21,7 +21,9 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
+    // رابط الصفحة الرئيسية للمستخدم العادي
     public const HOME = '/home';
+    // رابط الصفحة الرئيسية لادمن المدرسة
     public const ADMIN= '/Gapp';
 
     /**
@@ -43,10 +45,12 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function map()
     {
+        // Api الروابط الخاصة بتطبيقات الـ 
         $this->mapApiRoutes();
-
+        // الروابط الخاصة بضيوف الموقع
         $this->mapWebRoutes();
-
+        // الروابط الخاصة بادمن المدرسة
+        $this->mapAdminRoutes();
         //
     }
 
@@ -59,9 +63,16 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapWebRoutes()
     {
+        // تعريف خصائص روابط ضيوف الموقع
         Route::middleware('web')
              ->namespace($this->namespace)
              ->group(base_path('routes/web.php'));
+    }
+    protected function mapAdminRoutes()
+    {
+        // تعريف خصائص روابط ادمن المدرسة
+        Route::namespace($this->namespace)
+            ->group(base_path('routes/admin.php'));
     }
 
     /**
@@ -73,6 +84,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapApiRoutes()
     {
+        // Api تعريف خصائص روابط الـ 
         Route::prefix('api')
              ->middleware('api')
              ->namespace($this->namespace)
