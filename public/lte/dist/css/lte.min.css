@@ -1,0 +1,81 @@
+.main-bb-0 {
+    border-bottom: 0px solid #dee2e6;
+    z-index: 1034;
+}
+
+/* color */
+	.bg-a {
+	    /*background-color: #4f626880;*/
+	    background-color: #4f6268;
+	    color: white;
+	}
+
+	.bg-b{
+		background-color:#ecc023;
+		color: white;
+	}
+	.bg-c{
+		background-color: #aa6379;
+		color: white;
+	}
+	.bg-g{
+		background-color:#396651 ;
+		color: white;
+	}
+	.bg-a .bg-b .bg-c .bg-g {
+		color: #000;
+	}
+/* end color */
+/* wedgit student */
+	.wstu{
+		color: #000;
+		text-decoration: none;
+	}
+	.wstu:active {
+		color: #e0e	
+	}
+	.wstu:hover {
+		color: #fff;
+	    background-color: #ecc023;
+	    border-color: #0062cc;
+
+	}
+	.wstu:focus {
+		background-color: #0ee;
+		text-decoration: none;
+	}
+/*end wedgit student  */
+
+/*table*/
+	.table td, .table th {
+	    padding: .2rem;
+	    vertical-align: top;
+	    border-top: .6px solid #dee2e6;
+	}
+	.card-body.p-0
+	.table tbody>tr>td:last-of-type,
+	.card-body.p-0
+	.table tbody>tr>th:last-of-type,
+	.card-body.p-0 
+	.table thead>tr>td:last-of-type,
+	.card-body.p-0 
+	.table thead>tr>th:last-of-type
+	{
+		padding-right: 1.5rem;
+	}
+	table>thead,table>tfoot{
+		background-color: #eee;
+	}
+/*end table */
+/*sidoar color*/
+
+.color-e{
+    color: #ee0;
+}
+/**/
+.nav-legacy.nav-sidebar .nav-item>.nav-link {
+    border-radius: 0;
+    margin-bottom: 0;
+    color: #fffa;
+}	
+/*.nav-pills .nav-link{color:#6c757d}.nav-pills .nav-link:not(.active):hover{color:#007bff}.nav-pills .nav-item.dropdown.show .nav-link:hover*/
