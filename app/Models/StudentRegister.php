@@ -6,7 +6,22 @@ use Illuminate\Database\Eloquent\Model;
 
 class StudentRegister extends Model
 {
-    protected $fillable = [ 'id' ,'school_year' , 'status' ,  'img' , 'student_id', 'school_id' , 'level_id' , 'classroom_id' , 'schooladmin_id' ];
+    protected $fillable = [
+        'id',
+        'code',
+        'no',
+        'status',
+        'name',
+        'img',
+        'school_year',
+        'student_id',
+        'school_id',
+        'level_id',
+        'classroom_id',
+        'schooladmin_id',
+        'created_at',
+        'updated_at'
+    ];
     protected $table = "student_registers";
     protected $hidden =['created_at','updated_at'];
     public $timestamps = true;

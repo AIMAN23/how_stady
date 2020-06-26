@@ -15,7 +15,24 @@ class Pareent extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',//'created_at',
+        'id','no','uuid','status',
+        ## 
+        'name','f_name','p_name','l_name',
+        ## 
+        'email','mobile',
+        ## 
+        'gender','nationality','birthdate',
+        ##
+        'email_verified_at','remember_token','password',
+        ##foreign Key
+        'image_id',
+        'address_id',
+        // 'school_id',
+        // 'socialdetail_id',
+        // 'healthdetail_id',
+        ## detetime columns
+        'created_at',
+        'updated_at',
     ];
 
     /**

@@ -2,9 +2,81 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Classroom;
+use App\Models\School;
+use App\Models\StudentRegister;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class LevelController extends Controller
 {
-    //
+ 
+
+    /**
+     * @* @param array $attr 
+     * [
+     * 'status'=>0,
+     * 'name'=>  not Nall,
+     * 'code_in_school'=> '',
+     * 'code'=>'',
+     * 'description'=>'وصف المرحلة',
+     * 'supervisor_id'=>0,
+     * ]
+     */
+    public function FCreateLevel($school ,array $attr)
+    {
+        if(!$school->id)
+        {
+            return 'no has school id';
+        }
+        else
+        {
+            $level=$school->levels()->firstOrCreate([
+                'uuid'=>Str::uuid(),
+                'status'=>$attr['status']??0,
+                'name'=>$attr['name'],
+                'code_in_school'=>$attr['code_in_school']??'',
+                'code'=>$attr['code'] ??'',
+                'description'=>$attr['description'] ??'وصف المرحلة',
+                'supervisor_id'=>$attr['supervisor_id'] ?? 0,
+                'school_id'=>$school->id,
+            ]);
+            return $level;
+        }
+        
+    }
+    public function getClassRooms(Request $request, $level_code){
+        // return"ok";
+        if ($request->ajax()) {
+            $school=session('school');
+            $s=School::find($school->id);
+            $level=$s->levels()->where('name', $level_code)->first();
+            $classrooms=Classroom::where('level_id',$level->id);
+            // $data=[$classrooms];
+            // return $level->classrooms();
+        // return response()->json($classrooms);
+        return view('admin\get\classrooms',compact('classrooms') );
+        }
+        return 'no ajax';
+    }
+
+    public function getClassroomInfo(Request $request,$classroome_uuid){
+        if($request->ajax()){
+
+            $classroom=Classroom::where('uuid',$classroome_uuid)->first();
+            return response()->json($classroom);
+        }
+        return 'no ajax';
+    }
+    public function getClassroomStudents(Request $request,$classroome_uuid){
+        if($request->ajax()){
+
+            $classroom=Classroom::where('uuid',$classroome_uuid)->first();
+            $students= StudentRegister::where('classroom_id',$classroom->id);
+            // $classroom->registers();
+            return view('admin\get\table-students',compact('students'));
+        }
+        return 'no ajax';
+        
+    }
 }

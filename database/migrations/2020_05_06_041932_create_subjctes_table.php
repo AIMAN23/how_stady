@@ -16,11 +16,12 @@ class CreateSubjctesTable extends Migration
         Schema::create('subjctes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name')->comment('اسم المادة');
+            $table->string('code')->comment('كود المادة');
             $table->string('description')->nullable()->comment('وصف المادة إن وجد');
             // relation
-            $table->integer('school_id')->unsigned();
-            $table->integer('level_id')->unsigned();
-            $table->integer('teacher_id')->unsigned()->comment('رقم مدرس المادة');
+            $table->integer('school_id')->unsigned()->default(0);
+            $table->integer('level_id')->unsigned()->default(0);
+            $table->integer('teacher_id')->unsigned()->default(0)->comment('رقم مدرس المادة');
             // timestamp
             $table->timestamps();
         });

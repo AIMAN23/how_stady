@@ -7,10 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class Level extends Model
 {
     #################### 
-    protected $table = "classrooms";
+    protected $table = "levels";
     protected $fillable = [
         'id',
+        'uuid',
+        'status',
         'name',
+        'code_in_school',
+        'code',
         'description',
         'school_id',
         'supervisor_id',
@@ -29,6 +33,7 @@ class Level extends Model
         ############ School level المراحل تبع كل مدرسة
             public function school()
             {
+                // return $this->belongsToMany('App\Models\School','school_levels');
                 return $this->belongsTo('App\Models\School','school_id');
             }
     ##############   end Relationes   belongsTo  ##############

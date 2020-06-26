@@ -15,11 +15,15 @@ class CreateLevelsTable extends Migration
     {
         Schema::create('levels', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name')->comment('اسم المرحلة');
+            $table->uuid('uuid')->unique();
+            $table->tinyInteger('status')->default(0)->comment('حالة تفعيل المرحلة الدراسية');
+            $table->string('name')->nullable()->comment('اسم المرحلة في المدرسة');
+            $table->string('code_in_school')->nullable()->comment('رمز المرحلة في كل مدرسة');
+            $table->string('code')->nullable()->comment('رمز المرحلة العام لكل المراحل');
             $table->string('description')->nullable();
             // relation
-            $table->integer('school_id')->unsigned();
-            $table->integer('supervisor_id')->unsigned()->comment('مشرف المرحلة');
+            $table->biginteger('school_id')->unsigned();
+            $table->biginteger('supervisor_id')->unsigned()->comment('مشرف المرحلة');
             // timestamp
             $table->timestamps();
         });

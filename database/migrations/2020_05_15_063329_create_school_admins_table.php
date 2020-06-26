@@ -17,19 +17,30 @@ class CreateSchoolAdminsTable extends Migration
         Schema::create('school_admins', function (Blueprint $table) {
             ## البيانات الاساسية للجدول
             $table->bigIncrements('id');
+            $table->string('no')->nullable();
             $table->uuid('uuid')->unique();
-            $table->string('name')->nullable()->comment('اسم مسئول النظام للمدرسة');
-            $table->string('mobile')->unique()->comment('رقم التلفون ');
-            $table->string('email')->nullable()->comment('الايميل');
+            $table->integer('status')->default(0)->comment('حالة التفعيل للحساب');
+
+            $table->string('name')->nullable()->comment('الاسم كامل');
+            $table->string('f_name')->nullable()->comment('الاسم الاول');
+            $table->string('p_name')->nullable()->comment('اسم الاب');
+            $table->string('l_name')->nullable()->comment('الاسم الاخير');
+            
+            $table->tinyInteger('gender')->nullable()->comment('1 male 2 fmale الجنس');
+            $table->string('nationality')->nullable()->comment('الجنسية');
+            $table->date('birthdate')->nullable()->comment('تاريخ الميلاد');
+            
+            $table->string('email')->unique()->nullable()->comment('الايميل');
+            $table->string('mobile')->unique()->nullable()->comment('رقم الهاتف');
+
             $table->timestamp('email_verified_at')->nullable();
-            $table->tinyInteger('status')->nullable()->comment('حالت تفعيل الحساب 1والغاءالحساب 2');
-            $table->string('password')->nullable()->comment('كلمت مرور ');
-            $table->rememberToken();
-            ## العلاقات الخاصة للجدول
-            $table->bigInteger('image_id')->unsigned()->comment('رقم الصورة في جدول الصور');
-            $table->bigInteger('address_id')->unsigned()->comment('رفم العنوان في جدول العناوين');
-            $table->bigInteger('school_id')->unsigned()->comment('رقم المدرسة في جدول المدارس');
-            ## تاريخ الاظافة و التعديل لكل سطر في الجدول
+            $table->rememberToken()->comment('remember_token');
+            $table->string('password');
+            // relation
+            $table->bigInteger('image_id')->unsigned()->default(0);
+            $table->bigInteger('school_id')->unsigned()->default(0);
+            $table->bigInteger('address_id')->unsigned()->default(0);
+            // timestamp
             $table->timestamps();
         });
     }

@@ -9,9 +9,10 @@ class Address extends Model
     protected $table = "addresses";
     protected $fillable = [
         'id',
-        'contere',
+        'country',
         'cite',
-        'zip'
+        'street',
+        'zip',
         ];
         ##############  address for school #######
         public function school()

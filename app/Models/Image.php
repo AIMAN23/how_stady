@@ -7,7 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class Image extends Model
 {
     ## مودل الصور
-    protected $fillable = ['id','img'];
+    protected $fillable = [
+        'id',
+        'no',
+        'status',
+        'img',
+        'created_at',
+        'updated_at',
+    ];
     protected $table = "images";
     protected $hidden =['created_at','updated_at'];
     public $timestamps = true;

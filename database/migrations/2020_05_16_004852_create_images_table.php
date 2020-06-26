@@ -16,7 +16,9 @@ class CreateImagesTable extends Migration
         ## جدول الصور
         Schema::create('images', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('img')->default('user.jpg')->comment('اسم الصورة');
+            $table->string('no')->nullable();
+            $table->integer('status')->default(0)->comment('حالة التفعيل للصورة');
+            $table->string('img')->default('user.jpg')->comment('عنوان الصورة');
             $table->timestamps();
         });
     }

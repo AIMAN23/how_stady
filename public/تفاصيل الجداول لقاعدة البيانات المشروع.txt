@@ -1,0 +1,550 @@
+Microsoft Windows [Version 10.0.10586]
+(c) 2016 Microsoft Corporation. All rights reserved.
+
+C:\Users\مستخدم عادي>mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 302
+Server version: 10.4.6-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> use autha;
+Database changed
+..................................................
+MariaDB [autha]> show  tables;
+	.---------------------.
+	| All Tables      	  |
+	.---------------------.
+	| addresses           |
+	| agents              |
+	| classrooms          |
+	| daily_lessons       |
+	| degree_tayps        |
+	| degrees             |
+	| failed_jobs         |
+	| financials          |
+	| health_details      |
+	| images              |
+	| lessons             |
+	| levels              |
+	| managers            |
+	| migrations          |
+	| months              |
+	| pareents            |
+	| password_resets     |
+	| school_admins       |
+	| schools             |
+	| secretaries         |
+	| semesters           |
+	| social_details      |
+	| specialists         |
+	| student_attendances |
+	| student_registers   |
+	| student_reports     |
+	| students            |
+	| subjctes            |
+	| supervisors         |
+	| teacher_commends    |
+	| teachers            |
+	| users               |
+	.---------------------.
+32 rows in set (0.002 sec)
+..................................................
+
+MariaDB [autha]> describe addresses           ;
+	.------------.---------------------.------.-----.---------.----------------.
+	| Field      | Type                | Null | Key | Default | Extra          |
+	.------------.---------------------.------.-----.---------.----------------.
+	| id         | bigint(20) unsigned | NO   | PRI | NULL    | auto_increment |
+	| country    | varchar(255)        | NO   |     | NULL    |                |
+	| cite       | varchar(255)        | NO   |     | NULL    |                |
+	| zip        | tinyint(4)          | YES  |     | NULL    |                |
+	| created_at | timestamp           | YES  |     | NULL    |                |
+	| updated_at | timestamp           | YES  |     | NULL    |                |
+	.------------.---------------------.------.-----.---------.----------------.
+6 rows in set (0.103 sec)
+
+MariaDB [autha]> describe agents الوكيل             ;
+	.-------------------.---------------------.------.-----.---------.----------------.
+	| Field             | Type                | Null | Key | Default | Extra          |
+	.-------------------.---------------------.------.-----.---------.----------------.
+	| id                | bigint(20) unsigned | NO   | PRI | NULL    | auto_increment |
+	| uuid              | char(36)            | NO   | UNI | NULL    |                |
+	| name              | varchar(255)        | NO   |     | NULL    |                |
+	| email             | varchar(255)        | NO   | UNI | NULL    |                |
+	| email_verified_at | timestamp           | YES  |     | NULL    |                |
+	| mobile            | varchar(255)        | NO   | UNI | NULL    |                |
+	| password          | varchar(255)        | NO   |     | NULL    |                |
+	| remember_token    | varchar(100)        | YES  |     | NULL    |                |
+	| school_id         | bigint(20) unsigned | NO   |     | NULL    |                |
+	| address_id        | bigint(20) unsigned | NO   |     | NULL    |                |
+	| created_at        | timestamp           | YES  |     | NULL    |                |
+	| updated_at        | timestamp           | YES  |     | NULL    |                |
+	.-------------------.---------------------.------.-----.---------.----------------.
+12 rows in set (0.088 sec)
+
+MariaDB [autha]> describe classrooms   الشعب الدراسية       ;
+	.------------.---------------------.------.-----.---------.----------------.
+	| Field      | Type                | Null | Key | Default | Extra          |
+	.------------.---------------------.------.-----.---------.----------------.
+	| id         | bigint(20) unsigned | NO   | PRI | NULL    | auto_increment |
+	| name       | varchar(255)        | NO   |     | NULL    |                |
+	| school_id  | int(10) unsigned    | NO   |     | NULL    |                |
+	| level_id   | int(10) unsigned    | NO   |     | NULL    |                |
+	| teacher_id | int(10) unsigned    | NO   |     | NULL    |                |
+	| created_at | timestamp           | YES  |     | NULL    |                |
+	| updated_at | timestamp           | YES  |     | NULL    |                |
+	.------------.---------------------.------.-----.---------.----------------.
+7 rows in set (0.060 sec)
+
+MariaDB [autha]> describe daily_lessons     ؟؟  ;
+	.------------.---------------------.------.-----.---------.----------------.
+	| Field      | Type                | Null | Key | Default | Extra          |
+	.------------.---------------------.------.-----.---------.----------------.
+	| id         | bigint(20) unsigned | NO   | PRI | NULL    | auto_increment |
+	| created_at | timestamp           | YES  |     | NULL    |                |
+	| updated_at | timestamp           | YES  |     | NULL    |                |
+	.------------.---------------------.------.-----.---------.----------------.
+3 rows in set (0.061 sec)
+
+MariaDB [autha]> describe degree_tayps    نوع الدرجات    ;
+	.------------.---------------------.------.-----.---------.----------------.
+	| Field      | Type                | Null | Key | Default | Extra          |
+	.------------.---------------------.------.-----.---------.----------------.
+	| id         | bigint(20) unsigned | NO   | PRI | NULL    | auto_increment |
+	| tayp       | varchar(255)        | YES  |     | NULL    |                |
+	| belongs    | tinyint(4)          | YES  |     | NULL    |                |
+	| school_id  | bigint(20) unsigned | NO   |     | NULL    |                |
+	| created_at | timestamp           | YES  |     | NULL    |                |
+	| updated_at | timestamp           | YES  |     | NULL    |                |
+	.------------.---------------------.------.-----.---------.----------------.
+6 rows in set (0.063 sec)
+
+MariaDB [autha]> describe degrees         الدرجات    ;
+	.---------------------.---------------------.------.-----.---------.----------------.
+	| Field               | Type                | Null | Key | Default | Extra          |
+	.---------------------.---------------------.------.-----.---------.----------------.
+	| id                  | bigint(20) unsigned | NO   | PRI | NULL    | auto_increment |
+	| degree              | tinyint(4)          | YES  |     | NULL    |                |
+	| student_register_id | bigint(20) unsigned | NO   |     | NULL    |                |
+	| month_id            | bigint(20) unsigned | NO   |     | NULL    |                |
+	| taypdegree_id       | bigint(20) unsigned | NO   |     | NULL    |                |
+	| subjcte_id          | bigint(20) unsigned | NO   |     | NULL    |                |
+	| semester_id         | bigint(20) unsigned | NO   |     | NULL    |                |
+	| student_report_id   | bigint(20) unsigned | NO   |     | NULL    |                |
+	| created_at          | timestamp           | YES  |     | NULL    |                |
+	| updated_at          | timestamp           | YES  |     | NULL    |                |
+	.---------------------.---------------------.------.-----.---------.----------------.
+10 rows in set (0.072 sec)
+
+MariaDB [autha]> describe failed_jobs         ;
+	.------------.---------------------.------.-----.---------------------.----------------.
+	| Field      | Type                | Null | Key | Default             | Extra          |
+	.------------.---------------------.------.-----.---------------------.----------------.
+	| id         | bigint(20) unsigned | NO   | PRI | NULL                | auto_increment |
+	| connection | text                | NO   |     | NULL                |                |
+	| queue      | text                | NO   |     | NULL                |                |
+	| payload    | longtext            | NO   |     | NULL                |                |
+	| exception  | longtext            | NO   |     | NULL                |                |
+	| failed_at  | timestamp           | NO   |     | current_timestamp() |                |
+	.------------.---------------------.------.-----.---------------------.----------------.
+6 rows in set (0.064 sec)
+
+MariaDB [autha]> describe financials       المسؤل المالي   ;
+	.-------------------.---------------------.------.-----.---------.----------------.
+	| Field             | Type                | Null | Key | Default | Extra          |
+	.-------------------.---------------------.------.-----.---------.----------------.
+	| id                | bigint(20) unsigned | NO   | PRI | NULL    | auto_increment |
+	| uuid              | char(36)            | NO   | UNI | NULL    |                |
+	| name              | varchar(255)        | NO   |     | NULL    |                |
+	| email             | varchar(255)        | NO   | UNI | NULL    |                |
+	| email_verified_at | timestamp           | YES  |     | NULL    |                |
+	| mobile            | varchar(255)        | NO   | UNI | NULL    |                |
+	| password          | varchar(255)        | NO   |     | NULL    |                |
+	| remember_token    | varchar(100)        | YES  |     | NULL    |                |
+	| school_id         | bigint(20) unsigned | NO   |     | NULL    |                |
+	| address_id        | bigint(20) unsigned | NO   |     | NULL    |                |
+	| created_at        | timestamp           | YES  |     | NULL    |                |
+	| updated_at        | timestamp           | YES  |     | NULL    |                |
+	.-------------------.---------------------.------.-----.---------.----------------.
+12 rows in set (0.061 sec)
+
+MariaDB [autha]> describe health_details      البيانات الصحية للطالب;
+	.---------------.---------------------.------.-----.---------.----------------.
+	| Field         | Type                | Null | Key | Default | Extra          |
+	.---------------.---------------------.------.-----.---------.----------------.
+	| id            | bigint(20) unsigned | NO   | PRI | NULL    | auto_increment |
+	| hearing       | tinyint(4)          | YES  |     | NULL    |                |
+	| eyesight      | tinyint(4)          | YES  |     | NULL    |                |
+	| pronunciation | tinyint(4)          | YES  |     | NULL    |                |
+	| has_other     | tinyint(4)          | YES  |     | NULL    |                |
+	| other         | varchar(255)        | YES  |     | NULL    |                |
+	| created_at    | timestamp           | YES  |     | NULL    |                |
+	| updated_at    | timestamp           | YES  |     | NULL    |                |
+	.---------------.---------------------.------.-----.---------.----------------.
+8 rows in set (0.058 sec)
+
+MariaDB [autha]> describe images          الصور     ;
+	.------------.---------------------.------.-----.----------.----------------.
+	| Field      | Type                | Null | Key | Default  | Extra          |
+	.------------.---------------------.------.-----.----------.----------------.
+	| id         | bigint(20) unsigned | NO   | PRI | NULL     | auto_increment |
+	| img        | varchar(255)        | NO   |     | user.jpg |                |
+	| created_at | timestamp           | YES  |     | NULL     |                |
+	| updated_at | timestamp           | YES  |     | NULL     |                |
+	.------------.---------------------.------.-----.----------.----------------.
+4 rows in set (0.065 sec)
+
+MariaDB [autha]> describe lessons            الحصص ;
+	.------------.---------------------.------.-----.---------.----------------.
+	| Field      | Type                | Null | Key | Default | Extra          |
+	.------------.---------------------.------.-----.---------.----------------.
+	| id         | bigint(20) unsigned | NO   | PRI | NULL    | auto_increment |
+	| lesson     | varchar(255)        | YES  |     | NULL    |                |
+	| start_time | time                | YES  |     | NULL    |                |
+	| end_time   | time                | YES  |     | NULL    |                |
+	| level_id   | bigint(20) unsigned | NO   |     | NULL    |                |
+	| created_at | timestamp           | YES  |     | NULL    |                |
+	| updated_at | timestamp           | YES  |     | NULL    |                |
+	.------------.---------------------.------.-----.---------.----------------.
+7 rows in set (0.081 sec)
+
+MariaDB [autha]> describe levels             المراحل الدراسية ;
+	.---------------.---------------------.------.-----.---------.----------------.
+	| Field         | Type                | Null | Key | Default | Extra          |
+	.---------------.---------------------.------.-----.---------.----------------.
+	| id            | bigint(20) unsigned | NO   | PRI | NULL    | auto_increment |
+	| name          | varchar(255)        | NO   |     | NULL    |                |
+	| description   | varchar(255)        | YES  |     | NULL    |                |
+	| school_id     | int(10) unsigned    | NO   |     | NULL    |                |
+	| supervisor_id | int(10) unsigned    | NO   |     | NULL    |                |
+	| created_at    | timestamp           | YES  |     | NULL    |                |
+	| updated_at    | timestamp           | YES  |     | NULL    |                |
+	.---------------.---------------------.------.-----.---------.----------------.
+7 rows in set (0.053 sec)
+
+MariaDB [autha]> describe managers          المدراء للمدارس  ;
+	.-------------------.---------------------.------.-----.---------.----------------.
+	| Field             | Type                | Null | Key | Default | Extra          |
+	.-------------------.---------------------.------.-----.---------.----------------.
+	| id                | bigint(20) unsigned | NO   | PRI | NULL    | auto_increment |
+	| uuid              | char(36)            | NO   | UNI | NULL    |                |
+	| name              | varchar(255)        | NO   |     | NULL    |                |
+	| email             | varchar(255)        | NO   | UNI | NULL    |                |
+	| email_verified_at | timestamp           | YES  |     | NULL    |                |
+	| mobile            | varchar(255)        | NO   | UNI | NULL    |                |
+	| password          | varchar(255)        | NO   |     | NULL    |                |
+	| remember_token    | varchar(100)        | YES  |     | NULL    |                |
+	| school_id         | bigint(20) unsigned | NO   |     | NULL    |                |
+	| address_id        | bigint(20) unsigned | NO   |     | NULL    |                |
+	| created_at        | timestamp           | YES  |     | NULL    |                |
+	| updated_at        | timestamp           | YES  |     | NULL    |                |
+	.-------------------.---------------------.------.-----.---------.----------------.
+12 rows in set (0.071 sec)
+
+MariaDB [autha]> describe migrations          ;
+	.-----------.------------------.------.-----.---------.----------------.
+	| Field     | Type             | Null | Key | Default | Extra          |
+	.-----------.------------------.------.-----.---------.----------------.
+	| id        | int(10) unsigned | NO   | PRI | NULL    | auto_increment |
+	| migration | varchar(255)     | NO   |     | NULL    |                |
+	| batch     | int(11)          | NO   |     | NULL    |                |
+	.-----------.------------------.------.-----.---------.----------------.
+3 rows in set (0.066 sec)
+
+MariaDB [autha]> describe months           الاشهر الدراسية   ;
+	.------------.---------------------.------.-----.---------.----------------.
+	| Field      | Type                | Null | Key | Default | Extra          |
+	.------------.---------------------.------.-----.---------.----------------.
+	| id         | bigint(20) unsigned | NO   | PRI | NULL    | auto_increment |
+	| month      | varchar(255)        | YES  |     | NULL    |                |
+	| school_id  | tinyint(3) unsigned | NO   |     | NULL    |                |
+	| created_at | timestamp           | YES  |     | NULL    |                |
+	| updated_at | timestamp           | YES  |     | NULL    |                |
+	.------------.---------------------.------.-----.---------.----------------.
+5 rows in set (0.087 sec)
+
+MariaDB [autha]> describe pareents           اولياء الامور ;
+	.------------.---------------------.------.-----.---------.----------------.
+	| Field      | Type                | Null | Key | Default | Extra          |
+	.------------.---------------------.------.-----.---------.----------------.
+	| id         | bigint(20) unsigned | NO   | PRI | NULL    | auto_increment |
+	| created_at | timestamp           | YES  |     | NULL    |                |
+	| updated_at | timestamp           | YES  |     | NULL    |                |
+	.------------.---------------------.------.-----.---------.----------------.
+3 rows in set (0.066 sec)
+
+MariaDB [autha]> describe password_resets    استعادة كلمت السر ;
+	.------------.--------------.------.-----.---------.-------.
+	| Field      | Type         | Null | Key | Default | Extra |
+	.------------.--------------.------.-----.---------.-------.
+	| email      | varchar(255) | NO   | MUL | NULL    |       |
+	| token      | varchar(255) | NO   |     | NULL    |       |
+	| created_at | timestamp    | YES  |     | NULL    |       |
+	.------------.--------------.------.-----.---------.-------.
+3 rows in set (0.052 sec)
+
+MariaDB [autha]> describe school_admins      مسؤل النظام في المدرسة ;
+	.-------------------.---------------------.------.-----.---------.----------------.
+	| Field             | Type                | Null | Key | Default | Extra          |
+	.-------------------.---------------------.------.-----.---------.----------------.
+	| id                | bigint(20) unsigned | NO   | PRI | NULL    | auto_increment |
+	| uuid              | char(36)            | NO   | UNI | NULL    |                |
+	| name              | varchar(255)        | YES  |     | NULL    |                |
+	| mobile            | varchar(255)        | NO   | UNI | NULL    |                |
+	| email             | varchar(255)        | YES  |     | NULL    |                |
+	| email_verified_at | timestamp           | YES  |     | NULL    |                |
+	| status            | tinyint(4)          | YES  |     | NULL    |                |
+	| password          | varchar(255)        | YES  |     | NULL    |                |
+	| remember_token    | varchar(100)        | YES  |     | NULL    |                |
+	| image_id          | bigint(20) unsigned | NO   |     | NULL    |                |
+	| address_id        | bigint(20) unsigned | NO   |     | NULL    |                |
+	| school_id         | bigint(20) unsigned | NO   |     | NULL    |                |
+	| created_at        | timestamp           | YES  |     | NULL    |                |
+	| updated_at        | timestamp           | YES  |     | NULL    |                |
+	.-------------------.---------------------.------.-----.---------.----------------.
+14 rows in set (0.070 sec)
+
+MariaDB [autha]> describe schools          المدارس   ;
+	.------------.---------------------.------.-----.---------.----------------.
+	| Field      | Type                | Null | Key | Default | Extra          |
+	.------------.---------------------.------.-----.---------.----------------.
+	| id         | bigint(20) unsigned | NO   | PRI | NULL    | auto_increment |
+	| name       | varchar(255)        | NO   |     | NULL    |                |
+	| uuid       | char(36)            | NO   | UNI | NULL    |                |
+	| phone      | mediumint(9)        | NO   | UNI | NULL    |                |
+	| wep        | varchar(255)        | YES  |     | NULL    |                |
+	| tell       | mediumint(9)        | NO   | UNI | NULL    |                |
+	| logo       | varchar(255)        | YES  |     | NULL    |                |
+	| email      | varchar(255)        | NO   | UNI | NULL    |                |
+	| address_id | bigint(20) unsigned | NO   |     | NULL    |                |
+	| password   | varchar(255)        | NO   |     | NULL    |                |
+	| created_at | timestamp           | YES  |     | NULL    |                |
+	| updated_at | timestamp           | YES  |     | NULL    |                |
+	.------------.---------------------.------.-----.---------.----------------.
+12 rows in set (0.070 sec)
+
+MariaDB [autha]> describe secretaries     السكرتاريا    ;
+	.-------------------.---------------------.------.-----.---------.----------------.
+	| Field             | Type                | Null | Key | Default | Extra          |
+	.-------------------.---------------------.------.-----.---------.----------------.
+	| id                | bigint(20) unsigned | NO   | PRI | NULL    | auto_increment |
+	| uuid              | char(36)            | NO   | UNI | NULL    |                |
+	| name              | varchar(255)        | NO   |     | NULL    |                |
+	| email             | varchar(255)        | NO   | UNI | NULL    |                |
+	| email_verified_at | timestamp           | YES  |     | NULL    |                |
+	| mobile            | varchar(255)        | NO   | UNI | NULL    |                |
+	| password          | varchar(255)        | NO   |     | NULL    |                |
+	| remember_token    | varchar(100)        | YES  |     | NULL    |                |
+	| school_id         | bigint(20) unsigned | NO   |     | NULL    |                |
+	| address_id        | bigint(20) unsigned | NO   |     | NULL    |                |
+	| created_at        | timestamp           | YES  |     | NULL    |                |
+	| updated_at        | timestamp           | YES  |     | NULL    |                |
+	.-------------------.---------------------.------.-----.---------.----------------.
+12 rows in set (0.085 sec)
+
+MariaDB [autha]> describe semesters       الفصل الدراسي    ;
+	.------------.---------------------.------.-----.---------.----------------.
+	| Field      | Type                | Null | Key | Default | Extra          |
+	.------------.---------------------.------.-----.---------.----------------.
+	| id         | bigint(20) unsigned | NO   | PRI | NULL    | auto_increment |
+	| name       | varchar(255)        | YES  |     | NULL    |                |
+	| school_id  | bigint(20) unsigned | NO   |     | NULL    |                |
+	| created_at | timestamp           | YES  |     | NULL    |                |
+	| updated_at | timestamp           | YES  |     | NULL    |                |
+	.------------.---------------------.------.-----.---------.----------------.
+5 rows in set (0.075 sec)
+
+MariaDB [autha]> describe social_details    البيانات الاجتماعية للطالب  ;
+	.--------------------.---------------------.------.-----.---------.----------------.
+	| Field              | Type                | Null | Key | Default | Extra          |
+	.--------------------.---------------------.------.-----.---------.----------------.
+	| id                 | bigint(20) unsigned | NO   | PRI | NULL    | auto_increment |
+	| order_in_family    | tinyint(4)          | YES  |     | NULL    |                |
+	| educational_father | tinyint(4)          | YES  |     | NULL    |                |
+	| educational_mother | tinyint(4)          | YES  |     | NULL    |                |
+	| live_with          | tinyint(4)          | YES  |     | NULL    |                |
+	| created_at         | timestamp           | YES  |     | NULL    |                |
+	| updated_at         | timestamp           | YES  |     | NULL    |                |
+	.--------------------.---------------------.------.-----.---------.----------------.
+7 rows in set (0.067 sec)
+
+MariaDB [autha]> describe specialists        الاخصائي المدرسي ;
+	.-------------------.---------------------.------.-----.---------.----------------.
+	| Field             | Type                | Null | Key | Default | Extra          |
+	.-------------------.---------------------.------.-----.---------.----------------.
+	| id                | bigint(20) unsigned | NO   | PRI | NULL    | auto_increment |
+	| uuid              | char(36)            | NO   | UNI | NULL    |                |
+	| name              | varchar(255)        | NO   |     | NULL    |                |
+	| email             | varchar(255)        | NO   | UNI | NULL    |                |
+	| email_verified_at | timestamp           | YES  |     | NULL    |                |
+	| mobile            | varchar(255)        | NO   | UNI | NULL    |                |
+	| password          | varchar(255)        | NO   |     | NULL    |                |
+	| remember_token    | varchar(100)        | YES  |     | NULL    |                |
+	| school_id         | bigint(20) unsigned | NO   |     | NULL    |                |
+	| address_id        | bigint(20) unsigned | NO   |     | NULL    |                |
+	| created_at        | timestamp           | YES  |     | NULL    |                |
+	| updated_at        | timestamp           | YES  |     | NULL    |                |
+	.-------------------.---------------------.------.-----.---------.----------------.
+12 rows in set (0.044 sec)
+
+MariaDB [autha]> describe student_attendances  التقيم الاسبوعي ;
+	.---------------------.---------------------.------.-----.---------------------.----------------.
+	| Field               | Type                | Null | Key | Default             | Extra          |
+	.---------------------.---------------------.------.-----.---------------------.----------------.
+	| id                  | bigint(20) unsigned | NO   | PRI | NULL                | auto_increment |
+	| attendance          | tinyint(4)          | NO   |     | 0                   |                |
+	| datetime            | datetime            | NO   |     | 2020-05-16 00:00:00 |                |
+	| student_register_id | bigint(20) unsigned | NO   |     | NULL                |                |
+	| teacher_id          | bigint(20) unsigned | NO   |     | NULL                |                |
+	| student_report_id   | bigint(20) unsigned | NO   |     | NULL                |                |
+	| created_at          | timestamp           | YES  |     | NULL                |                |
+	| updated_at          | timestamp           | YES  |     | NULL                |                |
+	.---------------------.---------------------.------.-----.---------------------.----------------.
+8 rows in set (0.081 sec)
+
+MariaDB [autha]> describe student_registers  الطلاب المسجلين ;
+	.----------------.---------------------.------.-----.---------.----------------.
+	| Field          | Type                | Null | Key | Default | Extra          |
+	.----------------.---------------------.------.-----.---------.----------------.
+	| id             | bigint(20) unsigned | NO   | PRI | NULL    | auto_increment |
+	| school_year    | varchar(255)        | YES  |     | NULL    |                |
+	| img            | varchar(255)        | YES  |     | NULL    |                |
+	| status         | tinyint(4)          | NO   |     | 2       |                |
+	| student_id     | bigint(20)          | YES  |     | NULL    |                |
+	| school_id      | bigint(20)          | YES  |     | NULL    |                |
+	| level_id       | bigint(20)          | YES  |     | NULL    |                |
+	| classroom_id   | bigint(20)          | YES  |     | NULL    |                |
+	| schooladmin_id | bigint(20)          | YES  |     | NULL    |                |
+	| created_at     | timestamp           | YES  |     | NULL    |                |
+	| updated_at     | timestamp           | YES  |     | NULL    |                |
+	.----------------.---------------------.------.-----.---------.----------------.
+11 rows in set (0.057 sec)
+
+MariaDB [autha]> describe student_reports   تقارير الطلاب  ;
+	.-----------------.---------------------.------.-----.------------.----------------.
+	| Field           | Type                | Null | Key | Default    | Extra          |
+	.-----------------.---------------------.------.-----.------------.----------------.
+	| id              | bigint(20) unsigned | NO   | PRI | NULL       | auto_increment |
+	| autocomment     | mediumtext          | YES  |     | NULL       |                |
+	| comment         | mediumtext          | YES  |     | NULL       |                |
+	| status          | tinyint(4)          | NO   |     | 0          |                |
+	| show_comment_at | date                | NO   |     | 2020-05-16 |                |
+	| created_at      | timestamp           | YES  |     | NULL       |                |
+	| updated_at      | timestamp           | YES  |     | NULL       |                |
+	.-----------------.---------------------.------.-----.------------.----------------.
+7 rows in set (0.065 sec)
+
+MariaDB [autha]> describe students       البيانات الاساسية للطلاب     ;
+	.-------------------.---------------------.------.-----.---------.----------------.
+	| Field             | Type                | Null | Key | Default | Extra          |
+	.-------------------.---------------------.------.-----.---------.----------------.
+	| id                | bigint(20) unsigned | NO   | PRI | NULL    | auto_increment |
+	| uuid              | char(36)            | NO   | UNI | NULL    |                |
+	| f_name            | varchar(255)        | YES  |     | NULL    |                |
+	| p_name            | varchar(255)        | YES  |     | NULL    |                |
+	| l_name            | varchar(255)        | YES  |     | NULL    |                |
+	| name              | varchar(255)        | YES  |     | NULL    |                |
+	| birthdate         | date                | YES  |     | NULL    |                |
+	| gender            | tinyint(4)          | YES  |     | NULL    |                |
+	| nationality       | varchar(255)        | YES  |     | NULL    |                |
+	| email             | varchar(255)        | YES  |     | NULL    |                |
+	| email_verified_at | timestamp           | YES  |     | NULL    |                |
+	| password          | varchar(255)        | YES  |     | NULL    |                |
+	| remember_token    | varchar(100)        | YES  |     | NULL    |                |
+	| address_id        | bigint(20) unsigned | NO   |     | NULL    |                |
+	| socialdetail_id   | bigint(20) unsigned | NO   |     | NULL    |                |
+	| healthdetail_id   | bigint(20) unsigned | NO   |     | NULL    |                |
+	| created_at        | timestamp           | YES  |     | NULL    |                |
+	| updated_at        | timestamp           | YES  |     | NULL    |                |
+	.-------------------.---------------------.------.-----.---------.----------------.
+18 rows in set (0.083 sec)
+
+MariaDB [autha]> describe subjctes      المواد الدراسية لكل مدرسة      ;
+	.-------------.---------------------.------.-----.---------.----------------.
+	| Field       | Type                | Null | Key | Default | Extra          |
+	.-------------.---------------------.------.-----.---------.----------------.
+	| id          | bigint(20) unsigned | NO   | PRI | NULL    | auto_increment |
+	| name        | varchar(255)        | NO   |     | NULL    |                |
+	| description | varchar(255)        | YES  |     | NULL    |                |
+	| school_id   | int(10) unsigned    | NO   |     | NULL    |                |
+	| level_id    | int(10) unsigned    | NO   |     | NULL    |                |
+	| teacher_id  | int(10) unsigned    | NO   |     | NULL    |                |
+	| created_at  | timestamp           | YES  |     | NULL    |                |
+	| updated_at  | timestamp           | YES  |     | NULL    |                |
+	.-------------.---------------------.------.-----.---------.----------------.
+8 rows in set (0.081 sec)
+
+MariaDB [autha]> describe supervisors     المشرفين    ;
+	.-------------------.---------------------.------.-----.---------.----------------.
+	| Field             | Type                | Null | Key | Default | Extra          |
+	.-------------------.---------------------.------.-----.---------.----------------.
+	| id                | bigint(20) unsigned | NO   | PRI | NULL    | auto_increment |
+	| uuid              | char(36)            | NO   | UNI | NULL    |                |
+	| name              | varchar(255)        | NO   |     | NULL    |                |
+	| email             | varchar(255)        | NO   | UNI | NULL    |                |
+	| email_verified_at | timestamp           | YES  |     | NULL    |                |
+	| mobile            | varchar(255)        | NO   | UNI | NULL    |                |
+	| password          | varchar(255)        | NO   |     | NULL    |                |
+	| remember_token    | varchar(100)        | YES  |     | NULL    |                |
+	| school_id         | bigint(20) unsigned | NO   |     | NULL    |                |
+	| address_id        | bigint(20) unsigned | NO   |     | NULL    |                |
+	| created_at        | timestamp           | YES  |     | NULL    |                |
+	| updated_at        | timestamp           | YES  |     | NULL    |                |
+	.-------------------.---------------------.------.-----.---------.----------------.
+12 rows in set (0.072 sec)
+
+MariaDB [autha]> describe teacher_commends  التعليقات لكل معلم  ;
+	.------------.---------------------.------.-----.---------.----------------.
+	| Field      | Type                | Null | Key | Default | Extra          |
+	.------------.---------------------.------.-----.---------.----------------.
+	| id         | bigint(20) unsigned | NO   | PRI | NULL    | auto_increment |
+	| comment    | mediumtext          | YES  |     | NULL    |                |
+	| tag        | varchar(255)        | YES  |     | NULL    |                |
+	| vote       | smallint(6)         | YES  |     | NULL    |                |
+	| teacher_id | bigint(20) unsigned | NO   |     | NULL    |                |
+	| created_at | timestamp           | YES  |     | NULL    |                |
+	| updated_at | timestamp           | YES  |     | NULL    |                |
+	.------------.---------------------.------.-----.---------.----------------.
+7 rows in set (0.058 sec)
+
+MariaDB [autha]> describe teachers        المعلمين    ;
+	.-------------------.---------------------.------.-----.---------.----------------.
+	| Field             | Type                | Null | Key | Default | Extra          |
+	.-------------------.---------------------.------.-----.---------.----------------.
+	| id                | bigint(20) unsigned | NO   | PRI | NULL    | auto_increment |
+	| uuid              | char(36)            | NO   | UNI | NULL    |                |
+	| name              | varchar(255)        | NO   |     | NULL    |                |
+	| email             | varchar(255)        | NO   | UNI | NULL    |                |
+	| email_verified_at | timestamp           | YES  |     | NULL    |                |
+	| mobile            | varchar(255)        | NO   | UNI | NULL    |                |
+	| password          | varchar(255)        | NO   |     | NULL    |                |
+	| remember_token    | varchar(100)        | YES  |     | NULL    |                |
+	| address_id        | bigint(20) unsigned | NO   |     | NULL    |                |
+	| created_at        | timestamp           | YES  |     | NULL    |                |
+	| updated_at        | timestamp           | YES  |     | NULL    |                |
+	.-------------------.---------------------.------.-----.---------.----------------.
+11 rows in set (0.057 sec)
+
+MariaDB [autha]> describe users      المستخدمين          ;
+	.-------------------.---------------------.------.-----.---------.----------------.
+	| Field             | Type                | Null | Key | Default | Extra          |
+	.-------------------.---------------------.------.-----.---------.----------------.
+	| id                | bigint(20) unsigned | NO   | PRI | NULL    | auto_increment |
+	| name              | varchar(255)        | NO   |     | NULL    |                |
+	| email             | varchar(255)        | NO   | UNI | NULL    |                |
+	| email_verified_at | timestamp           | YES  |     | NULL    |                |
+	| password          | varchar(255)        | NO   |     | NULL    |                |
+	| remember_token    | varchar(100)        | YES  |     | NULL    |                |
+	| created_at        | timestamp           | YES  |     | NULL    |                |
+	| updated_at        | timestamp           | YES  |     | NULL    |                |
+	.-------------------.---------------------.------.-----.---------.----------------.
+8 rows in set (0.080 sec)
+
+MariaDB [autha]> Bye
+	Ctrl-C -- exit!
+
+	C:\Users\مستخدم عادي>

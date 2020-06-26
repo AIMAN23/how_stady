@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>{{ confg('app.name') }}</title>
+    <!-- All CSS -->
+      <!-- Font Awesome Icons -->
+      <link rel="stylesheet" href="lte/plugins/fontawesome-free/css/all.min.css">
+      <!-- data-day css -->
+        <!-- Ionicons -->
+        <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+        <!-- daterange picker -->
+        <link rel="stylesheet" href="lte/plugins/data-day/daterangepicker/daterangepicker.css">
+        <!-- iCheck for checkboxes and radio inputs -->
+        <link rel="stylesheet" href="lte/plugins/data-day/icheck-bootstrap/icheck-bootstrap.min.css">
+        <!-- Bootstrap Color Picker -->
+        <link rel="stylesheet" href="lte/plugins/data-day/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css">
+        <!-- Tempusdominus Bbootstrap 4 -->
+        <link rel="stylesheet" href="lte/plugins/data-day/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+        <!-- Select2 -->
+        <link rel="stylesheet" href="lte/plugins/data-day/select2/css/select2.min.css">
+        <link rel="stylesheet" href="lte/plugins/data-day/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+        <!-- Bootstrap4 Duallistbox -->
+        <link rel="stylesheet" href="lte/plugins/data-day/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
+      <!--/. data-day css -->
+      <!-- Theme style -->
+      <link rel="stylesheet" href="lte/dist/css/adminlte.min.css">
+      <!-- <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"> -->
+      <link rel="stylesheet" href="lte/dist/css/lte.min.css">
+      <!-- Google Font: Source Sans Pro -->
+      <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  </head>
+  <body class="hold-transition sidebar-mini sidebar-collapse " onload="day();">
+    <div class="wrapper">
+
+      <!-- Navbar -->
+      <nav class="main-header navbar main-bb-0 fixed-top navbar-expand navbar-white navbar-dark bg-a" >
+        <!-- Left navbar links -->
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+          </li>
+        </ul>
+
+        <!-- SEARCH FORM -->
+        <form class="form-inline ml-3">
+          <div class="input-group input-group-sm">
+            <input class="form-control form-control-navbar" type="search" placeholder="{{ __('lang.Search') }}" aria-label="Search">
+            <div class="input-group-append">
+              <button class="btn btn-navbar" type="submit">
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
+          </div>
+        </form>
+
+        <!-- Right navbar links -->
+        <ul class="navbar-nav ml-auto">
+          <!-- Messages Dropdown Menu -->
+          <li class="nav-item dropdown">
+            <a class="nav-link" data-toggle="dropdown" href="#">
+              <i class="far fa-comments"></i>
+              <span class="badge badge-danger navbar-badge">3</span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item">
+                <!-- Message Start -->
+                <div class="media">
+                  <img src="lte/dist/img/userP-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+                  <div class="media-body">
+                    <h3 class="dropdown-item-title">
+                      {{ $title }}
+                      <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
+                    </h3>
+                    <p class="text-sm">{{ $text_msg }}</p>
+                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i>{{ $Ago }}</p>
+                  </div>
+                </div>
+                <!-- Message End -->
+              </a>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item">
+                <!-- Message Start -->
+                <div class="media">
+                  <img src="lte/dist/img/userP-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                  <div class="media-body">
+                    <h3 class="dropdown-item-title">
+                      John Pierce
+                      <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
+                    </h3>
+                    <p class="text-sm">I got your message bro</p>
+                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                  </div>
+                </div>
+                <!-- Message End -->
+              </a>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item">
+                <!-- Message Start -->
+                <div class="media">
+                  <img src="lte/dist/img/userP-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                  <div class="media-body">
+                    <h3 class="dropdown-item-title">
+                      Nora Silvester
+                      <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
+                    </h3>
+                    <p class="text-sm">The subject goes here</p>
+                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                  </div>
+                </div>
+                <!-- Message End -->
+              </a>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item">
+                <!-- Message Start -->
+                <div class="media">
+                  <img src="lte/dist/img/userP-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+                  <div class="media-body">
+                    <h3 class="dropdown-item-title">
+                      {{ $title }}
+                      <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
+                    </h3>
+                    <p class="text-sm">{{ $text_msg }}</p>
+                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i>{{ $Ago }}</p>
+                  </div>
+                </div>
+                <!-- Message End -->
+              </a>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
+            </div>
+          </li>
+          <!-- Notifications Dropdown Menu -->
+          <li class="nav-item dropdown">
+            <a class="nav-link" data-toggle="dropdown" href="#">
+              <i class="far fa-bell"></i>
+              <span class="badge badge-warning navbar-badge">15</span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+              <span class="dropdown-header">15 Notifications</span>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item">
+                <i class="fas fa-envelope mr-2"></i> 4 new messages
+                <span class="float-right text-muted text-sm">3 mins</span>
+              </a>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item">
+                <i class="fas fa-users mr-2"></i> 8 friend requests
+                <span class="float-right text-muted text-sm">12 hours</span>
+              </a>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item">
+                <i class="fas fa-file mr-2"></i> 3 new reports
+                <span class="float-right text-muted text-sm">2 days</span>
+              </a>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link bg-c" data-widget="control-sidebar" data-slide="true" href="#" role="button"><i
+                class="fas fa-th-large"></i></a>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.navbar -->
+
+      <!-- Main Sidebar Container -->
+      <aside class="main-sidebar sidebar-light-primary elevation-4">
+        <!-- Brand Logo -->
+        <a href="#" class="brand-link navbar-orange">
+          <img src="lte/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+               style="opacity: .8">
+          <span class="brand-text font-weight-light">AdminLTE 3</span>
+        </a>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+          <!-- Sidebar user panel (optional) -->
+          <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="image">
+              <img src="lte/dist/img/userP-128x128.jpg" class="img-circle elevation-2" alt="User Image">
+            </div>
+            <div class="info">
+              <a href="#" class="d-block">{{__('parent name')}}</a>
+            </div>
+          </div>
+
+          <!-- Sidebar Menu -->
+          <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+              <!-- Add icons to the links using the .nav-icon class
+                   with font-awesome or any other icon font library -->
+              <li class="nav-item has-treeview menu-open">
+                <a href="#" class="nav-link active">
+                  <i class="nav-icon fas fa-tachometer-alt"></i>
+                  <p>
+                    Starter Pages
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="#" class="nav-link active">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Active Page</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Inactive Page</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-th"></i>
+                  <p>
+                    Simple Link
+                    <span class="right badge badge-danger">New</span>
+                  </p>
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <!-- /.sidebar-menu -->
+        </div>
+        <!-- /.sidebar -->
+      </aside>
+
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper" >
+        <!--  -->
+        <div class="container">
+          <br>
+          <br>
+          <br>
+
+          <!-- Widget: user widget style 1 -->
+          <div class="card card-widget widget-user">
+            <!-- Add the bg color to the header using any of the bg-* classes -->
+            <div class="widget-user-header bg-b text-white">
+              <h3 class="widget-user-username">{{('اسم الطالب')}}</h3>
+              <h5 class="widget-user-desc">{{('المرحلة')}} &amp; {{('الشعبة')}}</h5>
+            </div>
+            <div class="widget-user-image">
+              
+                <!-- <i class="fa fa-lg fa-user" alt=""></i> -->
+                <img class="img-circle elevation-2" alt="User Image" src="lte/dist/img/student-128x128.jpg">
+            </div>
+            <div class="card-footer pt-2">
+              
+              <div class=" row float-right">
+                <div class="col-12">
+                  <a href="Starter.html"  class=" p-4 btn btn-navbar">
+                    {{('back')}}
+                    <!-- <i class="fas fa-arrow-circle-right "></i>fa-angle-double-right -->
+                    <i class="fa fa-lg fa-angle-double-right"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="clearfix hidden-md-up"></div>
+
+              <!--  -->
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-3">
+                    <div class="sticky-top mb-3">
+                      <div class="card">
+                        <div class="card-header">
+                          <h4 class="card-title">Draggable Events</h4>
+                        </div>
+                        <div class="card-body">
+                          <!-- the events -->
+                          <div id="external-events">
+                            <div class="external-event bg-success ui-draggable ui-draggable-handle" style="position: relative;">Lunch</div>
+                            <div class="external-event bg-warning ui-draggable ui-draggable-handle" style="position: relative;">Go home</div>
+                            <div class="external-event bg-info ui-draggable ui-draggable-handle" style="position: relative;">Do homework</div>
+                            <div class="external-event bg-primary ui-draggable ui-draggable-handle" style="position: relative;">Work on UI design</div>
+                            <div class="external-event bg-danger ui-draggable ui-draggable-handle" style="position: relative;">Sleep tight</div>
+                            <div class="checkbox">
+                              <label for="drop-remove">
+                                <input type="checkbox" id="drop-remove">
+                                remove after drop
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- /.card-body -->
+                      </div>
+                      <!-- /.card -->
+                      <div class="card">
+                        <div class="card-header">
+                          <h3 class="card-title">Create Event</h3>
+                        </div>
+                        <div class="card-body">
+                          <div class="btn-group" style="width: 100%; margin-bottom: 10px;">
+                            <!--<button type="button" id="color-chooser-btn" class="btn btn-info btn-block dropdown-toggle" data-toggle="dropdown">Color <span class="caret"></span></button>-->
+                            <ul class="fc-color-picker" id="color-chooser">
+                              <li><a class="text-primary" href="#"><i class="fas fa-square"></i></a></li>
+                              <li><a class="text-warning" href="#"><i class="fas fa-square"></i></a></li>
+                              <li><a class="text-success" href="#"><i class="fas fa-square"></i></a></li>
+                              <li><a class="text-danger" href="#"><i class="fas fa-square"></i></a></li>
+                              <li><a class="text-muted" href="#"><i class="fas fa-square"></i></a></li>
+                            </ul>
+                          </div>
+                          <!-- /btn-group -->
+                          <div class="input-group">
+                            <input id="new-event" type="text" class="form-control" placeholder="Event Title">
+
+                            <div class="input-group-append">
+                              <button id="add-new-event" type="button" class="btn btn-primary">Add</button>
+                            </div>
+                            <!-- /btn-group -->
+                          </div>
+                          <!-- /input-group -->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-9">
+                    <div class="card card-primary">
+                      <div class="card-header">
+                        <div class="card-title">
+                          THE CALENDAR
+                        </div>
+                        <dit class="card-tools">
+                          <!-- Date -->
+
+                          <div class="form-group">
+                            <label>Date:<small dir="rtl" id="now"></small></label>
+                              <div class="input-group date" id="reservationdate" data-target-input="nearest">
+                                  <input type="text" class="form-control datetimepicker-input" data-target="#reservationdate"/>
+                                  <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
+                                      <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                  </div>
+                              </div>
+                          </div>
+                          <!-- /.form group -->
+                        </dit>
+                      </div>
+                      <div class="card-body p-0">
+                        <div dir="rtl" class="col-12 card-body table-responsive p-0  text-right">
+                          <table class="table table-hover text-nowrap text-center table-bordered text-sm" >
+                            <thead class="text-center">
+                              <tr>
+                                <th>الحصة</th>
+                                <td>المادة</td>
+                                <td>التحضير</td>
+                                <td>{{('ولي الامر')}}</td>
+                                <td>{{('المعلم')}}</td>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <th>1</td>
+                                <td>القران الكريم</td>
+                                <!-- <th><i class="fa text-lg fa-smile-beam" style="color:#fe1;" >p</i> </th> -->
+                                <td>
+                                  <i class="fa  fa-circle" style="color:#fe1;" ></i>
+                                  <i class="fa  fa-circle" style="color:#0f0;" ></i> 
+                                  <i class="fa  fa-circle" style="color:#f00;" ></i>
+                                </td>
+                                <td><input type="text" name="more" class="w-100 ">
+                                  <!-- <i class="fas fa-smile-wink"></i> -->
+                                  <!-- <i class="fas fa-dollar-sign"></i> -->
+                                  <!-- <i class="fas fa-angry"></i> -->
+                                  <!-- <i class="fas fa-sad-cry"></i> -->
+                                  <!-- <i class="fas fa-sad-tear"></i> -->
+                                  <!-- <i class="fas fa-window-close text-danger"></i> -->
+                                  <!-- <i class="fas fa-window-close text-danger"></i> -->
+                                </td>
+                                <td></td>
+                                <!-- <td><output type="text" >hghgh</output></td> -->
+                              </tr>
+                              <tr>
+                                <th>2</td>
+                                <td>الاسلامية</td>
+                                <td>
+                                  <i class="fa  fa-circle" style="color:#fe1;" ></i>
+                                  <i class="fa  fa-circle" style="color:#0f0;" ></i> 
+                                  <i class="fa  fa-circle" style="color:#f00;" ></i>
+                                </td>
+                                <td><input type="text" name="more" class="w-100 ">
+                                  <!-- <i class="fas fa-smile-wink"></i> -->
+                                  <!-- <i class="fas fa-dollar-sign"></i> -->
+                                  <!-- <i class="fas fa-angry"></i> -->
+                                  <!-- <i class="fas fa-sad-cry"></i> -->
+                                  <!-- <i class="fas fa-sad-tear"></i> -->
+                                  <!-- <i class="fas fa-window-close text-danger"></i> -->
+                                  <!-- <i class="fas fa-window-close text-danger"></i> -->
+                                </td>
+                                <td></td>
+                                <!-- <td><output type="text" >hghgh</output></td> -->
+                              </tr>
+                              <tr>
+                                <th>3</td>
+                                <td>الرياضيات</td>
+                                <td>
+                                  <i class="fa  fa-circle" style="color:#fe1;" ></i>
+                                  <i class="fa  fa-circle" style="color:#0f0;" ></i> 
+                                  <i class="fa  fa-circle" style="color:#f00;" ></i>
+                                </td>
+                                <td><input type="text" name="more" class="w-100 ">
+                                  <!-- <i class="fas fa-smile-wink"></i> -->
+                                  <!-- <i class="fas fa-dollar-sign"></i> -->
+                                  <!-- <i class="fas fa-angry"></i> -->
+                                  <!-- <i class="fas fa-sad-cry"></i> -->
+                                  <!-- <i class="fas fa-sad-tear"></i> -->
+                                  <!-- <i class="fas fa-window-close text-danger"></i> -->
+                                  <!-- <i class="fas fa-window-close text-danger"></i> -->
+                                </td>
+                                <td></td>
+                                <!-- <td><output type="text" >hghgh</output></td> -->
+                              </tr>
+                              <tr>
+                                <th>4</td>
+                                <td>العربي</td>
+                                <td>
+                                  <i class="fa  fa-circle" style="color:#fe1;" ></i>
+                                  <i class="fa  fa-circle" style="color:#0f0;" ></i> 
+                                  <i class="fa  fa-circle" style="color:#f00;" ></i>
+                                </td>
+                                <td><input type="text" name="more" class="w-100 ">
+                                  <!-- <i class="fas fa-smile-wink"></i> -->
+                                  <!-- <i class="fas fa-dollar-sign"></i> -->
+                                  <!-- <i class="fas fa-angry"></i> -->
+                                  <!-- <i class="fas fa-sad-cry"></i> -->
+                                  <!-- <i class="fas fa-sad-tear"></i> -->
+                                  <!-- <i class="fas fa-window-close text-danger"></i> -->
+                                  <!-- <i class="fas fa-window-close text-danger"></i> -->
+                                </td>
+                                <td></td>
+                                <!-- <td><output type="text" >hghgh</output></td> -->
+                              </tr>
+                              <tr>
+                                <th>5</td>
+                                <td>الانجليزي</td>
+                                <td>
+                                  <i class="fa  fa-circle" style="color:#fe1;" ></i>
+                                  <i class="fa  fa-circle" style="color:#0f0;" ></i> 
+                                  <i class="fa  fa-circle" style="color:#f00;" ></i>
+                                </td>
+                                <td><input type="text" name="more" class="w-100 ">
+                                  <!-- <i class="fas fa-smile-wink"></i> -->
+                                  <!-- <i class="fas fa-dollar-sign"></i> -->
+                                  <!-- <i class="fas fa-angry"></i> -->
+                                  <!-- <i class="fas fa-sad-cry"></i> -->
+                                  <!-- <i class="fas fa-sad-tear"></i> -->
+                                  <!-- <i class="fas fa-window-close text-danger"></i> -->
+                                  <!-- <i class="fas fa-window-close text-danger"></i> -->
+                                </td>
+                                <td></td>
+                                <!-- <td><output type="text" >hghgh</output></td> -->
+                              </tr>
+                              <tr>
+                                <th>6</td>
+                                <td>الاجتماعيات</td>
+                                <td>
+                                  <i class="fa  fa-circle" style="color:#fe1;" ></i>
+                                  <i class="fa  fa-circle" style="color:#0f0;" ></i> 
+                                  <i class="fa  fa-circle" style="color:#f00;" ></i>
+                                </td>
+                                <td><input type="text" name="more" class="w-100 ">
+                                  <!-- <i class="fas fa-smile-wink"></i> -->
+                                  <!-- <i class="fas fa-dollar-sign"></i> -->
+                                  <!-- <i class="fas fa-angry"></i> -->
+                                  <!-- <i class="fas fa-sad-cry"></i> -->
+                                  <!-- <i class="fas fa-sad-tear"></i> -->
+                                  <!-- <i class="fas fa-window-close text-danger"></i> -->
+                                  <!-- <i class="fas fa-window-close text-danger"></i> -->
+                                </td>
+                                <td></td>
+                                <!-- <td><output type="text" >hghgh</output></td> -->
+                              </tr>
+                              <tr>
+                                <th>7</td>
+                                <td>العلوم</td>
+                                <td>
+                                  <i class="fa  fa-circle" style="color:#fe1;" ></i>
+                                  <i class="fa  fa-circle" style="color:#0f0;" ></i> 
+                                  <i class="fa  fa-circle" style="color:#f00;" ></i>
+                                </td>
+                                <td><input type="text" name="more" class="w-100 ">
+                                  <!-- <i class="fas fa-smile-wink"></i> -->
+                                  <!-- <i class="fas fa-dollar-sign"></i> -->
+                                  <!-- <i class="fas fa-angry"></i> -->
+                                  <!-- <i class="fas fa-sad-cry"></i> -->
+                                  <!-- <i class="fas fa-sad-tear"></i> -->
+                                  <!-- <i class="fas fa-window-close text-danger"></i> -->
+                                  <!-- <i class="fas fa-window-close text-danger"></i> -->
+                                </td>
+                                <td></td>
+                                <!-- <td><output type="text" >hghgh</output></td> -->
+                              </tr>
+                            </tbody>
+                            <tfoot class="">
+                              <tr>
+                                <td>..</td>
+                                <td>..</td>
+                                <td>..</td>
+                                <td>..</td>
+                                <td>..</td>
+                              </tr>
+                            </tfoot>
+                          </table>
+                        </div>
+
+                      </div>
+                      <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                  </div>
+                  <!-- /.col -->
+                </div>
+                <!-- /.row -->
+              </div>
+              <!--  -->
+            </div>
+          </div>
+          <!-- /.widget-user -->
+        </div>
+        <!--  -->
+      </div>
+      <!-- /.content-wrapper -->
+<!--  -->
+
+<!--  -->
+      <!-- Control Sidebar -->
+      <aside class="control-sidebar control-sidebar-dark bg-a">
+        <!-- Control sidebar content goes here -->
+        <div class="p-3">
+          <h5>{{ __('lang.sid.Title') }}</h5>
+          <p>{{ __('lang.sid.Sidebar') }}</p>
+        </div>
+        
+        <nav class="mt-2 p-3 sticky-top mb-3">
+          <!--  -->
+          <!-- class="nav nav-pills nav-sidebar nav-child-indent flex-column color-e nav-legacy" -->
+          <!-- class="nav nav-pills nav-sidebar nav-child-indent flex-column color-e nav-compact nav-flat" -->
+          <ul 
+            class="nav nav-pills nav-sidebar nav-child-indent flex-column nav-compact nav-flat"
+            data-widget="treeview" 
+            role="menu" 
+            data-accordion="false" style=" height: 100%;">
+              <!-- Add icons to the links using the .nav-icon class
+                 with font-awesome or any other icon font library -->
+
+            <!-- <li class="nav-header">MULTI LEVEL EXAMPLE</li> -->
+            <li class="nav-item ">pages</li>
+            <li class="nav-item">
+              <a href="starter.html" class="nav-link bg-b mb-1" >
+                <i class="fa fa-user nav-icon"></i>
+                my Page
+              </a>
+            </li>
+            <!--  -->
+            <li class="nav-item">
+              <a href="index.html" class="nav-link bg-b mb-1" >
+                <i class="fa fa-home nav-icon"></i>
+                home Page
+              </a>
+            </li>
+            <!--  -->
+            <li class="nav-item ">المراحل الدراسية</li>
+            <li class="nav-item has-treeview menu-open">
+              <a href="#" class="nav-link bg-b mb-1" >
+                <i class="nav-icon fa fa-circle"></i>
+                <b>Level 1</b>
+                <p></p>
+                <i class="right fa fa-angle-left"></i>
+              </a>
+              <ul class="nav nav-treeview" style="display: block;">
+                <li class="nav-item">
+                  <a href="#" class="nav-link bg-b mb-1" >
+                    <i class="fa fa-circle nav-icon"></i>
+                    <b>Level 2</b>
+                    <p></p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link bg-b mb-1" >
+                    <i class="fa fa-circle nav-icon"></i>
+                    <b>Level 2</b>
+                    <p></p>
+                  </a>
+                </li>
+                <!-- <li class="nav-item has-treeview">
+                  <a href="#" class="nav-link bg-b mb-1" >
+                    <i class="fa fa-circle nav-icon"></i>
+                    <b>Level 2</b>
+                    <p></p>
+                    <i class="right fa fa-angle-left "></i>
+                  </a>
+                  <ul class="nav nav-treeview" style="display: none;">
+                    <li class="nav-item">
+                      <a href="#" class="nav-link bg-b mb-1" >
+                        <i class="fa fa-dot-circle nav-icon"></i>
+                        <b>Level 3</b>
+                        <p></p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="#" class="nav-link bg-b mb-1" >
+                        <i class="fa fa-dot-circle nav-icon"></i>
+                        <b>Level 3</b>
+                        <p></p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="#" class="nav-link bg-b mb-1" >
+                        <i class="fa fa-dot-circle nav-icon"></i>
+                        <b>Level 3</b>
+                        <p></p>
+                      </a>
+                    </li>
+
+                  </ul>
+                </li> -->
+                <li class="nav-item">
+                  <a href="#" class="nav-link bg-b mb-1" >
+                    <i class="fa fa-circle nav-icon"></i>
+                    <b>Level 2</b>
+                    <p></p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <!--  -->
+            <li class="nav-item ">الشعب الدراسية</li>
+            <li class="nav-item has-treeview menu-open">
+              <a href="#" class="nav-link bg-b mb-1" >
+                <i class="fa fa-circle nav-icon"></i>
+                <b>Level aa</b>
+                <p></p>
+                <i class="right fa fa-angle-left "></i>
+              </a>
+              <ul class="nav nav-treeview" style="display: block;">
+                <li class="nav-item">
+                  <a href="#" class="nav-link bg-b mb-1" >
+                    <i class="fa fa-dot-circle nav-icon"></i>
+                    <b>Level 4</b>
+                    <p></p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link bg-b mb-1" >
+                    <i class="fa fa-dot-circle nav-icon"></i>
+                    <b>Level 4</b>
+                    <p></p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link bg-b mb-1" >
+                    <i class="fa fa-dot-circle nav-icon"></i>
+                    <b>Level 4</b>
+                    <p></p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <!--  -->
+            <li class="nav-item ">الاعدادات</li>
+            <li class="nav-item has-treeview menu-open">
+              <a href="#" class="nav-link bg-b mb-1" >
+                <i class="fa fa-circle nav-icon"></i>
+                <b>Level aa</b>
+                <p></p>
+                <i class="right fa fa-angle-left "></i>
+              </a>
+              <ul class="nav nav-treeview" style="display: block;">
+                <li class="nav-item">
+                  <a href="#" class="nav-link bg-b mb-1" >
+                    <i class="fa fa-dot-circle nav-icon"></i>
+                    <b>Level 4</b>
+                    <p></p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link bg-b mb-1" >
+                    <i class="fa fa-dot-circle nav-icon"></i>
+                    <b>Level 4</b>
+                    <p></p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link bg-b mb-1" >
+                    <i class="fa fa-dot-circle nav-icon"></i>
+                    <b>Level 4</b>
+                    <p></p>
+                  </a>
+                </li>
+              </ul>
+            </li>            
+            <!--  -->
+          </ul>
+          <!--  -->
+        </nav>
+      </aside>
+      <!-- /.control-sidebar -->
+      
+      <!-- Main Footer -->
+      <footer class="main-footer text-sm navbar-dark bg-a">
+        <!-- To the right -->
+        <div class="float-right d-none d-sm-inline">
+          {{''}}
+        </div>
+        <!-- Default to the left -->
+        <strong>Copyright &copy; {{data('Y')}} <a href="#">aimanz.com</a>
+        .</strong>{{''}}
+      </footer>
+    </div>
+    <!-- ./wrapper -->
+
+    <!-- REQUIRED SCRIPTS -->
+
+      <!-- jQuery -->
+      <script src="lte/plugins/jquery/jquery.min.js"></script>
+      <!-- Bootstrap 4 -->
+      <script src="lte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+      <!-- data-day -->
+        <!-- Select2 -->
+        <script src="lte/plugins/data-day/select2/js/select2.full.min.js"></script>
+        <!-- Bootstrap4 Duallistbox -->
+        <script src="lte/plugins/data-day/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+        <!-- InputMask -->
+        <script src="lte/plugins/data-day/moment/moment.min.js"></script>
+        <script src="lte/plugins/data-day/inputmask/min/jquery.inputmask.bundle.min.js"></script>
+        <!-- date-range-picker -->
+        <script src="lte/plugins/data-day/daterangepicker/daterangepicker.js"></script>
+        <!-- bootstrap color picker -->
+        <script src="lte/plugins/data-day/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
+        <!-- Tempusdominus Bootstrap 4 -->
+        <script src="lte/plugins/data-day/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+        <!-- Bootstrap Switch -->
+        <script src="lte/plugins/data-day/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+      <!-- /data-day -->
+      <!-- AdminLTE App -->
+      <script src="lte/dist/js/adminlte.min.js"></script>
+      <!-- Page script -->
+      <script>
+        function day(){
+            var date = new Date();
+            var d = date.getDate().toString();
+            var m = date.getMonth().toString();
+            var y = date.getFullYear().toString();
+          
+          var now= document.getElementById('now');
+          // now.innerText = d+'/'+m+'/'+y;
+          now.innerText =date.toLocaleDateString();
+        };
+        $(function () {
+          //Initialize Select2 Elements
+          $('.select2').select2()
+
+          //Initialize Select2 Elements
+          $('.select2bs4').select2({
+            theme: 'bootstrap4'
+          })
+
+          //Datemask dd/mm/yyyy
+          $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
+          //Datemask2 mm/dd/yyyy
+          $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
+          //Money Euro
+          $('[data-mask]').inputmask()
+
+          //Date range picker
+          $('#reservationdate').datetimepicker({
+              format: 'YYYY/MM/DD'
+          });
+          //Date range picker
+          $('#reservation').daterangepicker()
+          //Date range picker with time picker
+          $('#reservationtime').daterangepicker({
+            timePicker: true,
+            timePickerIncrement: 30,
+            locale: {
+              format: 'MM/DD/YYYY hh:mm A'
+            }
+          })
+          //Date range as a button
+          $('#daterange-btn').daterangepicker(
+            {
+              ranges   : {
+                'Today'       : [moment(), moment()],
+                'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
+                'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                'This Month'  : [moment().startOf('month'), moment().endOf('month')],
+                'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+              },
+              startDate: moment().subtract(29, 'days'),
+              endDate  : moment()
+            },
+            function (start, end) {
+              $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
+            }
+          )
+
+          //Timepicker
+          $('#timepicker').datetimepicker({
+            format: 'LT'
+          })
+          
+          //Bootstrap Duallistbox
+          $('.duallistbox').bootstrapDualListbox()
+
+          //Colorpicker
+          $('.my-colorpicker1').colorpicker()
+          //color picker with addon
+          $('.my-colorpicker2').colorpicker()
+
+          $('.my-colorpicker2').on('colorpickerChange', function(event) {
+            $('.my-colorpicker2 .fa-square').css('color', event.color.toString());
+          });
+
+          $("input[data-bootstrap-switch]").each(function(){
+            $(this).bootstrapSwitch('state', $(this).prop('checked'));
+          });
+
+        })
+      </script>
+  </body>
+</html>

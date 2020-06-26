@@ -2,16 +2,38 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+// use Illuminate\Database\Eloquent\Model;
+
+//use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Foundation\Auth\User as AuthenticatableAdmin;
+use Illuminate\Notifications\Notifiable;
+
 ## مودل مسئول النظام للمدرسة
-class SchoolAdmin extends Model
+class SchoolAdmin extends AuthenticatableAdmin
 {
-    protected $fillable = ['id','name','mobile','email','status','image_id','address_id','school_id',];
-    protected $table = "school_admins";
-    protected $hidden =['password','remember_token'];
-    protected $casts = [
-        'email_verified_at' => 'datetime',
+    use Notifiable;
+    protected $fillable = [
+        'id','no','uuid','status',
+        ## 
+        'name','f_name','p_name','l_name',
+        ## 
+        'email','mobile',
+        ## 
+        'gender','nationality','birthdate',
+        ##
+        'email_verified_at','remember_token','password',
+        ##foreign Key
+        'image_id',
+        'address_id',
+        'school_id',
+        // 'socialdetail_id',
+        // 'healthdetail_id',
+        ## detetime columns
+        'created_at',
+        'updated_at',
     ];
+    protected $table = "school_admins";
+    protected $hidden =['password'];
     public $timestamps = true;
     ##############   Start Relationes     ##############
         ############  address عنوان مسؤل النظام
@@ -40,5 +62,20 @@ class SchoolAdmin extends Model
                 return $this->hasMany('App\Models\StudentRegister','schooladmin_id');
             }
     ##############   end Relationes has    ##############
+
+
+
+
+
+     /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
+    
+    // protected $guard = 'admin';
 
 }

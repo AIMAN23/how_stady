@@ -8,18 +8,32 @@ class Manager extends Model
 {
     protected $table = "managers";
     protected $fillable=[
-            'id',
-            'uuid',
-            'name',
-            'email',
-            'mobile',
-            'school_id',
-            'address_id',
+        'id','no','uuid','status',
+        ## 
+        'name','f_name','p_name','l_name',
+        ## 
+        'email','mobile',
+        ## 
+        'gender','nationality','birthdate',
+        ##
+        'email_verified_at','remember_token','password',
+        ##foreign Key
+        'image_id',
+        'address_id',
+        'school_id',
+        // 'socialdetail_id',
+        // 'healthdetail_id',
+        ## detetime columns
+        'created_at',
+        'updated_at',
         ];
     protected $hidden =[
             'email_verified_at',
             'password','created_at','updated_at'
         ];
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
     public $timestamps = true;
     
     ##############   Start Relationes     ##############

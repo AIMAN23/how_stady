@@ -4,507 +4,507 @@
           </label>
           <select  class="form-control custom-select" require aria-labelledby="select-label"> -->
             <option value=""></option>
-            <option value="YE">
+            <option value="YE - اليمن">
                 اليمن
               </option><option disabled="" value="SPACER">
                 ------
-              </option><option value="IS">
+              </option><option value="IS - آيسلندا">
                 آيسلندا
-              </option><option value="ET">
+              </option><option value="ET - إثيوبيا">
                 إثيوبيا
-              </option><option value="AZ">
+              </option><option value="AZ - أذربيجان">
                 أذربيجان
-              </option><option value="AM">
+              </option><option value="AM - أرمينيا">
                 أرمينيا
-              </option><option value="AW">
+              </option><option value="AW - أروبا">
                 أروبا
-              </option><option value="ER">
+              </option><option value="ER - إريتريا">
                 إريتريا
-              </option><option value="ES">
+              </option><option value="ES - إسبانيا">
                 إسبانيا
-              </option><option value="AU">
+              </option><option value="AU - أستراليا">
                 أستراليا
-              </option><option value="EE">
+              </option><option value="EE - إستونيا">
                 إستونيا
-              </option><option value="IL">
+              </option><option value="IL - إسرائيل">
                 إسرائيل
-              </option><option value="SZ">
+              </option><option value="SZ - إسواتيني">
                 إسواتيني
-              </option><option value="AF">
+              </option><option value="AF - أفغانستان">
                 أفغانستان
-              </option><option value="AR">
+              </option><option value="AR - الأرجنتين">
                 الأرجنتين
-              </option><option value="JO">
+              </option><option value="JO - الأردن">
                 الأردن
-              </option><option value="TF">
+              </option><option value="TF - الأقاليم الجنوبية الفرنسية">
                 الأقاليم الجنوبية الفرنسية
-              </option><option value="IO">
+              </option><option value="IO - الإقليم البريطاني في المحي">
                 الإقليم البريطاني في المحيط الهندي
-              </option><option value="EC">
+              </option><option value="EC - الإكوادور">
                 الإكوادور
-              </option><option value="AE">
+              </option><option value="AE - الإمارات العربية المتحدة">
                 الإمارات العربية المتحدة
-              </option><option value="AL">
+              </option><option value="AL - ألبانيا">
                 ألبانيا
-              </option><option value="BH">
+              </option><option value="BH - البحرين">
                 البحرين
-              </option><option value="BR">
+              </option><option value="BR - البرازيل">
                 البرازيل
-              </option><option value="PT">
+              </option><option value="PT - البرتغال">
                 البرتغال
-              </option><option value="BA">
+              </option><option value="BA - البوسنة والهرسك">
                 البوسنة والهرسك
-              </option><option value="CZ">
+              </option><option value="CZ - التشيك">
                 التشيك
-              </option><option value="ME">
+              </option><option value="ME - الجبل الأسود">
                 الجبل الأسود
-              </option><option value="DZ">
+              </option><option value="DZ - الجزائر">
                 الجزائر
-              </option><option value="DK">
+              </option><option value="DK - الدانمرك">
                 الدانمرك
-              </option><option value="CV">
+              </option><option value="CV - الرأس الأخضر">
                 الرأس الأخضر
-              </option><option value="SV">
+              </option><option value="SV - السلفادور">
                 السلفادور
-              </option><option value="SN">
+              </option><option value="SN - السنغال">
                 السنغال
-              </option><option value="SE">
+              </option><option value="SE - السويد">
                 السويد
-              </option><option value="EH">
+              </option><option value="EH - الصحراء الغربية">
                 الصحراء الغربية
-              </option><option value="SO">
+              </option><option value="SO - الصومال">
                 الصومال
-              </option><option value="CN">
+              </option><option value="CN - الصين">
                 الصين
-              </option><option value="IQ">
+              </option><option value="IQ - العراق">
                 العراق
-              </option><option value="GA">
+              </option><option value="GA - الغابون">
                 الغابون
-              </option><option value="VA">
+              </option><option value="VA - الفاتيكان">
                 الفاتيكان
-              </option><option value="PH">
+              </option><option value="PH - الفلبين">
                 الفلبين
-              </option><option value="CM">
+              </option><option value="CM - الكاميرون">
                 الكاميرون
-              </option><option value="CG">
+              </option><option value="CG - الكونغو - برازافيل">
                 الكونغو - برازافيل
-              </option><option value="CD">
+              </option><option value="CD - الكونغو - كينشاسا">
                 الكونغو - كينشاسا
-              </option><option value="KW">
+              </option><option value="KW - الكويت">
                 الكويت
-              </option><option value="DE">
+              </option><option value="DE - ألمانيا">
                 ألمانيا
-              </option><option value="MA">
+              </option><option value="MA - المغرب">
                 المغرب
-              </option><option value="MX">
+              </option><option value="MX - المكسيك">
                 المكسيك
-              </option><option value="SA">
+              </option><option value="SA - المملكة العربية السعودية">
                 المملكة العربية السعودية
-              </option><option value="GB">
+              </option><option value="GB - المملكة المتحدة">
                 المملكة المتحدة
-              </option><option value="NO">
+              </option><option value="NO - النرويج">
                 النرويج
-              </option><option value="AT">
+              </option><option value="AT - النمسا">
                 النمسا
-              </option><option value="NE">
+              </option><option value="NE - النيجر">
                 النيجر
-              </option><option value="IN">
+              </option><option value="IN - الهند">
                 الهند
-              </option><option value="US">
+              </option><option value="US - الولايات المتحدة">
                 الولايات المتحدة
-              </option><option value="JP">
+              </option><option value="JP - اليابان">
                 اليابان
-              </option><option value="YE">
+              </option><option value="YE - اليمن">
                 اليمن
-              </option><option value="GR">
+              </option><option value="GR - اليونان">
                 اليونان
-              </option><option value="AQ">
+              </option><option value="AQ - أنتاركتيكا">
                 أنتاركتيكا
-              </option><option value="AG">
+              </option><option value="AG - أنتيغوا وبربودا">
                 أنتيغوا وبربودا
-              </option><option value="AD">
+              </option><option value="AD - أندورا">
                 أندورا
-              </option><option value="ID">
+              </option><option value="ID - إندونيسيا">
                 إندونيسيا
-              </option><option value="AO">
+              </option><option value="AO - أنغولا">
                 أنغولا
-              </option><option value="AI">
+              </option><option value="AI - أنغويلا">
                 أنغويلا
-              </option><option value="UY">
+              </option><option value="UY - أورغواي">
                 أورغواي
-              </option><option value="UZ">
+              </option><option value="UZ - أوزبكستان">
                 أوزبكستان
-              </option><option value="UG">
+              </option><option value="UG - أوغندا">
                 أوغندا
-              </option><option value="UA">
+              </option><option value="UA - أوكرانيا">
                 أوكرانيا
-              </option><option value="IR">
+              </option><option value="IR - إيران">
                 إيران
-              </option><option value="IE">
+              </option><option value="IE - أيرلندا">
                 أيرلندا
-              </option><option value="IT">
+              </option><option value="IT - إيطاليا">
                 إيطاليا
-              </option><option value="PG">
+              </option><option value="PG - بابوا غينيا الجديدة">
                 بابوا غينيا الجديدة
-              </option><option value="PY">
+              </option><option value="PY - باراغواي">
                 باراغواي
-              </option><option value="PK">
+              </option><option value="PK - باكستان">
                 باكستان
-              </option><option value="PW">
+              </option><option value="PW - بالاو">
                 بالاو
-              </option><option value="BB">
+              </option><option value="BB - بربادوس">
                 بربادوس
-              </option><option value="BM">
+              </option><option value="BM - برمودا">
                 برمودا
-              </option><option value="BN">
+              </option><option value="BN - بروناي">
                 بروناي
-              </option><option value="BE">
+              </option><option value="BE - بلجيكا">
                 بلجيكا
-              </option><option value="BG">
+              </option><option value="BG - بلغاريا">
                 بلغاريا
-              </option><option value="BZ">
+              </option><option value="BZ - بليز">
                 بليز
-              </option><option value="BD">
+              </option><option value="BD - بنغلاديش">
                 بنغلاديش
-              </option><option value="PA">
+              </option><option value="PA - بنما">
                 بنما
-              </option><option value="BJ">
+              </option><option value="BJ - بنين">
                 بنين
-              </option><option value="BT">
+              </option><option value="BT - بوتان">
                 بوتان
-              </option><option value="BW">
+              </option><option value="BW - بوتسوانا">
                 بوتسوانا
-              </option><option value="PR">
+              </option><option value="PR - بورتوريكو">
                 بورتوريكو
-              </option><option value="BF">
+              </option><option value="BF - بوركينا فاسو">
                 بوركينا فاسو
-              </option><option value="BI">
+              </option><option value="BI - بوروندي">
                 بوروندي
-              </option><option value="PL">
+              </option><option value="PL - بولندا">
                 بولندا
-              </option><option value="BO">
+              </option><option value="BO - بوليفيا">
                 بوليفيا
-              </option><option value="PF">
+              </option><option value="PF - بولينيزيا الفرنسية">
                 بولينيزيا الفرنسية
-              </option><option value="PE">
+              </option><option value="PE - بيرو">
                 بيرو
-              </option><option value="BY">
+              </option><option value="BY - بيلاروس">
                 بيلاروس
-              </option><option value="TH">
+              </option><option value="TH - تايلاند">
                 تايلاند
-              </option><option value="TW">
+              </option><option value="TW - تايوان">
                 تايوان
-              </option><option value="TM">
+              </option><option value="TM - تركمانستان">
                 تركمانستان
-              </option><option value="TR">
+              </option><option value="TR - تركيا">
                 تركيا
-              </option><option value="TA">
+              </option><option value="TA - تريستان دا كونا">
                 تريستان دا كونا
-              </option><option value="TT">
+              </option><option value="TT - ترينيداد وتوباغو">
                 ترينيداد وتوباغو
-              </option><option value="TD">
+              </option><option value="TD - تشاد">
                 تشاد
-              </option><option value="CL">
+              </option><option value="CL - تشيلي">
                 تشيلي
-              </option><option value="TZ">
+              </option><option value="TZ - تنزانيا">
                 تنزانيا
-              </option><option value="TG">
+              </option><option value="TG - توغو">
                 توغو
-              </option><option value="TV">
+              </option><option value="TV - توفالو">
                 توفالو
-              </option><option value="TK">
+              </option><option value="TK - توكيلو">
                 توكيلو
-              </option><option value="TN">
+              </option><option value="TN - تونس">
                 تونس
-              </option><option value="TO">
+              </option><option value="TO - تونغا">
                 تونغا
-              </option><option value="TL">
+              </option><option value="TL - تيمور - ليشتي">
                 تيمور - ليشتي
-              </option><option value="JM">
+              </option><option value="JM - جامايكا">
                 جامايكا
-              </option><option value="GI">
+              </option><option value="GI - جبل طارق">
                 جبل طارق
-              </option><option value="AX">
+              </option><option value="AX - جزر آلاند">
                 جزر آلاند
-              </option><option value="BS">
+              </option><option value="BS - جزر البهاما">
                 جزر البهاما
-              </option><option value="KM">
+              </option><option value="KM - جزر القمر">
                 جزر القمر
-              </option><option value="MQ">
+              </option><option value="MQ - جزر المارتينيك">
                 جزر المارتينيك
-              </option><option value="MV">
+              </option><option value="MV - جزر المالديف">
                 جزر المالديف
-              </option><option value="UM">
+              </option><option value="UM - جزر الولايات المتحدة النائ">
                 جزر الولايات المتحدة النائية
-              </option><option value="PN">
+              </option><option value="PN - جزر بيتكيرن">
                 جزر بيتكيرن
-              </option><option value="TC">
+              </option><option value="TC - جزر توركس وكايكوس">
                 جزر توركس وكايكوس
-              </option><option value="SB">
+              </option><option value="SB - جزر سليمان">
                 جزر سليمان
-              </option><option value="FO">
+              </option><option value="FO - جزر فارو">
                 جزر فارو
-              </option><option value="FK">
+              </option><option value="FK - جزر فوكلاند - جزر مالفيناس">
                 جزر فوكلاند - جزر مالفيناس
-              </option><option value="VG">
+              </option><option value="VG - جزر فيرجن البريطانية">
                 جزر فيرجن البريطانية
-              </option><option value="VI">
+              </option><option value="VI - جزر فيرجن التابعة للولايات">
                 جزر فيرجن التابعة للولايات المتحدة
-              </option><option value="KY">
+              </option><option value="KY - جزر كايمان">
                 جزر كايمان
-              </option><option value="CK">
+              </option><option value="CK - جزر كوك">
                 جزر كوك
-              </option><option value="CC">
+              </option><option value="CC - جزر كوكوس (كيلينغ)">
                 جزر كوكوس (كيلينغ)
-              </option><option value="MH">
+              </option><option value="MH - جزر مارشال">
                 جزر مارشال
-              </option><option value="MP">
+              </option><option value="MP - جزر ماريانا الشمالية">
                 جزر ماريانا الشمالية
-              </option><option value="WF">
+              </option><option value="WF - جزر والس وفوتونا">
                 جزر والس وفوتونا
-              </option><option value="AC">
+              </option><option value="AC - جزيرة أسينشيون">
                 جزيرة أسينشيون
-              </option><option value="BV">
+              </option><option value="BV - جزيرة بوفيه">
                 جزيرة بوفيه
-              </option><option value="CX">
+              </option><option value="CX - جزيرة كريسماس">
                 جزيرة كريسماس
-              </option><option value="IM">
+              </option><option value="IM - جزيرة مان">
                 جزيرة مان
-              </option><option value="NF">
+              </option><option value="NF - جزيرة نورفولك">
                 جزيرة نورفولك
-              </option><option value="HM">
+              </option><option value="HM - جزيرة هيرد وجزر ماكدونالد">
                 جزيرة هيرد وجزر ماكدونالد
-              </option><option value="CF">
+              </option><option value="CF - جمهورية أفريقيا الوسطى">
                 جمهورية أفريقيا الوسطى
-              </option><option value="DO">
+              </option><option value="DO - جمهورية الدومينيكان">
                 جمهورية الدومينيكان
-              </option><option value="ZA">
+              </option><option value="ZA - جنوب أفريقيا">
                 جنوب أفريقيا
-              </option><option value="SS">
+              </option><option value="SS - جنوب السودان">
                 جنوب السودان
-              </option><option value="GE">
+              </option><option value="GE - جورجيا">
                 جورجيا
-              </option><option value="GS">
+              </option><option value="GS - جورجيا الجنوبية وجزر ساندو">
                 جورجيا الجنوبية وجزر ساندويتش الجنوبية
-              </option><option value="DJ">
+              </option><option value="DJ - جيبوتي">
                 جيبوتي
-              </option><option value="JE">
+              </option><option value="JE - جيرسي">
                 جيرسي
-              </option><option value="DM">
+              </option><option value="DM - دومينيكا">
                 دومينيكا
-              </option><option value="RW">
+              </option><option value="RW - رواندا">
                 رواندا
-              </option><option value="RU">
+              </option><option value="RU - روسيا">
                 روسيا
-              </option><option value="RO">
+              </option><option value="RO - رومانيا">
                 رومانيا
-              </option><option value="RE">
+              </option><option value="RE - روينيون">
                 روينيون
-              </option><option value="ZM">
+              </option><option value="ZM - زامبيا">
                 زامبيا
-              </option><option value="ZW">
+              </option><option value="ZW - زيمبابوي">
                 زيمبابوي
-              </option><option value="CI">
+              </option><option value="CI - ساحل العاج">
                 ساحل العاج
-              </option><option value="WS">
+              </option><option value="WS - ساموا">
                 ساموا
-              </option><option value="AS">
+              </option><option value="AS - ساموا الأمريكية">
                 ساموا الأمريكية
-              </option><option value="BL">
+              </option><option value="BL - سان بارتليمي">
                 سان بارتليمي
-              </option><option value="PM">
+              </option><option value="PM - سان بيير ومكويلون">
                 سان بيير ومكويلون
-              </option><option value="MF">
+              </option><option value="MF - سان مارتن">
                 سان مارتن
-              </option><option value="SM">
+              </option><option value="SM - سان مارينو">
                 سان مارينو
-              </option><option value="VC">
+              </option><option value="VC - سانت فنسنت وجزر غرينادين">
                 سانت فنسنت وجزر غرينادين
-              </option><option value="KN">
+              </option><option value="KN - سانت كيتس ونيفيس">
                 سانت كيتس ونيفيس
-              </option><option value="LC">
+              </option><option value="LC - سانت لوسيا">
                 سانت لوسيا
-              </option><option value="SX">
+              </option><option value="SX - سانت مارتن">
                 سانت مارتن
-              </option><option value="SH">
+              </option><option value="SH - سانت هيلينا">
                 سانت هيلينا
-              </option><option value="ST">
+              </option><option value="ST - ساو تومي وبرينسيبي">
                 ساو تومي وبرينسيبي
-              </option><option value="LK">
+              </option><option value="LK - سريلانكا">
                 سريلانكا
-              </option><option value="SJ">
+              </option><option value="SJ - سفالبارد وجان ماين">
                 سفالبارد وجان ماين
-              </option><option value="SK">
+              </option><option value="SK - سلوفاكيا">
                 سلوفاكيا
-              </option><option value="SI">
+              </option><option value="SI - سلوفينيا">
                 سلوفينيا
-              </option><option value="SG">
+              </option><option value="SG - سنغافورة">
                 سنغافورة
-              </option><option value="SR">
+              </option><option value="SR - سورينام">
                 سورينام
-              </option><option value="CH">
+              </option><option value="CH - سويسرا">
                 سويسرا
-              </option><option value="SL">
+              </option><option value="SL - سيراليون">
                 سيراليون
-              </option><option value="SC">
+              </option><option value="SC - سيشل">
                 سيشل
-              </option><option value="RS">
+              </option><option value="RS - صربيا">
                 صربيا
-              </option><option value="TJ">
+              </option><option value="TJ - طاجيكستان">
                 طاجيكستان
-              </option><option value="OM">
+              </option><option value="OM - عُمان">
                 عُمان
-              </option><option value="GM">
+              </option><option value="GM - غامبيا">
                 غامبيا
-              </option><option value="GH">
+              </option><option value="GH - غانا">
                 غانا
-              </option><option value="GD">
+              </option><option value="GD - غرينادا">
                 غرينادا
-              </option><option value="GL">
+              </option><option value="GL - غرينلاند">
                 غرينلاند
-              </option><option value="GT">
+              </option><option value="GT - غواتيمالا">
                 غواتيمالا
-              </option><option value="GP">
+              </option><option value="GP - غوادلوب">
                 غوادلوب
-              </option><option value="GU">
+              </option><option value="GU - غوام">
                 غوام
-              </option><option value="GF">
+              </option><option value="GF - غويانا الفرنسية">
                 غويانا الفرنسية
-              </option><option value="GY">
+              </option><option value="GY - غيانا">
                 غيانا
-              </option><option value="GG">
+              </option><option value="GG - غيرنزي">
                 غيرنزي
-              </option><option value="GN">
+              </option><option value="GN - غينيا">
                 غينيا
-              </option><option value="GQ">
+              </option><option value="GQ - غينيا الاستوائية">
                 غينيا الاستوائية
-              </option><option value="GW">
+              </option><option value="GW - غينيا بيساو">
                 غينيا بيساو
-              </option><option value="VU">
+              </option><option value="VU - فانواتو">
                 فانواتو
-              </option><option value="FR">
+              </option><option value="FR - فرنسا">
                 فرنسا
-              </option><option value="PS">
+              </option><option value="PS - فلسطين">
                 فلسطين
-              </option><option value="VE">
+              </option><option value="VE - فنزويلا">
                 فنزويلا
-              </option><option value="FI">
+              </option><option value="FI - فنلندا">
                 فنلندا
-              </option><option value="VN">
+              </option><option value="VN - فيتنام">
                 فيتنام
-              </option><option value="FJ">
+              </option><option value="FJ - فيجي">
                 فيجي
-              </option><option value="CY">
+              </option><option value="CY - قبرص">
                 قبرص
-              </option><option value="QA">
+              </option><option value="QA - قطر">
                 قطر
-              </option><option value="KG">
+              </option><option value="KG - قيرغيزستان">
                 قيرغيزستان
-              </option><option value="KZ">
+              </option><option value="KZ - كازاخستان">
                 كازاخستان
-              </option><option value="NC">
+              </option><option value="NC - كاليدونيا الجديدة">
                 كاليدونيا الجديدة
-              </option><option value="HR">
+              </option><option value="HR - كرواتيا">
                 كرواتيا
-              </option><option value="KH">
+              </option><option value="KH - كمبوديا">
                 كمبوديا
-              </option><option value="CA">
+              </option><option value="CA - كندا">
                 كندا
-              </option><option value="CW">
+              </option><option value="CW - كوراساو">
                 كوراساو
-              </option><option value="KR">
+              </option><option value="KR - كوريا الجنوبية">
                 كوريا الجنوبية
-              </option><option value="KP">
+              </option><option value="KP - كوريا الشمالية">
                 كوريا الشمالية
-              </option><option value="CR">
+              </option><option value="CR - كوستاريكا">
                 كوستاريكا
-              </option><option value="XK">
+              </option><option value="XK - كوسوفو">
                 كوسوفو
-              </option><option value="CO">
+              </option><option value="CO - كولومبيا">
                 كولومبيا
-              </option><option value="KI">
+              </option><option value="KI - كيريباتي">
                 كيريباتي
-              </option><option value="KE">
+              </option><option value="KE - كينيا">
                 كينيا
-              </option><option value="LV">
+              </option><option value="LV - لاتفيا">
                 لاتفيا
-              </option><option value="LA">
+              </option><option value="LA - لاوس">
                 لاوس
-              </option><option value="LB">
+              </option><option value="LB - لبنان">
                 لبنان
-              </option><option value="LU">
+              </option><option value="LU - لوكسمبورغ">
                 لوكسمبورغ
-              </option><option value="LY">
+              </option><option value="LY - ليبيا">
                 ليبيا
-              </option><option value="LR">
+              </option><option value="LR - ليبيريا">
                 ليبيريا
-              </option><option value="LT">
+              </option><option value="LT - ليتوانيا">
                 ليتوانيا
-              </option><option value="LI">
+              </option><option value="LI - ليختنشتاين">
                 ليختنشتاين
-              </option><option value="LS">
+              </option><option value="LS - ليسوتو">
                 ليسوتو
-              </option><option value="MT">
+              </option><option value="MT - مالطا">
                 مالطا
-              </option><option value="ML">
+              </option><option value="ML - مالي">
                 مالي
-              </option><option value="MY">
+              </option><option value="MY - ماليزيا">
                 ماليزيا
-              </option><option value="YT">
+              </option><option value="YT - مايوت">
                 مايوت
-              </option><option value="MG">
+              </option><option value="MG - مدغشقر">
                 مدغشقر
-              </option><option value="EG">
+              </option><option value="EG - مصر">
                 مصر
-              </option><option value="MK">
+              </option><option value="MK - مقدونيا الشمالية">
                 مقدونيا الشمالية
-              </option><option value="MO">
+              </option><option value="MO - مكاو">
                 مكاو
-              </option><option value="MW">
+              </option><option value="MW - ملاوي">
                 ملاوي
-              </option><option value="MN">
+              </option><option value="MN - منغوليا">
                 منغوليا
-              </option><option value="MR">
+              </option><option value="MR - موريتانيا">
                 موريتانيا
-              </option><option value="MU">
+              </option><option value="MU - موريشيوس">
                 موريشيوس
-              </option><option value="MZ">
+              </option><option value="MZ - موزمبيق">
                 موزمبيق
-              </option><option value="MD">
+              </option><option value="MD - مولدوفا">
                 مولدوفا
-              </option><option value="MC">
+              </option><option value="MC - موناكو">
                 موناكو
-              </option><option value="MS">
+              </option><option value="MS - مونتسرات">
                 مونتسرات
-              </option><option value="MM">
+              </option><option value="MM - ميانمار (بورما)">
                 ميانمار (بورما)
-              </option><option value="FM">
+              </option><option value="FM - ميكرونيزيا">
                 ميكرونيزيا
-              </option><option value="NA">
+              </option><option value="NA - ناميبيا">
                 ناميبيا
-              </option><option value="NR">
+              </option><option value="NR - ناورو">
                 ناورو
-              </option><option value="NP">
+              </option><option value="NP - نيبال">
                 نيبال
-              </option><option value="NG">
+              </option><option value="NG - نيجيريا">
                 نيجيريا
-              </option><option value="NI">
+              </option><option value="NI - نيكاراغوا">
                 نيكاراغوا
-              </option><option value="NZ">
+              </option><option value="NZ - نيوزيلندا">
                 نيوزيلندا
-              </option><option value="NU">
+              </option><option value="NU - نيوي">
                 نيوي
-              </option><option value="HT">
+              </option><option value="HT - هايتي">
                 هايتي
-              </option><option value="HN">
+              </option><option value="HN - هندوراس">
                 هندوراس
-              </option><option value="HU">
+              </option><option value="HU - هنغاريا">
                 هنغاريا
-              </option><option value="NL">
+              </option><option value="NL - هولندا">
                 هولندا
-              </option><option value="BQ">
+              </option><option value="BQ - هولندا الكاريبية">
                 هولندا الكاريبية
-              </option><option value="HK">
+              </option><option value="HK - هونغ كونغ">
                 هونغ كونغ
               </option>
 <!--             </select>

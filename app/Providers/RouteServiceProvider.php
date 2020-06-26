@@ -24,7 +24,7 @@ class RouteServiceProvider extends ServiceProvider
     // رابط الصفحة الرئيسية للمستخدم العادي
     public const HOME = '/home';
     // رابط الصفحة الرئيسية لادمن المدرسة
-    public const ADMIN= '/Gapp';
+    public const ADMIN= 'admin/home';
 
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -71,7 +71,8 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapAdminRoutes()
     {
         // تعريف خصائص روابط ادمن المدرسة
-        Route::namespace($this->namespace)
+        Route::middleware('web')
+        ->namespace($this->namespace)
             ->group(base_path('routes/admin.php'));
     }
 

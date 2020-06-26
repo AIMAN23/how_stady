@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Providers\RouteServiceProvider;
@@ -21,23 +22,13 @@ class LoginController extends Controller
     */
 
     use AuthenticatesUsers;
-    
-    /**
-     * Get the guard to be used during authentication.
-     *
-     * @return \Illuminate\Contracts\Auth\StatefulGuard
-     */
-    protected function guard()
-    {
-        return Auth::guard();
-    }
 
     /**
      * Where to redirect users after login.
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = RouteServiceProvider::ADMIN;
 
     /**
      * Create a new controller instance.
@@ -48,12 +39,37 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    protected function validateLogin(Request $request)
+    {
+        $request->validate([
+            $this->username() => 'required|string',
+            'password' => 'required|string',
+        ]);
+    }
+
     public function username()
     {
-
         $value = request()->input('usercode');
-    	$field = filter_var( $value , FILTER_VALIDATE_EMAIL) ? 'email' : 'mobile';
+    	$field = filter_var( $value , FILTER_VALIDATE_EMAIL) ? 'email' : 'no';
 	    request()->merge([$field => $value]);
 	    return $field;
     }
+
+    /**
+     * Get the guard to be used during authentication.
+     *
+     * @return \Illuminate\Contracts\Auth\StatefulGuard
+     */
+    protected function guard()
+    {
+        return Auth::guard();
+    }
+    
+    public function showLoginForm()
+    {
+        return view('auth.login');
+    }
+   
+
 }

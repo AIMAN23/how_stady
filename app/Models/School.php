@@ -10,11 +10,24 @@ class School extends Authenticatable
     ##
      
     protected $fillable = [
-        'id','name','uuid','phone','wep','tell','logo','email',
+        'id',
+        'uuid',
+        'no',
+        'status',
+        'name',
+        'bransh',
+        'email',
+        'wep',
+        'tel',
+        'fax',
+        'logo',
+        // id العنوان
         'address_id',
         'password',
         'created_at',
         'updated_at',
+        // كلمت السر
+        'password',
     ];
     protected $hidden = [
         'password',
@@ -38,6 +51,7 @@ class School extends Authenticatable
         ############ levels in school المراحل لكل مدرسة
         public function levels()
         {
+            // return $this->belongsToMany('App\Models\Level','school_levels');
             return $this->hasMany('App\Models\Level','school_id');
         }
         ############ Supervisors in school مشرفين المراحل لكل مدرسة

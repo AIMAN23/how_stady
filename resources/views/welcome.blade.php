@@ -3,7 +3,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="no-js">
 
 <head>
-    {{-- start --}}
+   {{-- start --}}
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -21,13 +21,13 @@
         <link rel="dns-prefetch" href="https://fonts.gstatic.com">
         
         <!-- app.css -->
-        {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     {{-- end --}}
     <!-- Mobile Specific Meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicon-->
-    <link rel="shortcut icon" href="img/fav.png">
+    <link rel="shortcut icon" href="{{ url('img/fav.png') }}">
     <!-- Author Meta -->
     <meta name="author" content="">
     <!-- Meta Description -->
@@ -41,10 +41,7 @@
 
     {{-- <link href="https://fonts.googleapis.com/css?family=Poppins:400,300,500,600,700" rel="stylesheet"> --}}
 
-    <!--
-CSS
-============================================= -->
-
+   <!--CSS ============================================= -->
     <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/themify-icons.css') }}">
@@ -60,12 +57,12 @@ CSS
 
 <body>
 
-    <!-- Preloader -->
-    {{-- <div id="loader-wrapper">
-        <div id="loader"></div>
-        <div class="loader-section section-left"></div>
-        <div class="loader-section section-right"></div>
-    </div> --}}
+        <!-- Preloader -->
+        <div id="loader-wrapper">
+            <div id="loader"></div>
+            <div class="loader-section section-left"></div>
+            <div class="loader-section section-right"></div>
+        </div>
 
         <!-- Start header section -->
         <header class="header-area" id="header-area">
@@ -128,7 +125,7 @@ CSS
                 </div>
             </div>
         </header>
-        <!-- Start header section -->
+        <!-- end header section -->
         
         <!-- Start banner section -->
         <section class="banner-section relative section-gap-full" id="banner-section">
@@ -145,50 +142,31 @@ CSS
                     </div>
                 </div>
             </div>
-            <div class="wave">
-                <svg class="nectar-shape-divider" fill="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300"
-                    preserveAspectRatio="none">
-                    <path d="M 1000 299 l 2 -279 c -155 -36 -310 135 -415 164 c -102.64 28.35 -149 -32 -232 -31 c -80 1 -142 53 -229 80 c -65.54 20.34 -101 15 -126 11.61 v 54.39 z"></path>
-                    <path d="M 1000 286 l 2 -252 c -157 -43 -302 144 -405 178 c -101.11 33.38 -159 -47 -242 -46 c -80 1 -145.09 54.07 -229 87 c -65.21 25.59 -104.07 16.72 -126 10.61 v 22.39 z"></path>
-                    <path d="M 1000 300 l 1 -230.29 c -217 -12.71 -300.47 129.15 -404 156.29 c -103 27 -174 -30 -257 -29 c -80 1 -130.09 37.07 -214 70 c -61.23 24 -108 15.61 -126 10.61 v 22.39 z"></path>
-                </svg>
-            </div>
         </section>
         <!-- End banner section -->
-        {{--         
-            <!-- Start page-top-banner section -->
-            <section class="page-top-banner section-gap-full relative" data-stellar-background-ratio="0.5">
-                <div class="overlay overlay-bg"></div>
-                <div class="container">
-                    <div class="row section-gap-half">
-                        <div class="col-lg-12 text-center">
-                            <h1>Product title</h1>
-                            <h4>product</h4>
-                        </div>
+                
+        <!-- Start page-top-banner section -->
+        <section id="login" dir="{{ $dir }}"  class="page-top-banner section-gap-full relative" data-stellar-background-ratio="0.5">
+            <div class="overlay overlay-bg"></div>
+            <div class="container">
+                <div class="row section-gap-half">
+                    <div class="col-lg-12 text-center">
+                        <h1>{{ __('lang.Login') }}</h1>
+                        {{-- <h4>product</h4> --}}
                     </div>
                 </div>
-            </section>
-            <!-- End about-top-banner section -->
-         --}}
+                <div class="align-items-center">
+                    <form method="POST" action="{{ route('switch.login') }}">
+                        @csrf
 
-        <!-- Start featured section -->
-       
-            <section id="login" dir="{{ $dir }}" class="section">
-                <div class="container">
-                    <div class="section-title">
-                        <br>
-                        <h2 class="text-center">{{ __('lang.Login') }}</h2>
-                    </div>
-                    <div class="align-items-center">
-                        <form method="POST" action="{{ route('switch.login') }}">
-                            @csrf
-
-                            <div class="form-group row">
-                                <label for="usercode" class="col-md-3 col-form-label text-md-right">
-                                    <h3 class="text-center">{{ __('lang.usre tayp') }}</h3>
-                                </label>
-
-                                <div class="col-md-6">
+                        <div class="form-group row">
+                            <label for="usercode" class="col-md-3 col-form-label text-md-right">
+                                <h3 class="text-center">{{ __('lang.usre tayp') }}</h3>
+                            </label>
+                            
+                            
+                            <div class="col-md-6">
+                                <div class="input-group input-group-sm">
                                     <select id="usercode" class="form-control" name="tayp-login">
                                         <option value="nell" selected>{{ __('lang.usre tayp') }}</option>
                                         <option value="student">{{ __('lang.Student') }}</option>
@@ -202,140 +180,31 @@ CSS
                                         <option value="agent">{{ __('lang.Agent') }}</option>
                                         <option value="manager">{{ __('lang.Manager') }}</option>
                                     </select>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-md-3 offset-md-4">
-                                        <button type="submit" class="btn" 
-                                        style="
-                                            background: #691cff;
-                                            color:wheat;
-                                        ">
-                                                {{ __('lang.welcome.next') }}
+                                    <span class="input-group-append">
+                                        <button type="submit" class="btn btn-info btn-flat">
+                                            {{ __('lang.welcome.next') }}
                                         </button>
-                                    </div>
+                                    </span>
                                 </div>
                             </div>
-
-                            
+                            {{-- <div class="form-group">
+                                <div class="col-md-3 offset-md-4">
+                                    <button type="submit" class="btn btn-primary" >
+                                            {{ __('lang.welcome.next') }}
+                                    </button>
+                                </div>
+                            </div> --}}
+                        </div>
 
                         
-                            
-                        </form>                
-                    </div>
-                </div>
-            </section>
-       
-        <!-- End featured section -->
 
-        <!-- Start testimonial section -->
-        
-        {{-- <section class="testimonial-section section-gap-full" id="testimonial-section">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-4 testimonial-left">
-                    <h2>{{ __('lang.welcome.What People Says') }}</h2>
-                        <p>
-                            Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorperi.
-                        </p>
-                    </div>
-                    <div class="col-lg-8 testimonial-right">
-                        <div class="testimonial-carusel owtestimonial-carusell-carousel" id="">
-                            <div class="single-testimonial item">
-                                <p>
-                                    “Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                                    laudantium, totam rem aperiam.”
-                                </p>
-                                <div class="user-details d-flex flex-row align-items-center">
-                                    <div class="img-wrap">
-                                        <img src="img/avatar1.jpg" alt="">
-                                    </div>
-                                    <div class="details">
-                                        <h4>Alice Johnson</h4>
-                                        <p>Business Development</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-testimonial item">
-                                <p>
-                                    “Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                                    laudantium, totam rem aperiam.”
-                                </p>
-                                <div class="user-details d-flex flex-row align-items-center">
-                                    <div class="img-wrap">
-                                        <img src="img/avatar2.jpg" alt="">
-                                    </div>
-                                    <div class="details">
-                                        <h4>Amber Mcdonald</h4>
-                                        <p>Web Developer</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-testimonial item">
-                                <p>
-                                    “Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                                    laudantium, totam rem aperiam.”
-                                </p>
-                                <div class="user-details d-flex flex-row align-items-center">
-                                    <div class="img-wrap">
-                                        <img src="img/avatar3.jpg" alt="">
-                                    </div>
-                                    <div class="details">
-                                        <h4>Rhonda Barnes</h4>
-                                        <p>UI/UX Designer</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-testimonial item">
-                                <p>
-                                    “Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                                    laudantium, totam rem aperiam.”
-                                </p>
-                                <div class="user-details d-flex flex-row align-items-center">
-                                    <div class="img-wrap">
-                                        <img src="img/avatar1.jpg" alt="">
-                                    </div>
-                                    <div class="details">
-                                        <h4>Alice Johnson</h4>
-                                        <p>Business Development</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-testimonial item">
-                                <p>
-                                    “Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                                    laudantium, totam rem aperiam.”
-                                </p>
-                                <div class="user-details d-flex flex-row align-items-center">
-                                    <div class="img-wrap">
-                                        <img src="img/avatar2.jpg" alt="">
-                                    </div>
-                                    <div class="details">
-                                        <h4>Amber Mcdonald</h4>
-                                        <p>Web Developer</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-testimonial item">
-                                <p>
-                                    “Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                                    laudantium, totam rem aperiam.”
-                                </p>
-                                <div class="user-details d-flex flex-row align-items-center">
-                                    <div class="img-wrap">
-                                        <img src="img/avatar3.jpg" alt="">
-                                    </div>
-                                    <div class="details">
-                                        <h4>Rhonda Barnes</h4>
-                                        <p>UI/UX Designer</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    
+                        
+                    </form>                
                 </div>
             </div>
-        </section> --}}
-        <!-- End testimonial section -->
+        </section>
+        <!-- End about-top-banner section -->
 
 
         <!-- Start about section -->
@@ -356,8 +225,7 @@ CSS
                                 <div class="details">
                                     <h4>Retina Ready</h4>
                                     <p>
-                                        A wonderful serenity has taken possession of my entire soul, like these sweet
-                                        mornings of spring which I enjoyed.
+                                        {{__('lang.welcome.descrption')}}
                                     </p>
                                 </div>
                             </li>
@@ -420,34 +288,7 @@ CSS
             </div>
         </section>
         <!-- End about section -->
-    {{-- 
-            
-            <!-- Start product-detials section -->
-            <section class="product-detials-section section-gap-full">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8 details-left">
-                            <img class="img-fluid" src="img/portfolio4.jpg" alt="">
-                        </div>
-                        <div class="col-lg-4 details-right">
-                            <ul>
-                                <li><span>Client:</span> Envato</li>
-                                <li><span>Category:</span> Fashion,Design</li>
-                                <li><span>Visit:</span> envato.com</li>
-                                <li><span>Date:</span> 01.09.2018</li>
-                            </ul>
-                            <p>                  
-                                To shewing another demands to. Marianne property cheerful informed at striking at.
-                            </p>
-                            <p>
-                                Received shutters expenses ye he pleasant. Drift as blind above at up. No up simple county stairs do should praise as. Drawings sir gay together landlord had law smallest. Formerly welcomed attended declared met say unlocked. Jennings outlived no dwelling denoting in peculiar.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- End product-detials section -->
---}}
+
         <!-- Start contact section -->
         <section class="contact-section contact-page-section padding-top-120" id="contact-section">
             <div class="container">
@@ -559,9 +400,7 @@ CSS
         <i class="ti-angle-up"></i>
     </div>
 
-    <!--
-JS
-============================================= -->
+    <!--JS ============================================= -->
     {{-- start laravel ls --}}
         {{-- app js  --}}
         {{-- <script src="{{ asset('js/app.js') }}" type="text/javascript" ></script>         --}}
@@ -585,83 +424,3 @@ JS
 </body>
 
 </html>
-
-{{-- @extends('layouts.app')
-
-@section('content')
-    <style type="text/css">
-            html, body {
-                    background-color: #fff;
-                    color: #636b6f;
-                    font-family: 'Nunito', sans-serif;
-                    font-weight: 200;
-                    height: 100vh;
-                    margin: 0;
-                }
-    </style>
-    <div class="">
-        <div class="">
-            <div class="">
-                <div class="card">
-                    <div class="card-header">{{__('lang.home')}}</div>
-
-                    <div class="card-body">
-            <div class="flex-center position-ref full-height">
-            
-
-                <div class="content">
-                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                    </ol>
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                        <img class="d-block w-100" src="..." alt="First slide">
-                        </div>
-                        <div class="carousel-item">
-                        <img class="d-block w-100" src="..." alt="Second slide">
-                        </div>
-                        <div class="carousel-item">
-                        <img class="d-block w-100" src="..." alt="Third slide">
-                        </div>
-                    </div>
-                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
-                    </div>
-                    <div class="title m-b-md">
-                        {{__('lang.home')}}
-                    </div>
-                    <audio src="Capriccio_in_B_flat_major,_BWV_992(1).mp3" controls=""></audio>
-                    
-
-                    <br><a class="btn btn-primary" href="{{ route('login') }}">{{ __('lang.Login') }}</a>
-    <br>                <br><a class="btn btn-primary" href="{{ route('new') }}">{{ __('lang.Register') }}</a>
-    <br>                <br><a class="btn btn-primary" href="{{ route('d') }}">{{ __('lang.dashbord') }}</a>
-    <br>                <br><a class="btn btn-primary" href="{{ route('dashbord') }}">{{ __('lang.dashbord') }}</a>
-
-                <div class="links">
-                        <a href="\chart-line">chart-line</a>
-                        <span><b><a href="{{route('back')}}">Back to Pages List ></a></b></span>
-                    <!--    <a href="https://laravel-news.com">News</a>
-                        <a href="https://blog.laravel.com">Blog</a>
-                        <a href="https://nova.laravel.com">Nova</a>
-                        <a href="https://forge.laravel.com">Forge</a>
-                        <a href="https://vapor.laravel.com">Vapor</a>
-                        <a href="https://github.com/laravel/laravel">GitHub</a>-->
-                    </div> 
-                </div>
-            </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-@endsection --}}

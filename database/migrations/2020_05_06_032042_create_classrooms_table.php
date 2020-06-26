@@ -15,7 +15,9 @@ class CreateClassroomsTable extends Migration
     {
         Schema::create('classrooms', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name')->comment('اسم الشعبة الدراسية');
+            $table->uuid('uuid')->unique();
+            $table->string('name')->nullable()->comment('اسم الشعبة الدراسية');
+            $table->string('code')->nullable()->comment('رمز الشعبة الدراسية');
             // relation
             $table->integer('school_id')->unsigned();
             $table->integer('level_id')->unsigned();

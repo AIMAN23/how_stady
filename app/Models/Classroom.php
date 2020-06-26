@@ -7,8 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 class Classroom extends Model
 {
     protected $table = "classrooms";
-    protected $fillable=['name',    'school_id',    'level_id',    'teacher_id',];
-    protected $hidden =['created_at','updated_at','pivot'];
+    protected $fillable=[
+        'id',
+        'uuid',
+        'name',
+        'code',
+        'school_id',
+        'level_id',
+        'teacher_id',
+        ];
+    protected $hidden =['created_at','updated_at',
+    // 'pivot'
+];
     public $timestamps = true;
     
     ##############   Start Relationes  belongsTo   ##############

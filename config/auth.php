@@ -41,9 +41,14 @@ return [
             'provider' => 'users',
         ],
 
+        // 'admin' => [
+        //     'driver' => 'session',
+        //     'provider' => 'schools',
+        // ],
+        
         'admin' => [
             'driver' => 'session',
-            'provider' => 'schools',
+            'provider' => 'admins',
         ],
         
 
@@ -76,14 +81,23 @@ return [
             'driver' => 'eloquent',
             'model' => App\User::class,
         ],
-        'schools' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\School::class,
-        ],
-
+        // 'schools' => [
+        //     'driver' => 'eloquent',
+        //     'model' => App\Models\School::class,
+        // ],
+        
         // 'schools' => [
         //     'driver' => 'database',
         //     'table' => 'schools',
+        // ],
+
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\SchoolAdmin::class,
+        ],
+        // 'admins' => [
+        //     'driver' => 'database',
+        //     'table' => 'school_admins',
         // ],
     ],
 
@@ -105,6 +119,12 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'admins' => [
+            'provider' => 'admins',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

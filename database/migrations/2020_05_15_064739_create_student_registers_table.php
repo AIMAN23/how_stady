@@ -15,15 +15,21 @@ class CreateStudentRegistersTable extends Migration
     {
         Schema::create('student_registers', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('school_year')->nullable()->comment('السنة الدراسية');
+            $table->string('code')->nullable()->comment('رقم السجل الدراسي للطالب في المدرسة');
+            $table->string('no')->nullable()->comment('رقم السجل الدراسي للطالب في النظام');
+            $table->tinyInteger('status')->default(0)->comment('الحالة 2 راسب و1 ناجح والافتراضي 0 يدرس حاليا في نفس المستوى');
+            
+            $table->string('name')->nullable()->comment('اسم الطالب كامل');
             $table->string('img')->nullable()->comment('صورة الطالب في المستوى الحالي');
-            $table->tinyInteger('status')->default(2)->comment('الحالة 0 راسب و1 ناجح والافتراضي 2 يدرس حاليا في نفس المستوى');
+            
+            $table->string('school_year')->nullable()->comment('السنة الدراسية');
             ##
             $table->bigInteger('student_id')->nullable()->comment('رقم الطالب');
-            $table->bigInteger('school_id')->nullable()->comment('رقم المدرسة');
-            $table->bigInteger('level_id')->nullable()->comment('رقم المستوى');
-            $table->bigInteger('classroom_id')->nullable()->comment('رقم الشعبة الدراسي');
-            $table->bigInteger('schooladmin_id')->nullable()->comment('رقم المسئول المدرسي الذي سجل الطالب');
+
+            $table->bigInteger('school_id')->nullable()->default(0)->comment('رقم المدرسة');
+            $table->bigInteger('level_id')->nullable()->default(0)->comment('رقم المستوى');
+            $table->bigInteger('classroom_id')->nullable()->default(0)->comment('رقم الشعبة الدراسي');
+            $table->bigInteger('schooladmin_id')->nullable()->default(0)->comment('رقم المسئول المدرسي الذي سجل الطالب');
             $table->timestamps();
         });
     }
