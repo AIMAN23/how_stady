@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as AuthenticatableAdmin;
+use Illuminate\Notifications\Notifiable;
 ## مودل المشرف للمرحلة الدراسية
-class Supervisor extends Model
+class Supervisor extends AuthenticatableAdmin
 {
+    use Notifiable;
     protected $fillable =[
         'id','no','uuid','status',
         ## 
@@ -30,9 +32,6 @@ class Supervisor extends Model
         'password',
         'remember_token',
     ];
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
 
     public function address()
     {
@@ -46,6 +45,21 @@ class Supervisor extends Model
 
     public function level()
     {
-        return $this->hasMany('App\Models\Supervisor','supervisor_id');
+        return $this->hasMany('App\Models\Level','supervisor_id');
     }
+    public function img()
+    {
+        return $this->belongsTo('App\Models\Image','image_id','id','id');
+    }
+
+
+
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
 }

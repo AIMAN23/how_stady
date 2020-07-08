@@ -55,7 +55,7 @@ class School extends Authenticatable
             return $this->hasMany('App\Models\Level','school_id');
         }
         ############ Supervisors in school مشرفين المراحل لكل مدرسة
-        public function Supervisors()
+        public function supervisors()
         {
             return $this->hasMany('App\Models\Supervisor','school_id');
         }

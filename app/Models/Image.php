@@ -24,6 +24,10 @@ class Image extends Model
         {
             return $this->hasOne('App\Models\SchoolAdmin','image_id');
         }  
+        public function supervisor()
+        {
+            return $this->hasOne('App\Models\Supervisor','image_id' ,'id');
+        }  
     
     ##############   end Relationes     ##############
 

@@ -26,7 +26,7 @@ class StudentRegister extends Model
     protected $hidden =['created_at','updated_at'];
     public $timestamps = true;
     ##############   Start Relationes     ##############
-        ############ student بيانات الطالب المسجل
+        ############ student بيانات الطالب الاساسية 
             public function student()
             {
                 return $this->belongsTo('App\Models\Student','student_id');

@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as AuthenticatableAdmin;
+use Illuminate\Notifications\Notifiable;
 ## مودل وكيل المدرسة
-class Agent extends Model
+class Agent extends AuthenticatableAdmin
 {
+    use Notifiable;
     protected $table = "agents";
     protected $fillable=[
         'id','no','uuid','status',
@@ -29,6 +31,7 @@ class Agent extends Model
         ];
     protected $hidden =[
             'password',
+            'remember_token',
         ];
     protected $casts = [
         'email_verified_at' => 'datetime',

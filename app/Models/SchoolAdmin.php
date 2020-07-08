@@ -47,7 +47,7 @@ class SchoolAdmin extends AuthenticatableAdmin
                 return $this->belongsTo('App\Models\School','school_id');
             }
         ###########   image صورة مسؤل نظام المدرسة
-            public function image()
+            public function img()
             {
                 return $this->belongsTo('App\Models\Image','image_id');
             }
