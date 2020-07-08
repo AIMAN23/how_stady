@@ -81,7 +81,15 @@ class SchoolAdminController extends Controller
         // return ['s'=> $school_uuid, 'a'=> $admin_uuid];
         return view('admin\add\student');
     }
-    // 
+    // ////////////////////////get 
+    public function getaAllSupervisors(Request $request,$school_id){
+        if ($request->ajax()) {
+            $s=School::find($school_id);
+            $data=$s->supervisors();
+            return view('admin.get.tb-supervisor', compact('data') );
+        }
+        return 'no ajax';
+    }
     // 
     public function addStudentsCsv(Request $request , $level_id=1)
     {
@@ -175,6 +183,18 @@ class SchoolAdminController extends Controller
         
         $data= ImageController::csvToArray($path,';',$z,$keys);
         return $data;
+    }
+
+    public function allCsvIndirectory(){
+        // if(isset(session('school.id')) ){
+        //     $school_id=session('school.id');
+
+        // }else{
+        //     $school_id='';
+        // }
+        $allcsv= Storage::directories();//('public/csv1/1592852234-students12.csv');
+        return view('admin\get\csvfil', compact('allcsv'));
+        
     }
 
     /**

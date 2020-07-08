@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Agent;
+use App\Models\Supervisor;
 use App\Models\SchoolAdmin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,7 +17,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:admin');
+        // $this->middleware('auth:admin');
     }
 
     /**
@@ -29,10 +31,10 @@ class HomeController extends Controller
         // return response()->json($user);
         return view('home');
     }
-    public function home(Request $request)
+    public function admin(Request $request)
     {
         $user=Auth::user();
-        $admin=SchoolAdmin::wehere('id',$user->id)->first();
+        $admin=SchoolAdmin::where('id',$user->id)->first();
         $school=$admin->school()->first();
         $request->session()->put('school', $school);
         SchoolAdminController::sessput($school->id);
@@ -43,11 +45,44 @@ class HomeController extends Controller
         
         return view('admin.home')->with('school',$school);
     }
+    public function supervisor(Request $request)
+    {
+        $user=Auth::user();
+        $supervisor=Supervisor::where('id',$user->id)->first();
+        $school=$supervisor->school()->first();
+        $request->session()->put('school', $school);
+        $request->session()->put('super.levels', $supervisor->level()->get());
+        // SchoolAdminController::sessput($school->id);
+
+
+        // $adm=[];
+        // $AS=$supervisor->school()->find($supervisor->id);
+        
+        return view('supervisor.home')->with('school',$school);
+    }
+    public function agent(Request $request)
+    {
+        $user=Auth::user();
+        $agent=Agent::where('id',$user->id)->first();
+        $school=$agent->school()->first();
+        $request->session()->put('school', $school);
+        // $request->session()->put('super.levels', $agent->level()->get());
+        // SchoolAdminController::sessput($school->id);
+
+
+        // $adm=[];
+        // $AS=$agent->school()->find($agent->id);
+        
+        return view('agent.home')->with('school',$school);
+    }
 
     public function getSchoolForAdmin($admin_id){
         $admin=SchoolAdmin::find($admin_id);
         return response()->json([
             'school'=>$admin->school()->first()
         ]);
+    }
+    public function getOptionCountry(){
+        return view('includes\country_'.app()->getLocale());
     }
 }

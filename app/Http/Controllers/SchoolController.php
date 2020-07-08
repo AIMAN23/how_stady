@@ -4,13 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\School;
 use App\Traits\imgTrait;
-use Illuminate\Support\Str;
-use App\Http\Requests\Step1;
 // use App\Http\Requests\Step2;
+use App\Http\Requests\Step1;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
-use App\Models\Level;
 
 class SchoolController extends Controller
 {
@@ -60,65 +57,75 @@ class SchoolController extends Controller
                 if ($school->status == 1) {
                     return abort(404);
                 } elseif ($school->status == 2) {
+                    // التحقق من ملىء البيانات كاملة 
+                    $request->validate([
+                        'manager' => 'required|max:255',
+                        'agent' => 'required|max:255',
+                        'school_admin' => 'required|max:255',
+                        'financial' => 'required|max:255',
+                        'secretarie' => 'required|max:255',
+                        'specialist' => 'required|max:255',
+                    ]);
+                    // ===================================
                     # code...
-                    $levels = array('L1as', 'L2as', 'L3as', 'L4as', 'L5as', 'L6as', 'L7as', 'L8as', 'L9as', 'L1th', 'L2th', 'L3th');
+                    $levels = Code_levels;
 
                     // $school ->levels()-> attach($request -> levelIds);  // many to many insert to database
                     //$school ->levels()-> sync($request -> levelIds);
                     // $s = new School;
                     $manager = $school->manager()->create([
-                        'uuid' => Str::uuid(),
+                        'uuid' => New_Uuid,
                         'name' => $request['manager'],
                         // 'email' => $request['email'],
                         'school_id' => $school->id,
                         'address_id' => 0,
-                        'no' => time().Str::random(3),
-                        'password' => Hash::make('123456789'),
+                        'no' => NO_manager,
+                        'password' => Password_define,
                     ]);
                     $agent = $school->agent()->create([
-                        'uuid' => Str::uuid(),
+                        'uuid' => New_Uuid,
                         'name' => $request['agent'],
                         // 'email' => $request['email'],
                         'school_id' => $school->id,
                         'address_id' => 0,
-                        'no' => time().Str::random(3),
-                        'password' => Hash::make('123456789'),
+                        'no' => NO_agent,
+                        'password' => Password_define,
                     ]);
                     $admins = $school->admins()->create([
-                        'uuid' => Str::uuid(),
+                        'uuid' => New_Uuid,
                         'name' => $request['school_admin'],
                         // 'email' => $request['email'],
                         'school_id' => $school->id,
                         'address_id' => 0,
-                        'no' => time().Str::random(3),
-                        'password' => Hash::make('123456789'),
+                        'no' => NO_admins,
+                        'password' => Password_define,
                     ]);
                     $financial = $school->financial()->create([
-                        'uuid' => Str::uuid(),
+                        'uuid' => New_Uuid,
                         'name' => $request['financial'],
                         // 'email' => $request['email'],
                         'school_id' => $school->id,
                         'address_id' => 0,
-                        'no' => time().Str::random(3),
-                        'password' => Hash::make('123456789'),
+                        'no' => NO_financial,
+                        'password' => Password_define,
                     ]);
                     $secretary = $school->secretary()->create([
-                        'uuid' => Str::uuid(),
+                        'uuid' => New_Uuid,
                         'name' => $request['secretarie'],
                         // 'email' => $request['email'],
                         'school_id' => $school->id,
                         'address_id' => 0,
-                        'no' => time().Str::random(3),
-                        'password' => Hash::make('123456789'),
+                        'no' => NO_secretary,
+                        'password' => Password_define,
                     ]);
                     $specialist = $school->specialist()->create([
-                        'uuid' => Str::uuid(),
+                        'uuid' => New_Uuid,
                         'name' => $request['specialist'],
                         // 'email' => $request['email'],
                         'school_id' => $school->id,
                         'address_id' => 0,
-                        'no' => time().Str::random(3),
-                        'password' => Hash::make('123456789'),
+                        'no' => NO_specialist,
+                        'password' => Password_define,
                     ]);
 
 
@@ -128,7 +135,7 @@ class SchoolController extends Controller
                             // $school->levels()->attach($data_level->id);
                             // $school->levels()->sync($data_level->id);
                             $school->levels()->create([
-                                'uuid'=>Str::uuid(),
+                                'uuid'=>New_Uuid,
                                 'name'=>$level,
                                 'code_in_school'=>'',
                                 'code'=>'',
@@ -184,7 +191,7 @@ class SchoolController extends Controller
     public function seveDataSchool($school, $request, $imgName, $address)
     {
         return $school->create([
-            'uuid' => Str::uuid(),
+            'uuid' => New_Uuid,
             'status' => 1, // seting step 1 free true
             'name' => $request['name'],
             'bransh' => $request['bransh'],
@@ -193,10 +200,10 @@ class SchoolController extends Controller
             'tel' => $request['tel'],
             'fax' => $request['fax'],
             'logo' => $imgName,
-            'no' => time().Str::random(3),
+            'no' => NO_school,
             // address_id الربط عنوان المدرسة من جدول العناوين
             'address_id' => $address->id,
-            'password' => Hash::make('123456789'),
+            'password' => Password_define,
         ]);
     }
     ##
@@ -229,7 +236,8 @@ class SchoolController extends Controller
         return  $school->address()->create([
             'country' => $request['country'],
             'cite' =>   $request['cite'],
-            'zip' => $request['zip'],
+            'street'=> $request['street'],
+            'zip' => $request['zip'] ?? 0,
         ]);
     }
     ###
@@ -238,7 +246,7 @@ class SchoolController extends Controller
         if ($request->hasFile('logo')) {
             return $this->saveImage($request['logo'], 'Images/school');
         } else {
-            return time() . 'logo-school.png';
+            return 'logo-school.png';
         }
     }
     ###

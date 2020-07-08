@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Classroom;
+use App\Models\Image;
+use App\Models\Level;
 use App\Models\School;
-use App\Models\StudentRegister;
+use App\Models\Classroom;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\StudentRegister;
+use Illuminate\Support\Facades\Hash;
 
 class LevelController extends Controller
 {
@@ -32,7 +35,7 @@ class LevelController extends Controller
         else
         {
             $level=$school->levels()->firstOrCreate([
-                'uuid'=>Str::uuid(),
+                'uuid'=>New_Uuid ?? Str::uuid(),
                 'status'=>$attr['status']??0,
                 'name'=>$attr['name'],
                 'code_in_school'=>$attr['code_in_school']??'',
@@ -45,6 +48,60 @@ class LevelController extends Controller
         }
         
     }
+    // اظافة مشرف للمرحلة الدراسية او تعديل بياناته من قبل مسؤل النظام
+    public function getlevel_And_Supervisor(Request $request, $level_code)
+    {
+        if ($request->ajax()) {
+            $school = session('school');
+            $s = School::find($school->id);
+            $level = $s->levels()->where('name', $level_code)->first();
+            // التاكد من ان المشرف تم تسجيله ام لا
+            // لو لم يتم الاظافة يتم اظافة مشرف جديد
+            // او ارجاع بيانات المرحلة مع المشرف الخاص بها
+            if ($level->supervisor_id == 0) 
+            {
+            /*   $img = Image::create([
+                    'no' => time(),
+                    'status' => 0,
+                    'img' => 'supervisor.png',
+                ]);
+
+                $supervisor = $level->supervisor()
+                    ->create([
+                        'no' => NO_Supervisor,
+                        'uuid' => New_Uuid,
+                        'status' => 0,
+                        'name' => 'اسم المشرف',
+                        'f_name' => 'الاسم الاول',
+                        'p_name' => 'اسم الاب',
+                        'l_name' => 'القب',
+                        'gender' => 3,
+                        'nationality' => 'الجنسية',
+                        // 'birthdate'=>'',
+                        // 'email'=>'',
+                        'mobile' => '+967'.random_int(10,999999999),
+                        // 'email_verified_at'=>'',
+                        'password' => Password_define,
+                        'image_id' => $img->id,
+                        'school_id' => School_id ?? $school->id,
+                        'address_id' => 0,
+                    ]);
+                $level->update(['supervisor_id' => $supervisor->id]);
+            */
+                $data= $s->supervisors()->all();//->get();
+                return response()->json($data);
+                return view('admin\get\form-edit-level', compact('data'));
+            }
+            // $data = $level->with('supervisor')->where('name', $level_code)->first();
+            // $data = Level::with('supervisor')->where('uuid', $level->uuid );//->get();
+            $data = $level->supervisor()->get();//->get();
+            return response()->json($data);
+            return view('admin\get\form-edit-level', compact('data'));
+        }
+        return 'no ajax';
+    }
+
+    
     public function getClassRooms(Request $request, $level_code){
         // return"ok";
         if ($request->ajax()) {
