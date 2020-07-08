@@ -23,16 +23,15 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 	###### بداية الروابط الاساسية للموقع ######
   // رابط الصفحة الترحيبية
   Route::get('/', function() { return view('welcome'); })->name('welcome');
-  Route::get('/p', function () {
-      return view('testpagecards');
-  })->name('p');
+  Route::get('/welcom', function() { return view('welcome'); })->name('login');
+  Route::get('/getOptionCountry', 'HomeController@getOptionCountry')->name('get.Option.Country');
 
   
   // رابط تحويل كل المستخدمين لشاشة تسجبل الدخول الخاصة حسب نوع المستخدم
   Route::post('/', 'controllers\login\SwitchController@swhitchLogin')->name('switch.login');
   
   // روابط اظافة حساب مدرسة جديدة
-  Route::view('school.register', 'school.register')->name('new.school');
+  Route::view('school/register', 'school.register')->name('new.school');
   Route::post('school/seve/step1','SchoolController@newSchoolSeve' )->name('school.seve');
   Route::get('school/{school_uuid}/step1','schoolController@sendEmailRegisterSchool')->name('sendemail.register');
   Route::get('school/{school_uuid}/step2','schoolController@newSchoolDetails')->name('step2');
@@ -44,7 +43,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 	Route::get('/home', 'HomeController@index')->name('home');
 	// Route::get('/home', 'HomeController@index')->name('home');
 	// Route::get('admin/home', 'SchoolAdminController@home')->name('admin.home');
-	Auth::routes();
+	// Auth::routes();
 	###### نهاية الروابط الاساسية للموقع ######
 	
 	### بداية الروابط تجريبية ##
@@ -68,6 +67,49 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
    // روابط 
    ######### 6- abc school #########
    // روابط 
-	##############نهاية الروابط للمستخدمين  ###############
+  ##############نهاية الروابط للمستخدمين  ###############
+  // ===============================روابط المشرف للمرحلة الدراسية =============================
+  Route::group(['prefix' => 'supervisor'], function () {
+    
+    ####قبل تسجيل الدخول
+    Route::get('/', function () {
+        return redirect()->route('supervisor.home');
+    });
+    Route::get('login', 'Auth\supervisor\LoginController@showLoginForm')->name('supervisor.login');
+    Route::post('login', 'Auth\supervisor\LoginController@login')->name('supervisor.login.seve');
+    ##### بعد تسجيل الدخول
+    Route::post('logout', 'Auth\supervisor\LoginController@logout')->name('supervisor.logout');
+    Route::group(['middleware' => ['auth:super'] ], function () {
+        Route::get('home', 'HomeController@supervisor')->name('supervisor.home');
+    });
+  });
+  // ============================================================================
+  // ===============================روابط  الوكيل للمدرسة=============================
+  Route::get('/option/setting/step_1', function () {
+    return response( view('agent.setting.step_1'));
+    })->name('agent.option.setting.step_1')->middleware('auth:agent');
+  Route::get('/option/setting/step_2', function () {
+    return response( view('agent.setting.step_2'));
+    })->name('agent.option.setting.step_2')->middleware('auth:agent');
+  Route::get('/option/setting/step_3', function () {
+    return response( view('agent.setting.step_3'));
+    })->name('agent.option.setting.step_3')->middleware('auth:agent');
+  Route::group(['prefix' => 'agent'], function () {
+  
+    ####قبل تسجيل الدخول
+    Route::get('/', function () {
+        return redirect()->route('agent.home');
+    });
+    Route::get('login', 'Auth\agent\LoginController@showLoginForm')->name('agent.login');
+    Route::post('login', 'Auth\agent\LoginController@login')->name('agent.login.seve');
+    ##### بعد تسجيل الدخول
+    Route::post('logout', 'Auth\agent\LoginController@logout')->name('agent.logout');
+    Route::group(['middleware' => ['auth:agent','status'] ], function () {
+      Route::get('home', 'HomeController@agent')->name('agent.home');
+    });
+  });
+  // ======================================================================================
+
+
 
 });
