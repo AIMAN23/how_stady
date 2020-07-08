@@ -50,6 +50,14 @@ return [
             'driver' => 'session',
             'provider' => 'admins',
         ],
+        'super' => [
+            'driver' => 'session',
+            'provider' => 'supervisor',
+        ],
+        'agent' => [
+            'driver' => 'session',
+            'provider' => 'agents',
+        ],
         
 
         'api' => [
@@ -81,6 +89,10 @@ return [
             'driver' => 'eloquent',
             'model' => App\User::class,
         ],
+        'agents' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Agent::class,
+        ],
         // 'schools' => [
         //     'driver' => 'eloquent',
         //     'model' => App\Models\School::class,
@@ -94,6 +106,11 @@ return [
         'admins' => [
             'driver' => 'eloquent',
             'model' => App\Models\SchoolAdmin::class,
+        ],
+
+        'supervisor' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Supervisor::class,
         ],
         // 'admins' => [
         //     'driver' => 'database',
@@ -123,8 +140,20 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
+        'agents' => [
+            'provider' => 'agents',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
         'admins' => [
             'provider' => 'admins',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'supervisor' => [
+            'provider' => 'supervisor',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
