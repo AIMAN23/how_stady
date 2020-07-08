@@ -134,3 +134,16 @@ return [
     'log_channel' => env('MAIL_LOG_CHANNEL'),
 
 ];
+//  كود الربط مع mailtrap التجريبي لارسال الايميلات
+// return [
+//     "driver" => "smtp",
+//     "host" => "smtp.mailtrap.io",
+//     "port" => 2525,
+//     "from" => array(
+//         "address" => "from@example.com",
+//         "name" => "Example"
+//     ),
+//     "username" => "8401e580283efe",
+//     "password" => "5961e6f64b8da6",
+//     "sendmail" => "/usr/sbin/sendmail -bs"
+//   ];
