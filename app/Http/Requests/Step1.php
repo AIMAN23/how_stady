@@ -27,13 +27,14 @@ class Step1 extends FormRequest
           'name'  => 'required|max:255',
           'bransh'  => 'required|max:255',
           'email' => 'required|max:100|email|unique:schools',
-          'wep'  => 'required|max:100|unique:schools',
+          'wep'  => 'url|max:250|',
           'tel' => 'required|max:255',
-          'fax' => 'required|max:255',
+          'fax' => 'max:50',
           'logo' => 'mimes:png,jpg,jpeg',
           'country' => 'required|max:255',
           'cite'  => 'required|max:255',
-          'zip' => 'required|numeric',
+          'street'=>'required|max:255',
+          'zip' => 'numeric|max:999999',
         ];
     }
 
@@ -42,16 +43,19 @@ class Step1 extends FormRequest
     {
 
         return [
-          // 'name_ar.required' => __('messages.offer name required'),
-          // 'name_en.required' => __('messages.offer name required'),
-          // 'name_ar.unique' => 'اسم العرض موجود ',
-          // 'name_en.unique' => 'Offer name  is exists ',
-          // 'price.numeric' => 'سعر العرض يجب ان يكون ارقام',
-          // 'price.required' => 'السعر مطلوب',
-          // 'details_ar.required' => 'ألتفاصيل مطلوبة ',
-          // 'details_en.required' => 'ألتفاصيل مطلوبة ',
-          // 'photo.required' =>  'صوره العرض مطلوب',
-          'logo.mimes' =>  'الصورة غير صالحة',
+          'name.required'  => 'اسم المدرسة مطلوب',
+          'bransh.required'  => 'اسم الفرع مطلوب ',
+          'email.required' => 'ايميل المدرسة مطلوب ',
+          'email.unique' => 'لايمكن استخدام هاذا الايميل لانه موجود من قبل مدرسة اخرا',
+          'wep.url'  => ' http://www.. ,https://www.. الموقع الالكتروني يجب ان يكون رابط',
+          'wep.max'  => 'طول الرابط يجب ان لايزيد عن 250 حرف',
+          'tel.required' => 'رقم الهاتف مطلوب',
+          'fax.max' => ' رقم الفاكس طويل جدا اقصا حد 50 رقم',
+          'logo.mimes' =>  'الصورة غير صالحة يجب ان تكون الصورة png ,jpg,jpeg',
+          'country.required' => 'اسم الدولة مطلوب',
+          'cite.required'  => 'المدينة مطلوبة',
+          'street.required'=>'العنوان للحي مطلوب',
+          // 'zip.' => 'يجب ان يكون الرمز البريدي ارقام',
 
         ];
     }

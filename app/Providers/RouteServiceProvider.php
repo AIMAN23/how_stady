@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 
 class RouteServiceProvider extends ServiceProvider
 {
+    use \Mcamara\LaravelLocalization\Traits\LoadsTranslatedCachedRoutes;
     /**
      * This namespace is applied to your controller routes.
      *
@@ -25,6 +26,8 @@ class RouteServiceProvider extends ServiceProvider
     public const HOME = '/home';
     // رابط الصفحة الرئيسية لادمن المدرسة
     public const ADMIN= 'admin/home';
+    public const supervisor= 'supervisor/home';
+    public const agent= 'agent/home';
 
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -71,8 +74,8 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapAdminRoutes()
     {
         // تعريف خصائص روابط ادمن المدرسة
-        Route::middleware('web')
-        ->namespace($this->namespace)
+        Route::middleware('admin')
+            ->namespace($this->namespace)
             ->group(base_path('routes/admin.php'));
     }
 
