@@ -1,0 +1,867 @@
+<html lang="ar" style="height: auto;">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--title -->
+    <title>متابعة الطلاب</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="8z6PokH6ZnmderabsGjjeUlTF7rf9pOYBaYPmcz4">
+    <meta name="csrf-token2" content="8z6PokH6ZnmderabsGjjeUlTF7rf9pOYBaYPmcz4">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="lte/plugins/fontawesome-free/css/all.min.css">
+    <!-- iCheck for checkboxes and radio inputs -->
+    <link rel="stylesheet" href="lte/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- Ionicons -->
+
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="lte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="lte/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+
+    <link rel="stylesheet" href="lte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="lte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="lte/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="lte/dist/css/lte.min.css">
+    <!-- Google Font: Source Sans Pro -->
+
+    <!-- Fonts laravel app-->
+
+
+  </head>
+
+
+  <body class="sidebar-mini layout-fixed layout-navbar-fixed sidebar-collapse" style="height: auto;">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+      <!-- Navbar -->
+      <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+        <!-- Left navbar links -->
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+          </li>
+
+
+          <li class="nav-item dropdown">
+            <a class="nav-link" data-toggle="dropdown" href="#">
+              <i class="fa fa-language"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-sm dropdown-menu-left">
+              <a class="dropdown-item text-center text-sm" rel="alternate" hreflang="en" href="en/admin/option/contere">
+                English
+              </a>
+              <a class="dropdown-item text-center text-sm" rel="alternate" hreflang="ar" href="ar/admin/option/contere">
+                الغة العربية
+              </a>
+            </div>
+          </li>
+        </ul>
+
+        <!-- SEARCH FORM -->
+        <!-- <form class="form-inline ml-3">
+                    <div class="input-group input-group-sm">
+                        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+                        <div class="input-group-append">
+                        <button class="btn btn-navbar" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                        </div>
+                    </div>
+                    </form>
+                -->
+
+        <!-- Right navbar links -->
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item dropdown">
+            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false" v-pre="">
+              علي كيا <span class="caret"></span>
+            </a>
+
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
+                Logout
+              </a>
+
+              <form id="logout-form" action="admin/logout" method="POST" style="display: none;">
+                <input type="hidden" name="_token" value="8z6PokH6ZnmderabsGjjeUlTF7rf9pOYBaYPmcz4"> </form>
+            </div>
+          </li>
+          <li class="nav-item bg-c">
+            <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
+              <i class="fas fa-th-large"></i>
+            </a>
+          </li>
+
+        </ul>
+      </nav>
+      <!-- /.navbar -->
+
+      <!-- Main Sidebar Container -->
+      <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <!-- Brand Logo -->
+        <a href="#" class="brand-link">
+          <img src="lte/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+            style="opacity: .8">
+          <span class="brand-text font-weight-light">هاوستدي</span>
+        </a>
+
+        <!-- Sidebar -->
+        <div
+          class="sidebar os-host os-theme-light os-host-resize-disabled os-host-scrollbar-horizontal-hidden os-host-scrollbar-vertical-hidden os-host-transition">
+          <div class="os-resize-observer-host observed">
+            <div class="os-resize-observer" style="left: 0px; right: auto;"></div>
+          </div>
+          <div class="os-size-auto-observer observed" style="height: calc(100% + 1px); float: left;">
+            <div class="os-resize-observer"></div>
+          </div>
+          <div class="os-content-glue" style="margin: 0px -8px; width: 249px; height: 168px;"></div>
+          <div class="os-padding">
+            <div class="os-viewport os-viewport-native-scrollbars-invisible">
+              <div class="os-content" style="padding: 0px 8px; height: 100%; width: 100%;">
+                <!-- Sidebar user (optional) -->
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                  <div class="image">
+
+
+                    <img src="Images/school/1593009577.png" class="img-circle elevation-2" alt="User Image">
+                  </div>
+                  <div class="info">
+                    <a href="#" class="d-block">مدرسة حيمة الدين </a>
+                  </div>
+                </div>
+
+                <!-- Sidebar Menu -->
+                <nav class="mt-2">
+                  <ul class="nav nav-pills nav-sidebar nav-child-indent flex-column nav-compact nav-flat"
+                    data-widget="treeview" role="menu" data-accordion="false">
+
+                    <!-- Authentication Links -->
+
+
+
+
+                  </ul>
+                </nav>
+                <!-- /.sidebar-menu -->
+              </div>
+            </div>
+          </div>
+          <div class="os-scrollbar os-scrollbar-horizontal os-scrollbar-unusable os-scrollbar-auto-hidden">
+            <div class="os-scrollbar-track">
+              <div class="os-scrollbar-handle" style="width: 100%; transform: translate(0px, 0px);"></div>
+            </div>
+          </div>
+          <div class="os-scrollbar os-scrollbar-vertical os-scrollbar-unusable os-scrollbar-auto-hidden">
+            <div class="os-scrollbar-track">
+              <div class="os-scrollbar-handle" style="height: 100%; transform: translate(0px, 0px);"></div>
+            </div>
+          </div>
+          <div class="os-scrollbar-corner"></div>
+        </div>
+        <!-- /.sidebar -->
+      </aside>
+      <!-- /.Main Sidebar Container -->
+
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper" style="min-height: 178.031px;">
+
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <div class="container-fluid">
+            <div class="row mb-2">
+              <div class="col-sm-12">
+
+
+              </div>
+              <!-- <div class="col-sm-6">
+                                <ol class="breadcrumb float-sm-right">
+                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item active">User Profile</li>
+                                </ol>
+                            </div> -->
+            </div>
+          </div><!-- /.container-fluid -->
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+        <div class="container">
+          <div class="card card-widget widget-user">
+            <div class="widget-user-header bg-c text-white">
+                <h3 class="widget-user-username">{{(البيانات الشخصية)}}</h3>
+                <!-- <h5 class="widget-user-desc">{{('المرحلة')}} &amp; {{('الشعبة')}}</h5> -->
+              </div>
+    
+
+            <div id="wrapper" class="clearfix">
+              <!-- preloader -->
+
+
+
+              <!-- Header -->
+
+
+
+
+
+
+
+
+
+
+
+
+              <div class="main-content">
+
+                <br>
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-12 p-4">
+                      <!--<div class="panel panel-default">-->
+                      <!--<div class="panel-heading">Register</div>-->
+
+                      <!--<div class="panel-body">-->
+
+                      <div class="row">
+                        <div class="col-md-8 col-xs-12 col-sm-6">
+                          <div class="alert alert-danger" style="display:none;">
+                            <a class="close" data-dismiss="alert" href="#" aria-hidden="true">×</a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-8 col-xs-12 col-sm-6">
+                          <div class="alert alert-success" style="display:none;">
+                            <a class="close" data-dismiss="alert" href="#" aria-hidden="true">×</a>
+                          </div>
+                        </div>
+                      </div>
+
+                      <form id="register-form" method="POST" action="" novalidate="novalidate">
+                        <input type="hidden" name="_token" value="8z6PokH6ZnmderabsGjjeUlTF7rf9pOYBaYPmcz4">
+
+                        <!--  -->
+                        <fieldset>
+                          <legend>الاسم الرباعي</legend>
+                          <div class="row">
+
+                            <div class="form-group required col-6 col-md-3" aria-required="true">
+                              <label for="firstname" class="control-label">First Name</label>
+                              <div class="elVal">
+                                <input type="text" name="first_name" id="first_name" minlength="3" maxlength="15"
+                                  class="form-control" placeholder="First Name">
+                              </div>
+                            </div>
+                            <div class="form-group required col-6 col-md-3" aria-required="true">
+                              <label for="firstname" class="control-label">Second Name</label>
+                              <div class="elVal">
+                                <input type="text" name="first_name" id="first_name" minlength="3" maxlength="15"
+                                  class="form-control" placeholder="First Name">
+                              </div>
+                            </div>
+                            <div class="form-group required col-6 col-md-3" aria-required="true">
+                              <label for="firstname" class="control-label">Third Name</label>
+                              <div class="elVal">
+                                <input type="text" name="first_name" id="first_name" minlength="3" maxlength="15"
+                                  class="form-control" placeholder="First Name">
+                              </div>
+                            </div>
+                            <div class="form-group col-6 col-md-3">
+                              <label for="lastname" class="control-label">Last Name</label>
+                              <div class="elVal">
+                                <input type="text" name="last_name" id="last_name" maxlength="15" class="form-control"
+                                  placeholder="Last Name">
+                              </div>
+                            </div>
+
+                          </div>
+                        </fieldset>
+                        <!--  -->
+                        <fieldset>
+                          <legend>{{('address')}}</legend>
+                          
+                          <div class="row">
+                            <div class="form-group required col-6 col-md-4" aria-required="true">
+                              <label for="country" class="control-label">Country</label>
+                              <div class="elVal">
+                                <select name="country" id="country" class="form-control" onchange="get_code(this)"
+                                  aria-required="true" aria-invalid="false">
+                                  <option value="" selected="selected">Select Country</option>
+                                </select>
+                              </div>
+                            </div>
+                            <!-- <div id="address" class="row"> -->
+                    
+                            <!-- country -->
+
+                            <!-- cite -->
+                            <div class="form-group  col-6 col-md-4">
+                               
+                               <label for="cite" class="control-label">cite</label>
+                              <input id="cite" type="text" class="form-control " value="" name="cite" placeholder="City *" required="required">
+                                            </div>
+                            <!-- street -->
+                            <div class="form-group  col-6 col-md-4">
+                              <label for="street" class="control-label">street</label>
+                              <input id="street" type="text" class="form-control " value="" name="street" placeholder="Area,Street,befor... *" required="required">
+                                            </div>
+                            <!-- Zip -->
+                            <!-- <div class="form-group  col-6 col-md-4">
+                              <label for="zip" class="control-label">zip</label>
+                              <input id="zip" type="number" class="form-control " value="" name="zip" placeholder="Zip" maxlength="6" min="0" tabindex="0">
+                                            </div> -->
+                            <!-- </div> -->
+
+                           
+                          </div>
+                        </fieldset>
+                        <!--  -->
+                        <div class="row">
+                          <div class="form-group required col-6 col-sm-6 col-md-6" aria-required="true">
+                            <label for="country" class="control-label">Nationality</label>
+                            <div class="elVal">
+                              <select name="nationality" id="nationality" class="form-control">
+                               <option value="" selected="selected">Select Nationality</option>                              </select>
+                            </div>
+                          </div>
+                          <div class="form-group required col-6 col-sm-6 col-md-6" aria-required="true">
+                            <label for="dob" class="control-label">Age</label>
+                            <div class="elVal">
+                              <!--<input type="text" name='dob' id="dob" class="form-control" placeholder="" readonly="true">-->
+                              <input type="date" name="age" id="age" class="form-control">
+                            </div>
+                          </div>
+                        </div>
+                        <!--  -->
+                        <!--  -->
+                        <div class="row">
+                          <div class="form-group required col-md-6" aria-required="true">
+                            <label for="email" class="control-label">Email</label>
+                            <div class="elVal">
+                              <input type="text" name="email" id="email" maxlength="50" class="form-control"
+                                placeholder="Email">
+                            </div>
+                          </div>
+                          <div class="form-group required col-md-6" aria-required="true">
+                            <label for="email" class="control-label">Confirmation Email</label>
+                            <div class="elVal">
+                              <input type="text" name="confirmation_email" id="confirmation_email" maxlength="50"
+                                class="form-control" placeholder="Confirmation Email">
+                            </div>
+                          </div>
+                          <div class="form-group required col-md-6 elVal" aria-required="true">
+                            <label for="phone_no" class="control-label">Phone Number</label>
+                            <div class="input-group">
+                              <span class="input-group-text country_code">967</span>
+                              <input type="hidden" name="country_code" id="country_code" value="967">
+                              <input type="hidden" name="mobileNumber" id="mobileNumber" value="">
+                              <input type="text" name="phone_no" id="phone_no" class="form-control" maxlength="15"
+                                placeholder="Phone Number" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;"
+                                data-mask="">
+                            </div>
+                          </div>
+                        </div>
+                        <!--  -->
+                        <!--  -->
+                        <div class="row">
+                          <div class="form-group required col-6 col-md-6" aria-required="true">
+                            <label for="gender" class="control-label">Gender</label>
+                            <div class="elVal">
+                              <select name="gender" id="gender" class="form-control">
+                                <option value="" selected="selected">Select Gender</option>
+                                <option value="M">Male</option>
+                                <option value="F">Female</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="form-group required col-6 col-md-6" aria-required="true">
+                            <label for="language" class="control-label">Preferred Language</label>
+                            <div class="elVal">
+                              <select name="language" id="language" class="form-control" aria-required="true"
+                                aria-invalid="false">
+                                <!--<option value="">Select Language</option>-->
+                                <option value="f32eddf5-08c7-492f-951f-1df7b2b491fb" selected="selected">Arabic</option>
+                                <option value="bb229187-d994-41c8-bfaa-b23e3e7c7190">English</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+
+                       <!--  <div class="row">
+                          <div class="form-group required col-md-6" aria-required="true">
+                            <label for="subscription_name" class="form-control"
+                              style="background:#DFDED9;color:#471F45;font-size:25px;font-weight: bold;">الأمان
+                              التام</label>
+                          </div>
+                        </div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+                        <input type="submit" name="seve">
+
+                      </form>
+                      <br>
+
+                      <!--</div>-->
+                      <!--</div>-->
+                    </div>
+                  </div>
+                </div> <!-- END of Container -->
+                <!-- Footer -->
+
+
+
+
+              </div>
+              <!--POPUP MODAL-->
+              <script>
+                function get_code(cur) {
+                  if (cur.value != '') {
+                    var option = $('option:selected', cur).attr('code');
+                    $('#country_code').val(option);
+                    $('.country_code').html(option);
+                  } else
+                    $('.country_code').html('');
+                  //alert(option);    
+                }
+                function myFunction() {
+                  var x = document.getElementById("myTopnav");
+                  if (x.className === "topnav") {
+                    x.className += " responsive";
+                  } else {
+                    x.className = "topnav";
+                  }
+                }
+              </script>
+
+
+            </div>
+
+          </div>
+        </div>
+        <div class="container col-md-8">
+          <div class="card card-widget widget-user">
+            <div class="widget-user-header bg-c text-white">
+                <h3 class="widget-user-username">{{(قم بتغير كلمة المرور )}}</h3>
+                <!-- <h5 class="widget-user-desc">{{('المرحلة')}} &amp; {{('الشعبة')}}</h5> -->
+              </div>
+    
+
+            <div id="wrapper" class="clearfix">
+              <!-- preloader -->
+
+
+
+              <!-- Header -->
+
+
+
+
+
+
+
+
+
+
+
+
+              <div class="main-content">
+
+                <br>
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <!--<div class="panel panel-default">-->
+                      <!--<div class="panel-heading">Register</div>-->
+
+                      <!--<div class="panel-body">-->
+
+                      <div class="row">
+                        <div class="col-md-8 col-xs-12 col-sm-6">
+                          <div class="alert alert-danger" style="display:none;">
+                            <a class="close" data-dismiss="alert" href="#" aria-hidden="true">×</a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-8 col-xs-12 col-sm-6">
+                          <div class="alert alert-success" style="display:none;">
+                            <a class="close" data-dismiss="alert" href="#" aria-hidden="true">×</a>
+                          </div>
+                        </div>
+                      </div>
+
+                      
+                      <br>
+                      <form method="POST" action="{{ route('password.update') }}">
+                        @csrf
+
+                        <input type="hidden" name="token" value="{{ $token }}">
+
+                        <div class="form-group row">
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
+
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                            </div>
+                        </div>
+
+                        <div class="form-group row mb-0">
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    {{ __('Reset Password') }}
+                                </button>
+                            </div>
+                        </div>
+                      </form>
+
+                      <!--</div>-->
+                      <!--</div>-->
+                    </div>
+                  </div>
+                </div> <!-- END of Container -->
+                <!-- Footer -->
+
+
+
+
+              </div>
+              <!--POPUP MODAL-->
+              <script>
+                function get_code(cur) {
+                  if (cur.value != '') {
+                    var option = $('option:selected', cur).attr('code');
+                    $('#country_code').val(option);
+                    $('.country_code').html(option);
+                  } else
+                    $('.country_code').html('');
+                  //alert(option);    
+                }
+                function myFunction() {
+                  var x = document.getElementById("myTopnav");
+                  if (x.className === "topnav") {
+                    x.className += " responsive";
+                  } else {
+                    x.className = "topnav";
+                  }
+                }
+              </script>
+
+
+            </div>
+
+          </div>
+        </div>
+        </section>
+        <!-- /.content -->
+      </div>
+      <!-- /.content-wrapper -->
+      <!-- Control Sidebar -->
+      <aside class="control-sidebar control-sidebar-white ">
+        <!-- Control sidebar content goes here -->
+        <div class="p-4 ">
+
+          <a class="btn btn-sm btn-app">
+            <i class="fas fa-edit"></i> Edit
+          </a>
+          <a class="btn btn-sm btn-app">
+            <i class="fas fa-play"></i> Play
+          </a>
+          <a class="btn btn-sm btn-app">
+            <i class="fas fa-pause"></i> Pause
+          </a>
+          <a class="btn btn-sm btn-app">
+            <i class="fas fa-save"></i> Save
+          </a>
+          <a class="btn btn-sm btn-app">
+            <span class="badge bg-warning">3</span>
+            <i class="fas fa-bullhorn"></i> Notifications
+          </a>
+          <a class="btn btn-sm btn-app">
+            <span class="badge bg-success">300</span>
+            <i class="fas fa-barcode"></i> Products
+          </a>
+          <a class="btn btn-sm btn-app">
+            <span class="badge bg-purple">891</span>
+            <i class="fas fa-users"></i> Users
+          </a>
+          <a class="btn btn-sm btn-app">
+            <span class="badge bg-teal">67</span>
+            <i class="fas fa-inbox"></i> Orders
+          </a>
+          <a class="btn btn-sm btn-app">
+            <span class="badge bg-info">12</span>
+            <i class="fas fa-envelope"></i> Inbox
+          </a>
+          <a class="btn btn-sm btn-app">
+            <span class="badge bg-danger">531</span>
+            <i class="fas fa-heart"></i> Likes
+          </a>
+
+        </div>
+      </aside>
+      <!-- /.control-sidebar -->
+      <!-- Main Footer. -->
+      <footer class="main-footer text-sm fixed-butom navbar-dark bg-a ">
+        <!-- To the right -->
+        <div class="float-right d-none d-sm-inline">
+          هاوستدي
+        </div>
+        <!-- Default to the left -->
+        <strong>كل الحقوق محفوظة © 2020 <a href="#">aimanz.com</a>.</strong>eny
+      </footer>
+
+      <!-- /.Main Footer. -->
+
+
+      <div id="sidebar-overlay"></div>
+    </div>
+    <!-- ./wrapper -->
+
+
+
+    <!-- jQuery -->
+    <script src="lte/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="lte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- DataTables -->
+    <script src="lte/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="lte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="lte/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="lte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <!-- overlayScrollbars -->
+    <script src="lte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    <!-- SweetAlert2 -->
+    <script src="lte/plugins/sweetalert2/sweetalert2.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="lte/dist/js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+
+    <script>
+      $(document).ready(function () {
+        $.ajaxSetup({
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token2"]').attr('content')
+          }
+        });
+      });
+    </script>
+    <script type="text/javascript">
+      $(function () {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000
+        });
+
+        $('.swalDefaultSuccess').click(function () {
+          Toast.fire({
+            icon: 'success',
+            title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+          });
+        });
+        $('.swalDefaultInfo').click(function () {
+          Toast.fire({
+            icon: 'info',
+            title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+          })
+        });
+        $('.swalDefaultError').click(function () {
+          Toast.fire({
+            icon: 'error',
+            title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+          })
+        });
+        $('.swalDefaultWarning').click(function () {
+          Toast.fire({
+            icon: 'warning',
+            title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+          })
+        });
+        $('.swalDefaultQuestion').click(function () {
+          Toast.fire({
+            icon: 'question',
+            title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+          })
+        });
+
+        $('.toastrDefaultSuccess').click(function () {
+          toastr.success('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
+        });
+        $('.toastrDefaultInfo').click(function () {
+          toastr.info('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
+        });
+        $('.toastrDefaultError').click(function () {
+          toastr.error('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
+        });
+        $('.toastrDefaultWarning').click(function () {
+          toastr.warning('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
+        });
+
+        $('.toastsDefaultDefault').click(function () {
+          $(document).Toasts('create', {
+            title: 'Toast Title',
+            body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+          })
+        });
+        $('.toastsDefaultTopLeft').click(function () {
+          $(document).Toasts('create', {
+            title: 'Toast Title',
+            position: 'topLeft',
+            body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+          })
+        });
+        $('.toastsDefaultBottomRight').click(function () {
+          $(document).Toasts('create', {
+            title: 'Toast Title',
+            position: 'bottomRight',
+            body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+          })
+        });
+        $('.toastsDefaultBottomLeft').click(function () {
+          $(document).Toasts('create', {
+            title: 'Toast Title',
+            position: 'bottomLeft',
+            body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+          })
+        });
+        $('.toastsDefaultAutohide').click(function () {
+          $(document).Toasts('create', {
+            title: 'Toast Title',
+            autohide: true,
+            delay: 750,
+            body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+          })
+        });
+        $('.toastsDefaultNotFixed').click(function () {
+          $(document).Toasts('create', {
+            title: 'Toast Title',
+            fixed: false,
+            body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+          })
+        });
+        $('.toastsDefaultFull').click(function () {
+          $(document).Toasts('create', {
+            body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.',
+            title: 'Toast Title',
+            subtitle: 'Subtitle',
+            icon: 'fas fa-envelope fa-lg',
+          })
+        });
+        $('.toastsDefaultFullImage').click(function () {
+          $(document).Toasts('create', {
+            body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.',
+            title: 'Toast Title',
+            subtitle: 'Subtitle',
+            image: '../../dist/img/user3-128x128.jpg',
+            imageAlt: 'User Picture',
+          })
+        });
+        $('.toastsDefaultSuccess').click(function () {
+          $(document).Toasts('create', {
+            class: 'bg-success',
+            title: 'Toast Title',
+            subtitle: 'Subtitle',
+            body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+          })
+        });
+        $('.toastsDefaultInfo').click(function () {
+          $(document).Toasts('create', {
+            class: 'bg-info',
+            title: 'Toast Title',
+            subtitle: 'Subtitle',
+            body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+          })
+        });
+        $('.toastsDefaultWarning').click(function () {
+          $(document).Toasts('create', {
+            class: 'bg-warning',
+            title: 'Toast Title',
+            subtitle: 'Subtitle',
+            body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+          })
+        });
+        $('.toastsDefaultDanger').click(function () {
+          $(document).Toasts('create', {
+            class: 'bg-danger',
+            title: 'Toast Title',
+            subtitle: 'Subtitle',
+            body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+          })
+        });
+        $('.toastsDefaultMaroon').click(function () {
+          $(document).Toasts('create', {
+            class: 'bg-maroon',
+            title: 'Toast Title',
+            subtitle: 'Subtitle',
+            body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+          })
+        });
+      });
+
+    </script>
+
+    <script>
+      function swet(titlet = 'تم', icont = 'success') {
+        $(function () {
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000
+          });
+          Toast.fire({
+            icon: icont,
+            title: titlet
+          });
+        });
+      }
+    </script>
+
+  </body>
+
+</html>
