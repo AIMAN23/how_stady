@@ -34,8 +34,8 @@ $dir=($lang == 'en') ? 'ltr' : 'rtl' ;
                            {{-- {{ $school['created_at'] ?? 'e' }} --}}
                            {{-- {{ $school['updated_at'] ?? 'e' }} --}}
                      </div>
-                     <div class="col-2 ">
-                        <img src="{{ url('Images/school/'.$school->logo) }}" class="img-circle w-100 elevation-2 float-right" alt="User Image">
+                     <div class="col-2 " style="background-image: url({{ url("Images/school/".$school->logo) }}); background-repeat: no-repeat; background-size: contain;">
+                        {{-- <img src="{{ url('Images/school/'.$school->logo) }}" class="img-circle w-100 elevation-2 float-right" alt="User Image"> --}}
                      </div>
                   </div>
                </div>
@@ -59,33 +59,63 @@ $dir=($lang == 'en') ? 'ltr' : 'rtl' ;
                            {{--  --}}
                            <div class="form-group">
                            <label for="manager">{{ __('lang.manager') }}</label>
-                           <input type="text" class="form-control" id="manager" name="manager" placeholder="{{ __('lang.Enter name manager') }}">
-                           </div>
+                           <input type="text" class="form-control @error('manager') is-invalid @enderror " value="{{ old('manager') }}" id="manager" name="manager" placeholder="{{ __('lang.Enter name manager') }}">
+                          @error('manager')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror   
+                        </div>
                            {{--  --}}
                            <div class="form-group">
                            <label for="agent">{{ __('lang.agent') }}</label>
-                           <input type="text" class="form-control" id="agent" name="agent" placeholder="{{ __('lang.Enter name agent') }}">
-                           </div>
+                           <input type="text" class="form-control @error('agent') is-invalid @enderror " value="{{ old('agent') }}" id="agent" name="agent" placeholder="{{ __('lang.Enter name agent') }}">
+                          @error('agent')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror   
+                        </div>
                            {{--  --}}
                            <div class="form-group">
                            <label for="school_admin">{{ __('lang.school_admin') }}</label>
-                           <input type="text" class="form-control" id="school_admin" name="school_admin" placeholder="{{ __('lang.Enter name school_admin') }}">
-                           </div>
+                           <input type="text" class="form-control @error('school_admin') is-invalid @enderror " value="{{ old('school_admin') }}" id="school_admin" name="school_admin" placeholder="{{ __('lang.Enter name school_admin') }}">
+                          @error('school_admin')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror   
+                        </div>
                            {{--  --}}
                            <div class="form-group">
                            <label for="financial">{{ __('lang.financial') }}</label>
-                           <input type="text" class="form-control" id="financial" name="financial" placeholder="{{ __('lang.Enter name financial') }}">
-                           </div>
+                           <input type="text" class="form-control @error('financial') is-invalid @enderror " value="{{ old('financial') }}" id="financial" name="financial" placeholder="{{ __('lang.Enter name financial') }}">
+                          @error('financial')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror   
+                        </div>
                            {{--  --}}
                            <div class="form-group">
                            <label for="secretarie">{{ __('lang.secretarie') }}</label>
-                           <input type="text" class="form-control" id="secretarie" name="secretarie" placeholder="{{ __('lang.Enter name secretarie') }}">
-                           </div>
+                           <input type="text" class="form-control @error('secretarie') is-invalid @enderror " value="{{ old('secretarie') }}" id="secretarie" name="secretarie" placeholder="{{ __('lang.Enter name secretarie') }}">
+                          @error('secretarie')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror   
+                        </div>
                            {{--  --}}
                            <div class="form-group">
                            <label for="specialist">{{ __('lang.specialist') }}</label>
-                           <input type="text" class="form-control" id="specialist" name="specialist" placeholder="{{ __('lang.Enter name specialist') }}">
-                           </div>
+                           <input type="text" class="form-control @error('specialist') is-invalid @enderror " value="{{ old('specialist') }}" id="specialist" name="specialist" placeholder="{{ __('lang.Enter name specialist') }}">
+                          @error('specialist')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror   
+                        </div>
                            {{--  --}}
                         </div>
                         <!-- /.card-body -->

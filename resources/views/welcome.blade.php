@@ -73,8 +73,8 @@
                         <nav class="dope-navbar justify-content-between" id="dopeNav">
 
                             <!-- Logo -->
-                            <a class="text-uppercase nav-brand"  href="{{ route('welcome') }}" style="color: #000;">
-                                 {{ __('lang.NotesApp') }}{{--<imgsrc="img/logo.png" alt=""> --}}
+                            <a class="text-uppercase nav-brand"  href="{{ route('welcome') }}" style="color: #000;height:200%;">
+                                    <img src="{{ url('img/logo.png') }}" height="100%" alt="{{ __('lang.NotesApp') }}">
                             </a>
 
                             <!-- Navbar Toggler -->
@@ -421,6 +421,12 @@
     <script src="{{ asset('js/jquery.stellar.min.js') }}"></script>
     <script src="{{ asset('js/jquery.counterup.min.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
+    <script>
+            $(document).ready(function(){
+                $('#loader-wrapper').fadeOut(4000);
+                // $('#loader-wrapper').remove();
+            });
+        </script>
 </body>
 
 </html>

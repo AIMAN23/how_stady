@@ -127,15 +127,16 @@ $lang=app()->getLocale();
 						</div>
 						<br>
 						<br>
-						<!-- address inputs [ country - cite - Zip ] -->
-						<div class="form-group row">
-							<label for="address" class="col-md-3 ">{{ __('lang.address school') }}</label>
+						<!-- address inputs [ country - cite - street - Zip ] -->
+						<label for="address" class="col-md-3 ">{{ __('lang.address school') }}</label>
+						<div id="address" class="form-group row">
 							
 							<!-- country -->
 							<div class="col-md-3">
-								<select name="country" class="form-control custom-select @error('country') is-invalid @enderror"
+								{{-- <label></label> --}}
+								<select name="country" class="form-control custom-select @error('country') is-invalid @enderror" aria-placeholder="{{__('lang.country')}}"
 									require>
-									<option>{{__('lang.country')}}</option>
+									<legend>{{__('lang.country')}}</legend>
 									@include('include.input_slecet_contere_'.$lang)
 								</select>
 								@error('country')
@@ -155,10 +156,21 @@ $lang=app()->getLocale();
 								</span>
 								@enderror
 							</div>
+							<!-- street -->
+							<div class="col-md-3">
+								<input id="street" type="text" class="form-control @error('street') is-invalid @enderror"
+									value="{{ old('street') }}" name="street" placeholder="{{__('lang.street')}}"
+									required="required" />
+								@error('street')
+								<span class="invalid-feedback" role="alert">
+									<strong>{{ $message }}</strong>
+								</span>
+								@enderror
+							</div>
 							<!-- Zip -->
 							<div class="col-md-3">
 								<input id="zip" type="number" class="form-control @error('zip') is-invalid @enderror"
-									value="{{ old('zip') }}" name="zip" placeholder="{{__('lang.Zip')}}" maxlength="8" min="0"
+									value="{{ old('zip') }}" name="zip" placeholder="{{__('lang.Zip')}}" maxlength="6" min="0"
 									tabindex="0" />
 								@error('zip')
 								<span class="invalid-feedback" role="alert">
@@ -177,11 +189,11 @@ $lang=app()->getLocale();
 						</div>
 						
 						<!--  school_massge  -->
-						<div class="form-group">
+						{{-- <div class="form-group">
 							<label for="school_massge" class="col-md-3 col-form-label text-md-right">{{__('lang.school_massge')}}</label>
 							<textarea value="{{ old('school_massge') }}" style="width: 100%;" name="school_massge" type="textarea"
 							id="article-ckeditor" placeholder="1234 Main St">{{__('lang.school_massge')}}</textarea>
-						</div>
+						</div> --}}
 						
 					</form>
 				</div>

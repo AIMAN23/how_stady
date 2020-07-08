@@ -3,7 +3,6 @@
             البلد/المنطقة
           </label>
           <select  class="form-control custom-select" require aria-labelledby="select-label"> -->
-            <option value=""></option>
             <option value="YE - اليمن">
                 اليمن
               </option><option disabled="" value="SPACER">

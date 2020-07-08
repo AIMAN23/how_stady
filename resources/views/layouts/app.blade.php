@@ -73,7 +73,7 @@
 
                         <!-- Logo -->
                         <a class="text-uppercase nav-brand"  href="{{ route('welcome') }}" style="color: #000;">
-                                {{ __('lang.NotesApp') }}{{--<imgsrc="img/logo.png" alt=""> --}}
+                                <img src="{{ url('img/logo.png') }}" height="33px" alt="{{ __('lang.NotesApp') }}">
                         </a>
 
                         <!-- Navbar Toggler -->
@@ -234,7 +234,7 @@
    <!--JS============================================= -->
     {{-- start laravel js --}}
         {{-- app js  --}}
-        {{-- <script src="{{ asset('js/app.js') }}" type="text/javascript" ></script>         --}}
+        <script src="{{ asset('js/app.js') }}" type="text/javascript" ></script>        
         {{-- CK Editor js --}}
         <script src="{{ asset('/vendor/unisharp/ckeditor_s/ckeditor.js') }}"></script>
         <script>
@@ -252,6 +252,45 @@
     <script src="{{ asset('js/jquery.stellar.min.js') }}"></script>
     <script src="{{ asset('js/jquery.counterup.min.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
+    <script type="text/javascript">
+        // now = new Date();
+        // localtime = now.toString();
+        // utctime = now.toGMTString();
+        // document.write("<strong>Local time:</strong> " + localtime + "<br/>");
+        // document.write("<strong>UTC time:</strong> " + utctime);
+        </script>
+        <script type="text/javascript">
+            // now = new Date();
+            // localtime = now.toString();
+            // utctime = now.toGMTString();
+            // document.write("<strong>Local time:</strong> "
+            // + localtime + "<br/>");
+            // document.write("<strong>UTC time:</strong> " + utctime);
+            // hours = now.getHours();
+            // mins = now.getMinutes();
+            // secs = now.getSeconds();
+            // document.write("<h1>");
+            // document.write(hours + ":" + mins + ":" + secs);
+            // document.write("</h1>");
+        </script>
+        <script>
+            // جلب كود الهاتف حسب الدولة التي تم اختيارها
+            function get_code(cur){
+               if(cur.value!=''){ 
+                var option = $('option:selected', cur).attr('code');  
+                $('#country_code').val(option);
+                $('.country_code').html(option);
+               }else
+                   $('.country_code').html('');
+              //alert(option);    
+            }
+        </script>
+        <script>
+            $(document).ready(function(){
+                $('#loader-wrapper').fadeOut(4000);
+                // $('#loader-wrapper').remove();
+            });
+        </script>
 </body>
 
 </html>

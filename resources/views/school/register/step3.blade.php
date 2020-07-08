@@ -7,7 +7,16 @@ $lang=app()->getLocale();
 $lr=($lang == 'en') ? 'left' : 'right' ;
 $dir=($lang == 'en') ? 'ltr' : 'rtl' ;
 @endphp
-
+<style>
+   .uuid-card {
+    color: #29b6f6;
+    /* color: #01579b; */
+    font-size: small;
+    position: relative;
+    bottom: -35px;
+    left: 5px;
+}
+</style>
 
 <div class="invoice p-3 m-3 ">
    <!-- title row -->
@@ -91,19 +100,22 @@ $dir=($lang == 'en') ? 'ltr' : 'rtl' ;
 
                      <br><small class="pl-3 pr-3">{{ __('lang.manager') }}</small>
                      <br>
-                     <span class="text-sm"><b> {{ $manager->name ?? 'ايمن نجيب اليوسفي' }}</b></span>
+                     <span class="text-sm"><b> {{ $manager->name ?? 'no name' }}</b></span>
                      <br>
                      <small><b>{{ __('no') }}</b> {{ $manager->no ?? 'x2no' }}</small>
                      <br>
                   </div>
-                  <div class="col-6 mt-3">
-                     <img src="{{ url('Images/school/'.$school->logo) }}"
-                        class="img-circle w-50 elevation-2 float-right" alt="User Image">
-                  </div>
+<div class="col-6 pr-1 p-0 m-0">
+   <div
+      style="background-image: url({{ url("Images/school/".$school->logo) }});opacity: 95%; background-repeat: no-repeat; background-size: contain;"
+      class="w-50 h-100 elevation-2 float-right">
+      <p>.</p>
+   </div>
+</div>
 
 
                </div>
-               <hr><small class="bg-info">{{ $manager->uuid ?? 'x2uuid' }}</small>
+               <small class="uuid-card">{{ $manager->uuid ?? 'x2uuid' }}</small>
             </td>
             <th></th>
             {{-- agent --}}
@@ -114,19 +126,20 @@ $dir=($lang == 'en') ? 'ltr' : 'rtl' ;
 
                      <br><small class="pl-3 pr-3">{{ __('lang.agent') }}</small>
                      <br>
-                     <span class="text-sm"><b> {{ $agent->name ?? 'ايمن نجيب اليوسفي' }}</b></span>
+                     <span class="text-sm"><b> {{ $agent->name ?? 'no name' }}</b></span>
                      <br>
                      <small><b>{{ __('no') }}</b> {{ $agent->no ?? 'x2no' }}</small>
                      <br>
                   </div>
-                  <div class="col-6 mt-3">
-                     <img src="{{ url('Images/school/'.$school->logo) }}"
-                        class="img-circle w-50 elevation-2 float-right" alt="User Image">
+<div class="col-6 pr-1 p-0 m-0">
+                     <div style="background-image: url({{ url("Images/school/".$school->logo) }});opacity: 95%; background-repeat: no-repeat; background-size: contain;" class="w-50 h-100 elevation-2 float-right">
+  <p>.</p>
+                     </div>
                   </div>
 
 
                </div>
-               <hr><small class="bg-info">{{ $agent->uuid ?? 'x2uuid' }}</small>
+               <small class="uuid-card">{{ $agent->uuid ?? 'x2uuid' }}</small>
             </td>
          </tr>
       </table>
@@ -144,19 +157,20 @@ $dir=($lang == 'en') ? 'ltr' : 'rtl' ;
 
                      <br><small class="pl-3 pr-3">{{ __('lang.admins') }}</small>
                      <br>
-                     <span class="text-sm"><b> {{ $admins->name ?? 'ايمن نجيب اليوسفي' }}</b></span>
+                     <span class="text-sm"><b> {{ $admins->name ?? 'no name' }}</b></span>
                      <br>
                      <small><b>{{ __('no') }}</b> {{ $admins->no ?? 'x2no' }}</small>
                      <br>
                   </div>
-                  <div class="col-6 mt-3">
-                     <img src="{{ url('Images/school/'.$school->logo) }}"
-                        class="img-circle w-50 elevation-2 float-right" alt="User Image">
+<div class="col-6 pr-1 p-0 m-0">
+                     <div style="background-image: url({{ url("Images/school/".$school->logo) }});opacity: 95%; background-repeat: no-repeat; background-size: contain;" class="w-50 h-100 elevation-2 float-right">
+  <p>.</p>
+                     </div>
                   </div>
 
 
                </div>
-               <hr><small class="bg-info">{{ $admins->uuid ?? 'x2uuid' }}</small>
+               <small class="uuid-card">{{ $admins->uuid ?? 'x2uuid' }}</small>
             </td>
             <th></th>
             {{-- financial --}}
@@ -167,19 +181,20 @@ $dir=($lang == 'en') ? 'ltr' : 'rtl' ;
 
                      <br><small class="pl-3 pr-3">{{ __('lang.financial') }}</small>
                      <br>
-                     <span class="text-sm"><b> {{ $financial->name ?? 'ايمن نجيب اليوسفي' }}</b></span>
+                     <span class="text-sm"><b> {{ $financial->name ?? 'no name' }}</b></span>
                      <br>
                      <small><b>{{ __('no') }}</b> {{ $financial->no ?? 'x2no' }}</small>
                      <br>
                   </div>
-                  <div class="col-6 mt-3">
-                     <img src="{{ url('Images/school/'.$school->logo) }}"
-                        class="img-circle w-50 elevation-2 float-right" alt="User Image">
+<div class="col-6 pr-1 p-0 m-0">
+                     <div style="background-image: url({{ url("Images/school/".$school->logo) }});opacity: 95%; background-repeat: no-repeat; background-size: contain;" class="w-50 h-100 elevation-2 float-right">
+  <p>.</p>
+                     </div>
                   </div>
 
 
                </div>
-               <hr><small class="bg-info">{{ $financial->uuid ?? 'x2uuid' }}</small>
+               <small class="uuid-card">{{ $financial->uuid ?? 'x2uuid' }}</small>
             </td>
          </tr>
       </table>
@@ -197,19 +212,20 @@ $dir=($lang == 'en') ? 'ltr' : 'rtl' ;
 
                      <br><small class="pl-3 pr-3">{{ __('lang.secretary') }}</small>
                      <br>
-                     <span class="text-sm"><b> {{ $secretary->name ?? 'ايمن نجيب اليوسفي' }}</b></span>
+                     <span class="text-sm"><b> {{ $secretary->name ?? 'no name' }}</b></span>
                      <br>
                      <small><b>{{ __('no') }}</b> {{ $secretary->no ?? 'x2no' }}</small>
                      <br>
                   </div>
-                  <div class="col-6 mt-3">
-                     <img src="{{ url('Images/school/'.$school->logo) }}"
-                        class="img-circle w-50 elevation-2 float-right" alt="User Image">
+<div class="col-6 pr-1 p-0 m-0">
+                     <div style="background-image: url({{ url("Images/school/".$school->logo) }});opacity: 95%; background-repeat: no-repeat; background-size: contain;" class="w-50 h-100 elevation-2 float-right">
+  <p>.</p>
+                     </div>
                   </div>
 
 
                </div>
-               <hr><small class="bg-info">{{ $secretary->uuid ?? 'x2uuid' }}</small>
+               <small class="uuid-card">{{ $secretary->uuid ?? 'x2uuid' }}</small>
             </td>
             <th></th>
             {{-- specialist --}}
@@ -220,19 +236,20 @@ $dir=($lang == 'en') ? 'ltr' : 'rtl' ;
 
                      <br><small class="pl-3 pr-3">{{ __('lang.specialist') }}</small>
                      <br>
-                     <span class="text-sm"><b> {{ $specialist->name ?? 'ايمن نجيب اليوسفي' }}</b></span>
+                     <span class="text-sm"><b> {{ $specialist->name ?? 'no name' }}</b></span>
                      <br>
                      <small><b>{{ __('no') }}</b> {{ $specialist->no ?? 'x2no'  }}</small>
                      <br>
                   </div>
-                  <div class="col-6 mt-3">
-                     <img src="{{ url('Images/school/'.$school->logo) }}"
-                        class="img-circle w-50 elevation-2 float-right" alt="User Image">
+<div class="col-6 pr-1 p-0 m-0">
+                     <div style="background-image: url({{ url("Images/school/".$school->logo) }});opacity: 95%; background-repeat: no-repeat; background-size: contain;" class="w-50 h-100 elevation-2 float-right">
+  <p>.</p>
+                     </div>
                   </div>
 
 
                </div>
-               <hr><small class="bg-info">{{ $specialist->uuid ?? 'x2uuid' }}</small>
+               <small class="uuid-card">{{ $specialist->uuid ?? 'x2uuid' }}</small>
             </td>
          </tr>
       </table>

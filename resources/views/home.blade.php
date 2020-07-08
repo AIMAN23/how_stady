@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+        {{-- <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
                 <div class="container">
                     <a class="navbar-brand" href="{{ url('/') }}">
                         {{ config('app.name', 'Laravel') }}
@@ -20,7 +20,12 @@
                         <!-- Right Side Of Navbar -->
                         <ul class="navbar-nav ml-auto">
                             <!-- Authentication Links -->
-                            @guest
+                            
+                        </ul>
+                    </div>
+                </div>
+            </nav> --}}
+            @guest('super')
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
@@ -48,10 +53,6 @@
                                     </div>
                                 </li>
                             @endguest
-                        </ul>
-                    </div>
-                </div>
-            </nav>
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
