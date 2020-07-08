@@ -3,7 +3,7 @@
 
     @section('main-header-li-left')
         {{-- @include('admin.include.main-header-li-left') --}}
-    @stop
+    @endsection
 
     @section('main-header-li-right')
         {{-- @include('admin.include.main-header-li-right') --}}
@@ -68,11 +68,11 @@
                 </li>
             </ul>
         </li>
-    @stop
+    @endsection
 
     @section('content-header')
         <h1>{{ __('admin.add supervisor') }}</h1>
-    @stop
+    @endsection
 
     @section('content')
         <div class="container-fluid">
@@ -82,48 +82,79 @@
                 </div> -->
                 <!-- /.col -->
                 <div class="col-md-9">
-                  <div class="card card-primary">
+                  <div class="card card-primary ">
                     <div class="card-header">
                       <h3 class="card-title">{{ __('admin.add supervisor') }}</h3>
                     </div>
-                    <!-- /.card-header -->
-                    <!-- form start -->
-                    <form role="form">
-                      <div class="card-body">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Email address</label>
-                          <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-                        </div>
-                        <div class="form-group">
-                          <label for="exampleInputPassword1">Password</label>
-                          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                        </div>
-                        <div class="form-group">
-                          <label for="exampleInputFile">File input</label>
-                          <div class="input-group">
-                            <div class="custom-file">
-                              <input type="file" class="custom-file-input" id="exampleInputFile">
-                              <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                            </div>
-                            <div class="input-group-append">
-                              <span class="input-group-text" id="">Upload</span>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="form-check">
-                          <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                          <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                        </div>
-                      </div>
-                      <!-- /.card-body -->
-                  
-                      <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                      </div>
-                    </form>
+                    <div id="supervisors" sid="{{ route('get.supervisors',['school_id' => Auth::user()->school_id ]) }}" class="card-body">
+                        ,,
+                    </div>
                   </div>
                 </div>
                 <!-- /.col -->
             </div>
         </div><!-- /.container-fluid -->
-    @stop
+        
+    @endsection
+    @section('ajax')
+    {{-- @include('includes\swets-js') --}}
+    {{-- $(document).on('click','#supervisors',function(e){ --}}
+    <script>
+        $(document).ready(function(){
+            // =======================
+            $.ajaxSetup({
+                headers:{
+                    'X-CSRF-TOKEN':$('meta[name="csrf-token2"]').attr('content')
+                }
+            });
+    // ===========================
+    $(function () {
+      $("#example1").DataTable({
+        "responsive": true,
+        "autoWidth":  true,
+        // "paging": false,
+      });
+      $('#example2').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": false,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+      });
+    });
+  // ====================
+
+
+            // ======================
+            // $(window).ready(function(e){ 
+        
+                // e.preventDefault();
+                // var id=$id;
+                var route= $('#supervisors').attr('sid');
+                 swet('تم بنجاح .','info');
+                $.ajax({
+                    type:"get",
+                    url:route,
+                    success:function(data){
+                        // $(this).prepend(data);
+                        swet('تم بنجاح .','info');
+                        $('#supervisors').html(data);
+        
+                        // $(this).html(data);
+                        // $('#body').html(data);
+                        // $('#addcsv').attr("style")
+                        
+                        console.log(data);
+                    },
+                    error:function(xhr,status,error){
+                      swet('error','info');
+                    }
+                });
+            // });
+
+
+        });
+    </script>
+    @endsection
