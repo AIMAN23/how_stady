@@ -36,14 +36,21 @@ return [
     'namepro'=>'متابعة الطلاب',
     'Login'=>'تسجيل دخول',
     'Register'=>'اشتراك',
-
-    'school_name_ar'=>'اسم المدرسة عربي',
+    
+    'school_name_ar'=>'اسم المدرسة عربي *',
+    'bransh'=>'اسم الفرع *',
     'school_name_en'=>'اسم المدرسة انجليزي',
-    'school_email'=>'إميل المدرسة',
-    'school_logo'=>'شعار المدرسة',
+    'school_email'=>'إميل المدرسة *',
+    'school wep'=>'الموقع الالكتروني للمدرسة *',
+    'tel'=>'رقم التلفون *',
+    'fax'=>'رقم الفاكس *',
+    'school_logo'=>'شعار المدرسة *',
 
-    'country'=>'الدولة',
-    'city'=>'المدينة',
+    'address school'=>'عنوان المدرسة *',
+    'country'=>'الدولة *',
+    'city'=>'المدينة *',
+    'cite'=>'المدينة *',
+    'street'=>'مديرية , الحي\شارع ,بجوا ... *',
     'Zip'=>'الرمز البريدي',
     'school_massge'=>'رسالة المدرسة',
     
@@ -60,10 +67,22 @@ return [
     'teacher'  => 'المعلم',
     'pareent'  => 'ولي الامر',
     'student'  => 'الطالب',
-
     'student'=>[
         'name'=>'اسم الطالب',
     ],
+    // login select list user tayp
+    'Student'=> 'طالب',
+    'Parent'=> 'ولي امر',
+    'Teacher'=> 'معلم',
+    'Supervisor'=> 'مشرف مرحلة',
+    'Secretary'=> 'شوؤن الطلاب',
+    'Financial'=> 'مسؤل مالي',
+    'Specialist'=> 'إخصائي اجتماعي',
+    'Admin'=> 'مسئول النظام',
+    'Agent'=> 'وكيل المدرسة',
+    'Manager'=> 'مدير مدرسة',
+
+
     'Enter name manager'=>'ادخل اسم المدير',
     'Enter name agent'=>'ادخل اسم الوكيل',
     'Enter name school_admin'=>'ادخل اسم مسؤل النظام',
