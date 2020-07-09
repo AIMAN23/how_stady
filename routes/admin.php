@@ -71,6 +71,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 				});
 			Route::group(['prefix' => '/add'], function () {		
 				
+				Route::get('/student/csv/{school_uuid}${admin_uuid}$', 'SchoolAdminController@addStudentsCsv')->name('add.students.csv.view');
 				Route::post('/student/csv', 'SchoolAdminController@addStudentsCsv')->name('add.students.csv');
 				Route::get('/student/{school_uuid}${admin_uuid}$', 'SchoolAdminController@addStudent')->name('add.student');
 				Route::post('/student/{school_uuid}${admin_uuid}$', 'SchoolAdminController@addStudent');

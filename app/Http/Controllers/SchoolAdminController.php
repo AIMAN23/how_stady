@@ -93,6 +93,9 @@ class SchoolAdminController extends Controller
     // 
     public function addStudentsCsv(Request $request , $level_id=1)
     {
+        if ($request->method() == 'GET') {
+            return view('admin\add\csv-students');
+        }
         if ($request->ajax()) {
             $school=School::find(session('school.id'));
             $level=Level::where('uuid',$request->level_uuid)->first();
