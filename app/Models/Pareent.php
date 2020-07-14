@@ -52,4 +52,9 @@ class Pareent extends Model
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    ############ student بيانات الطالب المسجل تتنتمي الى ولي الامر حسب الرقم للهاتف
+    public function studentRegister()
+    {
+        return $this->hasMany('App\Models\StudentRegister','pareent_id');
+    }    
 }

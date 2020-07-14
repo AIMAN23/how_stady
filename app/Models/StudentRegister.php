@@ -14,6 +14,7 @@ class StudentRegister extends Model
         'name',
         'img',
         'school_year',
+        'pareent_id',
         'student_id',
         'school_id',
         'level_id',
@@ -30,6 +31,11 @@ class StudentRegister extends Model
             public function student()
             {
                 return $this->belongsTo('App\Models\Student','student_id');
+            }    
+        ############ student بيانات الطالب المسجل تتنتمي الى ولي الامر حسب الرقم للهاتف
+            public function pareent()
+            {
+                return $this->belongsTo('App\Models\Pareent','pareent_id');
             }    
         ############ school المدرسة الذي سجل فيها
             public function school()

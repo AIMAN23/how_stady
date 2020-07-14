@@ -16,7 +16,7 @@ class CreatePareentsTable extends Migration
         Schema::create('pareents', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('no')->nullable();
-            $table->uuid('uuid')->unique();
+            $table->uuid('uuid')->nullable()->unique();
             $table->integer('status')->default(0)->comment('حالة التفعيل للحساب');
 
             $table->string('name')->nullable()->comment('الاسم كامل');
@@ -33,7 +33,7 @@ class CreatePareentsTable extends Migration
 
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken()->comment('remember_token');
-            $table->string('password');
+            $table->string('password')->nullable();
             // relation
             $table->bigInteger('image_id')->unsigned()->default(0);
             // $table->bigInteger('school_id')->unsigned();

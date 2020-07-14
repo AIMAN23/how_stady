@@ -24,7 +24,8 @@ class CreateStudentRegistersTable extends Migration
             
             $table->string('school_year')->nullable()->comment('السنة الدراسية');
             ##
-            $table->bigInteger('student_id')->nullable()->comment('رقم الطالب');
+            $table->bigInteger('student_id')->nullable()->default(0)->comment('رقم الطالب');
+            $table->bigInteger('pareent_id')->nullable()->default(0)->comment('رقم ولي الامر');
 
             $table->bigInteger('school_id')->nullable()->default(0)->comment('رقم المدرسة');
             $table->bigInteger('level_id')->nullable()->default(0)->comment('رقم المستوى');

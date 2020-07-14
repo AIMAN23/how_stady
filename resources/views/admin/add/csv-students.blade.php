@@ -46,14 +46,17 @@
               <label for="level">{{ __('admin.levels') }}</label>
               <select class="form-control form-control-sm " name="level_uuid" id="level_uuid"
                 aria-placeholder="اختر المرحلة الدراسية">
-                <option>{{ __('admin.levels') }}</option>
+                <option value="" selected>{{ __('admin.levels') }}</option>
                 @foreach (session('levels') as $level)
                 <option value="{{ $level->uuid }}">{{ __('lang.Level.'.$level->name) }}</option>
                 @endforeach
-              </select>
+              </select><br>
+              <span id="error_levels" style="color:brown;"></span>
             </div>
-            <input type="text" name="description" id="description" class="form-control-sm" placeholder="ملاحظة">
-            <input type="file" name="csv" id="csv" class="form-control-sm">
+            <input type="text" name="description" id="description" class="form-control-sm" placeholder="ملاحظة"><br>
+            <span id="error_description" style="color:brown;"></span>
+            <input type="file" name="csv" id="csv" class="form-control-sm"><br>
+            <span id="error_csv" style="color:brown;"></span>
             {{-- <input type="text" name="level_uuid" id="description"> --}}
             <input type="submit" value="ok" class="btn btn-info">
           </form>
@@ -108,7 +111,18 @@
                 // console.log(data);
             },
             error:function(xhr,status,error){
-                
+              var x=xhr.responseJSON.errors;
+              
+              if (x.level_uuid !=null) {
+               $('#error_levels').html(x.level_uuid); 
+              }else{$('#error_levels').html(''); }
+              if (x.description !=null) {
+               $('#error_description').html(x.description); 
+              }else{$('#error_description').html(''); }
+              if (x.csv !=null) {
+               $('#error_csv').html(x.csv); 
+              }else{$('#error_csv').html(''); }
+              // console.log(xhr.responseJSON.errors);
             }
         })
     });
@@ -131,13 +145,16 @@
             
             success:function(databack){
                 // $('#tab').prepend(databack);
+                $('#'+id).html('');
+                $('#'+id).fadeIn();
                 $('#'+id).html(databack);
                 // $('#addcsv').attr("style");
                 
                 // console.log(databack);
             },
             error:function(xhr,status,error){
-                
+                // var E=xhr.errors();
+                console.log(xhr.message);
             }
         });
     });

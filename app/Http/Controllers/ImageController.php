@@ -64,7 +64,7 @@ class ImageController extends Controller
             return false;
         }
         
-        $header=null;
+        $header=[null];
         $data = array();
         if (($handle = fopen($filename, 'r')) !== false) {
             while ($row = fgetcsv($handle, $longest, $delimiter)) {
@@ -82,18 +82,19 @@ class ImageController extends Controller
 
     ///////////////////////////////////////////////////////////////
 
-    // public static function f_parse_csv($file, $longest, $delimiter)
-    // {
-    //     // $header=['a','b','j','u','y','h','vv'];
-    //     // $mdarray = array();
-    //     // $file    = fopen($file, "r");
-    //     // while ($line = fgetcsv($file, $longest, $delimiter)) {
-    //     //     // array_push($mdarray, $line);
-    //     //     $mdarray[]=array_combine($header , $line);
-    //     // }
-    //     // fclose($file);
-    //     // return $mdarray;
-    // }
+    public static function f_parse_csv($file, $delimiter=";", $longest,$keys=[])
+    {
+        // $header=['a','b','j','u','y','h','vv'];
+        $mdarray = array();
+        $file    = fopen($file, "r");
+        // array_push($mdarray, $keys);
+        while ($line = fgetcsv($file, $longest, $delimiter)) {
+            array_push($mdarray, array_combine($keys , $line));
+            // $mdarray[]=array_combine($keys , $line);
+        }
+        fclose($file);
+        return $mdarray;
+    }
 
 
 }
