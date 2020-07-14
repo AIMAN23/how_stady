@@ -129,7 +129,8 @@ class LevelController extends Controller
         if($request->ajax()){
 
             $classroom=Classroom::where('uuid',$classroome_uuid)->first();
-            $students= StudentRegister::where('classroom_id',$classroom->id);
+            // $students= StudentRegister::where('classroom_id',$classroom->id);
+            $students= $classroom->registers();
             // $classroom->registers();
             return view('admin\get\table-students',compact('students'));
         }

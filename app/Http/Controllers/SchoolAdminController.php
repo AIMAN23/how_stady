@@ -30,32 +30,33 @@ class SchoolAdminController extends Controller
     ################### home
     public function home()
     {
-        return view('admin\home');
+        return view('admin.home');
     }
 
     ################### login admin school
     public function login()
     {
-        return view('admin\auth\login');
+        return view('admin.auth.login');
     }
 
     // /////////////////////////////info
     public function infoSchool($school_uuid, $admin_uuid)
     {
-        return view('admin\info\school');
+        return view('admin.info.school');
     }
     public function infoLevels($school_uuid, $admin_uuid)
     {
-        return view('admin\info\levels');
+        return view('admin.info.levels');
     }
     public function infoClassrooms($school_uuid, $admin_uuid)
     {
-        return view('admin\info\classrooms');
+        return view('admin.info.classrooms');
     }
-    //////////////////////// add
+    //////////////////////// add & view
     public function addStudent(Request $request,$school_uuid, $admin_uuid)
     {
         $method=$request->method();
+        // عملية حفظ الطلاب القديمة
         if($method== 'POST'){
             if ($request->hasFile('csv')) {
                $data = $this->seveFileCsvStudentRigsterNewYaer('csv',$request);
@@ -81,7 +82,7 @@ class SchoolAdminController extends Controller
         //     $g->with('levels');
         //     }]  )->where('uuid',$admin_uuid)->first();
         // return ['s'=> $school_uuid, 'a'=> $admin_uuid];
-        return view('admin\add\student');
+        return view('admin.add.student');
     }
     // ////////////////////////get 
     public function getaAllSupervisors(Request $request,$school_id){

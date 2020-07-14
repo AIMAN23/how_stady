@@ -85,7 +85,7 @@
           </div>
           <!-- /.card-header -->
           <!-- form start -->
-          <div class="card-body text-sm" style="display: none;">
+          <div class="card-body text-sm" style="display: block;">
 
             <!-- Minimal style -->
             <div class="row">
@@ -140,7 +140,7 @@
           </div>
           <!-- /.card-header -->
           <!-- form start -->
-          <div class="card-body text-sm" style="display: none;">
+          <div class="card-body text-sm" style="display: block;">
             <!-- Minimal style -->
             <div class="row">
               {{-- @if(session('lhh')) --}}
@@ -340,11 +340,13 @@
       
           swet('حاضر','success');
           $('#'+id).fadeOut();
+          $('.child').remove();
       });// =========================
       $(document).on('click','.nom',function(e){
           var id=$(this).attr('tr');
           swet('غايب' , 'warning');
           $('#'+id).fadeOut();
+          $('.child').remove();
       });
       // ===========================
     });

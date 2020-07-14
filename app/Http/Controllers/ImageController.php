@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
-
+use input;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Traits\strTrait as strT;
 use Illuminate\Support\Facades\Storage;
+use Symfony\Component\Translation\Util\ArrayConverter;
+use Symfony\Component\VarDumper\Caster\XmlReaderCaster as Reader;
 
 // use Symfony\Component\Translation\Loader\CsvFileLoader;
 
@@ -58,13 +60,13 @@ class ImageController extends Controller
      *  هاذة العملية ترجع الملف بشكل مصفوفة
      * 
      */
-    public static function csvToArray($filename = '', $delimiter = ',', $longest, $keys=[])
+    public static function csvToArray($filename = '', $delimiter = ';', $longest, $keys=[])
     {
         if (!file_exists($filename) || !is_readable($filename)) {
             return false;
         }
         
-        $header=[null];
+        $header=array();
         $data = array();
         if (($handle = fopen($filename, 'r')) !== false) {
             while ($row = fgetcsv($handle, $longest, $delimiter)) {
@@ -76,7 +78,12 @@ class ImageController extends Controller
             }
             fclose($handle);
         }
-
+        $line='';
+        foreach ($header as $key => $value) {
+            # code...
+            $line=$line.$value.';';
+        }
+        Storage::prepend('csv/sss/'.NO_time_and_random_int.'.csv',$line);
         return $data;
     }
 

@@ -1,5 +1,5 @@
 {{-- model form edit classroome --}}
-<div class="modal fade" id="modal-edit-classroom" style="z-index: 10000000000;">
+<div class="modal fade" id="modal-edit-classroom">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			{{-- <div class="overlay d-flex justify-content-center align-items-center">
@@ -107,15 +107,15 @@
 
 {{-- ================================================================================== --}}
 {{--modal-all-students--}}
-<div class="modal fade" id="modal-all-students" style="z-index: 10000000000;margin-top: 60px;" >
+<div class="modal fade" id="modal-all-students"  >
 	{{-- <div class="modal-dialog modal-xl"> --}}
-	<div class="modal-dialog modal-lg">
+	<div class="modal-dialog">
 		<div class="modal-content" >
 			{{-- <div class="overlay d-flex justify-content-center align-items-center">
 				<i class="fas fa-2x fa-sync fa-spin"></i>
 			</div> --}}
-			<div class="modal-header text-sm">
-				{{-- <h4 class="modal-title">modal-all-students</h4> --}}
+			<div class="modal-header ">
+				<h4 class="modal-title">{{ 'modal-all-students سجل الطلاب' }}</h4>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
@@ -123,7 +123,7 @@
 			
 			<div class="modal-body" >
 				{{-- <p>One fine body&hellip;</p> --}}
-				{{-- <div class="flex-center position-ref full-height"> --}}
+				<div class="flex-center position-ref full-height">
 						{{-- <div class="content p-0 m-0"> --}}
 							{{-- <div class="title m-b-md">
 								{{__('modal-all-students')}}			
@@ -131,12 +131,12 @@
 							<br> --}}
 							{{-- table students --}}
 							{{-- <div id="table-students" class="col-12 text-sm"></div> --}}
-							{{-- <div class="card m-0 p-0"> --}}
+							{{-- <div class="card "> --}}
 								<div id="table-students"  ></div>
 							{{-- </div> --}}
 			
 						{{-- </div> --}}
-					{{-- </div> --}}
+					</div>
 			</div>
 
 			<div class="modal-footer justify-content-between">
@@ -148,6 +148,8 @@
 	</div>
 	<!-- /.modal-dialog -->
 </div>
+
+
 {{-- modal-level-edit --}}
 <div class="modal fade" id="modal-level-edit">
 	<div class="modal-dialog">

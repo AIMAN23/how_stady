@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\School;
 use App\Traits\imgTrait;
 // use App\Http\Requests\Step2;
+use Illuminate\Support\Str;
 use App\Http\Requests\Step1;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 
 class SchoolController extends Controller
@@ -73,59 +75,65 @@ class SchoolController extends Controller
                     // $school ->levels()-> attach($request -> levelIds);  // many to many insert to database
                     //$school ->levels()-> sync($request -> levelIds);
                     // $s = new School;
+                    $NO_manager =NO_manager;
                     $manager = $school->manager()->create([
-                        'uuid' => New_Uuid,
+                        'uuid' => Str::uuid(),
                         'name' => $request['manager'],
                         // 'email' => $request['email'],
                         'school_id' => $school->id,
                         'address_id' => 0,
-                        'no' => NO_manager,
-                        'password' => Password_define,
+                        'no' => $NO_manager,
+                        'password' => Hash::make($NO_manager),
                     ]);
+                    $NO_agent =NO_agent;
                     $agent = $school->agent()->create([
-                        'uuid' => New_Uuid,
+                        'uuid' => Str::uuid(),
                         'name' => $request['agent'],
                         // 'email' => $request['email'],
                         'school_id' => $school->id,
                         'address_id' => 0,
-                        'no' => NO_agent,
-                        'password' => Password_define,
+                        'no' => $NO_agent,
+                        'password' => Hash::make($NO_agent),
                     ]);
+                    $NO_admins =NO_admins;
                     $admins = $school->admins()->create([
-                        'uuid' => New_Uuid,
+                        'uuid' => Str::uuid(),
                         'name' => $request['school_admin'],
                         // 'email' => $request['email'],
                         'school_id' => $school->id,
                         'address_id' => 0,
-                        'no' => NO_admins,
-                        'password' => Password_define,
+                        'no' => $NO_admins,
+                        'password' => Hash::make($NO_admins),
                     ]);
+                    $NO_financial =NO_financial;
                     $financial = $school->financial()->create([
-                        'uuid' => New_Uuid,
+                        'uuid' => Str::uuid(),
                         'name' => $request['financial'],
                         // 'email' => $request['email'],
                         'school_id' => $school->id,
                         'address_id' => 0,
-                        'no' => NO_financial,
-                        'password' => Password_define,
+                        'no' => $NO_financial,
+                        'password' => Hash::make($NO_financial),
                     ]);
+                    $NO_secretary =NO_secretary;
                     $secretary = $school->secretary()->create([
-                        'uuid' => New_Uuid,
+                        'uuid' => Str::uuid(),
                         'name' => $request['secretarie'],
                         // 'email' => $request['email'],
                         'school_id' => $school->id,
                         'address_id' => 0,
-                        'no' => NO_secretary,
-                        'password' => Password_define,
+                        'no' => $NO_secretary,
+                        'password' => Hash::make($NO_secretary),
                     ]);
+                    $NO_specialist =NO_specialist;
                     $specialist = $school->specialist()->create([
-                        'uuid' => New_Uuid,
+                        'uuid' => Str::uuid(),
                         'name' => $request['specialist'],
                         // 'email' => $request['email'],
                         'school_id' => $school->id,
                         'address_id' => 0,
-                        'no' => NO_specialist,
-                        'password' => Password_define,
+                        'no' => $NO_specialist,
+                        'password' => Hash::make($NO_specialist),
                     ]);
 
 
@@ -135,7 +143,7 @@ class SchoolController extends Controller
                             // $school->levels()->attach($data_level->id);
                             // $school->levels()->sync($data_level->id);
                             $school->levels()->create([
-                                'uuid'=>New_Uuid,
+                                'uuid'=>Str::uuid(),
                                 'name'=>$level,
                                 'code_in_school'=>'',
                                 'code'=>'',
@@ -191,7 +199,7 @@ class SchoolController extends Controller
     public function seveDataSchool($school, $request, $imgName, $address)
     {
         return $school->create([
-            'uuid' => New_Uuid,
+            'uuid' => Str::uuid(),
             'status' => 1, // seting step 1 free true
             'name' => $request['name'],
             'bransh' => $request['bransh'],
@@ -200,7 +208,7 @@ class SchoolController extends Controller
             'tel' => $request['tel'],
             'fax' => $request['fax'],
             'logo' => $imgName,
-            'no' => NO_school,
+            'no' =>NO_school,
             // address_id الربط عنوان المدرسة من جدول العناوين
             'address_id' => $address->id,
             'password' => Password_define,

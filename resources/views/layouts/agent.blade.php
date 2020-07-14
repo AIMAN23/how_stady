@@ -37,7 +37,7 @@
         <!-- Site wrapper -->
         <div class="wrapper">
             <!-- Navbar -->
-            <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+            <nav class="main-header navbar navbar-expand navbar-dark navbar-info">
                 <!-- Left navbar links -->
                 <ul class="navbar-nav">
                     <li class="nav-item">
@@ -117,7 +117,7 @@
             <!-- Main Sidebar Container -->
             <aside class="main-sidebar sidebar-light-primary elevation-4">
                 <!-- Brand Logo -->
-                <a href="#" class="brand-link">
+                <a href="#" class="brand-link bg-info">
                     <img src="{{ asset('lte/dist/img/AdminLTELogo.png') }}"
                         alt="AdminLTE Logo"
                         class="brand-image img-circle elevation-3"

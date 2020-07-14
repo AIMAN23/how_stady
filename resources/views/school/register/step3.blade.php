@@ -102,7 +102,7 @@ $dir=($lang == 'en') ? 'ltr' : 'rtl' ;
                      <br>
                      <span class="text-sm"><b> {{ $manager->name ?? 'no name' }}</b></span>
                      <br>
-                     <small><b>{{ __('no') }}</b> {{ $manager->no ?? 'x2no' }}</small>
+                     <small><b>{{ __('ID: ') }}</b> {{ $manager->no ?? 'x2no' }}</small>
                      <br>
                   </div>
 <div class="col-6 pr-1 p-0 m-0">
@@ -128,7 +128,7 @@ $dir=($lang == 'en') ? 'ltr' : 'rtl' ;
                      <br>
                      <span class="text-sm"><b> {{ $agent->name ?? 'no name' }}</b></span>
                      <br>
-                     <small><b>{{ __('no') }}</b> {{ $agent->no ?? 'x2no' }}</small>
+                     <small><b>{{ __('ID: ') }}</b> {{ $agent->no ?? 'x2no' }}</small>
                      <br>
                   </div>
 <div class="col-6 pr-1 p-0 m-0">
@@ -159,7 +159,7 @@ $dir=($lang == 'en') ? 'ltr' : 'rtl' ;
                      <br>
                      <span class="text-sm"><b> {{ $admins->name ?? 'no name' }}</b></span>
                      <br>
-                     <small><b>{{ __('no') }}</b> {{ $admins->no ?? 'x2no' }}</small>
+                     <small><b>{{ __('ID: ') }}</b> {{ $admins->no ?? 'x2no' }}</small>
                      <br>
                   </div>
 <div class="col-6 pr-1 p-0 m-0">
@@ -183,7 +183,7 @@ $dir=($lang == 'en') ? 'ltr' : 'rtl' ;
                      <br>
                      <span class="text-sm"><b> {{ $financial->name ?? 'no name' }}</b></span>
                      <br>
-                     <small><b>{{ __('no') }}</b> {{ $financial->no ?? 'x2no' }}</small>
+                     <small><b>{{ __('ID: ') }}</b> {{ $financial->no ?? 'x2no' }}</small>
                      <br>
                   </div>
 <div class="col-6 pr-1 p-0 m-0">
@@ -214,7 +214,7 @@ $dir=($lang == 'en') ? 'ltr' : 'rtl' ;
                      <br>
                      <span class="text-sm"><b> {{ $secretary->name ?? 'no name' }}</b></span>
                      <br>
-                     <small><b>{{ __('no') }}</b> {{ $secretary->no ?? 'x2no' }}</small>
+                     <small><b>{{ __('ID: ') }}</b> {{ $secretary->no ?? 'x2no' }}</small>
                      <br>
                   </div>
 <div class="col-6 pr-1 p-0 m-0">
@@ -238,7 +238,7 @@ $dir=($lang == 'en') ? 'ltr' : 'rtl' ;
                      <br>
                      <span class="text-sm"><b> {{ $specialist->name ?? 'no name' }}</b></span>
                      <br>
-                     <small><b>{{ __('no') }}</b> {{ $specialist->no ?? 'x2no'  }}</small>
+                     <small><b>{{ __('ID: ') }}</b> {{ $specialist->no ?? 'x2no'  }}</small>
                      <br>
                   </div>
 <div class="col-6 pr-1 p-0 m-0">

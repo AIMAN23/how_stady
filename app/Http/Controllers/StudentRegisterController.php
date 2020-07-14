@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\File;
 use App\Models\Level;
 use App\Models\School;
 use App\Models\Pareent;
@@ -10,8 +11,8 @@ use Illuminate\Http\Request;
 use App\Models\StudentRegister;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Storage;
 use Symfony\Component\Console\Helper;
+use Illuminate\Support\Facades\Storage;
 // كلاس خاص بعملية تسجيل الطلاب اول السنة
 class StudentRegisterController extends Controller
 {
@@ -23,7 +24,7 @@ class StudentRegisterController extends Controller
         if ($request->ajax()) {
             $this->validate($request,[
                 'level_uuid'=>'required',
-                'csv' => 'mimes:prn,txt,csv',
+                'csv' => 'required|mimes:prn,txt,csv',
                 // 'csv' => 'mimetypes:text/csv,application/vnd.ms-excel,csv|mimes:csv,xls',
                 'description'=>'required',
             ]);
@@ -45,8 +46,8 @@ class StudentRegisterController extends Controller
                 'pareent_name',
                 'pareent_mobile',
                 'stu_gender'];
-            $data_csv = $this->ajaxReadCsv($path,$keys);
-            $data_csv_new=null;
+            $data_csv = $this->ajaxReadCsv($path,$keys,';');
+            $data_csv_new=array();
             foreach ($data_csv as $s ) {
                 // add class room
                 $class['name']=$s['classroom_name'];
@@ -82,12 +83,13 @@ class StudentRegisterController extends Controller
         // $classr=$class->;
 
         if(isset($class) && $class->count() > 0){
-            return $class;
+            $classroom =$class;
+            return  $classroom;
         }
         $classroom = $school->classrooms()->firstOrCreate([
                 'uuid' => Str::uuid(),
                 'name' => $attr['name'],
-                'code' => str::random(),
+                'code' =>'STU'.NO_time_and_random_int ?? str::random(),
                 'school_id' => $school->id,
                 'level_id' => $level->id,
                 'teacher_id' => $attr['teacher_id'] ?? 0,
@@ -101,6 +103,7 @@ class StudentRegisterController extends Controller
     {
         $dn = intval(date('Y'));
         $df = $dn + 1;
+        $student=null;
         // التأكد من اسم الطالب هل هو موجود 
         // في نفس المرحلة و
         // المدرسة و
@@ -113,10 +116,10 @@ class StudentRegisterController extends Controller
             ->where('school_year', $attr['school_year'] ?? $df . '-' . $dn)
             ->where('level_id', $level->id);
         //-------------------1 
-        if (!$student_validation->count() > 0) {
+        if ($student_validation->count() < 1) {
             ###[2]// لو غير موجود اسم الطالب في السجلات
             //  يتم انشاء سجل جديد للطالب 
-            $student_validation = $school->registers()->firstOrCreate([
+            $student = $school->registers()->firstOrCreate([
                 'code' => str::random(3) . time(),
                 'no' => $attr['no'],
                 'status' => $attr['status'] ?? 0,
@@ -130,6 +133,8 @@ class StudentRegisterController extends Controller
                 'schooladmin_id' => Auth::id(),
             ]);
             // ثم اكمال بيانات ولي الامر نفس ما تم في المرحلة السابقة
+        }else {
+            $student = $student_validation;
         }
         // ------------------2
         ##########################اظافة بيانات ولي الامر##########################
@@ -141,10 +146,10 @@ class StudentRegisterController extends Controller
         //  عبر الايدي لولي الامر
 
         ########################ربط الطالب بولي الامر##########################
-        $student_validation->update([
+        $student->update([
             'pareent_id' => $pareent->id,
         ]);
-        return $student_validation->first();
+        return $student->with('pareent')->first();
         ####################انتهاء ربط الطالب بولي الامر#####################
     }
     #####################################
@@ -158,8 +163,15 @@ class StudentRegisterController extends Controller
             $pareent = Pareent::firstOrCreate([
                 'mobile' => $mobile,
             ]);
+            $p_mobile=$pareent->mobile;
             // اظافة كلمة المرور رقم الهاتف في هاذة الحالة
-            $this->addNewPassNamePareent($pareent, $name, $pareent->mobile);
+            // $this->addNewPassNamePareent($pareent, $name, $pareent->mobile);
+            $pareent->update([
+                'uuid' => Str::uuid(),
+                'name' => $name ?? null,
+                'password'=> Hash::make($p_mobile),
+                'status'=>1,
+            ]);
             // ارجاع بيانات ولي الامر
             return $pareent;
         } else {
@@ -193,7 +205,7 @@ class StudentRegisterController extends Controller
             // لايتم عمل شيئ
             $pareent->update([
                 'uuid' => Str::uuid(),
-                'name' => $name['pareent_name'] ?? null,
+                'name' => $name ?? null,
                 'password'=> Hash::make($pass),
                 'status'=>1,
             ]);
@@ -208,8 +220,21 @@ class StudentRegisterController extends Controller
     {
         $file_name_a = $request->csv->getClientOriginalName();
         // $file_name = time() . '-' . $file_name_a;
-        $file_name = time().'-a'.Auth::user()->id.'-s'.session('school.id').$file_name_a;
+        $file_name = time().'-'.Auth::user()->id.'-'.$file_name_a;
         $path = $request->csv->move(public_path('storage\\csv\\school\\'.$school_uuid), $file_name);
+        // seve file in database
+        $file_path=\storage_path('\\csv\\school\\'.$school_uuid.$file_name);
+        $file=new File;
+        $file->create([
+            'no'=>time().'-a'.Auth::user()->id.'-s'.session('school.id'),
+            'status'=>0,
+            'filename'=>$file_name,
+            'path'=>$file_path ?? $path,
+            'description'=>$request->description ?? '',
+            'school_id'=>session('school.id')?? Auth::user()->school()->id,
+            'school_admin_id'=>Auth::user()->id,
+        ]);
+
         return $path;
     }
     #####################################
@@ -252,7 +277,7 @@ class StudentRegisterController extends Controller
             //     array_push($allcsv, [$url => $file]);
             // }else {
                 
-                $file=Storage::get($path);
+                $file=Storage::size($path);
                 $url = Storage::url($path);
                 array_push($allcsv, [$url => $file]);
             // }

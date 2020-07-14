@@ -19,9 +19,9 @@
             <td>{{ $d->name }}</td>
             <td>{{ $d->level_id }}</td>
             <td>{{ $d->classroom_id }}</td>
-            <td>{{ $d->pareent_name ?? 'no pareent_name' }}</td>
-            <td>{{ $d->pareent_id ?? "no pareent_mobile" }}</td>
-            <td>{{ $d->stu_gender ?? 'no stu_gender' }}</td>
+            <td>{{ $d->pareent->name ?? 'no pareent_name' }}</td>
+            <td>{{ $d->pareent->mobile ?? "no pareent_mobile" }}</td>
+            <td>{{ $d->gender ?? 'no stu_gender' }}</td>
         </tr>
         @endforeach
     </tbody>
