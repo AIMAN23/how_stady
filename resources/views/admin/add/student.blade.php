@@ -1,29 +1,78 @@
 @extends('layouts.admin')
 
-
 @section('main-header-li-left')
 {{-- @include('admin.include.main-header-li-left') --}}
-<?php if ( Hash::check('123456789', Auth::user()->getAuthPassword())) {
-     echo "yes";}else{echo "no";}
-      ?>
-@endsection
 
-@section('main-header-li-right')
-{{-- @include('admin.include.main-header-li-right') --}}
 @endsection
+@section('main-header-li-right'){{-- @include('admin.include.main-header-li-right') --}}@endsection
+@section('sidebar-li'){{-- @include('admin.include.sidebar-li') --}}@endsection
 
-@section('sidebar-li')
-{{-- @include('admin.include.sidebar-li') --}}
-@endsection
-
-@section('content-header')
-<h1>{{ __('admin.add student') }}</h1>
-@endsection
-
+{{-- عنوان الصفحة --}}
+@section('content-header')<h1>{{ __('admin.students') }}</h1>@endsection
+{{--  بداية المحتوا الخاص بالصفحة --}}
 @section('content')
 
+{{-- بداية عرض سجل الطلاب --}}
+<!-- Main content -->
+<section class="content">
 
-<div class="container-fluid">
+    <!-- Default box -->
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">{{ __('admin.students') }}</h3>
+
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"
+                    title="Collapse">
+                    <i class="fas fa-minus"></i></button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip"
+                    title="Remove">
+                    <i class="fas fa-times"></i></button>
+            </div>
+        </div>
+        <div class="card-body text-right table-responsive p-1">
+            <table id="example1" data-route="{{ route('all.student') }}" class="table text-nowrap table-striped projects ">
+                <thead>
+                    <tr class="">
+                        <td></td>
+                        <td class="text-center">{{ __('image') }}</td>
+                        <th style="">
+                            {{ __('lang.student.name') }}
+                        </th>
+                        <th style="" class="text-center">
+                            #{{ __('code') }}
+                        </th>
+                        <th style="" class="text-center">
+                            #{{ __('pareent') }}
+                        </th>
+                        <th style="" class="text-center">
+                            {{ __('admin.stu.created_at') }}
+                        </th>
+                        <th class="text-center">
+                            {{ __('admin.level') }}
+                        </th>
+                        <th style="" class="text-center">
+                            {{ __('admin.classroom') }}
+                        </th>
+                        <th style="">
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="tbody-all-student">
+                    {{-- سوف يتم عرض بيانات كل الطلاب هنا بعد اكتمال تحميل الصفحة --}}
+                </tbody>
+
+            </table>
+        </div>
+        <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+
+</section><!-- /.content -->
+{{-- نهاية سجل عرض سجل الطلاب --}}
+
+{{-- بداية فورم اظافة طالب واحد --}}
+<div class="container-fluid hidden">
     <div class="row">
         <div class="col-12">
             <div class="getcsv">
@@ -174,14 +223,52 @@
             </form>
 
             </fieldset>
+            </div>
         </div>
-    </div>
 
 
 
 
-    <!-- /.col -->
-</div>
+   
+    </div> 
 </div><!-- /.container-fluid -->
-
+{{-- نهاية فورم اظافة طالب واحد --}}
 @endsection
+{{-- نهاية محتوا الصفحة --}}
+
+{{-- كود الجكويري لعرض بيانات الطلاب --}}
+@section('ajax')
+    <script>
+        $(document).ready(function(){
+            var route= $('#example1').attr('data-route');
+            // swet('تم بنجاح .','info');
+            $.ajax({
+                type:"get",
+                url:route,
+                // لو تم جلب البيانات بنجاح
+                success:function(data){
+                    // يتم اظافة البانات في المكان المحدد سابقاُ في الاعلى
+                    $('#tbody-all-student').html(data);
+                    // عرض رسالة نجاح
+                    swet('تم عرض بيانات الطلاب بنجاح .','success');
+    
+                    // $(this).html(data);
+                    // $('#body').html(data);
+                    // $('#addcsv').attr("style")
+                    
+                    // console.log(data);
+                },
+                // لو هناك خطاء اثناء عرض البيانات
+                error:function(xhr,status,error){
+                    // يتم عرض رسالة خطاء
+                    swet('error','danger');
+                    // نوع الخطاء
+                    swet(status,'danger');
+                    // رسسالة الخطاء
+                    swet(error,'danger');
+                }
+            });
+        })
+    </script>
+@endsection
+{{-- انتهاء الجكويري --}}
