@@ -259,21 +259,21 @@
                                         <a href="{{ route('add.student', ['school_uuid'=>session('school.uuid') ,'admin_uuid'=>Auth::user()->uuid]) }}"
                                             class="nav-link ">
                                             <i class="far fa-circle nav-icon"></i>
-                                            <p>{{ __('admin.add student') }}</p>
+                                            <p>{{ __('admin.students') }}</p>
                                         </a>
                                     </li>
                                     <li class="nav-item">
                                         <a href="{{ route('add.teacher', ['school_uuid'=>session('school.uuid') ,'admin_uuid'=>Auth::user()->uuid]) }}"
                                             class="nav-link">
                                             <i class="far fa-circle nav-icon"></i>
-                                            <p>{{ __('admin.add teacher') }}</p>
+                                            <p>{{ __('admin.teachers') }}</p>
                                         </a>
                                     </li>
                                     <li class="nav-item">
                                         <a href="{{ route('add.supervisor', ['school_uuid'=>session('school.uuid') ,'admin_uuid'=>Auth::user()->uuid]) }}"
                                             class="nav-link">
                                             <i class="far fa-circle nav-icon"></i>
-                                            <p>{{ __('admin.add supervisor') }}</p>
+                                            <p>{{ __('admin.supervisors') }}</p>
                                         </a>
                                     </li>
                                 </ul>
