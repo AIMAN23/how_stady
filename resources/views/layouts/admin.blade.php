@@ -237,49 +237,7 @@
                     <!-- Sidebar Menu -->
                     <nav class="mt-2">
                         <ul class="nav nav-pills nav-sidebar nav-child-indent flex-column nav-compact nav-flat" data-widget="treeview" role="menu" data-accordion="false">
-                            {{-- <li class="nav-item has-treeview">
-                                    <a href="#" class="nav-link">
-                                            <i class="nav-icon fas fa-tachometer-alt"></i>
-                                            <p>
-                                                {{ __('admin.Dashboard') }}
-                                                <i class="right fas fa-angle-left"></i>
-                                            </p>
-                                        </a>
-                                    <ul class="nav nav-treeview"> --}}
-                                            <!-- Authentication Links -->
-                                            {{-- @guest
-                                                <li class="nav-item">
-                                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                                </li>
-                                                @if (Route::has('register'))
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                                    </li>
-                                                @endif
-                                            @else
-                                                <li class="nav-item has-treeview">
-                                                    <a id="" class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                                        <p>
-                                                            {{ Auth::user()->name }} <span class="caret"></span>
-                                                            </p>
-                                                    </a>
-                                                    <ul>
-                                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                                        <a class="dropdown-item" href="{{ route('logout') }}"
-                                                           onclick="event.preventDefault();
-                                                                         document.getElementById('logout-form').submit();">
-                                                            {{ __('Logout') }}
-                                                        </a>
-                    
-                                                        <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
-                                                            @csrf
-                                                        </form>
-                                                    </div>
-                                                </ul>
-                                                </li>
-                                            @endguest --}}
-                                        {{-- </ul> --}}
-                            {{-- </li> --}}
+                            
                             @yield('sidebar-li')
                             <li class="nav-item has-treeview menu-open">
                                 <a href="#" class="nav-link active">
