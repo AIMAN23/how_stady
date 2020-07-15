@@ -1,16 +1,9 @@
 @extends('layouts.admin')
 
+@section('main-header-li-left'){{-- @include('admin.include.main-header-li-left') --}}@endsection
+@section('main-header-li-right'){{-- @include('admin.include.main-header-li-right') --}}
+@section('sidebar-li'){{-- @include('admin.include.sidebar-li') --}}@endsection
 
-@section('main-header-li-left')
-{{-- @include('admin.include.main-header-li-left') --}}
-@endsection
-
-@section('main-header-li-right')
-{{-- @include('admin.include.main-header-li-right') --}}
-
-@section('sidebar-li')
-{{-- @include('admin.include.sidebar-li') --}}
-@endsection
 
 {{-- عنوان الصفحة :معلومات المدرسة --}}
 @section('content-header')<h1>{{ __('admin.info school') }}</h1>@endsection
