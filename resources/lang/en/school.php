@@ -1,0 +1,25 @@
+<?php
+return [
+  'id' => 'ID',
+  'status app' => 'App Status',
+  'name' => 'School Name',
+  's1' => '',
+    's2' => '',
+    's3' => 'حساب مجاني',
+    's4' => 'حساب مجاني منتهي الصلاحية',
+    's10' => '',
+    's20' => '',
+    's30' => 'حساب مفعل',
+    's40' => 'حساب موقف',
+
+  'country' => 'Country',
+  'cite' => 'Cite',
+  'street' => 'Street',
+  'zip code' => 'Zip Code',
+  // 'uuid' => 'uuid',
+  'logo' => 'logo',
+  // 'address_id' => 'address id',
+  'password' => 'password',
+  'created_at' => 'created at',
+  'updated_at' => 'updated at',
+];
