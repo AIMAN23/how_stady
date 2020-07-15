@@ -101,6 +101,10 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 				Route::get('/levels/{school_uuid}${admin_uuid}', 'SchoolAdminController@infoLevels')->name('info.levels');
 				Route::get('/classrooms/{school_uuid}${admin_uuid}', 'SchoolAdminController@infoClassrooms')->name('info.classrooms');
 			});
+			Route::group(['prefix' => '/all'], function () {
+				// رابط يقوم بجلب سجلات الطلاب المسجلين في المدرسة
+				Route::get('all\student', function () {		return view('admin\get\all-student');		})->name('all.student');
+			});
 
 
 			// روابط جلب البيانات
