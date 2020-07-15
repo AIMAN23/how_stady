@@ -1,24 +1,17 @@
 @extends('layouts.admin')
 
-@section('main-header-li-left')
-{{-- @include('admin.include.main-header-li-left') --}}
-@endsection
+@section('main-header-li-left'){{-- @include('admin.include.main-header-li-left') --}}@endsection
+@section('main-header-li-right'){{-- @include('admin.include.main-header-li-right') --}}@endsection
+@section('sidebar-li'){{-- @include('admin.include.sidebar-li') --}}@endsection
 
-@section('main-header-li-right')
-{{-- @include('admin.include.main-header-li-right') --}}
-@endsection
+{{-- عنوان الصفحة المراحل الدراسية --}}
+@section('content-header')<h1>{{ __('admin.levels') }}</h1>@endsection
 
-@section('sidebar-li')
-{{-- @include('admin.include.sidebar-li') --}}
-@endsection
-
-@section('content-header')
-<h1>{{ __('admin.levels') }}</h1>
-@endsection
-
+{{-- بداية محتوا الصفحة --}}
 @section('content')
+
 <div class="container-fluid">
-  <h5 class="mt-4 mb-2">Bootstrap Accordion & Carousel</h5>
+  <h5 class="mt-4 mb-2">{{ __('اعدادات المراحل الدراسية') }}</h5>
   
 <div class="row">
   <div class="col-md-6">
@@ -29,7 +22,7 @@
       <!-- /.card-header -->
       <div class="card-body">
         <div id="accordion">
-          {{-- start levels --}}
+          {{--بداية عرض المراحل الدراسية --}}
           @foreach (session('lhh') as $level_code)
           <div class="card card-primary">
             <div class="card-header p-0">
@@ -56,7 +49,7 @@
             </div>
           </div>
           @endforeach
-          {{-- end levels --}}
+          {{-- نهاية عرض المراحل الدراسية --}}
         </div>
       </div>
       <!-- /.card-body -->
@@ -65,10 +58,10 @@
   </div>
 
 
-  <!-- /.row -->
-  <!-- END ACCORDION & CAROUSEL-->
+  
   <div class="col-md-6">
     <div class="row">
+        {{-- بداية عرض اظافة مرحلة جديدة --}}
       <div class="col-md-6">
         <div class="card card-primary collapsed-card">
           <div class="card-header">
@@ -95,8 +88,7 @@
               <div class="form-group clearfix">
 
 
-                @if(!session('lhh.'.$L["code"]))
-
+              @if(!session('lhh.'.$L["code"]))
                 <form role="form" action="{{ route('add.level',$L['code']) }}">
                   <div class="icheck-primary d-inline">
                     <input type="checkbox" onchange="submit();" id="{{ $L['code'].'add' }}" name="{{ $L['code'] }}"
@@ -106,7 +98,7 @@
                     </label>
                   </div>
                 </form>
-                @endif
+              @endif
 
 
               </div>
@@ -127,7 +119,7 @@
       <div class="col-md-6">
         <div class="card card-danger collapsed-card">
           <div class="card-header">
-            <h3 class="card-title">{{ __('admin.add level') }}</h3>
+            <h3 class="card-title">{{ __('admin.delete level') }}</h3>
             <div class="card-tools">
               <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"
                 title="Collapse">
@@ -183,8 +175,12 @@
 </div>
 </div><!-- /.container-fluid -->
 
+{{-- هاذا الكود يقوم بتظمين تصميم الفورمات المخفيه التي تعرض عند الظغط على الازرار --}}
 @include('admin\popup\pop-classroome')
-<button type="button" class="btn btn-success swalDefaultSuccess">
+{{-- انتها التظمين --}}
+
+
+{{-- <button type="button" class="btn btn-success swalDefaultSuccess">
   Launch Success Toast
 </button>
 <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-edit-classroom">
@@ -192,19 +188,20 @@
 </button>
 <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-level-edit">
   تعديل معلومات المرحلة
-</button>
+</button> --}}
 
 <!-- /.modal -->
 @endsection
+{{-- انتهاء محتواء صفحة اعدادات المراحل الدراسية  --}}
 
 
 {{-- @include('includes\swets-js') --}}
-{{-- ajax --}}
+{{-- بداية اوامر الجيكويري (جافا سكربت) ـ --}}
 @section('ajax')
 <script>
   $(document).ready(function(){
       // ===========================
-      // get classrooms of any level
+      // عرض كل الشعب الدراسية للمرحلة 
       $(document).on('click','.level', function(e){
           e.preventDefault();
           var route= $(this).attr('data-route');
@@ -224,11 +221,13 @@
                   // console.log(data);
               },
               error:function(xhr,status,error){
-                swet('error','info');
+                // عرض رسالة خطاء في حالت الفشل
+                swet(status,'danger');
+                swet(error,'danger');
               }
           })
       });
-      // update classroom
+      // عرض  مودل تعديل معلومات الشعبة الدراسية
       $(document).on('click','.classrome-edit', function(e){
           e.preventDefault();
           var route= $(this).attr('data-route');
@@ -240,6 +239,7 @@
               type:"get",
               url:route,
               dataType:"JSON",
+              // في حالة النجاح للمهمه
               success:function(databack){
                   // $(this).prepend(data);
                   // $('#'+id).html(data);
@@ -260,11 +260,13 @@
                   // console.log(databack);
               },
               error:function(xhr,status,error){
-                  
+                // عرض رسالة خطاء في حالت الفشل
+                swet(status,'danger');
+                swet(error,'danger');
               }
           })
       });
-      // تعديل اوعرض بيانات المشرف لكل مرحلة
+      //  عرض بيانات المشرف للـمرحلة
       $(document).on('click','.level-supervisor', function(e){
           e.preventDefault();
           var route= $(this).attr('data-route');
@@ -275,6 +277,7 @@
           $.ajax({
               type:"get",
               url:route,
+              // في حالة النجاح للمهمه
               success:function(databack){
                 model.html(databack);
               //   $('#id').val(databack.id);
@@ -287,11 +290,13 @@
                    console.log(databack);
               },
               error:function(xhr,status,error){
-                  
+                // عرض رسالة خطاء في حالت الفشل
+                swet(status,'danger');
+                swet(error,'danger');
               }
           });
       });
-      // get students where class uuid
+      // عرض سجل اسماء الطلاب للشعبة الدراسية
       $(document).on('click','.students-all', function(e){
           e.preventDefault();
           var route= $(this).attr('data-route');
@@ -301,6 +306,7 @@
               type:"get",
               url:route,
               // dataType:"JSON",
+              // في حالة النجاح للمهمه
               success:function(databack){
                 // $('#'+id).html(data);
                 $('#table-students').html(databack);
@@ -314,11 +320,14 @@
                   // console.log(databack);
               },
               error:function(xhr,status,error){
-                  
+                // عرض رسالة خطاء في حالت الفشل
+                swet(status,'danger');
+                swet(error,'danger');
               }
           })
       });
       // ===========================
+      //كود تنسيق شكل الجدول
       $(function () {
         $("#example1").DataTable({
           "responsive": true,
@@ -334,14 +343,22 @@
           "autoWidth": true,
           "responsive": true,
         });// ===================
-      });// ========================
+      });
+      
+      
+      // =========== تجربة تحضير الطلاب سوف يتم نقل هاذا 
+      // الكود عند بداية تصميم شاشات المعلم=============
+
+      //1 الطالب حاضر
       $(document).on('click','.sahe',function(e){
           var id=$(this).attr('tr');
       
           swet('حاضر','success');
           $('#'+id).fadeOut();
           $('.child').remove();
-      });// =========================
+      });
+      // =========================
+      //2 الطالب غايب
       $(document).on('click','.nom',function(e){
           var id=$(this).attr('tr');
           swet('غايب' , 'warning');
@@ -349,7 +366,11 @@
           $('.child').remove();
       });
       // ===========================
+
+
+
     });
 </script>
 
 @endsection
+{{-- نهاية اوامر الجيكويري (جافا سكربت) ـ --}}
