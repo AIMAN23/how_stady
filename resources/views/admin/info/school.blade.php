@@ -12,61 +12,92 @@
 {{-- @include('admin.include.sidebar-li') --}}
 @endsection
 
-@section('content-header')
-<h1>{{ __('admin.add student') }}</h1>
-@endsection
+{{-- عنوان الصفحة :معلومات المدرسة --}}
+@section('content-header')<h1>{{ __('admin.info school') }}</h1>@endsection
+{{-- انتها العنوان --}}
 
+{{-- تعريف متغيرات  من اجل تغير اتجاه الصفحة عربي\انجليزي --}}
+@php
+$lang=app()->getLocale();
+$lr=($lang == 'en') ? 'left' : 'right' ;
+$dir=($lang == 'en') ? 'ltr' : 'rtl' ;
+@endphp
+{{-- انتها تعريف المتغيرات --}}
+
+
+{{-- بداية محتوا الصفحة : --}}
 @section('content')
-<div class="container-fluid">
-    <div class="row">
-        <!-- <div class="col-md-3">
-                    
-                </div> -->
-        <!-- /.col -->
-        <div class="col-md-9">
+<div class="container">
+    <div class="row justify-content-center">
+        {{-- بداية عرض معلومات المدرسة الاساسية --}}
+        <div class="col-md-10">
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">{{ __('admin.add student') }}</h3>
-                </div>
-                <!-- /.card-header -->
-                <!-- form start -->
-                <form role="form" action="#" method="POST">
-                    <div class="card-body">
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Email address</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1"
-                                placeholder="Password">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputFile">File input</label>
-                            <div class="input-group">
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="exampleInputFile">
-                                    <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                                </div>
-                                <div class="input-group-append">
-                                    <span class="input-group-text" id="">Upload</span>
-                                </div>
+                    {{-- header --}}
+                    <div class="card-titel">
+                        <div class="row text-{{ $lr }}" dir="{{ $dir }}">
+                            {{-- name bransh --}}
+                            <div class="col-10">
+                                <h3>{{ session('school.name') }}
+                                        <small>{{ $school['bransh'] ?? 'e' }}</small>
+                                    </h3>
+                                    <dt>{{ _('lang.email').' : ' }} {{ session('school.email') ?? 'e' }}</dt>
+                                    <dt>{{ _('lang.wep').' : ' }} {{ session('school.wep') ?? 'e' }}</dt>
+                                    <dt>{{ _('lang.fax').' : ' }} {{ session('school.fax') ?? 'e' }}</dt>
+                                    <dt>{{ _('lang.tel').' : ' }} {{ session('school.tel') ?? 'e' }}</dt>
+                            </div>
+                            {{-- logo --}}
+                            <div class="col-2 "
+                                style="background-image: url({{ url("Images/school/".session('school.logo')) }}); background-repeat: no-repeat; background-size: contain;">
+                                {{-- <img src="{{ url('Images/school/'.session('school.logo')) }}" class="img-circle
+                                w-100 elevation-2 float-right" alt="User Image"> --}}
                             </div>
                         </div>
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                        </div>
                     </div>
-                    <!-- /.card-body -->
-
-                    <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </div>
-                </form>
+                </div>
+                {{-- info --}}
+                <div class="card-body text-{{ $lr }}" dir="{{ $dir }}">
+                    <dl class="">
+                        <dt class="">{{ __('school.status app') }}</dt>
+                        <dd class="">{{ __('school.status.s'.session('school.status')) }}</dd>
+                        <dt class="">{{ __('school.name') }} </dt>
+                        <dd class=""> {{ session('school.name') ?? 'e' }} </dd>
+                        <dt class="">{{ __('school.country') }} </dt>
+                        <dd class=""> {{ Auth::user()->school->address->country }} </dd>
+                        <dt class="">{{ __('school.cite') }} </dt>
+                        <dd class=""> {{ Auth::user()->school->address->cite }} </dd>
+                        <dt class="">{{ __('school.street') }} </dt>
+                        <dd class=""> {{ Auth::user()->school->address->street }} </dd>
+                        <dt class="">{{ __('school.zip code') }} </dt>
+                        <dd class=""> {{ Auth::user()->school->address->zip }} </dd>
+                        <dt class="">{{ __('school.id') }} </dt>
+                        <dd class=""> {{ session('school.id') ?? 'e' }} </dd>
+                        {{-- <dt class="">{{ __('school.uuid') }} </dt> --}}
+                        {{-- <dd class=""> {{ session('school.uuid') ?? 'e' }} </dd> --}}
+                        {{-- <dt class="">{{ __('school.logo') }} </dt> --}}
+                        {{-- <dd class=""> {{ session('school.logo') ?? 'e' }} </dd> --}}
+                        <dt class="">{{ __('school.created_at') }} </dt>
+                        <dd class=""> <time> {{ session('school.created_at') ?? 'e' }} </time></dd>
+                        {{-- <dt class=""> {{ __('school.updated_at') }} </dt> --}}
+                        {{-- <dd class=""> {{ session('school.updated_at') ?? 'e' }} </dd> --}}
+                    </dl>
+                </div>
             </div>
         </div>
-        <!-- /.col -->
+        {{-- بداية عرض معلومات المدرسة الاساسية --}}
     </div>
-</div><!-- /.container-fluid -->
+    {{-- انتها التوسيط --}}
+</div>
 @endsection
+{{-- انتهاء محتوا الصفحة --}}
+
+
+{{-- بداية اوامر الجيكويري --}}
+@section('ajax')
+    <script>
+        $(document).ready(function(){
+            // لايوجد اوامر حاليا
+        });
+    </script>
+@endsection
+{{-- انتهاء اوامر الجيكويري --}}
