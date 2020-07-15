@@ -32,12 +32,12 @@ $dir=($lang == 'en') ? 'ltr' : 'rtl' ;
                             {{-- name bransh --}}
                             <div class="col-10">
                                 <h3>{{ session('school.name') }}
-                                        <small>{{ $school['bransh'] ?? 'e' }}</small>
-                                    </h3>
-                                    <dt>{{ _('lang.email').' : ' }} {{ session('school.email') ?? 'e' }}</dt>
-                                    <dt>{{ _('lang.wep').' : ' }} {{ session('school.wep') ?? 'e' }}</dt>
-                                    <dt>{{ _('lang.fax').' : ' }} {{ session('school.fax') ?? 'e' }}</dt>
-                                    <dt>{{ _('lang.tel').' : ' }} {{ session('school.tel') ?? 'e' }}</dt>
+                                    <small>{{ $school['bransh'] ?? 'e' }}</small>
+                                </h3>
+                                <dt>{{ _('lang.email').' : ' }} {{ session('school.email') ?? 'e' }}</dt>
+                                <dt>{{ _('lang.wep').' : ' }} {{ session('school.wep') ?? 'e' }}</dt>
+                                <dt>{{ _('lang.fax').' : ' }} {{ session('school.fax') ?? 'e' }}</dt>
+                                <dt>{{ _('lang.tel').' : ' }} {{ session('school.tel') ?? 'e' }}</dt>
                             </div>
                             {{-- logo --}}
                             <div class="col-2 "
@@ -87,10 +87,10 @@ $dir=($lang == 'en') ? 'ltr' : 'rtl' ;
 
 {{-- بداية اوامر الجيكويري --}}
 @section('ajax')
-    <script>
-        $(document).ready(function(){
+<script>
+    $(document).ready(function(){
             // لايوجد اوامر حاليا
         });
-    </script>
+</script>
 @endsection
 {{-- انتهاء اوامر الجيكويري --}}
