@@ -1,85 +1,16 @@
 @extends('layouts.supervisor')
-@section('main-header-li-left')
-    {{-- @include('admin.include.main-header-li-left') --}}
-@endsection
 
-@section('main-header-li-right')
-    {{-- @include('admin.include.main-header-li-right') --}}
-@endsection
+@section('main-header-li-left'){{-- @include('admin.include.main-header-li-left') --}}@endsection
+@section('main-header-li-right'){{-- @include('admin.include.main-header-li-right') --}}@endsection
+@section('sidebar-li'){{-- @include('admin.include.sidebar-li') --}}@endsection
 
-@section('sidebar-li')
-    {{-- @include('admin.include.sidebar-li') --}}
-        {{-- <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-tachometer-alt"></i>
-                <p>
-                    {{ __('admin.Dashboard') }}
-                    <i class="right fas fa-angle-left"></i>
-                </p>
-            </a>
-            <ul class="nav nav-treeview">
-                <li class="nav-item">
-                    <a href="{{ route('add.student', ['school_uuid'=>session('school.uuid') ,'admin_uuid'=>Auth::user()->uuid]) }}"
-                        class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>{{ __('admin.add student') }}</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('add.teacher', ['school_uuid'=>session('school.uuid') ,'admin_uuid'=>Auth::user()->uuid]) }}"
-                        class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>{{ __('admin.add teacher') }}</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('add.supervisor', ['school_uuid'=>session('school.uuid') ,'admin_uuid'=>Auth::user()->uuid]) }}"
-                        class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>{{ __('admin.add supervisor') }}</p>
-                    </a>
-                </li>
-            </ul>
-        </li>
-        <li class="nav-header">{{ __('admin.setting') }}</li>
-        <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-tachometer-alt"></i>
-                <p>
-                    {{ __('admin.school setting') }}
-                    <i class="right fas fa-angle-left"></i>
-                </p>
-            </a>
-            <ul class="nav nav-treeview">
-                <li class="nav-item">
-                    <a href="{{ route('info.school', ['school_uuid'=>session('school.uuid') ,'admin_uuid'=>Auth::user()->uuid]) }}"
-                        class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>{{ __('admin.info school') }}</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('info.levels', ['school_uuid'=>session('school.uuid') ,'admin_uuid'=>Auth::user()->uuid]) }}"
-                        class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>{{ __('admin.levels') }}</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('info.classrooms', ['school_uuid'=>session('school.uuid') ,'admin_uuid'=>Auth::user()->uuid]) }}"
-                        class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>{{ __('admin.classrooms') }}</p>
-                    </a>
-                </li>
-            </ul>
-        </li> --}}
-@endsection
 
-@section('content-header')
-    <h1>{{ __('admin.Profile') }}</h1>
-@endsection
+{{--  عنوان الصفحة:الصفحة الشخصية للمشرف --}}
+@section('content-header')<h1>{{ __('admin.Profile') }}</h1>@endsection
+{{-- نهاية العنوان --}}
 
+
+{{-- بداية محتوا الصفحة --}}
 @section('content')
 <div class="container-fluid">
     <div class="row">
@@ -249,5 +180,59 @@
         </div>
         <!-- /.col -->
     </div>
+
+    {{-- الاديتور لبتستراب --}}
+    <section class="content">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card card-outline card-info">
+            <div class="card-header">
+              <h3 class="card-title">
+                Bootstrap WYSIHTML5
+                <small>Simple and fast</small>
+              </h3>
+              <!-- tools box -->
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool btn-sm" data-card-widget="collapse" data-toggle="tooltip"
+                        title="Collapse">
+                  <i class="fas fa-minus"></i></button>
+                <button type="button" class="btn btn-tool btn-sm" data-card-widget="remove" data-toggle="tooltip"
+                        title="Remove">
+                  <i class="fas fa-times"></i></button>
+              </div>
+              <!-- /. tools -->
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body pad">
+              <div class="mb-3">
+                <textarea class="textarea" placeholder="Place some text here"
+                          style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+              </div>
+              <p class="text-sm mb-0">
+                Editor <a href="https://github.com/summernote/summernote">Documentation and license
+                information.</a>
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- /.col-->
+      </div>
+      <!-- ./row -->
+    </section>
+    {{-- انتهاء الاديتور --}}
+
 </div><!-- /.container-fluid -->
 @endsection
+{{-- نهاية محتوا الصفحة --}}
+
+
+
+{{-- بداية الجيكويري --}}
+@section('ajax')
+<script>
+    $(document).ready(function(){
+        // لايوجد اوامر جيكويري حاليا
+    });
+</script>
+@endsection
+{{-- نهاية الجيكويري --}}
