@@ -32,7 +32,7 @@
         td {
         background-color: honeydew;
         /* background-image: url('{{ url('images/card-1-L-new-logo.png') }}'); */
-        background-image: url('{{ url('images/card-123-no-line-nwe-logo-2-1.png') }}');
+        background-image: url('{{ asset('images/card-123-no-line-nwe-logo-2-1.png') }}');
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;

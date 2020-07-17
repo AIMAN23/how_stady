@@ -34,7 +34,7 @@ $dir=($lang == 'en') ? 'ltr' : 'rtl' ;
                            {{-- {{ $school['created_at'] ?? 'e' }} --}}
                            {{-- {{ $school['updated_at'] ?? 'e' }} --}}
                      </div>
-                     <div class="col-2 " style="background-image: url({{ url("Images/school/".$school->logo) }}); background-repeat: no-repeat; background-size: contain;">
+                     <div class="col-2 " style="background-image: url({{ asset("Images/school/".$school->logo) }}); background-repeat: no-repeat; background-size: contain;">
                         {{-- <img src="{{ url('Images/school/'.$school->logo) }}" class="img-circle w-100 elevation-2 float-right" alt="User Image"> --}}
                      </div>
                   </div>

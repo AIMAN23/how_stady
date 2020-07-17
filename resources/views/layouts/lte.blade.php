@@ -34,7 +34,87 @@
         <!-- Site wrapper -->
         <div class="wrapper">
             <!-- Navbar -->
-          
+            <nav class="dope-navbar justify-content-between" id="dopeNav">
+
+              <!-- Logo -->
+              <a class="text-uppercase nav-brand"  href="{{ route('welcome') }}" style="color: #000;">
+                      <img src="{{ url('img/logo.png') }}" height="33px" alt="{{ __('lang.NotesApp') }}">
+              </a>
+
+              <!-- Navbar Toggler -->
+              <div class="dope-navbar-toggler">
+                  <span class="navbarToggler">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                  </span>
+                  <div class="algnt-left">
+                      <a href="#">Aiman</a>
+                  </div>
+              </div>
+
+              <!-- Menu -->
+              <div class="dope-menu">
+
+                  <!-- close btn -->
+                  <div class="dopecloseIcon">
+                      <div class="cross-wrap">
+                          <span class="top"></span>
+                          <span class="bottom"></span>
+                      </div>
+                  </div>
+
+                  <!-- Nav Start -->
+                  <div class="dopenav">
+                      <ul id="nav">
+                          @include('includes.li')
+                          <li>
+                              <a href="#">{{ __('lang.lang') }}</a>
+                              <ul class="dropdown">
+                                  @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                  <li > <!-- <li class="list-group-item"> -->
+                                      <a  hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                          {{ $properties['native'] }}
+                                      </a>
+                                  </li>
+                                  @endforeach
+                              </ul>
+                          </li>
+                          {{--  --}}
+                          @guest
+                              {{-- <li class="nav-item">
+                                  <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                              </li>
+                              @if (Route::has('register'))
+                                  <li class="nav-item">
+                                      <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                  </li>
+                              @endif --}}
+                          @else
+                              <li class="nav-item dropdown">
+                                  <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                      {{ Auth::user()->name }} <span class="caret"></span>
+                                  </a>
+  
+                                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                      <a class="dropdown-item" href="{{ route('logout') }}"
+                                      onclick="event.preventDefault();
+                                                      document.getElementById('logout-form').submit();">
+                                          {{ __('Logout') }}
+                                      </a>
+  
+                                      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                          @csrf
+                                      </form>
+                                  </div>
+                              </li>
+                          @endguest
+                          {{--  --}}
+                      </ul>
+                  </div>
+                  <!-- Nav End -->
+              </div>
+            </nav>
             <!-- /.navbar -->
 
             <!-- Main Sidebar Container -->
