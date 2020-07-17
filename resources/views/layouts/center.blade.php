@@ -30,7 +30,6 @@
 
       {{-- start body --}}
 
-      @include('includes\messages')
         @yield('body')
         
       {{-- /.end body --}}
