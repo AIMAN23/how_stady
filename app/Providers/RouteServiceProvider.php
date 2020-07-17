@@ -22,9 +22,9 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    // رابط الصفحة الرئيسية للمستخدم العادي
+    // تعريف الروابط لصفحات الرئيسية لكل مستخدم
     public const HOME = '/home';
-    // رابط الصفحة الرئيسية لادمن المدرسة
+    public const manager= 'manager/home';
     public const ADMIN= 'admin/home';
     public const supervisor= 'supervisor/home';
     public const agent= 'agent/home';
@@ -50,8 +50,12 @@ class RouteServiceProvider extends ServiceProvider
     {
         // Api الروابط الخاصة بتطبيقات الـ 
         $this->mapApiRoutes();
+        
         // الروابط الخاصة بضيوف الموقع
         $this->mapWebRoutes();
+        
+        // manager
+        $this->mapManagerRoutes();
         // الروابط الخاصة بادمن المدرسة
         $this->mapAdminRoutes();
         //
@@ -71,12 +75,21 @@ class RouteServiceProvider extends ServiceProvider
              ->namespace($this->namespace)
              ->group(base_path('routes/web.php'));
     }
+
     protected function mapAdminRoutes()
     {
         // تعريف خصائص روابط ادمن المدرسة
         Route::middleware('admin')
             ->namespace($this->namespace)
             ->group(base_path('routes/admin.php'));
+    }
+
+    protected function mapManagerRoutes()
+    {
+        // تعريف خصائص روابط manager
+        Route::middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/manager.php'));
     }
 
     /**

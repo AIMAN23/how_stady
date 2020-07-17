@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth\supervisor;
+namespace App\Http\Controllers\Auth\manager;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
@@ -26,7 +26,7 @@ class ConfirmPasswordController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::supervisor;
+    protected $redirectTo = RouteServiceProvider::manager;
 
     /**
      * Create a new controller instance.
@@ -35,6 +35,6 @@ class ConfirmPasswordController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:super');
+        $this->middleware('auth:manager');
     }
 }

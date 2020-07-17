@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as AuthenticatableAdmin;
+use Illuminate\Notifications\Notifiable;
 ## مودل المدير للمدرسة
-class Manager extends Model
+class Manager extends AuthenticatableAdmin
 {
+    use Notifiable;
     protected $table = "managers";
     protected $fillable=[
         'id','no','uuid','status',

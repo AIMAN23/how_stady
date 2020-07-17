@@ -60,6 +60,21 @@ class HomeController extends Controller
         
         return view('supervisor.home')->with('school',$school);
     }
+    public function manager(Request $request)
+    {
+        $user=Auth::user();
+        // $manager=Manager::where('id',$user->id)->first();
+        // $school=$manager->school()->first();
+        $request->session()->put('school', $user->school);
+        $request->session()->put('levels', $user->school->levels);
+        SchoolAdminController::sessput($user->school->id);
+
+
+        // $adm=[];
+        // $AS=$manager->school()->find($manager->id);
+        
+        return view('manager.home')->with('school',$user->school);
+    }
     public function agent(Request $request)
     {
         $user=Auth::user();
