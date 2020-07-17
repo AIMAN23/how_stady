@@ -5,29 +5,12 @@ window._ = require('lodash');
  * for JavaScript based Bootstrap features such as modals and tabs. This
  * code may be modified to fit the specific needs of your application.
  */
-    // require('admin-lte/plugins/jquery/jquery');
+
 try {
     window.Popper = require('popper.js').default;
-    window.$ = window.jQuery = require('admin-lte/plugins/jquery/jquery');
+    window.$ = window.jQuery = require('jquery');
 
-    // require('bootstrap');
-    // require('admin-lte/plugins/jquery/jquery.slim');
-    require('admin-lte/plugins/bootstrap/js/bootstrap');
-    require('admin-lte/plugins/bootstrap/js/bootstrap.bundle');
-    require('admin-lte/plugins/datatables/jquery.dataTables');
-    require('admin-lte/plugins/datatables-bs4/js/dataTables.bootstrap4');
-    require('admin-lte/plugins/datatables-responsive/js/dataTables.responsive');
-    require('admin-lte/plugins/datatables-responsive/js/responsive.bootstrap4');
-    
-    
-    
-    require('admin-lte/plugins/overlayScrollbars/js/jquery.overlayScrollbars');
-    require('admin-lte/plugins/sweetalert2/sweetalert2');
-    require('admin-lte/plugins/toastr/toastr.min');
-    require('admin-lte/build/js/Toasts');
-    require('admin-lte');
-    require('admin-lte/dist/js/adminlte');
-
+    require('bootstrap');
 } catch (e) {}
 
 /**
