@@ -137,7 +137,7 @@ $lang=app()->getLocale();
 								<select name="country" class="form-control custom-select @error('country') is-invalid @enderror" aria-placeholder="{{__('lang.country')}}"
 									require>
 									<legend>{{__('lang.country')}}</legend>
-									@include('include.input_slecet_contere_'.$lang)
+									@include('includes.country_'.$lang)
 								</select>
 								@error('country')
 								<span class="invalid-feedback" role="alert">
