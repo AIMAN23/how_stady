@@ -44,7 +44,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     ## 3- رابط ارسال البريد الالكتروني لتاكيد حساب المدرسة
     // --- يقوم بارسال رسالة بريد الكتروني للمدرسة من اجل
     // --- تاكيد البريد الخاص  بهم وعدم السماح بالعناوين الوهمية
-    Route::get('school/{school_uuid}/step1','schoolController@sendEmailRegisterSchool')->name('sendemail.register');
+    Route::get('school/{school_uuid}/step1','SchoolController@sendEmailRegisterSchool')->name('sendemail.register');
     // 
     
     
@@ -54,7 +54,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     // --- تفتح لهم صفحة اكمال الخطوة 2 لاعداد
     // --- المراحل الدراسي
     // --- واظافة الحسابات العامة للمستخدمين النظام
-    Route::get('school/{school_uuid}/step2','schoolController@newSchoolDetails')->name('step2');
+    Route::get('school/{school_uuid}/step2','SchoolController@newSchoolDetails')->name('step2');
     // 
 
     ## 5- رابط حفظ الاعدادات التي تم تحديدها في الخطوة السابقة
@@ -66,7 +66,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     //  4-المسؤل المالي
     //  5-السكرتاريا
     //  6-الاخصائي
-    Route::post('school/{school_uuid}/step2','schoolController@newSchoolDetails')->name('step2.seve');
+    Route::post('school/{school_uuid}/step2','SchoolController@newSchoolDetails')->name('step2.seve');
     // 
 
 
@@ -74,7 +74,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     ## رابط طباعة بطائق المستخدمين للمدرسة
     ## بعد انتهاء كل الخطوات الخمس السابقة يتم عرض صفحة تحتوي بطائق المستخدمين 
     ## لكي يتم طباعتها وتوزيع البطائق للمستخدمين لبدا الاستخدام للنظام
-    Route::get('school/{school_uuid}/step3','schoolController@step3')->name('step3');
+    Route::get('school/{school_uuid}/step3','SchoolController@step3')->name('step3');
     // 
   });
   ## انتهاء خطواة عملية انشاء حساب مدرسة جديدة
