@@ -102,7 +102,7 @@
                             <!-- Nav Start -->
                             <div class="dopenav">
                                 <ul id="nav">
-                                    @include('includes\li')
+                                    @include('includes.li')
                                     <li>
                                         <a href="#">{{ __('lang.lang') }}</a>
                                         <ul class="dropdown">
