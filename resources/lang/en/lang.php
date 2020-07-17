@@ -36,6 +36,8 @@ return [
     'namepro'=>'Follow Students',
     'Login'=>'Login',
     'Register'=>'Register',
+    
+    'users'=> 'Add names for users',
     // حساب مدرسة جديد
     'school_name_ar'=>'School Name EN *',
     'bransh'=>'bransh *',

@@ -70,6 +70,8 @@ return [
     'student'=>[
         'name'=>'اسم الطالب',
     ],
+
+    'users'=> 'قم باضافة الاسماء التالية',
     // login select list user tayp
     'Student'=> 'طالب',
     'Parent'=> 'ولي امر',
