@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\School;
 use App\Traits\imgTrait;
-// use App\Http\Requests\Step2;
+use App\Http\Requests\Step2;
 use Illuminate\Support\Str;
 use App\Http\Requests\Step1;
 use Illuminate\Http\Request;
@@ -48,7 +48,7 @@ class SchoolController extends Controller
                 if ($school->status == 1 or $school->status == 2 ) {
                     $this->add_Uuid_School_Session($school_uuid);
                     $school->update(['status' => 2]);
-                    return view('school\register\step2')->with('school', $school);
+                    return view('school.register.step2')->with('school', $school);
                 } else {
                     return abort(404, 'هاذه الخطوة قد تم اتمامها بنجاح ولايمكن زيارتها مره اخرا');
                 }
@@ -235,7 +235,7 @@ class SchoolController extends Controller
                     'specialist'=>$specialist,
                     ];
             // return response()->json([$school ,$card]);
-            return view('school\register\step3',$card)->with(['school'=>$school]);
+            return view('school.register.step3',$card)->with(['school'=>$school]);
         }
     }
     ##
