@@ -40,12 +40,17 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-
-        // 'admin' => [
-        //     'driver' => 'session',
-        //     'provider' => 'schools',
-        // ],
         
+        
+        'manager' => [
+            'driver' => 'session',
+            'provider' => 'manager',
+        ],
+        'agent' => [
+            'driver' => 'session',
+            'provider' => 'agents',
+        ],
+
         'admin' => [
             'driver' => 'session',
             'provider' => 'admins',
@@ -54,10 +59,6 @@ return [
             'driver' => 'session',
             'provider' => 'supervisor',
         ],
-        'agent' => [
-            'driver' => 'session',
-            'provider' => 'agents',
-        ],
         
 
         'api' => [
@@ -65,6 +66,11 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+
+        // 'admin' => [
+        //     'driver' => 'session',
+        //     'provider' => 'schools',
+        // ],
     ],
 
     /*
@@ -89,14 +95,16 @@ return [
             'driver' => 'eloquent',
             'model' => App\User::class,
         ],
+
+        'manager' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Manager::class,
+        ],
+
         'agents' => [
             'driver' => 'eloquent',
             'model' => App\Models\Agent::class,
         ],
-        // 'schools' => [
-        //     'driver' => 'eloquent',
-        //     'model' => App\Models\School::class,
-        // ],
         
         // 'schools' => [
         //     'driver' => 'database',
@@ -140,18 +148,28 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
+
+        'manager' => [
+            'provider' => 'manager',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+
         'agents' => [
             'provider' => 'agents',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
         ],
+
         'admins' => [
             'provider' => 'admins',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
         ],
+
         'supervisor' => [
             'provider' => 'supervisor',
             'table' => 'password_resets',
