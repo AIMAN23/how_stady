@@ -13,7 +13,7 @@
 
         <title>
             {{-- config('app.name', 'Laravel') --}}
-            {{__('lang.namepro')}}
+            {{__('lang.NotesApp')}}
         </title>
 
         <!-- Scripts -->
@@ -236,10 +236,10 @@
         {{-- app js  --}}
         <script src="{{ asset('js/app.js') }}" type="text/javascript" ></script>        
         {{-- CK Editor js --}}
-        <script src="{{ asset('/vendor/unisharp/ckeditor_s/ckeditor.js') }}"></script>
-        <script>
+        {{-- <script src="{{ asset('/vendor/unisharp/ckeditor_s/ckeditor.js') }}"></script> --}}
+        {{-- <script>
             CKEDITOR.replace( 'article-ckeditor' );
-        </script>
+        </script> --}}
     {{-- end laravel js  --}}
     <script src="{{ asset('js/vendor/jquery-2.2.4.min.js') }}"></script>
     <script src="{{ asset('js/vendor/popper.min.js') }}"></script>
@@ -287,7 +287,7 @@
         </script>
         <script>
             $(document).ready(function(){
-                $('#loader-wrapper').fadeOut(4000);
+                // $('#loader-wrapper').fadeOut(4000);
                 // $('#loader-wrapper').remove();
             });
         </script>

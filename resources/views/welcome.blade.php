@@ -12,7 +12,7 @@
 
         <title>
             {{-- config('app.name', 'Laravel') --}}
-            {{__('lang.namepro')}}
+            {{__('lang.NotesApp')}}
         </title>
 
         <!-- Scripts -->
@@ -58,11 +58,11 @@
 <body>
 
         <!-- Preloader -->
-        <div id="loader-wrapper">
+        {{-- <div id="loader-wrapper">
             <div id="loader"></div>
             <div class="loader-section section-left"></div>
             <div class="loader-section section-right"></div>
-        </div>
+        </div> --}}
 
         <!-- Start header section -->
         <header class="header-area" id="header-area">
@@ -85,7 +85,7 @@
                                     <span></span>
                                 </span>
                                 <div class="algnt-left">
-                                    <a href="#">Aiman</a>
+                                    <a href="#">{{ __('lang.NotesApp') }}</a>
                                 </div>
                             </div>
 
@@ -423,7 +423,7 @@
     <script src="{{ asset('js/main.js') }}"></script>
     <script>
             $(document).ready(function(){
-                $('#loader-wrapper').fadeOut(4000);
+                // $('#loader-wrapper').fadeOut(4000);
                 // $('#loader-wrapper').remove();
             });
         </script>

@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'How_Study'),
+    'name' => env('APP_NAME', 'How Study'),
 
     /*
     |--------------------------------------------------------------------------
@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'https://how-study.herokuapp.com'),
+    'url' => env('APP_URL', 'https://howstudy.herokuapp.com'),
 
     'asset_url' => env('ASSET_URL', null),
 

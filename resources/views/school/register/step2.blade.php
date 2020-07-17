@@ -25,10 +25,10 @@ $dir=($lang == 'en') ? 'ltr' : 'rtl' ;
                            {{-- {{ $school['logo'] ?? 'e' }} --}}
                            {{-- {{ $school['name'] ?? 'e' }} --}}
                            
-                           <label>{{ _('lang.email').' : ' }} {{ $school->email ?? 'e' }}</label>
-                           <label>{{ _('lang.wep').' : ' }} {{ $school->wep ?? 'e' }}</label>
-                           <label>{{ _('lang.fax').' : ' }} {{ $school->fax ?? 'e' }}</label>
-                           <label>{{ _('lang.tel').' : ' }} {{ $school->tel ?? 'e' }}</label>
+                           <label>{{__('lang.email').' : ' }} {{ $school->email ?? 'e' }}</label>
+                           <label>{{__('lang.wep').' : ' }} {{ $school->wep ?? 'e' }}</label>
+                           <label>{{__('lang.fax').' : ' }} {{ $school->fax ?? 'e' }}</label>
+                           <label>{{__('lang.tel').' : ' }} {{ $school->tel ?? 'e' }}</label>
                            {{-- {{ $school['address_id'] ?? 'e' }} --}}
                            {{-- {{ $school['password'] ?? 'e' }} --}}
                            {{-- {{ $school['created_at'] ?? 'e' }} --}}
