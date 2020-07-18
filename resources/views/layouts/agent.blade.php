@@ -209,7 +209,7 @@
                 </section>
 
                 <!-- Main content -->
-                @include('includes\messages')
+                @include('includes.messages')
                 
                 <section class="content">
 
@@ -318,7 +318,7 @@
                 });
             });
             </script>
-            @include('includes\swets-js')
+            @include('includes.swets-js')
             @yield('ajax')
     </body>
 </html>

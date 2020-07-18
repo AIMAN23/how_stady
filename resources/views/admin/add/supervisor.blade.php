@@ -39,7 +39,7 @@
 
 @endsection
 @section('ajax')
-{{-- @include('includes\swets-js') --}}
+{{-- @include('includes.swets-js') --}}
 {{-- $(document).on('click','#supervisors',function(e){ --}}
 <script>
     $(document).ready(function(){

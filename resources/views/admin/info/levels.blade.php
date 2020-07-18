@@ -176,7 +176,7 @@
 </div><!-- /.container-fluid -->
 
 {{-- هاذا الكود يقوم بتظمين تصميم الفورمات المخفيه التي تعرض عند الظغط على الازرار --}}
-@include('admin\popup\pop-classroome')
+@include('admin.popup.pop-classroome')
 {{-- انتها التظمين --}}
 
 
@@ -195,7 +195,7 @@
 {{-- انتهاء محتواء صفحة اعدادات المراحل الدراسية  --}}
 
 
-{{-- @include('includes\swets-js') --}}
+{{-- @include('includes.swets-js') --}}
 {{-- بداية اوامر الجيكويري (جافا سكربت) ـ --}}
 @section('ajax')
 <script>
