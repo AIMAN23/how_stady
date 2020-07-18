@@ -1,4 +1,4 @@
-{{ $f[0] }}
+
 @if (isset($allcsv))
 
   @if (is_array($allcsv ))
