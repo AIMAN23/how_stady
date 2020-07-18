@@ -34,10 +34,10 @@ $dir=($lang == 'en') ? 'ltr' : 'rtl' ;
                                 <h3>{{ session('school.name') }}
                                     <small>{{ $school['bransh'] ?? 'e' }}</small>
                                 </h3>
-                                <dt>{{ _('lang.email').' : ' }} {{ session('school.email') ?? 'e' }}</dt>
-                                <dt>{{ _('lang.wep').' : ' }} {{ session('school.wep') ?? 'e' }}</dt>
-                                <dt>{{ _('lang.fax').' : ' }} {{ session('school.fax') ?? 'e' }}</dt>
-                                <dt>{{ _('lang.tel').' : ' }} {{ session('school.tel') ?? 'e' }}</dt>
+                                <dt>{{ __('lang.email').' : ' }} {{ session('school.email') ?? 'e' }}</dt>
+                                <dt>{{ __('lang.wep').' : ' }} {{ session('school.wep') ?? 'e' }}</dt>
+                                <dt>{{ __('lang.fax').' : ' }} {{ session('school.fax') ?? 'e' }}</dt>
+                                <dt>{{ __('lang.tel').' : ' }} {{ session('school.tel') ?? 'e' }}</dt>
                             </div>
                             {{-- logo --}}
                             <div class="col-2 "
