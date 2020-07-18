@@ -90,13 +90,13 @@ class LevelController extends Controller
             */
                 $data= $s->supervisors()->all();//->get();
                 return response()->json($data);
-                return view('admin\get\form-edit-level', compact('data'));
+                return view('admin.get.form-edit-level', compact('data'));
             }
             // $data = $level->with('supervisor')->where('name', $level_code)->first();
             // $data = Level::with('supervisor')->where('uuid', $level->uuid );//->get();
             $data = $level->supervisor()->get();//->get();
             return response()->json($data);
-            return view('admin\get\form-edit-level', compact('data'));
+            return view('admin.get.form-edit-level', compact('data'));
         }
         return 'no ajax';
     }
@@ -112,7 +112,7 @@ class LevelController extends Controller
             // $data=[$classrooms];
             // return $level->classrooms();
         // return response()->json($classrooms);
-        return view('admin\get\classrooms',compact('classrooms') );
+        return view('admin.get.classrooms',compact('classrooms') );
         }
         return 'no ajax';
     }
@@ -132,7 +132,7 @@ class LevelController extends Controller
             // $students= StudentRegister::where('classroom_id',$classroom->id);
             $students= $classroom->registers();
             // $classroom->registers();
-            return view('admin\get\table-students',compact('students'));
+            return view('admin.get.table-students',compact('students'));
         }
         return 'no ajax';
         
