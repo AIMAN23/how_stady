@@ -393,7 +393,7 @@
 
                 <!-- Main content -->
                 <section class="content">
-                    @include('includes\messages')
+                    @include('includes.messages')
                     @yield('content')
 
                 </section>
