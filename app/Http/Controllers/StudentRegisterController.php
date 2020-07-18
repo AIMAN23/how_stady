@@ -19,7 +19,7 @@ class StudentRegisterController extends Controller
     public function addStudentsCsv(Request $request , $level_id=1)
     {
         if ($request->method() == 'GET') {
-            return view('admin\add\csv-students');
+            return view('admin.add.csv-students');
         }
         if ($request->ajax()) {
             $this->validate($request,[
@@ -65,7 +65,7 @@ class StudentRegisterController extends Controller
             $data_csv_new[]=$register;
             }
 
-            return view('admin\add\tab',compact('data_csv_new'));
+            return view('admin.add.tab',compact('data_csv_new'));
             
                 // return 'no has file csv';
             
@@ -285,7 +285,7 @@ class StudentRegisterController extends Controller
             // array_add($array, 'key', 'value')
         }
         // $allcsv= Storage::files('public/csv/school/'.$school->uuid);//('public/csv1/1592852234-students12.csv');
-        return view('admin\get\csvfil', compact(['allcsv']))->with('f',session('f'));
+        return view('admin.get.csvfil', compact(['allcsv']))->with('f',session('f'));
         
     }
 }
