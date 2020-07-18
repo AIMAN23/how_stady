@@ -73,7 +73,7 @@
                         <nav class="dope-navbar justify-content-between" id="dopeNav">
 
                             <!-- Logo -->
-                            <a class="text-uppercase nav-brand"  href="{{ route('welcome') }}" style="color: #000;height:200%;">
+                            <a class="text-uppercase nav-brand"  href="{{ route('welcome') }}" style="color: #000;height:100%;">
                                     <img src="{{ url('img/logo3.png') }}" height="100%" alt="{{ __('lang.NotesApp') }}">
                             </a>
 
