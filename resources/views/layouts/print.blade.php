@@ -19,7 +19,6 @@
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="{{ asset('lte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
     <!-- Theme style -->
-    <link href="{{ asset('img/card-1-L-new-logo.png') }}">
     <link rel="stylesheet" href="{{ asset('lte/dist/css/adminlte.min.css') }}">
     <link rel="stylesheet" href="{{ asset('lte/dist/css/lte.min.css') }}">
     <!-- Google Font: Source Sans Pro -->
@@ -32,9 +31,9 @@
     <style>
         td {
         background-color: honeydew;
-        background-image: url("{{ asset('img/card-1-L-new-logo.png') }}");
-        background-image: url("{{ url('img/card-1-L-new-logo.png') }}");
-        /* background-image: url(images/card-1-L-new-logo.png); */
+        background-image: url("{{ asset('img/card-123-no-line-nwe-logo-2-1.png') }}");
+        
+        
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
