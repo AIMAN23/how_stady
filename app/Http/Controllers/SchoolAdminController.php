@@ -130,12 +130,12 @@ class SchoolAdminController extends Controller
     // عرض شاشة اضافة معلم
     public function addTeacher($school_uuid, $admin_uuid)
     {
-        return view('admin\add\teacher');
+        return view('admin.add.teacher');
     }
     // عرض شاشة اضافة مشرف مرحلة
     public function addSupervisor($school_uuid, $admin_uuid)
     {
-        return view('admin\add\supervisor');
+        return view('admin.add.supervisor');
     }
     // عرض شاشة المراحل الدراسية
     public function addLevel($level_name)
