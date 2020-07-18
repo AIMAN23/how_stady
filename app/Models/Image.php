@@ -28,6 +28,10 @@ class Image extends Model
         {
             return $this->hasOne('App\Models\Supervisor','image_id' ,'id');
         }  
+        public function agent()
+        {
+            return $this->hasOne('App\Models\Agent','image_id' ,'id');
+        }  
     
     ##############   end Relationes     ##############
 

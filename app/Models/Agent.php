@@ -50,6 +50,11 @@ class Agent extends AuthenticatableAdmin
             return $this->belongsTo('App\Models\School','school_id','id','id');
         }
      ###########  
+        public function img()
+        {
+            return $this->belongsTo('App\Models\Image','image_id','id','id');
+        }
+     ###########  
     
     
     ##############   end Relationes     ##############
