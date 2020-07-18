@@ -139,7 +139,7 @@
                                 من الوظيفة الي اسمها 
                                 HomeController@home()
                                 --}}
-                            <img src="{{ url('Images/school/'.session('school.logo') ) }}" class="img-circle elevation-2" alt="User Image">
+                            <img src="{{ asset('Images/school/'.session('school.logo') ) }}" class="img-circle elevation-2" alt="User Image">
                         </div>
                         <div class="info">
                             <a href="#" class="d-block">{{ session('school.name') ?? __('school name') }}</a>
