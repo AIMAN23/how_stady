@@ -110,7 +110,7 @@
                                     <div class="text-center">
                                         <img class="profile-user-img img-fluid img-circle"
                                             {{-- src="{{ asset('img/.'.Auth::user()->image()->img) }}" alt="User profile picture"> --}}
-                                            src="{{ asset('images/user/'.App\Models\Image::find(3)->img) ?? '' }}" alt="User profile picture" />
+                                            src="{{ asset('img/'.Auth::user()->img) ?? asset('img/avatar1.jpg') }}" alt="User profile picture" />
                                     </div>
                                     {{-- <img src="{{ url('storage\العلاقات لقاعدة بيانات المكتبة.jpg') }}" width="100%" alt=""> --}}
 
