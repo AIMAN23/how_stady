@@ -499,7 +499,7 @@
             });
         });
         </script>
-        @include('includes\swets-js')
+        @include('includes.swets-js')
         @yield('ajax')
         <script> $(function () {
                 $("#example1").DataTable({
