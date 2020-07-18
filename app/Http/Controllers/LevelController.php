@@ -88,7 +88,7 @@ class LevelController extends Controller
                     ]);
                 $level->update(['supervisor_id' => $supervisor->id]);
             */
-                $data= $s->supervisors()->all();//->get();
+                $data= $s->supervisors();//->get();
                 return response()->json($data);
                 return view('admin.get.form-edit-level', compact('data'));
             }
