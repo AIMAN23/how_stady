@@ -103,7 +103,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 			});
 			Route::group(['prefix' => '/all'], function () {
 				// رابط يقوم بجلب سجلات الطلاب المسجلين في المدرسة
-				Route::get('all\student', function () {		return view('admin\get\all-student');		})->name('all.student');
+				Route::get('all\student', function () {		return view('admin.get.all-student');		})->name('all.student');
 			});
 
 
