@@ -10,6 +10,7 @@
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <meta name="csrf-token2" content="{!! csrf_token() !!}">
+        <link rel="shortcut icon" href="{{ url('img/logo.png') }}">
         {{-- <link rel="stylesheet" href="{{ asset('css/alladminlte.css') }}"> --}}
         {{-- <link rel="stylesheet" href="{{ asset('css/app.css') }}"> --}}
         <!-- Font Awesome -->
