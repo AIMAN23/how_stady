@@ -27,7 +27,7 @@
     <!-- Mobile Specific Meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicon-->
-    <link rel="shortcut icon" href="{{ url('img/fav.png') }}">
+    <link rel="shortcut icon" href="{{ url('img/logo.png') }}">
     <!-- Author Meta -->
     <meta name="author" content="">
     <!-- Meta Description -->
@@ -74,7 +74,7 @@
 
                             <!-- Logo -->
                             <a class="text-uppercase nav-brand"  href="{{ route('welcome') }}" style="color: #000;height:200%;">
-                                    <img src="{{ url('img/logo.png') }}" height="100%" alt="{{ __('lang.NotesApp') }}">
+                                    <img src="{{ url('img/logo3.png') }}" height="100%" alt="{{ __('lang.NotesApp') }}">
                             </a>
 
                             <!-- Navbar Toggler -->

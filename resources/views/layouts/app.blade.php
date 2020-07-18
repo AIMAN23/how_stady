@@ -73,7 +73,7 @@
 
                         <!-- Logo -->
                         <a class="text-uppercase nav-brand"  href="{{ route('welcome') }}" style="color: #000;">
-                                <img src="{{ url('img/logo5.png') }}" height="33px" alt="{{ __('lang.NotesApp') }}">
+                                <img src="{{ url('img/logo3.png') }}" height="33px" alt="{{ __('lang.NotesApp') }}">
                         </a>
 
                         <!-- Navbar Toggler -->
