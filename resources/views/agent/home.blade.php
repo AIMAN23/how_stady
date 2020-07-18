@@ -108,9 +108,13 @@
                             <div class="card card-primary card-outline">
                                 <div class="card-body box-profile">
                                     <div class="text-center">
-                                        <img class="profile-user-img img-fluid img-circle"
-                                            {{-- src="{{ asset('img/.'.Auth::user()->image()->img) }}" alt="User profile picture"> --}}
-                                            src="{{ asset('img/'.Auth::user()->img->img??'avatar1.jpg' ) ?? asset('img/avatar1.jpg') }}" alt="User profile picture" />
+                                        @if (Auth::user()->image_id == 0)
+                                            <img class="profile-user-img img-fluid img-circle"
+                                            src="{{ asset('img/avatar1.jpg') }}" alt="User profile picture" />    
+                                            @else
+                                            <img class="profile-user-img img-fluid img-circle"
+                                            src="{{ asset('img/'.Auth::user()->img->img) }}" alt="User profile picture" />
+                                        @endif
                                     </div>
                                     {{-- <img src="{{ url('storage\العلاقات لقاعدة بيانات المكتبة.jpg') }}" width="100%" alt=""> --}}
 
