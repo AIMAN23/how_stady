@@ -133,7 +133,7 @@ $dir=($lang == 'en') ? 'ltr' : 'rtl' ;
                   </div>
 <div class="col-6 pr-1 p-0 m-0">
                      <div style="background-image: url('{{ asset("Images/school/".$school->logo) }}');opacity: 95%; background-repeat: no-repeat; background-size: contain;" class="w-50 h-100 elevation-2 float-right">
-  <p>.</p>
+  <p><img class="w-100" src="{{ asset('Images/school/'.$school->logo) }}" alt="school-logo"></p>
                      </div>
                   </div>
 

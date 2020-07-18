@@ -31,8 +31,8 @@
     <style>
         td {
         background-color: honeydew;
-        background-image: url("{{ asset('img/card-123-no-line-nwe-logo-2-1.png') }}");
         background-image: url("{{ url('img/card-1-L-new-logo.png') }}");
+        background-image: url("{{ asset('img/card-123-no-line-nwe-logo-2-1.png') }}");
         
         background-size: contain;
         background-repeat: no-repeat;
