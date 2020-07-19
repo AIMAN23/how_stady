@@ -44,6 +44,26 @@
 		background-color: #0ee;
 		text-decoration: none;
 	}
+	/*start badge student */
+	.top-0{
+		top: 0%;
+	}
+	.top-25{
+		top: 25%;
+	}
+	.top-50{
+		top: 50%;
+	}
+	.top-75{
+		top: 75%;
+	}
+
+	span.badge.bstu {
+    left: 0px;
+    /* top: inherit; */
+    right: 90%;
+	}
+	/* end badge student */
 /*end wedgit student  */
 
 /*table*/
@@ -73,12 +93,27 @@
 	}
 /*end sidoar color*/
 /*badge*/
+	.mbadge {
+		cursor: pointer;
+		display: inline-block;
+		padding: .25em .4em;
+		/* font-size: 75%; */
+		font-weight: 700;
+		line-height: inherit;
+		height: 30px;
+		width: 30px;
+		text-align: center;
+		white-space: nowrap;
+		vertical-align: baseline;
+		border-radius: 1rem;
+		transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+	}
 	.badge {
 	    display: inline-block;
 	    padding: .25em .4em;
-	    font-size: 75%;
+	    font-size: 50%;
 	    font-weight: 700;
-	    line-height: 1;
+	    /* line-height: 1; */
 	    text-align: center;
 	    white-space: nowrap;
 	    vertical-align: baseline;

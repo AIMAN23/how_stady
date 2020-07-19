@@ -124,8 +124,31 @@ return [
       ],
     'check levels'=>'Check levels in your school',
 
+    'page'=>[
+        'home'=>'Home Page',
+        'profile'=>'Profile Page',
+        'dashboard'=>'Dashboard',
+        ''=>'',
+        ''=>'',
+    ],
     ''=>'',
     ''=>'',
     ''=>'',
     'Copyright'=>'Copyright',
+
+
+    // pareents started
+    'PAR'=>[
+        'not-has'=>[
+            'student'=>'Sorry! You dont have registered students.',
+        ],
+        'page' => '',
+        '' => '',
+        '' => '',
+        '' => '',
+        '' => '',
+    ],
+    // end pareent language
+
+
 ];

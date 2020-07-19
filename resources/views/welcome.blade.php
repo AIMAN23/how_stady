@@ -170,7 +170,7 @@
                                     <select id="usercode" class="form-control" name="tayp-login">
                                         <option value="nell" selected>{{ __('lang.usre tayp') }}</option>
                                         <option value="student">{{ __('lang.Student') }}</option>
-                                        <option value="parent">{{ __('lang.Parent') }}</option>
+                                        <option value="pareent">{{ __('lang.Parent') }}</option>
                                         <option value="teacher">{{ __('lang.Teacher') }}</option>
                                         <option value="supervisor">{{ __('lang.Supervisor') }}</option>
                                         <option value="secretary">{{ __('lang.Secretary') }}</option>

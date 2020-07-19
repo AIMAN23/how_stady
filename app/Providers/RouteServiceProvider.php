@@ -28,6 +28,7 @@ class RouteServiceProvider extends ServiceProvider
     public const ADMIN= 'admin/home';
     public const supervisor= 'supervisor/home';
     public const agent= 'agent/home';
+    public const pareent= 'pareent/home';
 
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -54,10 +55,14 @@ class RouteServiceProvider extends ServiceProvider
         // الروابط الخاصة بضيوف الموقع
         $this->mapWebRoutes();
         
-        // manager
-        $this->mapManagerRoutes();
         // الروابط الخاصة بادمن المدرسة
         $this->mapAdminRoutes();
+        
+        // manager
+        $this->mapManagerRoutes();
+        
+        // pareent
+        $this->mapPareentRoutes();
         //
     }
 
@@ -90,6 +95,14 @@ class RouteServiceProvider extends ServiceProvider
         Route::middleware('web')
             ->namespace($this->namespace)
             ->group(base_path('routes/manager.php'));
+    }
+
+    protected function mapPareentRoutes()
+    {
+        // تعريف خصائص روابط manager
+        Route::middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/pareent.php'));
     }
 
     /**

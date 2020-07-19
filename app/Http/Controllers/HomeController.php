@@ -75,6 +75,12 @@ class HomeController extends Controller
         
         return view('manager.home')->with('school',$user->school);
     }
+    public function pareent(Request $request)
+    {
+        $user=Auth::user();
+        
+        return view('pareent.home');
+    }
     public function agent(Request $request)
     {
         $user=Auth::user();

@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-// use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as AuthenticatableAdmin;
+use Illuminate\Notifications\Notifiable;
 
-class Pareent extends Model
+class Pareent extends AuthenticatableAdmin
 {
-    // use Notifiable;
+    use Notifiable;
 
     /**
      * The attributes that are mass assignable.

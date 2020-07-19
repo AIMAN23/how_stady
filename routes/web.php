@@ -18,6 +18,9 @@
   ## [ar\en] تقوم بتغير الغة حسب اختيار المستخدم
 Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 {  
+  Route::get('/returnlogin', function () {
+      return redirect('/#login');
+  })->name('returnlogin');
 
   /**
    * روابط اشتراك مدرسة جديدة

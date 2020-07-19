@@ -31,7 +31,8 @@ class Authenticate extends Middleware
         $routname = ($request->session()->has('datalogin.taypuser'))
          ? $request->session()->get('datalogin.taypuser').'.login' :'returnlogin' ;
         
-         return route($routname);
+        //  return route($routname);
+         return route('welcome');
     }
 
 }

@@ -30,7 +30,7 @@
     <body class="hold-transition login-page">
 
       {{-- start body --}}
-
+      @include('includes.messages')    
         @yield('body')
         
       {{-- /.end body --}}

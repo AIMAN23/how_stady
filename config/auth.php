@@ -59,6 +59,14 @@ return [
             'driver' => 'session',
             'provider' => 'supervisor',
         ],
+        // 'super' => [
+        //     'driver' => 'session',
+        //     'provider' => 'supervisor',
+        // ],
+        'pareent' => [
+            'driver' => 'session',
+            'provider' => 'pareents',
+        ],
         
 
         'api' => [
@@ -114,6 +122,10 @@ return [
         'admins' => [
             'driver' => 'eloquent',
             'model' => App\Models\SchoolAdmin::class,
+        ],
+        'pareents' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Pareent::class,
         ],
 
         'supervisor' => [
@@ -172,6 +184,12 @@ return [
 
         'supervisor' => [
             'provider' => 'supervisor',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'pareents' => [
+            'provider' => 'pareents',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
