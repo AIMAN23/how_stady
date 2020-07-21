@@ -175,7 +175,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
      * الخاصة به
      * 
      */
-    Route::group(['middleware' => ['auth:super'] ], function () {
+    Route::group(['middleware' => ['auth:supervisor'] ], function () {
       // رابط الصفحة الرئيسية له بعد تسجيل الدخول
       Route::get('/', function () { return redirect()->route('supervisor.home');  });
       // او هاذا لصفحة الرئيسية

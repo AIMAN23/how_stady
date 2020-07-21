@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth\Admin;
+namespace App\Http\Controllers\Auth\agent;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
@@ -26,7 +26,7 @@ class VerificationController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::ADMIN;
+    protected $redirectTo = RouteServiceProvider::agent;
 
     /**
      * Create a new controller instance.
@@ -35,7 +35,7 @@ class VerificationController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:admin');
+        $this->middleware('auth:agent');
         $this->middleware('signed')->only('verify');
         $this->middleware('throttle:6,1')->only('verify', 'resend');
     }

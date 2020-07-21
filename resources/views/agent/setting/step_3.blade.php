@@ -4,9 +4,9 @@
     <div class="container col-md-8">
       <div class="card card-widget widget-user">
         <div class="widget-user-header bg-c text-white">
-            <h3 class="">{{('قم باضافة المشرفين')}}</h3>
-            <!-- <h5 class="widget-user-desc">{{('المرحلة')}} &amp; {{('الشعبة')}}</h5> -->
-          </div>
+          <h3 class="">{{('قم باضافة المشرفين')}}</h3>
+          <!-- <h5 class="widget-user-desc">{{('المرحلة')}} &amp; {{('الشعبة')}}</h5> -->
+        </div>
 
 
         <div id="wrapper" class="clearfix">
@@ -31,13 +31,15 @@
 
             <br>
             <div class="container">
+              {{-- بداية جزء اظافة المشرفين  --}}
+               {{--  هذا  الجزء لايظهر اذا كان المرحلة موجود لها مشرف--}}
               <div class="row">
                 <div class="col-md-12">
                   <!--<div class="panel panel-default">-->
                   <!--<div class="panel-heading">Register</div>-->
 
                   <!--<div class="panel-body">-->
-
+                    {{--  رسلالة الخطاء --}}
                   <div class="row">
                     <div class="col-md-8 col-xs-12 col-sm-6">
                       <div class="alert alert-danger" style="display:none;">
@@ -45,6 +47,7 @@
                       </div>
                     </div>
                   </div>
+                    {{--  رسلالة النجاح --}}
                   <div class="row">
                     <div class="col-md-8 col-xs-12 col-sm-6">
                       <div class="alert alert-success" style="display:none;">
@@ -55,6 +58,7 @@
 
                   
                   <br>
+                  {{-- بداية جزء ادخال بيانات المشرف --}}
                   {{-- <form method="POST" action="{{ route('agent.password.update') }}"> --}}
                     @csrf
                     {{--  --}}
@@ -100,13 +104,19 @@
 
                 </div>
               </div>
+               {{-- نهاية جزء اظافة المشرفين  --}}
               <hr>
+              
+              {{-- جزء عرض البيانات للمراحل والمشرفين --}}
               <div class="row">
                 <div class="col-md-12">
                   <div class="card">
                     <div class="card-header bg-c">
                       <h3 class="card-title">{{ ('المراحل & المشرفين') }}</h3>
                     </div>
+
+
+                    {{-- بداية عرض المشرفين والراحل  --}}
                     <!-- /.card-header -->
                     <div class="card-body">
                       <table class="table table-bordered">
@@ -160,6 +170,8 @@
                       </table>
                     </div>
                     <!-- /.card-body -->
+                    {{-- بداية عرض المشرفين والراحل  --}}
+
                     {{-- <div class="card-footer clearfix">
                       <ul class="pagination pagination-sm m-0 float-right">
                         <li class="page-item"><a class="page-link" href="#">«</a></li>
@@ -172,6 +184,8 @@
                   </div>
                 </div>
               </div>
+              {{-- جزء عرض البيانات للمراحل والمشرفين --}}
+
             </div> <!-- END of Container -->
             <!-- Footer -->
 

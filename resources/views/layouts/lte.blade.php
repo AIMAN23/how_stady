@@ -50,7 +50,7 @@
                       <span></span>
                   </span>
                   <div class="algnt-left">
-                      <a href="#">Aiman</a>
+                      <a href="#">{{ __('Aiman') }}</a>
                   </div>
               </div>
 

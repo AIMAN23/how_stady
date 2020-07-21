@@ -135,7 +135,7 @@
         $.ajax({
             type:"get",
             // enctype: "multipart/form-data",
-            url:"{{ route('get.all.csv') }}",
+            url:{!! route('get.all.csv') !!},
                     // data: formData,
                     // processData: false,
                     // contentType: 'JSON',

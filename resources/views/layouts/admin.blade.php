@@ -501,8 +501,9 @@
         });
         </script>
         @include('includes.swets-js')
-        @yield('ajax')
-        <script> $(function () {
+        
+        <script> 
+        $(function () {
                 $("#example1").DataTable({
                   "responsive": true,
                   "autoWidth": false,
@@ -516,6 +517,8 @@
                   "autoWidth": false,
                   "responsive": true,
                 });
-              });</script>
+              });
+        </script>
+        @yield('ajax')
     </body>
 </html>
