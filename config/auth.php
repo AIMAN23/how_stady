@@ -44,7 +44,7 @@ return [
         
         'manager' => [
             'driver' => 'session',
-            'provider' => 'manager',
+            'provider' => 'managers',
         ],
         'agent' => [
             'driver' => 'session',
@@ -55,13 +55,13 @@ return [
             'driver' => 'session',
             'provider' => 'admins',
         ],
-        'super' => [
+        'supervisor' => [
             'driver' => 'session',
-            'provider' => 'supervisor',
+            'provider' => 'supervisors',
         ],
-        // 'super' => [
+        // 'supervisor' => [
         //     'driver' => 'session',
-        //     'provider' => 'supervisor',
+        //     'provider' => 'supervisors',
         // ],
         'pareent' => [
             'driver' => 'session',
@@ -104,7 +104,7 @@ return [
             'model' => App\User::class,
         ],
 
-        'manager' => [
+        'managers' => [
             'driver' => 'eloquent',
             'model' => App\Models\Manager::class,
         ],
@@ -128,7 +128,7 @@ return [
             'model' => App\Models\Pareent::class,
         ],
 
-        'supervisor' => [
+        'supervisors' => [
             'driver' => 'eloquent',
             'model' => App\Models\Supervisor::class,
         ],
@@ -161,8 +161,8 @@ return [
             'throttle' => 60,
         ],
 
-        'manager' => [
-            'provider' => 'manager',
+        'managers' => [
+            'provider' => 'managers',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
@@ -182,8 +182,8 @@ return [
             'throttle' => 60,
         ],
 
-        'supervisor' => [
-            'provider' => 'supervisor',
+        'supervisors' => [
+            'provider' => 'supervisors',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

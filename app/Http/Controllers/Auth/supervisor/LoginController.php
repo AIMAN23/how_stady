@@ -38,7 +38,7 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest:super')->except('logout');
+        $this->middleware('guest:supervisor')->except('logout');
     }
 
     protected function validateLogin(Request $request)
@@ -63,7 +63,7 @@ class LoginController extends Controller
     */
     protected function guard()
     {
-        return Auth::guard('super');
+        return Auth::guard('supervisor');
     }
 
     // عرض شاشة تسجيل دخول الادمن للمدرسة
@@ -107,6 +107,21 @@ class LoginController extends Controller
         $request->session()->regenerateToken();
 
         return $this->loggedOut($request) ?: redirect('/');
+    }
+
+
+
+
+
+      /**
+     * The user has logged out of the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return mixed
+     */
+    protected function loggedOut(Request $request)
+    {
+        //
     }
 
 }

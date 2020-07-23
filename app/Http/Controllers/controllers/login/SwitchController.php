@@ -2,41 +2,81 @@
 
 namespace App\Http\Controllers\controllers\login;
 
-use App\Http\Controllers\Controller;
+use App\Models\School;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class SwitchController extends Controller
 {
-    public function swhitchLogin(Request $request){
-        session()->put('datalogin',[
-            'taypuser' => $request['tayp-login'] ,
-            // 'backurl'  => route('v.switch.login') ,
-            // 'oldurl'   => session('_previous.url') ,//session()->get('url') ,
-            ]);
-            return redirect()->route($request['tayp-login'].'.login');
-        if ($request['tayp-login'] == 'admin') {
-            # code...
-            //  return redirect()->back()->with('backUrl' ,route('v.switch.login'));
-        //    session()->put('datalogin',['id' => 'admin','backUrl' => route('v.switch.login')]);
-            // return redirect()->route('showloginSchool');
-            return $request;
+    /**
+     * all guards[]
+     */
+    protected $allGuard = null;
+
+    public function __construct()
+    {
+        $guards=array();
+        foreach (config('auth.guards') as $key => $value) {
+            $guards[]=$key;
         }
-        elseif ($request['tayp-login'] == 'teacher') {
-            # code...
-        //    session()->put('datalogin',['id' => 'teacher','backUrl' => route('v.switch.login')]);
-            // return redirect()->back()->withErrors(['id' => 'admin','backUrl' => route('v.switch.login')]);
-            // return route('showloginSchool');
-            return $request;
-        }
-        elseif ($request['tayp-login'] == 'student') {
-            # code...
-            // session()->put('datalogin',['id' => 'student','backUrl' => route('school.address')]);
-            // return redirect()->route('login', ['id' => 'student','backUrl' => route('v.switch.login')]);
-            return $request;
-        }else {
-            # code...
-            // return redirect()->back()->withErrors(['error'=> __('lang.select the tayp user')]);
-            return $request;
-        }
+       $this->allGuard = $guards;
     }
-}
+
+
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+
+    public function swhitchLogin(Request $request){
+        // $request->validate();
+    $request->validate([
+        'tayp-login'=>'required|string|max:255',
+    ]);
+        // التئكد من عدم تسجيل دخول مستخدم اخر
+        $check=$this->checkLogin($request);
+        // $request->
+        //         session()->has('datalogin.taypuser') ?
+        //          $request->session()->get('datalogin.taypuser') 
+        //         :null;
+       
+        if(!empty($check) )
+        {
+            return redirect()->route($check.'.login');
+        }
+        else 
+        {
+            // او يتم التالي
+            # code...
+            session()->put('datalogin',[
+                'taypuser' => $request['tayp-login'] ,
+                // 'backurl'  => route('v.switch.login') ,
+                // 'oldurl'   => session('_previous.url') ,//session()->get('url') ,
+                ]);
+            return redirect()->route($request['tayp-login'].'.login');
+        }
+        
+    }
+
+
+    public function checkLogin(Request $request){
+       $s= School::all();
+        $guardname='';
+      
+        foreach ($this->allGuard as  $guard) {
+            # code...
+            // $request->route();
+            if(auth($guard)->check()){
+                $guardname= $guard;
+            }
+        }//end foreach 
+
+        return  $guardname;
+
+    }// end checkLogin
+
+
+
+}//end class

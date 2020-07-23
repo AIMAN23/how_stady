@@ -9,6 +9,7 @@
     <div class="card">
         <div class="card-body login-card-body">
             <p class="login-box-msg">{{ __('lang.manager') }}</p>
+            @guest('manager')
             <form method="POST" action="{{ route('manager.login.seve') }}">
                 @csrf
                 <div class="input-group mb-3">
@@ -66,6 +67,19 @@
                     <!-- /.col -->
                 </div>
             </form>
+
+            @else
+            <div class="card card-widget widget-user">
+                    <!-- Add the bg color to the header using any of the bg-* classes -->
+                    <div class="widget-user-header bg-a text-white">
+                        {{-- <h3 class="widget-user-username">{{Auth::user()->name}}</h3> --}}
+                    </div>
+                    <div class="widget-user-image">
+                        <img class="img-circle elevation-2" alt="User Image" src="{{ asset('lte/dist/img/userP-128x128.jpg') }}">
+                    </div>
+                    <a href="{{ route('manager.home') }}" class="btn btn-block btn-info mt-5">{{ __('lang.page.home') }}</a>
+                </div>
+            @endguest
             
             <p class="mt-3 mb-1">
                 @if (Route::has('password.request'))

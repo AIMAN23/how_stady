@@ -168,7 +168,7 @@
                             <div class="col-md-6">
                                 <div class="input-group input-group-sm">
                                     <select id="usercode" class="form-control" name="tayp-login">
-                                        <option value="nell" selected>{{ __('lang.usre tayp') }}</option>
+                                        <option value selected>{{ __('lang.usre tayp') }}</option>
                                         <option value="student">{{ __('lang.Student') }}</option>
                                         <option value="pareent">{{ __('lang.Parent') }}</option>
                                         <option value="teacher">{{ __('lang.Teacher') }}</option>
@@ -421,11 +421,31 @@
     <script src="{{ asset('js/jquery.stellar.min.js') }}"></script>
     <script src="{{ asset('js/jquery.counterup.min.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
+    {{-- الاشعارات --}}
+    <script src="{{ asset('lte/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
     <script>
             $(document).ready(function(){
                 // $('#loader-wrapper').fadeOut(4000);
                 // $('#loader-wrapper').remove();
             });
+        </script>
+    <script>
+        $(document).ready(function(){
+            $.ajaxSetup({
+                headers:{
+                    'X-CSRF-TOKEN':$('meta[name="csrf-token2"]').attr('content')
+                }
+            });
+        });
+        </script>
+        @include('includes.swets-js')
+        @yield('ajax')
+        <script>
+            // $(document).ready(function(){
+            //     alert('مرحبا بك');
+            //     $(document).error(alert(data));
+                    
+            // })
         </script>
 </body>
 
