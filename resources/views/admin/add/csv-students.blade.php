@@ -27,12 +27,7 @@
 @section('content-header')
 <h1>{{ __('admin.add student') }}</h1>
 {{--  --}}
-      <form action="example.com" method="POST">
-        <label for="username">sequi</label>
-        <input type="text" id="username">
-        <label for="password">et</label>
-        <input type="password" id="password">
-      </form>
+
       <b>Id aut saepe non mollitia voluptas voluptas.</b>
       <table id="ex2">
         <thead>
@@ -111,7 +106,7 @@
         </tbody>
       </table>
 {{--  --}}
-   
+
 @endsection
 
 @section('content')
