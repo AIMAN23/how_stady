@@ -27,7 +27,7 @@ class RedirectIfAuthenticated
             {
                 return redirect(RouteServiceProvider::HOME);
             }
-            if ($guard=='super') 
+            if ($guard=='supervisor') 
             {
                 return redirect(RouteServiceProvider::supervisor);
             }

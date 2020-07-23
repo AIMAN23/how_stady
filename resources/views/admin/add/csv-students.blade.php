@@ -264,7 +264,11 @@
         $.ajax({
             type:"get",
             // enctype: "multipart/form-data",
+<<<<<<< HEAD
             url:"{{  route('get.all.csv') }}",
+=======
+            url:{!! route('get.all.csv') !!},
+>>>>>>> a4966c1c108e6e2a2df73ddc4269a05547033c69
                     // data: formData,
                     // processData: false,
                     // contentType: 'JSON',
