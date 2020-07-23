@@ -1,4 +1,13 @@
 {
+    "repositories": [
+        {
+            "type":"composer",
+            "url": "https://packagist.org"
+        }
+        ,
+        { "packagist":false  }
+    ],
+
     "name": "laravel/laravel",
     "type": "project",
     "description": "The Laravel Framework.",
@@ -9,12 +18,14 @@
     "license": "MIT",
     "require": {
         "php": "^7.2",
+        "almasaeed2010/adminlte": "~3.0",
         "consoletvs/charts": "^6.5",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "^6.2",
         "laravel/nexmo-notification-channel": "^2.3",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^1.2",
+        "laravelcollective/html": "^6.1",
         "mcamara/laravel-localization": "^1.5"
     },
     "require-dev": {
