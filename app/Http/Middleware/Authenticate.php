@@ -9,14 +9,14 @@ use Illuminate\Auth\AuthenticationException;
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
 
 /**
- * 
+ *
  * طبقة التأكد من تسجل الدخول للمستخدمين
  * لو لم يكن مسجل الدخول يقوم بتحويلة
  * على صفحة تسجيل الدخول
  * الخاصة بة او العامة
  * تلقائيا
- * 
- *  */ 
+ *
+ *  */
 
 
 class Authenticate extends Middleware
@@ -32,7 +32,7 @@ class Authenticate extends Middleware
     //     if (! $request->expectsJson()) {
     //         $routname = ($request->session()->has('datalogin.taypuser'))
     //      ? $request->session()->get('datalogin.taypuser').'.login' :'returnlogin' ;
-        
+
     //         return route($routname);
     //     }
 
@@ -44,14 +44,10 @@ class Authenticate extends Middleware
 
 
 
-<<<<<<< HEAD
     // نوع المستخدم  اضافة جديدة
-=======
-
->>>>>>> a4966c1c108e6e2a2df73ddc4269a05547033c69
     protected $guards;
     // ========================================
-    // 
+    //
         /**
      * Handle an unauthenticated user.
      *
@@ -63,18 +59,14 @@ class Authenticate extends Middleware
      */
     protected function unauthenticated($request, array $guards)
     {
-<<<<<<< HEAD
         // تسجيل النوع في حالة لم يكن متصل
         $this->guards = $guards;
-        // 
-=======
-        $this->guards = $guards;
->>>>>>> a4966c1c108e6e2a2df73ddc4269a05547033c69
+        //
         throw new AuthenticationException(
             'Unauthenticated.', $guards, $this->redirectTo($request)
         );
     }
-    
+
     // #########################
 
     /**
@@ -90,7 +82,7 @@ class Authenticate extends Middleware
             $guards = [null];
             return null;
         }
-        
+
         if (! $request->expectsJson()) {
             if (is_array($guards)) {
                 # code...
@@ -103,7 +95,7 @@ class Authenticate extends Middleware
         }
 
 
-        return route($guards.'.home');   
+        return route($guards.'.home');
 
     }
     // ===============================================
