@@ -3,7 +3,7 @@
 
 @section('main-header-li-left')
 {{-- @include('admin.include.main-header-li-left') --}}
-{{-- <php 
+{{-- <php
     $auth_no=Auth::user()->no;
     $auth_pass=Auth::user()->getAuthPassword();
     $check_pass =  Hash::check($auth_no, auth_pass);
@@ -130,7 +130,7 @@
           <!-- form ajax -->
           <fieldset style="border:1px blue solid; margin: 10px;padding: revert;">
             <legend style="width: auto; padding: 10px;">{{ __('admin.add student') }}</legend>
-  
+
             <form id="addcsv" enctype="multipart/form-data">
               <div class="form-group">
                 <label for="level">{{ __('admin.levels') }}</label>
@@ -150,7 +150,7 @@
               {{-- <input type="text" name="level_uuid" id="description"> --}}
               <input type="submit" value="ok" class="btn btn-info">
             </form>
-  
+
           </fieldset>
         </div>
       </div>
@@ -189,7 +189,7 @@
 </script>
 
 <script>
-    
+
     // $("#all-added").next(refresh);
   $(document).ready(function(){
     var refresh ='<div id="overlay" class="overlay"><i class="fas fa-2x fa-sync-alt fa-spin"></i></div> ';
@@ -205,7 +205,7 @@
     $('#addcsv').submit(function(e){
         e.preventDefault();
         var formData= new FormData($('#addcsv')[0]);
-        // 
+        //
         $("#content_loud").append(refresh);
         $.ajax({
             type:"POST",
@@ -215,20 +215,20 @@
                     processData: false,
                     contentType: false,
                     cache: false,
-            
-            
-            
+
+
+
             success:function(databack){
                 $('#overlay').remove();
                 $('#tab').append(databack);
                 $('#addcsv:[input]').val()='';
-                
+
                 // console.log(data);
             },
             error:function(xhr,status,error){
               $('#tab').html('');
               $('#overlay').remove('#overlay');
-                
+
               $('#tab').append(error+'<hr>');
               var x=xhr.responseJSON.errors;
 
@@ -236,12 +236,12 @@
                 $('#tab').append(x.level_uuid +'<hr>' ?? '');
                 $('#error_levels').html(x.level_uuid);
               }else{$('#error_levels').html(''); }
-              
+
               if (x.description !=null) {
                 $('#tab').append(x.description+'<hr>' ?? '');
                 $('#error_description').html(x.description);
               }else{$('#error_description').html(''); }
-              
+
               if (x.csv !=null) {
                 $('#tab').append(x.csv+'<hr>' ?? '');
                 $('#error_csv').html(x.csv);
@@ -255,7 +255,7 @@
     $('#getcsv').click(function(e){
         e.preventDefault();
         var id= $(this).attr('data-body');
-        // 
+        //
         $.ajax({
             type:"get",
             // enctype: "multipart/form-data",
@@ -264,16 +264,16 @@
                     // processData: false,
                     // contentType: 'JSON',
                     // cache: false,
-            
-            
-            
+
+
+
             success:function(databack){
                 // $('#tab').prepend(databack);
                 $('#'+id).html('');
                 $('#'+id).html(databack).fadeIn(400);
                 // $('#'+id).fadeIn();
                 // $('#addcsv').attr("style");
-                
+
                 // console.log(databack);
             },
             error:function(xhr,status,error){
