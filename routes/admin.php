@@ -1,22 +1,5 @@
 <?php
-// no users
-	define('NO_time_and_random_int',time().random_int(1,99));
-	define('NO_school', 'SCH'.NO_time_and_random_int );
-	define('NO_manager', 'MAN'.NO_time_and_random_int );
-	define('NO_agent', 'AGN'.NO_time_and_random_int );
-	define('NO_admins', 'ADM'.NO_time_and_random_int );
-	define('NO_financial', 'FIN'.NO_time_and_random_int );
-	define('NO_secretary', 'SEC'.NO_time_and_random_int );
-	define('NO_specialist', 'SPE'.NO_time_and_random_int );
-	define('NO_Supervisor', 'SUP'.NO_time_and_random_int );
-// 
-	define('New_Uuid', Illuminate\Support\Str::uuid() );
-	define('img',new App\Models\Image );
-	define('School_id',session('school.id'));
-	define('Code_levels',array('L1as', 'L2as', 'L3as', 'L4as', 'L5as', 'L6as', 'L7as', 'L8as', 'L9as', 'L1th', 'L2th', 'L3th'));
-	define('Password_define',Illuminate\Support\Facades\Hash::make('123456789'));
-// files path
-	define('FILE_SCHOOL','public/csv/school/');
+
 	
 
 // use Illuminate\Support\Facades\Auth;

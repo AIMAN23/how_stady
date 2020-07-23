@@ -26,14 +26,15 @@ class StudentRegisterController extends Controller
                 'level_uuid'=>'required',
                 'csv' => 'required|mimes:prn,txt,csv',
                 // 'csv' => 'mimetypes:text/csv,application/vnd.ms-excel,csv|mimes:csv,xls',
-                'description'=>'required',
+                'description'=>'required|max:100|min:4|string',
             ]);
-            // $validation= $request->validate([
-            //     'level_uuid'=>'required',
-            //     // 'csv' => 'mimes:application/vnd.ms-excel',
-            //     'csv' => 'mimetypes:text/csv,application/vnd.ms-excel,csv|mimes:csv,xls',
-            //     'description'=>'required',
-            // ]);
+            // 
+                // $validation= $request->validate([
+                //     'level_uuid'=>'required',
+                //     // 'csv' => 'mimes:application/vnd.ms-excel',
+                //     'csv' => 'mimetypes:text/csv,application/vnd.ms-excel,csv|mimes:csv,xls',
+                //     'description'=>'required',
+                // ]);
             $school=School::find(session('school.id'));
             $level=Level::where('uuid',$request->level_uuid)->first();
             
@@ -47,13 +48,13 @@ class StudentRegisterController extends Controller
                 'pareent_mobile',
                 'stu_gender'];
             $data_csv = $this->ajaxReadCsv($path,$keys,';');
-            $data_csv_new=array();
+            $csv_new=array();
             foreach ($data_csv as $s ) {
                 // add class room
                 $class['name']=$s['classroom_name'];
                 // $class['level_id']=$level->id;
                 $class['teacher_id']=0;
-            $classroom=$this->addClassRoom($class,$school,$level);
+                $classroom=$this->addClassRoom($class,$school,$level);
                 // add student
                 $stu['no']=$s['no_student'] ;
                 $stu['name']=$s['stu_name'] ;
@@ -62,10 +63,10 @@ class StudentRegisterController extends Controller
                 $stu['stu_gender']=$s['stu_gender'] ;
                 // $stu['school_year']=$s['school_year'] ;
             $register= $this->registerStudent($stu,$school,$level,$classroom);
-            $data_csv_new[]=$register;
+            $csv_new[]=$register;
             }
 
-            return view('admin.add.tab',compact('data_csv_new'));
+            return view('admin.add.tab',compact('csv_new'));
             
                 // return 'no has file csv';
             
@@ -78,22 +79,37 @@ class StudentRegisterController extends Controller
     #####################################
     public function addClassRoom(array $attr ,$school,$level)
     {
-        $class=$school->classrooms()->where('name',$attr['name'])->where('level_id',$level->id)->first();
+        $school_id = $school->id;
+        $level_id  = $level->id;
+        $class  =   $school->
+                        classrooms()
+                        ->where('name',$attr['name'])
+                        ->where('level_id',$level_id)
+                        ->where('school_id',$school_id)
+                        ;
 
         // $classr=$class->;
 
-        if(isset($class) && $class->count() > 0){
-            $classroom =$class;
+        if(isset($class)
+            &&  Auth::user()->school_id == $school_id
+            &&  $class->count() > 0
+            )
+        {
+            $classroom =$class->first();
             return  $classroom;
+        }else {
+            # code...
+            $classroom = $school
+                ->classrooms()
+                ->create([
+                    'uuid' => Str::uuid(),
+                    'name' => $attr['name'],
+                    'code' =>'STU'.NO_time_and_random_int ?? str::random(),
+                    'school_id' => $school->id,
+                    'level_id' => $level->id,
+                    'teacher_id' => $attr['teacher_id'] ?? 0,
+                ]);
         }
-        $classroom = $school->classrooms()->firstOrCreate([
-                'uuid' => Str::uuid(),
-                'name' => $attr['name'],
-                'code' =>'STU'.NO_time_and_random_int ?? str::random(),
-                'school_id' => $school->id,
-                'level_id' => $level->id,
-                'teacher_id' => $attr['teacher_id'] ?? 0,
-            ]);
         return $classroom;
     }
     ####################################
@@ -111,30 +127,32 @@ class StudentRegisterController extends Controller
         // السنة الدراسية
         $student_validation = StudentRegister::where('name', $attr['name'])
             ->where('school_id', $school->id)
+            ->where('level_id', $level->id)
+            ->where('status', 0)
             ->where('classroom_id', $classroom->id)
-            ->where('classroom_id', $classroom->id)
-            ->where('school_year', $attr['school_year'] ?? $df . '-' . $dn)
-            ->where('level_id', $level->id);
+            ->where('school_year', $attr['school_year'] ?? $df . '-' . $dn);
         //-------------------1 
         if ($student_validation->count() < 1) {
             ###[2]// لو غير موجود اسم الطالب في السجلات
             //  يتم انشاء سجل جديد للطالب 
-            $student = $school->registers()->firstOrCreate([
-                'code' => str::random(3) . time(),
-                'no' => $attr['no'],
-                'status' => $attr['status'] ?? 0,
-                'name' => $attr['name'],
-                'img' => $attr['img'] ?? 'student.png',
-                'school_year' => $attr['school_year'] ?? $df . '-' . $dn,
-                'student_id' => 0,
-                'school_id' => $school->id,
-                'level_id' => $level->id,
-                'classroom_id' => $classroom->id,
-                'schooladmin_id' => Auth::id(),
-            ]);
+            $student = $school->
+            registers()
+                ->firstOrCreate([
+                    'code' => str::random(3) . time(),
+                    'no' => $attr['no'],
+                    'status' => $attr['status'] ?? 0,
+                    'name' => $attr['name'],
+                    'img' => $attr['img'] ?? 'student.png',
+                    'school_year' => $attr['school_year'] ?? $df . '-' . $dn,
+                    'student_id' => 0,
+                    'school_id' => $school->id,
+                    'level_id' => $level->id,
+                    'classroom_id' => $classroom->id,
+                    'schooladmin_id' => Auth::id(),
+                ]);
             // ثم اكمال بيانات ولي الامر نفس ما تم في المرحلة السابقة
         }else {
-            $student = $student_validation;
+            $student = $student_validation->first();
         }
         // ------------------2
         ##########################اظافة بيانات ولي الامر##########################
@@ -218,15 +236,25 @@ class StudentRegisterController extends Controller
     #####################################
     public function moveCsvStudent(Request $request,$school_uuid)
     {
+    // old name file
         $file_name_a = $request->csv->getClientOriginalName();
         // $file_name = time() . '-' . $file_name_a;
-        $file_name = time().'-'.Auth::user()->id.'-'.$file_name_a;
+    // new name file
+        $file_name = date('d-M-Y H:i:s',time())
+                        .'-Time'.time()
+                        .'-SCO_'.Auth::user()->school_id
+                        .'-ADM_'.Auth::user()->id
+                        .'-AUTH'.Auth::user()->getAuthIdentifierName()
+                        .'-F_'.$file_name_a 
+                    ??
+                        time().'-'.Auth::user()->id.'-'.$file_name_a;
+        // 
         $path = $request->csv->move(public_path('storage\\csv\\school\\'.$school_uuid), $file_name);
         // seve file in database
-        $file_path=\storage_path('\\csv\\school\\'.$school_uuid.$file_name);
+        $file_path=\storage_path('\\csv\\school\\'.$school_uuid.'\\'.$file_name);
         $file=new File;
         $file->create([
-            'no'=>time().'-a'.Auth::user()->id.'-s'.session('school.id'),
+            'no'=>time().'-a'.Auth::user()->id.'-s'.Auth::user()->school_id,
             'status'=>0,
             'filename'=>$file_name,
             'path'=>$file_path ?? $path,
@@ -235,7 +263,7 @@ class StudentRegisterController extends Controller
             'school_admin_id'=>Auth::user()->id,
         ]);
 
-        return $path;
+        return $file_path ?? $path;
     }
     #####################################
     // قرائة بيانات الطلاب من ملف الاكسل

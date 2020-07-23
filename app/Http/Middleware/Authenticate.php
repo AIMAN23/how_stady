@@ -44,7 +44,7 @@ class Authenticate extends Middleware
 
 
 
-
+    // نوع المستخدم  اضافة جديدة
     protected $guards;
     // ========================================
     // 
@@ -59,7 +59,9 @@ class Authenticate extends Middleware
      */
     protected function unauthenticated($request, array $guards)
     {
+        // تسجيل النوع في حالة لم يكن متصل
         $this->guards = $guards;
+        // 
         throw new AuthenticationException(
             'Unauthenticated.', $guards, $this->redirectTo($request)
         );
