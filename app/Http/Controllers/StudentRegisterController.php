@@ -28,7 +28,7 @@ class StudentRegisterController extends Controller
                 // 'csv' => 'mimetypes:text/csv,application/vnd.ms-excel,csv|mimes:csv,xls',
                 'description'=>'required|max:100|min:4|string',
             ]);
-            // 
+            //
                 // $validation= $request->validate([
                 //     'level_uuid'=>'required',
                 //     // 'csv' => 'mimes:application/vnd.ms-excel',
@@ -37,7 +37,7 @@ class StudentRegisterController extends Controller
                 // ]);
             $school=School::find(session('school.id'));
             $level=Level::where('uuid',$request->level_uuid)->first();
-            
+
             $path=$this->moveCsvStudent($request,$school->uuid);
             $keys=[
                 'no_student',
@@ -67,9 +67,9 @@ class StudentRegisterController extends Controller
             }
 
             return view('admin.add.tab',compact('csv_new'));
-            
+
                 // return 'no has file csv';
-            
+
         }
         return 'no ajax';
     }
@@ -120,7 +120,7 @@ class StudentRegisterController extends Controller
         $dn = intval(date('Y'));
         $df = $dn + 1;
         $student=null;
-        // التأكد من اسم الطالب هل هو موجود 
+        // التأكد من اسم الطالب هل هو موجود
         // في نفس المرحلة و
         // المدرسة و
         // الشعلة الدراسي و
@@ -131,10 +131,10 @@ class StudentRegisterController extends Controller
             ->where('status', 0)
             ->where('classroom_id', $classroom->id)
             ->where('school_year', $attr['school_year'] ?? $df . '-' . $dn);
-        //-------------------1 
+        //-------------------1
         if ($student_validation->count() < 1) {
             ###[2]// لو غير موجود اسم الطالب في السجلات
-            //  يتم انشاء سجل جديد للطالب 
+            //  يتم انشاء سجل جديد للطالب
             $student = $school->
             registers()
                 ->firstOrCreate([
@@ -206,7 +206,7 @@ class StudentRegisterController extends Controller
         }
     }
     #####################################
-    //  اظافة كلمة مرور لولي الامر اذا كان 
+    //  اظافة كلمة مرور لولي الامر اذا كان
     // حسابة في المرحلة 0 لم يتم اكمال البيانات
     #####################################
     public function addNewPassNamePareent($pareent,$name,$pass){
@@ -214,12 +214,12 @@ class StudentRegisterController extends Controller
             # code...
             // اذا كان حساب ولي الامر حالتة
             // --------------------------
-            //  [صفر =0] 
-            // اذن يتم اظافة كلمة المرور بنفس رقم الهاتف 
+            //  [صفر =0]
+            // اذن يتم اظافة كلمة المرور بنفس رقم الهاتف
             // واظافة اسم ولي الامر اذا كان موجود في السجل
             // -----------------------
-            // اما لو حالة الحساب تساوي 
-            // [اكبر من 0] 
+            // اما لو حالة الحساب تساوي
+            // [اكبر من 0]
             // لايتم عمل شيئ
             $pareent->update([
                 'uuid' => Str::uuid(),
@@ -245,13 +245,13 @@ class StudentRegisterController extends Controller
                         .'-SCO_'.Auth::user()->school_id
                         .'-ADM_'.Auth::user()->id
                         .'-AUTH'.Auth::user()->getAuthIdentifierName()
-                        .'-F_'.$file_name_a 
+                        .'-F_'.$file_name_a
                     ??
                         time().'-'.Auth::user()->id.'-'.$file_name_a;
-        // 
+        //
         $path = $request->csv->move(public_path('storage\\csv\\school\\'.$school_uuid), $file_name);
         // seve file in database
-        $file_path=\storage_path('\\csv\\school\\'.$school_uuid.'\\'.$file_name);
+        // $file_path=\storage_path('\\csv\\school\\'.$school_uuid.'\\'.$file_name);
         $file=new File;
         $file->create([
             'no'=>time().'-a'.Auth::user()->id.'-s'.Auth::user()->school_id,
@@ -304,16 +304,16 @@ class StudentRegisterController extends Controller
             //     $url = Storage::url($path.'.php');
             //     array_push($allcsv, [$url => $file]);
             // }else {
-                
+
                 $file=Storage::size($path);
                 $url = Storage::url($path);
                 array_push($allcsv, [$url => $file]);
             // }
-            
+
             // array_add($array, 'key', 'value')
         }
         // $allcsv= Storage::files('public/csv/school/'.$school->uuid);//('public/csv1/1592852234-students12.csv');
         return view('admin.get.csvfil', compact(['allcsv']))->with('f',session('f'));
-        
+
     }
 }
