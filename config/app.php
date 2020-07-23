@@ -161,7 +161,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        // Illuminate\Html\HtmlServiceProvider::class,
+        Illuminate\Html\HtmlServiceProvider::class,
         /*
          * Package Service Providers...
          */
@@ -227,6 +227,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'LaravelLocalization' => Mcamara\LaravelLocalization\Facades\LaravelLocalization::class,
+        'Html'=> Illuminate\Html\HtmlFacade ::class ,
+        'Form'=> Illuminate\Html\FormFacade::class ,
 
     ],
 
