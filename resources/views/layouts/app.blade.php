@@ -50,6 +50,7 @@
     <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
+    @yield('style')
 
 </head>
 
@@ -291,6 +292,8 @@
                 // $('#loader-wrapper').remove();
             });
         </script>
+        @yield('script')
+        @yield('ajax')
 </body>
 
 </html>

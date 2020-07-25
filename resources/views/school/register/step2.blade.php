@@ -1,6 +1,28 @@
-@extends('layouts.lte')
+@extends('layouts.app')
 
-@section('side')
+@section('style')
+   <!-- Font Awesome -->
+   {{--  <link rel="stylesheet" href="{{ asset('lte/plugins/fontawesome-free/css/all.min.css') }}">  --}}
+   <!-- iCheck for checkboxes and radio inputs -->
+   <link rel="stylesheet" href="{{ asset('lte/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
+   <!-- Ionicons -->
+   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+   <!-- overlayScrollbars -->
+   <link rel="stylesheet" href="{{ asset('lte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
+   <!-- SweetAlert2 -->
+   <link rel="stylesheet" href="{{ asset('lte/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
+   <!-- Theme style -->
+   <link rel="stylesheet" href="{{ asset('lte/dist/css/adminlte.min.css') }}">
+   <link rel="stylesheet" href="{{ asset('lte/dist/css/lte.min.css') }}">
+@endsection
+
+
+@section('script')
+
+
+@endsection
+
+
 @section('content')
 @php
 $lang=app()->getLocale();
@@ -141,19 +163,19 @@ $dir=($lang == 'en') ? 'ltr' : 'rtl' ;
                                        <!-- checkbox -->
                                        <div class="form-group clearfix">
                                           <div class="icheck-primary d-inline">
-                                             <input type="checkbox" id="L1as" name="L1as" checked required />
+                                             <input type="checkbox" id="L1as" name="L1as" checked  />
                                              <label for="L1as" class="w-100 ">
                                                    {{ __('lang.Level.L1as') }}
                                              </label>
                                           </div>
                                           <div class="icheck-primary d-inline">
-                                             <input type="checkbox" id="L2as" name="L2as" checked required />
+                                             <input type="checkbox" id="L2as" name="L2as" checked  />
                                              <label for="L2as" class="w-100 ">
                                                    {{ __('lang.Level.L2as') }}
                                              </label>
                                           </div>
                                           <div class="icheck-primary d-inline">
-                                             <input type="checkbox" id="L3as" name="L3as" checked required />
+                                             <input type="checkbox" id="L3as" name="L3as" checked  />
                                              <label for="L3as" class="w-100 ">
                                                    {{ __('lang.Level.L3as') }}
                                              </label>
