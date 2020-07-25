@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 use App\Models\StudentRegister;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Symfony\Component\Console\Helper;
+// use Symfony\Component\Console\Helper;
 use Illuminate\Support\Facades\Storage;
 // كلاس خاص بعملية تسجيل الطلاب اول السنة
 class StudentRegisterController extends Controller
@@ -39,14 +39,16 @@ class StudentRegisterController extends Controller
             $level=Level::where('uuid',$request->level_uuid)->first();
 
             $path=$this->moveCsvStudent($request,$school->uuid);
-            $keys=[
-                'no_student',
-                'stu_name',
-                'level_no',
-                'classroom_name',
-                'pareent_name',
-                'pareent_mobile',
-                'stu_gender'];
+            $keys=config('csv.student.keys');
+            // $keys=[
+            //     'no_student',
+            //     'stu_name',
+            //     'level_no',
+            //     'classroom_name',
+            //     'pareent_name',
+            //     'pareent_mobile',
+            //     'stu_gender'
+            // ];
             $data_csv = $this->ajaxReadCsv($path,$keys,';');
             $csv_new=array();
             foreach ($data_csv as $s ) {
@@ -119,13 +121,14 @@ class StudentRegisterController extends Controller
     {
         $dn = intval(date('Y'));
         $df = $dn + 1;
-        $student=null;
+        // $student;
         // التأكد من اسم الطالب هل هو موجود
         // في نفس المرحلة و
         // المدرسة و
         // الشعلة الدراسي و
         // السنة الدراسية
-        $student_validation = StudentRegister::where('name', $attr['name'])
+        $student_validation
+            = StudentRegister::where('name', $attr['name'])
             ->where('school_id', $school->id)
             ->where('level_id', $level->id)
             ->where('status', 0)
@@ -164,10 +167,10 @@ class StudentRegisterController extends Controller
         //  عبر الايدي لولي الامر
 
         ########################ربط الطالب بولي الامر##########################
-        $student->update([
-            'pareent_id' => $pareent->id,
-        ]);
-        return $student->with('pareent')->first();
+        $student->pareent_id =$pareent->id;
+        $student->save();
+
+        return $student;//->with('pareent')->first();
         ####################انتهاء ربط الطالب بولي الامر#####################
     }
     #####################################
@@ -236,20 +239,20 @@ class StudentRegisterController extends Controller
     #####################################
     public function moveCsvStudent(Request $request,$school_uuid)
     {
-    // old name file
+     // old name file
         $file_name_a = $request->csv->getClientOriginalName();
         // $file_name = time() . '-' . $file_name_a;
-    // new name file
-        $file_name = date('d-M-Y H:i:s',time())
-                        .'-Time'.time()
-                        .'-SCO_'.Auth::user()->school_id
-                        .'-ADM_'.Auth::user()->id
-                        .'-AUTH'.Auth::user()->getAuthIdentifierName()
+     // new name file
+        $file_name = date('Ymd-His',time())
+                        .'-T'.time()
+                        .'-SCH'.Auth::user()->school_id
+                        .'-ADM'.Auth::user()->id
+                        // .'-AUTH'.Auth::user()->getAuthIdentifierName()
                         .'-F_'.$file_name_a
                     ??
-                        time().'-'.Auth::user()->id.'-'.$file_name_a;
+                    '-Time_'.time().'-AUTH_'.Auth::user()->id.'-F_'.$file_name_a;
         //
-        $path = $request->csv->move(public_path('storage\\csv\\school\\'.$school_uuid), $file_name);
+        $path = $request->csv->move(public_path('storage\csv\school\_'.$school_uuid), $file_name);
         // seve file in database
         // $file_path=\storage_path('\\csv\\school\\'.$school_uuid.'\\'.$file_name);
         $file=new File;
@@ -257,13 +260,13 @@ class StudentRegisterController extends Controller
             'no'=>time().'-a'.Auth::user()->id.'-s'.Auth::user()->school_id,
             'status'=>0,
             'filename'=>$file_name,
-            'path'=>$file_path ?? $path,
+            'path'=> $path ,//?? $file_path,
             'description'=>$request->description ?? '',
             'school_id'=>session('school.id')?? Auth::user()->school()->id,
             'school_admin_id'=>Auth::user()->id,
         ]);
 
-        return $file_path ?? $path;
+        return $path ; // $file_path ?? $path;
     }
     #####################################
     // قرائة بيانات الطلاب من ملف الاكسل
@@ -278,42 +281,26 @@ class StudentRegisterController extends Controller
     // عرض اسماء الملفات الخاصة بلمدرسة في شاشة شؤن الطلاب
     #####################################
     public function allCsvIndirectory(){
-        // if(isset(session('school.id')) ){
-        //     $school_id=session('school.id');
 
-        // }else{
-        //     $school_id='';
-        // }
         $school=Auth::user()->school()->first();
+        // جلب الملفات من قاعدة البانات
+        // $DBF= File::where('school_id',$school->id)->groupBy('created_at')->get();
+        $DBF= File::where('school_id',$school->id)->orderby('created_at','desc')->get();
+        // جلب الملفات من ملف التخزين
         $allcsv=array();
-
-        $contents[]= $school->registers()->get();
-        $contents=response()->json($contents);
-        Storage::put(FILE_SCHOOL.$school->uuid.'/nweob2.json', $contents );
-        $all_path= Storage::allFiles(FILE_SCHOOL.$school->uuid);//('public/csv1/1592852234-students12.csv');
-        ##
-        $f[]=Storage::get(FILE_SCHOOL.$school->uuid.'/nweob2.json');
-        // session()->put('f', $f);
-        foreach ($all_path as $K=> $path) {
-            // if ($K==0) {
-            //     $contents= [$school->registers()->first()];
-            //     Storage::put(FILE_SCHOOL.$school->uuid.'nweob.php', $contents );
-            // }
-            // if($K==0){$file=Storage::get($path.'.php');
-            //     // $file=str_getcsv($file,';');
-            //     $url = Storage::url($path.'.php');
-            //     array_push($allcsv, [$url => $file]);
-            // }else {
-
-                $file=Storage::size($path);
-                $url = Storage::url($path);
-                array_push($allcsv, [$url => $file]);
-            // }
-
-            // array_add($array, 'key', 'value')
-        }
+        $count=0;
+        // جلب كل الملفات للمدرسة
         // $allcsv= Storage::files('public/csv/school/'.$school->uuid);//('public/csv1/1592852234-students12.csv');
-        return view('admin.get.csvfil', compact(['allcsv']))->with('f',session('f'));
+        $all_path= Storage::allFiles(FILE_SCHOOL.'_'.$school->uuid);//('public/csv1/1592852234-students12.csv');
+            // استخراج رابط وتاريخ الدعديل للملفات
+            foreach ($all_path as $K=> $path) {
+                // $file=Storage::extension($path);
+                $file=Storage::lastModified($path);
+                $url =Storage::url($path);
+                $count=array_push($allcsv, [$url => $file]);
+            }
+            // ارجاع البيانات وطباعتها في الشاشة الوسيط
+        return view('admin.get.csvfil', compact(['allcsv','count','DBF']));//->with('f',session('f'));
 
     }
 }

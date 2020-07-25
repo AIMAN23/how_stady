@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\School;
 use App\Traits\imgTrait;
-use App\Http\Requests\Step2;
+// use App\Http\Requests\Step2;
 use Illuminate\Support\Str;
 use App\Http\Requests\Step1;
 use Illuminate\Http\Request;
@@ -50,14 +50,16 @@ class SchoolController extends Controller
                     $school->update(['status' => 2]);
                     return view('school.register.step2')->with('school', $school);
                 } else {
-                    return abort(404, 'هاذه الخطوة قد تم اتمامها بنجاح ولايمكن زيارتها مره اخرا');
+                    // return abort(404, 'هاذه الخطوة قد تم اتمامها بنجاح ولايمكن زيارتها مره اخرا');
+                    return redirect()->route('step'.$school->status,$school->uuid);
                 }
             }
 
             if ($method == 'POST') {
 
                 if ($school->status == 1) {
-                    return abort(404);
+                    // return abort(404);
+                    return redirect()->route('step'.$school->status,$school->uuid);
                 } elseif ($school->status == 2) {
                     // التحقق من ملىء البيانات كاملة 
                     $request->validate([
@@ -167,7 +169,7 @@ class SchoolController extends Controller
                     return redirect()->route('step3', ['school_uuid' => $school['uuid']])->with(['cards'=> $cards]);
                 } else {
                     # code...
-                    return abort(404);
+                    return redirect()->route('step'.$school->status,$school->uuid);
                 }
             }
         
