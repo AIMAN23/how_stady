@@ -27,10 +27,10 @@ class Step1 extends FormRequest
           'name'  => 'required|max:255',
           'bransh'  => 'required|max:255',
           'email' => 'required|max:100|email|unique:schools',
-          'wep'  => 'url|max:250|',
+          'wep'  => 'url|max:250',
           'tel' => 'required|max:255',
           'fax' => 'max:50',
-          'logo' => 'mimes:png,jpg,jpeg',
+          'logo' => 'mimes:png,jpg,jpeg|image',
           'country' => 'required|max:255',
           'cite'  => 'required|max:255',
           'street'=>'required|max:255',
@@ -47,7 +47,7 @@ class Step1 extends FormRequest
           'bransh.required'  => 'اسم الفرع مطلوب ',
           'email.required' => 'ايميل المدرسة مطلوب ',
           'email.unique' => 'لايمكن استخدام هاذا الايميل لانه موجود من قبل مدرسة اخرا',
-          'wep.url'  => ' http://www.. ,https://www.. الموقع الالكتروني يجب ان يكون رابط',
+          // 'wep.url'  => ' http://www.. ,https://www.. الموقع الالكتروني يجب ان يكون رابط',
           'wep.max'  => 'طول الرابط يجب ان لايزيد عن 250 حرف',
           'tel.required' => 'رقم الهاتف مطلوب',
           'fax.max' => ' رقم الفاكس طويل جدا اقصا حد 50 رقم',
@@ -55,7 +55,9 @@ class Step1 extends FormRequest
           'country.required' => 'اسم الدولة مطلوب',
           'cite.required'  => 'المدينة مطلوبة',
           'street.required'=>'العنوان للحي مطلوب',
-          // 'zip.' => 'يجب ان يكون الرمز البريدي ارقام',
+          'zip.max' => 'الرمز البريدي لايزيد عن 6 ارقام',
+          // 'zip.before' => 'الرمز البريدي لايزيد عن 9 ارقام',
+          // 'zip.before' => 'الرمز البريدي لايزيد عن 9 ارقام',
 
         ];
     }
