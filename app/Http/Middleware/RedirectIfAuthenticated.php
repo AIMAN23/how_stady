@@ -27,15 +27,20 @@ class RedirectIfAuthenticated
             {
                 return redirect(RouteServiceProvider::HOME);
             }
-            if ($guard=='super') 
+            if ($guard=='supervisor') 
             {
                 return redirect(RouteServiceProvider::supervisor);
+            }
+            if ($guard=='student') 
+            {
+                return redirect(RouteServiceProvider::student);
             }
             if($guard== null)
             {
                 // return redirect()->route('/home');
                 return 'NOLL Guards';
             }
+            return redirect()->route($guard.'.home');
 
         }
         return $next($request);

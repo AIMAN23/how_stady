@@ -27,7 +27,12 @@ class RouteServiceProvider extends ServiceProvider
     public const manager= 'manager/home';
     public const ADMIN= 'admin/home';
     public const supervisor= 'supervisor/home';
+    public const specialist= 'specialist/home';
     public const agent= 'agent/home';
+    public const financial= 'financial/home';
+    public const secretary= 'secretary/home';
+    public const teacher= 'teacher/home';
+    public const student= 'student/home';
     public const pareent= 'pareent/home';
 
     /**
@@ -61,6 +66,22 @@ class RouteServiceProvider extends ServiceProvider
         // manager
         $this->mapManagerRoutes();
         
+        // supervisor
+        $this->mapSupervisorRoutes();
+        // agent
+        // Specialist
+        $this->mapSpecialistRoutes();
+        // agent
+        $this->mapAgentRoutes();
+        // secretary
+        $this->mapSecretaryRoutes();
+        // teacher
+        $this->mapTeacherRoutes();
+        // student
+        $this->mapStudentRoutes();
+        
+        // financial
+        $this->mapFinancialRoutes();
         // pareent
         $this->mapPareentRoutes();
         //
@@ -95,6 +116,55 @@ class RouteServiceProvider extends ServiceProvider
         Route::middleware('web')
             ->namespace($this->namespace)
             ->group(base_path('routes/manager.php'));
+    }
+    protected function mapSupervisorRoutes()
+    {
+        // تعريف خصائص روابط supervisor
+        Route::middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/supervisor.php'));
+    }
+    protected function mapSpecialistRoutes()
+    {
+        // تعريف خصائص روابط specialist
+        Route::middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/specialist.php'));
+    }
+    protected function mapAgentRoutes()
+    {
+        // تعريف خصائص روابط agent
+        Route::middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/agent.php'));
+    }
+    protected function mapSecretaryRoutes()
+    {
+        // تعريف خصائص روابط secretary
+        Route::middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/secretary.php'));
+    }
+    protected function mapTeacherRoutes()
+    {
+        // تعريف خصائص روابط teacher
+        Route::middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/teacher.php'));
+    }
+    protected function mapStudentRoutes()
+    {
+        // تعريف خصائص روابط student
+        Route::middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/student.php'));
+    }
+    protected function mapFinancialRoutes()
+    {
+        // تعريف خصائص روابط financial
+        Route::middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/financial.php'));
     }
 
     protected function mapPareentRoutes()

@@ -67,7 +67,7 @@ return [
     'teacher'  => 'المعلم',
     'pareent'  => 'ولي الامر',
     'student'  => 'الطالب',
-    'student'=>[
+    'student_'=>[
         'name'=>'اسم الطالب',
     ],
 

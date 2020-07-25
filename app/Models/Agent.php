@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Foundation\Auth\User as AuthenticatableAdmin;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 ## مودل وكيل المدرسة
-class Agent extends AuthenticatableAdmin
+class Agent extends Authenticatable
 {
     use Notifiable;
     protected $table = "agents";

@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Foundation\Auth\User as AuthenticatableAdmin;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 ## مودل المشرف للمرحلة الدراسية
-class Supervisor extends AuthenticatableAdmin
+class Supervisor extends Authenticatable
 {
     use Notifiable;
     protected $fillable =[

@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 ## مودل المسؤل المالي للمدرسة 
-class Financial extends Model
+class Financial extends Authenticatable
 {
+    use Notifiable;
     protected $table = "financials";
     protected $fillable=[
         'id','no','uuid','status',

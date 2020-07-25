@@ -69,7 +69,7 @@ return [
     'teacher'  => 'Teacher',
     'pareent'  => 'Pareent',
     'student'  => 'Student',
-    'student'=>[
+    'student_'=>[
         'name'=>'Student Name',
     ],
     // login select list user tayp

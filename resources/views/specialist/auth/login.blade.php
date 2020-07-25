@@ -8,9 +8,9 @@
     <!-- /.login-logo -->
     <div class="card">
         <div class="card-body login-card-body">
-            <p class="login-box-msg">{{ __('lang.secretary') }}</p>
-            @guest('secretary')
-            <form method="POST" action="{{ route('secretary.login.seve') }}">
+            <p class="login-box-msg">{{ __('lang.specialist') }}</p>
+            @guest('specialist')
+            <form method="POST" action="{{ route('specialist.login.seve') }}">
                 @csrf
                 <div class="input-group mb-3">
                     <input id="usercode" type="usercode" placeholder="{{ __('E-Mail Address') }}" class="form-control 
@@ -77,7 +77,7 @@
                 <div class="widget-user-image">
                     <img class="img-circle elevation-2" alt="User Image" src="{{ asset('lte/dist/img/userP-128x128.jpg') }}">
                 </div>
-                <a href="{{ route('secretary.home') }}" class="btn btn-block btn-info mt-5">{{ __('lang.page.home') }}</a>
+                <a href="{{ route('specialist.home') }}" class="btn btn-block btn-info mt-5">{{ __('lang.page.home') }}</a>
             </div>
             @endguest
             

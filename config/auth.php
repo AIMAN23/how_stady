@@ -40,34 +40,17 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-        
-        
-        'manager' => [
-            'driver' => 'session',
-            'provider' => 'managers',
-        ],
-        'agent' => [
-            'driver' => 'session',
-            'provider' => 'agents',
-        ],
 
-        'admin' => [
-            'driver' => 'session',
-            'provider' => 'admins',
-        ],
-        'supervisor' => [
-            'driver' => 'session',
-            'provider' => 'supervisors',
-        ],
-        // 'supervisor' => [
-        //     'driver' => 'session',
-        //     'provider' => 'supervisors',
-        // ],
-        'pareent' => [
-            'driver' => 'session',
-            'provider' => 'pareents',
-        ],
-        
+        'student'       => ['driver' => 'session',   'provider' => 'students',],
+        'pareent'       => ['driver' => 'session',   'provider' => 'pareents',],
+        'teacher'       => ['driver' => 'session',   'provider' => 'teachers',],
+        'supervisor'    => ['driver' => 'session',   'provider' => 'supervisors',],
+        'secretary'     => ['driver' => 'session',   'provider' => 'secretarise',],
+        'financial'     => ['driver' => 'session',   'provider' => 'financials',],
+        'specialist'    => ['driver' => 'session',   'provider' => 'specialists',],
+        'admin'         => ['driver' => 'session',   'provider' => 'admins',],
+        'agent'         => ['driver' => 'session',   'provider' => 'agents',],
+        'manager'       => ['driver' => 'session',   'provider' => 'managers',],
 
         'api' => [
             'driver' => 'token',
@@ -104,34 +87,23 @@ return [
             'model' => App\User::class,
         ],
 
-        'managers' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\Manager::class,
-        ],
+        'students'       => ['driver' => 'eloquent',   'model' =>  App\Models\Student::class,], ##
+        'pareents' => ['driver' => 'eloquent', 'model' => App\Models\Pareent::class,],
+        'teachers'       => ['driver' => 'eloquent',   'model' =>  App\Models\Teacher::class,], ##
+        'supervisors' => ['driver' => 'eloquent', 'model' => App\Models\Supervisor::class,],
+        'secretarise'     => ['driver' => 'eloquent',   'model' =>  App\Models\Secretary::class,], ##
+        'financials'     => ['driver' => 'eloquent',   'model' =>  App\Models\Financial::class,], ##
+        'specialists'    => ['driver' => 'eloquent',   'model' =>  App\Models\Specialist::class,], ##
+        'admins' => ['driver' => 'eloquent', 'model' => App\Models\SchoolAdmin::class,],
+        'agents' => ['driver' => 'eloquent', 'model' => App\Models\Agent::class,],
+        'managers' => ['driver' => 'eloquent', 'model' => App\Models\Manager::class,],
 
-        'agents' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\Agent::class,
-        ],
-        
+
         // 'schools' => [
         //     'driver' => 'database',
         //     'table' => 'schools',
         // ],
 
-        'admins' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\SchoolAdmin::class,
-        ],
-        'pareents' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\Pareent::class,
-        ],
-
-        'supervisors' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\Supervisor::class,
-        ],
         // 'admins' => [
         //     'driver' => 'database',
         //     'table' => 'school_admins',
@@ -156,44 +128,60 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
-            'table' => 'password_resets',
-            'expire' => 60,
-            'throttle' => 60,
+            'table' => 'password_resets',   'expire' => 60, 'throttle' => 60,
         ],
 
-        'managers' => [
-            'provider' => 'managers',
-            'table' => 'password_resets',
-            'expire' => 60,
-            'throttle' => 60,
+        'students' => [
+            'provider' => 'students',
+            'table' => 'password_resets',   'expire' => 60, 'throttle' => 60,
+        ], ##
+
+        'pareents' => [
+            'provider' => 'pareents',
+            'table' => 'password_resets',   'expire' => 60, 'throttle' => 60,
+        ],
+
+        'teachers' => [
+            'provider' => 'teachers',
+            'table' => 'password_resets',   'expire' => 60, 'throttle' => 60,
+        ], ##
+
+        'supervisors' => [
+            'provider' => 'supervisors',
+            'table' => 'password_resets',   'expire' => 60, 'throttle' => 60,
+        ],
+
+        'secretarise' => [
+            'provider' => 'secretarise',
+            'table' => 'password_resets',   'expire' => 60, 'throttle' => 60,
+        ], ##
+
+        'financials' => [
+            'provider' => 'financials',
+            'table' => 'password_resets',   'expire' => 60, 'throttle' => 60,
+        ], ##
+
+        'specialists' => [
+            'provider' => 'specialists',
+            'table' => 'password_resets',   'expire' => 60, 'throttle' => 60,
+        ], ##
+
+        'admins' => [
+            'provider' => 'admins',
+            'table' => 'password_resets',   'expire' => 60, 'throttle' => 60,
         ],
 
         'agents' => [
             'provider' => 'agents',
-            'table' => 'password_resets',
-            'expire' => 60,
-            'throttle' => 60,
+            'table' => 'password_resets',   'expire' => 60, 'throttle' => 60,
         ],
 
-        'admins' => [
-            'provider' => 'admins',
-            'table' => 'password_resets',
-            'expire' => 60,
-            'throttle' => 60,
+        'managers' => [
+            'provider' => 'managers',
+            'table' => 'password_resets',   'expire' => 60, 'throttle' => 60,
         ],
 
-        'supervisors' => [
-            'provider' => 'supervisors',
-            'table' => 'password_resets',
-            'expire' => 60,
-            'throttle' => 60,
-        ],
-        'pareents' => [
-            'provider' => 'pareents',
-            'table' => 'password_resets',
-            'expire' => 60,
-            'throttle' => 60,
-        ],
+
     ],
 
     /*

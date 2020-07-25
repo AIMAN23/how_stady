@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Foundation\Auth\User as AuthenticatableAdmin;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class Pareent extends AuthenticatableAdmin
+class Pareent extends Authenticatable
 {
     use Notifiable;
 

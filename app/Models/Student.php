@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 ## مودل الطالب
-class Student extends Model
+class Student extends Authenticatable
 {
+    use Notifiable;
     protected $table = "students";
     protected $fillable =[
         'id','no','uuid','status',
@@ -30,8 +32,6 @@ class Student extends Model
     protected $hidden =[
         'password',
         'remember_token',
-        'created_at',
-        'updated_at'
     ];
     protected $casts = [
         'email_verified_at' => 'datetime',

@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 ## مودل السكرتارية للمدرسة
-class Secretary extends Model
+class Secretary extends Authenticatable
 {
+    use Notifiable;
     protected $table = "secretaries";
     protected $fillable=[
         'id','no','uuid','status',
