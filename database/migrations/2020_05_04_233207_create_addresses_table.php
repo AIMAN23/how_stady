@@ -18,7 +18,7 @@ class CreateAddressesTable extends Migration
             $table->string('country')->nullable();
             $table->string('cite')->nullable();
             $table->string('street')->nullable();
-            $table->smallinteger('zip')->nullable()->default(0000);
+            $table->smallinteger('zip')->nullable()->default(0000)->change();
             $table->timestamps();
         });
     }
