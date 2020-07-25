@@ -63,7 +63,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 				// 	return $download;
 				// });
 			// روابط الاضافة
-			Route::group(['prefix' => '/add'], function () {		
+			Route::group(['prefix' =>'/add/'.md5('admin')], function () {		
 			##################### add #########################
 				Route::get('/student/csv/{school_uuid}${admin_uuid}$', 'StudentRegisterController@addStudentsCsv')->name('add.students.csv.view');
 				Route::post('/student/csv', 'StudentRegisterController@addStudentsCsv')->name('add.students.csv');
@@ -78,11 +78,11 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 
 
 			// روابط عرض التفاصيل
-			Route::group(['prefix' => '/info' ], function () {
+			Route::group(['prefix' => '/info/'.md5('info') ], function () {
 			##################### info ########################
 				Route::get('/school/{school_uuid}${admin_uuid}', 'SchoolAdminController@infoSchool')->name('info.school');
 				Route::get('/levels/{school_uuid}${admin_uuid}', 'SchoolAdminController@infoLevels')->name('info.levels');
-				Route::get('/classrooms/{school_uuid}${admin_uuid}', 'SchoolAdminController@infoClassrooms')->name('info.classrooms');
+				Route::get(md5('classrooms').'/{school_uuid}${admin_uuid}', 'SchoolAdminController@infoClassrooms')->name('info.classrooms');
 			});
 			Route::group(['prefix' => '/all'], function () {
 				// رابط يقوم بجلب سجلات الطلاب المسجلين في المدرسة
@@ -91,9 +91,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 
 
 			// روابط جلب البيانات
-			Route::group(['prefix' => '/get' ], function () {
+			Route::group(['prefix' => '/get/'.md5('get') ], function () {
 			##################### get #########################
-				Route::get('classrooms/{level_code}','LevelController@getClassRooms')->name('get.classrooms');
+				Route::get(md5('classrooms').'/{level_code}','LevelController@getClassRooms')->name('get.classrooms');
 				Route::get('classroom/info/{classroome_uuid}','LevelController@getClassroomInfo')->name('get.classroom.info');
 				Route::get('classroom/students/{classroome_uuid}','LevelController@getClassroomStudents')->name('get.classroom.students');
 				Route::get('all/csv/','StudentRegisterController@allCsvIndirectory')->name('get.all.csv');

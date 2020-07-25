@@ -21,10 +21,10 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     Route::group(['prefix' => 'pareent'], function () {
         // pareent
         ## عرض صفحة تسجيل الدخول
-        Route::get('/login', 'Auth\pareent\LoginController@showLoginForm')->name('pareent.login');
+        Route::get('login', 'Auth\pareent\LoginController@showLoginForm')->name('pareent.login');
         ## رابط التحقق من اسم المستخدم وكلمة المرور
         // -- لو صحيحة يتم التحويل للصفحة الرئيسي   لولي الامر
-        Route::post('/login', 'Auth\pareent\LoginController@login')->name('pareent.login.seve');
+        Route::post('login', 'Auth\pareent\LoginController@login')->name('pareent.login.seve');
         /**
          * كل الروابط بعد تسجيل الدخول
          * الخاصة به
@@ -32,11 +32,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
          */
         Route::group(['middleware' => ['auth:pareent'] ], function () {
             // رابط الصفحة الرئيسية له بعد تسجيل الدخول
-            Route::get('/', function () {
-                return redirect()->route('pareent.home');
-            });
+            Route::any('/pareent','HomeController@pareent');
             // او هاذا لصفحة الرئيسية
-            Route::get('/home', 'HomeController@pareent')->name('pareent.home');
+            Route::get('home', 'HomeController@pareent')->name('pareent.home');
 
 
             // روابط جلب البيانات
@@ -75,7 +73,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
             // هنا باقي الروابط
         });
         // رابط تسجيل الخروج
-        Route::post('/logout', 'Auth\pareent\LoginController@logout')->name('pareent.logout');
+        Route::post('logout', 'Auth\pareent\LoginController@logout')->name('pareent.logout');
     });
     //------------------------------------- النهاية لروابط
 });
