@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use input;
+// use input;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Traits\strTrait as strT;
 use Illuminate\Support\Facades\Storage;
-use Symfony\Component\Translation\Util\ArrayConverter;
-use Symfony\Component\VarDumper\Caster\XmlReaderCaster as Reader;
+
+// use Symfony\Component\Translation\Util\ArrayConverter;
+// use Symfony\Component\VarDumper\Caster\XmlReaderCaster as Reader;
 
 // use Symfony\Component\Translation\Loader\CsvFileLoader;
 
@@ -73,17 +74,36 @@ class ImageController extends Controller
                 if (!$header) {
                     $header = $keys;
                 } else {
-                    $data[] = array_combine($header , $row);
+                    if ( $row == null or  $row == false) {
+                        # code...
+                        // return abort(500, 'الرجاء التأكد من عدد الاعمدة في الملف او نوع الفاصلة يجل ان تكون ;');
+                    }
+
+
+                    $ar = array_combine($header , $row);
+
+                    
+
+                    
+                    if ($ar == false) {
+                        // return response()->json(['message'=>'الرجاء التأكد من عدد الاعمدة في الملف او نوع الفاصلة يجل ان تكون ;'], 500);
+                    }
+                    $data[] = $ar;
                 }
             }
             fclose($handle);
         }
-        $line='';
-        foreach ($header as $key => $value) {
+        // $line='';
+        // foreach ($header as $key => $value) {
+        //     # code...
+        //     $line=$line.$value.';';
+        // }
+        // Storage::prepend('public/csv/sss/'.NO_time_and_random_int.'.csv',$line);
+        foreach (\array_chunk($data,10) as $key => $value) {
             # code...
-            $line=$line.$value.';';
+            session()->put('chunk.'.$key , $value );
         }
-        Storage::prepend('csv/sss/'.NO_time_and_random_int.'.csv',$line);
+        //  response()->json(array_chunk($data,10));
         return $data;
     }
 

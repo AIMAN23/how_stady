@@ -41,6 +41,12 @@ class Teacher extends Authenticatable
     {
         return $this->belongsTo('App\Models\Address','address_id');
     }
+    ###########  
+    public function img()
+    {
+        return $this->belongsTo('App\Models\Image','image_id','id','id');
+    }
+    ########### 
     ############ Subjctes teacher
     public function subjctes()
     {

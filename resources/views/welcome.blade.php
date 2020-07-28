@@ -138,7 +138,7 @@
                         <a class="video-btn primary-btn" href="#login">{{ __('lang.Login') }}</a>
                     </div>
                     <div class="col-md-6 banner-right text-center">
-                        <img class="img-fluid" src="img/screen1.png" alt="">
+                        <img class="img-fluid" src="{{ asset('img/screen1.png') }}" alt="">
                     </div>
                 </div>
             </div>
@@ -212,7 +212,7 @@
             <div dir="{{  $dir }}" class="container">
                 <div class="row align-items-center justify-content-between">
                     <div class="col-lg-6 col-md-12 about-left">
-                        <img class="img-fluid" src="img/app-img.png" alt="">
+                        <img class="img-fluid" src="{{ asset('img/app-img.png') }}" alt="">
                     </div>
                     <div class="col-lg-5 col-md-7 about-right">
                         <h3>{{ __('lang.welcome.What Is Dope App?') }}</h3>
@@ -259,31 +259,31 @@
             </div>
             <div class="floating-shapes">
                 <span data-parallax='{"x": 150, "y": -20, "rotateZ":500}'>
-                    <img src="img/shape/fl-shape-1.png" alt="">
+                    <img src="{{ asset('img/shape/fl-shape-1.png') }}" alt="">
                 </span>
                 <span data-parallax='{"x": 250, "y": 150, "rotateZ":500}'>
-                    <img src="img/shape/fl-shape-2.png" alt="">
+                    <img src="{{ asset('img/shape/fl-shape-2.png') }}" alt="">
                 </span>
                 <span data-parallax='{"x": -180, "y": 80, "rotateY":2000}'>
-                    <img src="img/shape/fl-shape-3.png" alt="">
+                    <img src="{{ asset('img/shape/fl-shape-3.png') }}" alt="">
                 </span>
                 <span data-parallax='{"x": -20, "y": 180}'>
-                    <img src="img/shape/fl-shape-4.png" alt="">
+                    <img src="{{ asset('img/shape/fl-shape-4.png') }}" alt="">
                 </span>
                 <span data-parallax='{"x": 300, "y": 70}'>
-                    <img src="img/shape/fl-shape-5.png" alt="">
+                    <img src="{{ asset('img/shape/fl-shape-5.png') }}" alt="">
                 </span>
                 <span data-parallax='{"x": 250, "y": 180, "rotateZ":1500}'>
-                    <img src="img/shape/fl-shape-6.png" alt="">
+                    <img src="{{ asset('img/shape/fl-shape-6.png') }}" alt="">
                 </span>
                 <span data-parallax='{"x": 180, "y": 10, "rotateZ":2000}'>
-                    <img src="img/shape/fl-shape-7.png" alt="">
+                    <img src="{{ asset('img/shape/fl-shape-7.png') }}" alt="">
                 </span>
                 <span data-parallax='{"x": 60, "y": -100}'>
-                    <img src="img/shape/fl-shape-9.png" alt="">
+                    <img src="{{ asset('img/shape/fl-shape-9.png') }}" alt="">
                 </span>
                 <span data-parallax='{"x": -30, "y": 150, "rotateZ":1500}'>
-                    <img src="img/shape/fl-shape-10.png" alt="">
+                    <img src="{{ asset('img/shape/fl-shape-10.png') }}" alt="">
                 </span>
             </div>
         </section>
@@ -345,7 +345,7 @@
                     <div class="col-lg-5 footer-left">
                         <a href="#">
                             <h2 style="color:wheat">{{ __('lang.NotesApp') }}</h2>
-                                {{-- <img src="img/logo-w.png" alt=""> --}}
+                                {{-- <img src="{{ asset('img/logo-w.png') }}" alt=""> --}}
                         </a>
                         <p class="copyright-text">&copy; 2020 {{ __('lang.NotesApp') }}
                             <i class="fa fa-heart" aria-hidden="true"></i> By

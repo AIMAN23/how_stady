@@ -50,6 +50,10 @@ class StudentRegisterController extends Controller
             //     'stu_gender'
             // ];
             $data_csv = $this->ajaxReadCsv($path,$keys,';');
+            if($data_csv== false){
+                $data='الملف غير صالح يرجى التأكد من ترميز الملف UTF8';
+                return abort(500,$data);// response()->json($data, 500);
+            }
             $csv_new=array();
             foreach ($data_csv as $s ) {
                 // add class room
@@ -151,7 +155,7 @@ class StudentRegisterController extends Controller
                     'school_id' => $school->id,
                     'level_id' => $level->id,
                     'classroom_id' => $classroom->id,
-                    'schooladmin_id' => Auth::id(),
+                    'school_admin_id' => Auth::id(),
                 ]);
             // ثم اكمال بيانات ولي الامر نفس ما تم في المرحلة السابقة
         }else {
@@ -260,7 +264,7 @@ class StudentRegisterController extends Controller
             'no'=>time().'-a'.Auth::user()->id.'-s'.Auth::user()->school_id,
             'status'=>0,
             'filename'=>$file_name,
-            'path'=> $path ,//?? $file_path,
+            'path'=> FILE_SCHOOL.'_'.$school_uuid.'/'.$file_name , //$path ,//?? $file_path,
             'description'=>$request->description ?? '',
             'school_id'=>session('school.id')?? Auth::user()->school()->id,
             'school_admin_id'=>Auth::user()->id,
@@ -285,7 +289,8 @@ class StudentRegisterController extends Controller
         $school=Auth::user()->school()->first();
         // جلب الملفات من قاعدة البانات
         // $DBF= File::where('school_id',$school->id)->groupBy('created_at')->get();
-        $DBF= File::where('school_id',$school->id)->orderby('created_at','desc')->get();
+        //$DBF= File::where('school_id',$school->id)->orderby('created_at','desc')->get();
+        $DBF= File::where('school_id',$school->id)->orderby('created_at')->get();
         // جلب الملفات من ملف التخزين
         $allcsv=array();
         $count=0;

@@ -81,6 +81,36 @@ class HomeController extends Controller
         
         return view('pareent.home');
     }
+    public function teacher(Request $request)
+    {
+        $user=Auth::user();
+        
+        return view('teacher.home');
+    }
+    public function student(Request $request)
+    {
+        $user=Auth::user();
+        
+        return view('student.home');
+    }
+    public function secretary(Request $request)
+    {
+        $user=Auth::user();
+        
+        return view('secretary.home');
+    }
+    public function financial(Request $request)
+    {
+        $user=Auth::user();
+        
+        return view('financial.home');
+    }
+    public function specialist(Request $request)
+    {
+        $user=Auth::user();
+        
+        return view('specialist.home');
+    }
     public function agent(Request $request)
     {
         $user=Auth::user();

@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
+// use DateTime;
+use App\Traits\memberAt;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Pareent extends Authenticatable
 {
+    use memberAt;
     use Notifiable;
 
     /**
@@ -52,9 +55,28 @@ class Pareent extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    ############  address
+    public function address()
+    {
+        return $this->belongsTo('App\Models\Address','address_id');
+    }
+    ###########
+    ###########  
+    public function img()
+    {
+        return $this->belongsTo('App\Models\Image', 'image_id', 'id', 'id');
+    }
+    ########### 
     ############ student بيانات الطالب المسجل تتنتمي الى ولي الامر حسب الرقم للهاتف
     public function studentRegister()
     {
         return $this->hasMany('App\Models\StudentRegister','pareent_id');
-    }    
+    }
+    #######################################
+    public function level(){
+        return $this->hasManyThrough('App\Models\Classroom', 'App\Models\StudentRegister','classroom_id');
+    }
+
+
+
 }

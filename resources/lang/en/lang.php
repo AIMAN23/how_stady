@@ -136,6 +136,39 @@ return [
     ''=>'',
     'Copyright'=>'Copyright',
 
+    'btn'=>[
+        'Add'=>'Add',
+        'View'=>'View',
+        'Edit'=>'Edit',
+        'Sync'=>'Sync',
+        'Delete'=>'Delete',
+        'Download'=>'Download',
+    ],
+
+    'time'=>[
+
+        'now'=>'now',
+        '1 sec'=>'1 sec',
+        'secs'=>'secs',
+        '1 min'=>'1 min',
+        'mins'=>'mins',
+        '1 hr'=>'1 hr',
+        'hrs'=>'hrs',
+        '1 day'=>'1 day',
+        'days'=>'days',
+        'to days'=>'to days',
+        'last week'=>'last week',
+        'to weeks'=>'to weeks',
+        'weeks'=>'weeks',
+        'last month'=>'last month',
+        'to months'=>'to months',
+    ],
+
+
+
+
+
+
 
     // pareents started
     'PAR'=>[

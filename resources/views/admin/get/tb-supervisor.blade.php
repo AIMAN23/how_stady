@@ -23,7 +23,7 @@
                       <th>school_id</th>
                       <th>level_id</th>
                       <th>classroom_id</th>
-                      <th>schooladmin_id</th> --}}
+                      <th>school_admin_id</th> --}}
                     {{--  --}}
                     {{-- <th>edit</th>
                 <th>all</th> --}}
@@ -60,7 +60,7 @@
                 <td>{{ $supervisor->school_id }}</td>
                 <td>{{ $supervisor->level_id }}</td>
                 <td>{{ $supervisor->classroom_id }}</td>
-                <td>{{ $supervisor->schooladmin_id }}</td> --}}
+                <td>{{ $supervisor->school_admin_id }}</td> --}}
                 <?php $i+=1; ?>
             </tr>
             @endforeach

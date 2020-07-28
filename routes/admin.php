@@ -84,9 +84,12 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 				Route::get('/levels/{school_uuid}${admin_uuid}', 'SchoolAdminController@infoLevels')->name('info.levels');
 				Route::get(md5('classrooms').'/{school_uuid}${admin_uuid}', 'SchoolAdminController@infoClassrooms')->name('info.classrooms');
 			});
-			Route::group(['prefix' => '/all'], function () {
+
+
+			Route::group(['prefix' => 'all'], function () {
 				// رابط يقوم بجلب سجلات الطلاب المسجلين في المدرسة
-				Route::get('all\student', function () {		return view('admin.get.all-student');		})->name('all.student');
+				Route::get('student', function () {		return view('admin.get.all-student');		})->name('all.student');
+				Route::get('chunk', function () {		return  response()->json(session('chunk'));		});
 			});
 
 
@@ -100,7 +103,12 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 				Route::get('all/supervisors/{school_id}','SchoolAdminController@getaAllSupervisors')->name('get.supervisors');
 				Route::get('level/{level_code}/supervisor','LevelController@getlevel_And_Supervisor')->name('get.level.supervisor');
 			});
+			Route::group(['prefix' => 'file'.md5('file')], function () {
+					Route::get('delete'.md5('delete').'/{filename}', 'FileController@destroy')->name('delete.file');
+			});
 		});
+
+
 
 		#---------------
 		// تسجيل الخروج

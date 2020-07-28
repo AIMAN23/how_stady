@@ -43,7 +43,7 @@
         <!-- Site wrapper -->
         <div class="wrapper">
             <!-- Navbar -->
-            <nav class="main-header navbar navbar-expand bg-a navbar-white navbar-light">
+            <nav class="main-header navbar navbar-expand bg-c navbar-white navbar-dark">
                 <!-- Left navbar links -->
                 <ul class="navbar-nav">
                     <li class="nav-item">
@@ -81,13 +81,13 @@
 
                 <!-- Right navbar links -->
                 <ul class="navbar-nav ml-auto">
-                    @guest('pareent')
+                    @guest('teacher')
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('pareent.login') }}">{{ __('Login') }}</a>
+                        <a class="nav-link" href="{{ route('teacher.login') }}">{{ __('Login') }}</a>
                     </li>
-                        @if (Route::has('pareent.register'))
+                        @if (Route::has('teacher.register'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('pareent.register') }}">{{ __('Register') }}</a>
+                            <a class="nav-link" href="{{ route('teacher.register') }}">{{ __('Register') }}</a>
                         </li>
                         @endif
                     @else
@@ -128,7 +128,7 @@
                             onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                             {{ __('Logout') }}
                             </a>
-                            <form id="logout-form" action="{{ route('pareent.logout') }}" method="POST" style="display: none;">
+                            <form id="logout-form" action="{{ route('teacher.logout') }}" method="POST" style="display: none;">
                                 @csrf
                             </form>
 
@@ -147,7 +147,7 @@
                                 {{ __('Logout') }}
                             </a>
 
-                            <form id="logout-form" action="{{ route('pareent.logout') }}" method="POST" style="display: none;">
+                            <form id="logout-form" action="{{ route('teacher.logout') }}" method="POST" style="display: none;">
                                 @csrf
                             </form>
                         </div>

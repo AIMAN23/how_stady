@@ -1,12 +1,12 @@
-@extends('layouts.teacher')
+@extends('layouts.secretary')
 
-@section('main-header-li-left'){{-- @include('admin.include.main-header-li-left') --}}@endsection
-@section('main-header-li-right'){{-- @include('admin.include.main-header-li-right') --}}@endsection
-@section('sidebar-li'){{-- @include('admin.include.sidebar-li') --}}@endsection
+@section('main-header-li-left'){{-- @include('specialist.include.main-header-li-left') --}}@endsection
+@section('main-header-li-right'){{-- @include('specialist.include.main-header-li-right') --}}@endsection
+@section('sidebar-li'){{-- @include('specialist.include.sidebar-li') --}}@endsection
 
 
 {{--  عنوان الصفحة:الصفحة الشخصية للمشرف --}}
-@section('content-header')<h1>{{ __('admin.Profile') }}</h1>@endsection
+@section('content-header')<h1>{{ __('specialist.Profile') }}</h1>@endsection
 {{-- نهاية العنوان --}}
 
 
@@ -23,11 +23,11 @@
                 <div class="card-header p-2">
                     <ul class="nav nav-pills">
                         <li class="nav-item"><a class="nav-link active" href="#Profile"
-                                data-toggle="tab">{{ __('teacher.Profile') }}</a></li>
+                                data-toggle="tab">{{ __('secretary.Profile') }}</a></li>
                         <li class="nav-item"><a class="nav-link" href="#About"
-                                data-toggle="tab">{{ __('teacher.About Me') }}</a></li>
+                                data-toggle="tab">{{ __('secretary.About Me') }}</a></li>
                         <li class="nav-item"><a class="nav-link" href="#settings"
-                                data-toggle="tab">{{ __('teacher.setting') }}</a></li>
+                                data-toggle="tab">{{ __('secretary.setting') }}</a></li>
                     </ul>
                 </div><!-- /.card-header -->
                 <div class="card-body">
@@ -53,7 +53,7 @@
                                     <!-- About Me Box -->
                                     <div class="card card-primary">
                                         <div class="card-header">
-                                            <h3 class="card-title">{{ __('admin.image') }}</h3>
+                                            <h3 class="card-title">{{ __('specialist.image') }}</h3>
                                         </div>
                                         <!-- /.card-header -->
                                         <div class="card-body">

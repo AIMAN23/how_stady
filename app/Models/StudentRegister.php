@@ -19,7 +19,7 @@ class StudentRegister extends Model
         'school_id',
         'level_id',
         'classroom_id',
-        'schooladmin_id',
+        'school_admin_id',
         'created_at',
         'updated_at'
     ];
@@ -56,7 +56,7 @@ class StudentRegister extends Model
         ############  admin school  المستخدم الذي سجل الطالب في المدرسة
             public function schooladmin()
             {
-                return $this->belongsTo('App\Models\SchoolAdmin','schooladmin_id');
+                return $this->belongsTo('App\Models\SchoolAdmin','school_admin_id');
             }
             
     ##############   end Relationes     ##############
@@ -73,5 +73,13 @@ class StudentRegister extends Model
                 return $this->hasMany('App\Models\StudentAttendance','student_register_id');
             }
     ##############   end Relationes has    ##############
+
+
+
+
+    public function setCodeAttribute($value)
+    {
+        $this->attributes['code'] = strtoupper($value);
+    }
 
 }

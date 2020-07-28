@@ -59,7 +59,7 @@ class SchoolAdmin extends AuthenticatableAdmin
         ############  registeres الطلاب الذي اظافهم المشرف للمدرسة
             public function registers()
             {
-                return $this->hasMany('App\Models\StudentRegister','schooladmin_id');
+                return $this->hasMany('App\Models\StudentRegister','school_admin_id');
             }
     ##############   end Relationes has    ##############
 

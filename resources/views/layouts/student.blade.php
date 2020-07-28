@@ -81,13 +81,13 @@
 
                 <!-- Right navbar links -->
                 <ul class="navbar-nav ml-auto">
-                    @guest('pareent')
+                    @guest('student')
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('pareent.login') }}">{{ __('Login') }}</a>
+                        <a class="nav-link" href="{{ route('student.login') }}">{{ __('Login') }}</a>
                     </li>
-                        @if (Route::has('pareent.register'))
+                        @if (Route::has('student.register'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('pareent.register') }}">{{ __('Register') }}</a>
+                            <a class="nav-link" href="{{ route('student.register') }}">{{ __('Register') }}</a>
                         </li>
                         @endif
                     @else
@@ -128,7 +128,7 @@
                             onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                             {{ __('Logout') }}
                             </a>
-                            <form id="logout-form" action="{{ route('pareent.logout') }}" method="POST" style="display: none;">
+                            <form id="logout-form" action="{{ route('student.logout') }}" method="POST" style="display: none;">
                                 @csrf
                             </form>
 
@@ -147,7 +147,7 @@
                                 {{ __('Logout') }}
                             </a>
 
-                            <form id="logout-form" action="{{ route('pareent.logout') }}" method="POST" style="display: none;">
+                            <form id="logout-form" action="{{ route('student.logout') }}" method="POST" style="display: none;">
                                 @csrf
                             </form>
                         </div>

@@ -1,4 +1,13 @@
-@if (isset($data_csv_new))
+<?php  $chunk=session('chunk.0'); ?>
+
+
+    
+{{-- $ch = $chunk[0] --}}
+
+
+{{-- {{ $ch['stu_name'] }} --}}
+
+@if (isset($csv_new))
 <table id="tab" class="table table-hover table-head-fixed text-nowrap">
     <thead>
         <tr>
@@ -12,7 +21,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach ($data_csv_new as $d )
+        @foreach ($csv_new as $d )
 
         <tr>
             <td>{{ $d->no }}</td>
@@ -27,3 +36,5 @@
     </tbody>
 </table>
 @endif
+
+

@@ -1,12 +1,12 @@
 @extends('layouts.teacher')
 
-@section('main-header-li-left'){{-- @include('admin.include.main-header-li-left') --}}@endsection
-@section('main-header-li-right'){{-- @include('admin.include.main-header-li-right') --}}@endsection
-@section('sidebar-li'){{-- @include('admin.include.sidebar-li') --}}@endsection
+@section('main-header-li-left'){{-- @include('teacher.include.main-header-li-left') --}}@endsection
+@section('main-header-li-right'){{-- @include('teacher.include.main-header-li-right') --}}@endsection
+@section('sidebar-li'){{-- @include('teacher.include.sidebar-li') --}}@endsection
 
 
 {{--  عنوان الصفحة:الصفحة الشخصية للمشرف --}}
-@section('content-header')<h1>{{ __('admin.Profile') }}</h1>@endsection
+@section('content-header')<h1>{{ __('teacher.Profile') }}</h1>@endsection
 {{-- نهاية العنوان --}}
 
 
@@ -53,7 +53,7 @@
                                     <!-- About Me Box -->
                                     <div class="card card-primary">
                                         <div class="card-header">
-                                            <h3 class="card-title">{{ __('admin.image') }}</h3>
+                                            <h3 class="card-title">{{ __('teacher.image') }}</h3>
                                         </div>
                                         <!-- /.card-header -->
                                         <div class="card-body">

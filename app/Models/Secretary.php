@@ -44,6 +44,12 @@ class Secretary extends Authenticatable
         {
             return $this->belongsTo('App\Models\Address','address_id');
         }
+     ###########  
+        public function img()
+        {
+            return $this->belongsTo('App\Models\Image','image_id','id','id');
+        }
+     ###########         
      ###########   secretaries school
         public function school()
         {

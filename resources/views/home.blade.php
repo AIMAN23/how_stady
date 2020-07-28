@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -25,7 +25,7 @@
                     </div>
                 </div>
             </nav> --}}
-            @guest('super')
+            @guest()
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>

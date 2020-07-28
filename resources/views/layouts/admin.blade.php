@@ -455,6 +455,7 @@
             });
         });
         </script>
+        
         @include('includes.swets-js')
         
         <script> 

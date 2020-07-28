@@ -41,10 +41,16 @@ class Student extends Authenticatable
     
     ##############   Start Relationes  belongsTo   ##############
         ############  address
-            public function address()
-            {
-                return $this->belongsTo('App\Models\Address','address_id');
-            }    
+        public function address()
+        {
+            return $this->belongsTo('App\Models\Address','address_id');
+        }
+        ###########  
+        public function img()
+        {
+            return $this->belongsTo('App\Models\Image', 'image_id', 'id', 'id');
+        }
+        ########### 
         ############ Student socialdetail 
         public function socialdetail()
         {
@@ -60,11 +66,11 @@ class Student extends Authenticatable
     ##############   end Relationes belongsTo    ##############
     ##############   Start Relationes  has      ##############
         ############  registeres السجلات لتسجيلا الطالب في كل مستوىة
-            public function registers()
-            {
-                return $this->hasMany('App\Models\StudentRegister','student_id');
-            }
-       
+        public function registers()
+        {
+            return $this->hasMany('App\Models\StudentRegister','student_id');
+        }
+    
         
 
     ##############   end Relationes has     ##############

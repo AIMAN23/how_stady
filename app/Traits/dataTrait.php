@@ -34,7 +34,7 @@ Trait  dataTrait
     }
     function degree($tayp=0)
     {
-        if ($tayp > 6 | $tayp < 1) {
+        if ($tayp > 6 || $tayp < 1) {
             return $this->DegreeTayp;
         } else {
             return $this->DegreeTayp[$tayp];
