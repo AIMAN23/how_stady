@@ -30,7 +30,7 @@ class Step2 extends FormRequest
           'wep'  => 'required|max:100|unique:schools',
           'tel' => 'required|max:255',
           'fax' => 'required|max:255',
-          'logo' => 'mimes:png,jpg,jpeg',
+          'logo' => 'required|mimes:png,jpg,jpeg',
           'country' => 'required|max:255',
           'cite'  => 'required|max:255',
           'zip' => 'required|numeric',
