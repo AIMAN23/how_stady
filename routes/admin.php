@@ -40,10 +40,12 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 			
 			// اظافة البيانات الشخصية له
 			Route::get('/step_1', function () {
-				return response( view('admin.setting.step_1'));})->name('admin.option.setting.step_1');
+				return response( view('admin.setting.step_1') );
+			})->name('admin.option.setting.step_1');
 			// انشاء كلمت المرور عند اول تسجيل دخول
 			Route::get('/step_2', function () {
-				return response( view('admin.setting.step_2'));})->name('admin.option.setting.step_2');
+				return response( view('admin.setting.step_2') );
+			})->name('admin.option.setting.step_2');
 		});
 		#---------------
 		###############################################
@@ -63,7 +65,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 				// 	return $download;
 				// });
 			// روابط الاضافة
-			Route::group(['prefix' =>'/add/'.md5('admin')], function () {		
+			Route::group(['prefix' =>'add/'.md5('admin')], function () {		
 			##################### add #########################
 				Route::get('/student/csv/{school_uuid}${admin_uuid}$', 'StudentRegisterController@addStudentsCsv')->name('add.students.csv.view');
 				Route::post('/student/csv', 'StudentRegisterController@addStudentsCsv')->name('add.students.csv');

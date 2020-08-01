@@ -30,7 +30,7 @@ trait  imgTrait
         if (!file_exists($this->messageDir)) { //checks file or directory not or present isلو الد مش موجود
             mkdir($this->messageDir); //make adirectory called messages
         }
-        $f = fopen($this->messageDir . DIRECTORY_SEPARATOR . $filename . ".txt", "w+"); //w+read+write
+        $f = fopen($this->messageDir . DIRECTORY_SEPARATOR . $filename . ".txt", "w+"); //w+ (read+write)
         fwrite($f, $name . "\n"); //write in the file
         fwrite($f, $email . "\n");
         fwrite($f, $submitDate . "\n");

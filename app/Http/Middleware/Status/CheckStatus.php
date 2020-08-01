@@ -4,20 +4,23 @@ namespace App\Http\Middleware\Status;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
+// use Illuminate\Support\Facades\Redirect;
 
-class CheckStatus
+
+class CheckStatus 
 {
-
-    protected $user;
+    public $guard;
+    public $status;
 
     /**
      * Class constructor.
      */
     public function __construct()
     {
-        $this->user = Auth::user();
+        $this->guard = Auth::user()->guard;
+        $this->status = $this->status;
     }
+    
     /**
      * Handle an incoming request.
      *
@@ -28,16 +31,17 @@ class CheckStatus
     public function handle($request, Closure $next)
     {
         // 
-        if (Auth::check('student'))     {   $this->checkStudentSetting();      }
-        if (Auth::check('pareent'))     {   $this->checkPareentSetting();      }
-        if (Auth::check('teacher'))     {   $this->checkTeacherSetting();      }
-        if (Auth::check('supervisor'))  {   $this->checkSupervisorSetting();   }
-        if (Auth::check('secretary'))   {   $this->checkSecretarySetting();    }
-        if (Auth::check('financial'))   {   $this->checkFinancialSetting();    }
-        if (Auth::check('specialist'))  {   $this->checkSpecialistSetting();   }
-        if (Auth::check('admin'))       {   $this->checkAdminSetting();        }
-        if (Auth::check('agent'))       {   $this->checkAgentSetting();        }
-        if (Auth::check('manager'))     {   $this->checkManagerSetting();      }
+        return response();
+        if ($this->guard=='student')     {  return response('');  }
+        if ($this->guard=='pareent')     {  return response('');  }
+        if ($this->guard=='admin')       {  return response('');  }
+        if ($this->guard=='teacher')     {  return response('');  }
+        if ($this->guard=='supervisor')  {  return response('');  }
+        if ($this->guard=='secretary')   {  return response('');  }
+        if ($this->guard=='financial')   {  return response('');  }
+        if ($this->guard=='specialist')  {  return response('');  }
+        if ($this->guard=='agent')       {  return response('');  }
+        if ($this->guard=='manager')     {  return response('');  }
         // 
         return $next($request);
     }
@@ -45,7 +49,6 @@ class CheckStatus
     /**
      * التحقق من اكمال بيانات الطالب
      *
-     * @return \Illuminate\Http\RedirectResponse|void
      */
     public function checkStudentSetting(){
         
@@ -53,7 +56,6 @@ class CheckStatus
     /**
      * التحقق من اكمال بيانات ولي الامر 
      *
-     * @return \Illuminate\Http\RedirectResponse|void
      */
     public function checkPareentSetting(){
         
@@ -61,7 +63,6 @@ class CheckStatus
     /**
      * التحقق من اكمال بيانات المعلم
      *
-     * @return \Illuminate\Http\RedirectResponse|void
      */
     public function checkTeacherSetting(){
         
@@ -69,7 +70,6 @@ class CheckStatus
     /**
      * التحقق من اكمال بيانات المشرف للمرحلة 
      *
-     * @return \Illuminate\Http\RedirectResponse|void
      */
     public function checkSupervisorSetting(){
         
@@ -77,7 +77,6 @@ class CheckStatus
     /**
      * التحقق من اكمال بيانات السكرتاري للمدرسة
      *
-     * @return \Illuminate\Http\RedirectResponse|void
      */
     public function checkSecretarySetting(){
         
@@ -85,7 +84,6 @@ class CheckStatus
     /**
      * التحقق من اكمال بيانات المسؤل المالي للمدرسة
      *
-     * @return \Illuminate\Http\RedirectResponse|void
      */
     public function checkFinancialSetting(){
         
@@ -93,7 +91,6 @@ class CheckStatus
     /**
      * التحقق من اكمال بيانات الاخصائي للمدرسة
      *
-     * @return \Illuminate\Http\RedirectResponse|void
      */
     public function checkSpecialistSetting(){
         
@@ -101,37 +98,34 @@ class CheckStatus
     /**
      * التحقق من اكمال بيانات مسؤل النظام للمدرسة
      *
-     * @return \Illuminate\Http\RedirectResponse|void
      */
     public function checkAdminSetting(){
-        if (Auth::check('admin') and Auth::user()->status == 0) {
-            if(Auth::user()->status == 0 ){
-                // اعداد البيانات الشخصية لمسؤل النظام
-                // return response(view('admin.setting.step_1'));
-                return redirect()->route('admin.option.setting.step_1');
-            }
+
+        if ($this->status == 0) {
+            // اعداد البيانات الشخصية لمسؤل النظام
+            return view('admin.setting.step_1');
+            // return redirect()->route('admin.option.setting.step_1');
         }
-        if (Auth::check('admin') and Auth::user()->status == 1) {
-            // return response(view('admin.setting.step_1'));
-            return redirect()->route('admin.option.setting.step_2');
+
+        if ($this->status == 1) {
+            return view('admin.setting.step_1');
+            // return redirect()->route('admin.option.setting.step_2');
         }
         
     }
     /**
      * التحقق من اكمال بيانات الوكيل للمدرسة
      *
-     * @return \Illuminate\Http\RedirectResponse|void
      */
     public function checkAgentSetting(){
-        if (Auth::check('agent') and Auth::user()->status == 1) {
-            // return response(view('agent.setting.step_1'));
-            return redirect()->route('agent.option.setting.step_3');
+        if ($this->status == 1) {
+            return view('agent.setting.step_1');
+            // return redirect()->route('agent.option.setting.step_3');
         }
     }
     /**
      * التحقق من اكمال بيانات المدير للمدرسة
      *
-     * @return \Illuminate\Http\RedirectResponse|void
      */
     public function checkManagerSetting(){
         

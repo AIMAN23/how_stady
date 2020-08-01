@@ -76,6 +76,6 @@ class SchoolAdmin extends AuthenticatableAdmin
         'email_verified_at' => 'datetime',
     ];
     
-    // protected $guard = 'admin';
+    public $guard = 'admin';
 
 }

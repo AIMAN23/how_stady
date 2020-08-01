@@ -1,23 +1,23 @@
 <?php
 
-// // no users
-// define('NO_time_and_random_int',time().random_int(1,99));
-// define('NO_school', 'SCH'.NO_time_and_random_int );
-// define('NO_manager', 'MAN'.NO_time_and_random_int );
-// define('NO_agent', 'AGN'.NO_time_and_random_int );
-// define('NO_admins', 'ADM'.NO_time_and_random_int );
-// define('NO_financial', 'FIN'.NO_time_and_random_int );
-// define('NO_secretary', 'SEC'.NO_time_and_random_int );
-// define('NO_specialist', 'SPE'.NO_time_and_random_int );
-// define('NO_Supervisor', 'SUP'.NO_time_and_random_int );
-// // 
-// define('New_Uuid', Illuminate\Support\Str::uuid() );
-// define('img',new App\Models\Image );
-// define('School_id',session('school.id'));
-// define('Code_levels',array('L1as', 'L2as', 'L3as', 'L4as', 'L5as', 'L6as', 'L7as', 'L8as', 'L9as', 'L1th', 'L2th', 'L3th'));
-// define('Password_define',Illuminate\Support\Facades\Hash::make('123456789'));
-// // files path
-// define('FILE_SCHOOL','public/csv/school/');
+// no users
+define('NO_time_and_random_int',time().random_int(1,99));
+define('NO_school', 'HSSC'.NO_time_and_random_int );
+define('NO_manager', 'HSMA'.NO_time_and_random_int );
+define('NO_agent', 'HSAG'.NO_time_and_random_int );
+define('NO_admins', 'HSAD'.NO_time_and_random_int );
+define('NO_financial', 'HSFI'.NO_time_and_random_int );
+define('NO_secretary', 'HSSE'.NO_time_and_random_int );
+define('NO_specialist', 'HSSP'.NO_time_and_random_int );
+define('NO_Supervisor', 'HSSU'.NO_time_and_random_int );
+// 
+define('New_Uuid', Illuminate\Support\Str::uuid() );
+define('img',new App\Models\Image );
+define('School_id',session('school.id'));
+define('Code_levels',array('L1as', 'L2as', 'L3as', 'L4as', 'L5as', 'L6as', 'L7as', 'L8as', 'L9as', 'L1th', 'L2th', 'L3th'));
+define('Password_define',Illuminate\Support\Facades\Hash::make('123456789'));
+// files path
+define('FILE_SCHOOL','public/csv/school/');
 
 ########################################
 // تظمين المكتبات التي نحتاجلها
@@ -125,56 +125,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 
 
   
-  /**
-   * 
-   * روابط الوكيل للمدرسة 
-   *  *  *  *  *  * 
-   *  *  *  *  * 
-   */
-  Route::group(['prefix' => 'agent'], function () {
-    
-    ## رابط عرض شاشة تسجيل الدخول للوكيل
-    Route::get('login', 'Auth\agent\LoginController@showLoginForm')->name('agent.login');
-    
-    ## رابط التاكد من اسم المستحدم وكلمة المرور لكي يتم تسجيل الدخول 
-    Route::post('login', 'Auth\agent\LoginController@login')->name('agent.login.seve');
-    
-    
-    ##### بعد تسجيل الدخول بنجاح
-    Route::get('/', function () {
-        return redirect()->route('agent.home');
-    });
 
-
-    ### الطبقات الثلاث التي تتحقق من الخطوات الثلاث الاساسية للوكيل عند تسجيل الدخول للصفحة الخاصة به
-    Route::group(['middleware' => ['auth:agent']], function () {
-      
-      ##1## التاكد من البيانات الاساسية للوكيل مثل:الاسم,العنوان,الايميل,الهاتف...الخ
-      ## لو لم يتم ادخال بياناتة من قبل يتم
-            #>>>> عرض شاشة ادخال البيانات الاساسية لحفظها في قاعدة البيانات
-      Route::get('/option/setting/step_1', function () {      return response( view('agent.setting.step_1'));    })->name('agent.option.setting.step_1');
-      ##2## التأكد من ان  تغير كلمة المرور الافتراضية الخاصة بة
-      ##لو لم يتم
-            #>>> تعرض له شاشة اعادة تعين كلمة المرور
-      Route::get('/option/setting/step_2', function () {      return response( view('agent.setting.step_2'));    })->name('agent.option.setting.step_2');
-      ##3## التأكد من ان كل المراحل الدراسية تم تعين لها مشرفين
-      ## لو هناك مرحلة او اكثر من دون مشرف يتم
-            #>>> عرض شاشة تعين المشرفين
-            #>>>او تفعيل حساباتهم لو كانت موقفة في حالة السنة الجديدة
-      Route::get('/option/setting/step_3', function () {      return response( view('agent.setting.step_3'));    })->name('agent.option.setting.step_3');
-
-      ## انتهاء الخطوات
-      
-    });## اما اذا كل الخطوات قد تم اكمالها سابقاً فلايتم عرض اي شيء
-
-
-
-    Route::post('logout', 'Auth\agent\LoginController@logout')->name('agent.logout');
-    Route::group(['middleware' => ['auth:agent','status'] ], function () {
-      Route::get('home', 'HomeController@agent')->name('agent.home');
-    });
-  });
-  //------------------------------------- النهاية لروابط
   
 
   
@@ -250,12 +201,13 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
   // ------------------------------------------------
   //-------- رابط الصفحة الترحيبية
   // ------- عند فتح الموقع
+  // Route::get('/', function() { return redirect()->route('welcome',[],200); });
   Route::get('/', function() { return view('welcome'); })->name('welcome');
   
   // ------------------------------------------------
   // -------رابط يعيد توجية المستخدم للصفحة الرئيسية
   // ------- في حالة لم يكن مسجل الدخول او حدث خطاء عند تسجيل الدخول
-  Route::get('/welcom', function() { return view('welcome'); })->name('login');
+  Route::get('/welcome/login@'.md5('/welcome/login'), function() { return view('welcome'); })->name('login');
   
   // ------------------------------------------------
   // -------- رابط يجيب اسماء الدول ورموزها

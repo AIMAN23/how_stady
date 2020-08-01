@@ -44,7 +44,7 @@ class School extends Authenticatable
         ############ teachers in school المدرسين لكل مدرسة
         public function teachers()
         {
-            //return $this->belongsToMany('App\Models\Teacher','school_teacher','school_id','teacher_id','id','id');
+            return $this->belongsToMany('App\Models\Teacher','schools_teachers','school_id','teacher_id','id','id');
         }
     ##############   end Relationes belongsTo    ##############
     ##############   Start Relationes  has      ##############

@@ -1,3 +1,4 @@
+<optgroup>الدولة</optgroup>
 <option value="أفغانستان" uuid-value="ee47e27b-ae61-eadc-7050-91c64bd360a6" code="93">أفغانستان</option>
 <option value="ألبانيا" uuid-value="b1407962-0599-0537-85eb-92f44097229d" code="355">ألبانيا</option>
 <option value="الجزائر" uuid-value="c54cb632-f56c-1aef-6e63-8d00b32c7c91" code="213">الجزائر</option>

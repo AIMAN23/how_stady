@@ -56,7 +56,7 @@ class Teacher extends Authenticatable
     public function schools()
     {
         // session()->put('school_id','school_id');
-        //return $this->belongsToMany('App\Models\School','school_teacher','teacher_id','school_id','id','id');
+        return $this->belongsToMany('App\Models\School','schools_teachers','school_id','teacher_id','id','id');
     }
     ########### Teacher supervisor classroom one to one
     public function classroom()

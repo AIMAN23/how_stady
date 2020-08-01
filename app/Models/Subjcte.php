@@ -36,4 +36,8 @@ class Subjcte extends Model
         return $this->belongsTo('App\Models\Degree','subjcte_id');
     }
     
+    public function SubjcteAttrabuts(){
+        return $this->attributesToArray();
+    }
+    
 }

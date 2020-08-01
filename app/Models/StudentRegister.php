@@ -63,7 +63,7 @@ class StudentRegister extends Model
     ##############   start Relationes has    ##############
         
         ############  Degree درجات الطالب
-            public function Degrees()
+            public function degrees()
             {
                 return $this->hasMany('App\Models\Degree','student_register_id');
             }
@@ -76,10 +76,19 @@ class StudentRegister extends Model
 
 
 
+    ##############   start functions set value for this attributes    ##############
 
+    /**
+     * تعمل هذه الدالة عند تسجيل الطلاب او اظافة قيمة جديدة لحقل الكود للطالب حيث تقوم بتحويل الحروف الصغيرة للكود الى كبيرة قبل الحفظ
+     *
+     * @param mixed $value // تستقبل القيمة السابقة للحقل الذي سيتم تحويلها
+     * @return void // لاترجع شيء
+     */
     public function setCodeAttribute($value)
     {
         $this->attributes['code'] = strtoupper($value);
     }
+
+    ##############   end functions set value for this attributes    ##############
 
 }
