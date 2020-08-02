@@ -30,7 +30,8 @@ class SchoolsTeachers extends Migration
             $table->foreign('level_id')->references('id')->on('levels')->onDelete('cascade');
             $table->foreign('subjcte_id')->references('id')->on('subjctes')->onDelete('cascade');
             // 
-            $table->timestamp('added_on')->nullable()->default(time());
+            $table->timestamp('added_on')->nullable();
+            $table->timestamp('read_at')->nullable();
             $table->timestamps();
         });
     }

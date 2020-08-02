@@ -23,6 +23,8 @@ class CreateStudentReportsTable extends Migration
             ## created_at ,updated_at ,deleted_at ##
             $table->timestamps();
             $table->softDeletes();
+            $table->timestamp('added_on')->nullable();
+            $table->timestamp('read_at')->nullable();
         });
     }
 

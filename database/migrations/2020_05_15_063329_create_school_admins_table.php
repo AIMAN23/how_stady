@@ -44,7 +44,8 @@ class CreateSchoolAdminsTable extends Migration
             ## times
             $table->timestamps();
             $table->softDeletes();
-            $table->timestamp('added_on')->nullable()->default(time());
+            $table->timestamp('added_on')->nullable();
+            $table->timestamp('read_at')->nullable();
         });
     }
 
