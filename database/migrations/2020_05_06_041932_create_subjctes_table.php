@@ -23,7 +23,10 @@ class CreateSubjctesTable extends Migration
             $table->integer('level_id')->unsigned()->default(0);
             $table->integer('teacher_id')->unsigned()->default(0)->comment('رقم مدرس المادة');
             // timestamp
+            ## times
             $table->timestamps();
+            $table->softDeletes();
+            $table->timestamp('added_on')->nullable()->default(time());
         });
     }
 

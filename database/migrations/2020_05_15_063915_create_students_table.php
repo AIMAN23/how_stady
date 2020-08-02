@@ -42,7 +42,10 @@ class CreateStudentsTable extends Migration
             $table->bigInteger('socialdetail_id')->unsigned()->default(0)->comment('المعلومات الاجتماعية');
             $table->bigInteger('healthdetail_id')->unsigned()->default(0)->comment('المعلومات الصحية');
             // timestamp
+            ## times
             $table->timestamps();
+            $table->softDeletes();
+            $table->timestamp('added_on')->nullable()->default(time());
             
             // relation
         });

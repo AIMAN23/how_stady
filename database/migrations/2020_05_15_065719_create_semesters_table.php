@@ -18,7 +18,10 @@ class CreateSemestersTable extends Migration
             $table->string('name')->nullable()->comment('اسم الفصل الدراسي');
             ## العلاقات
             $table->bigInteger('school_id')->unsigned()->comment('رقم المدرسة');
+            ## times
             $table->timestamps();
+            $table->softDeletes();
+            $table->timestamp('added_on')->nullable()->default(time());
         });
     }
 

@@ -17,9 +17,12 @@ class CreateStudentReportsTable extends Migration
             $table->bigIncrements('id');
             $table->mediumText('autocomment')->nullable()->comment('تعليق يقوم النظام بعملة تلقائي');
             $table->mediumText('comment')->nullable()->comment('التعليق الخاص بالمعلم');
-            $table->tinyInteger('status')->default(0)->comment('حالت المشاهدة للتعليق من ولي الامر 0 لم يتم مشاهدته 1 تم مشاهدته');
-            $table->date('show_comment_at')->default(date('Y-m-d H:i:s'))->comment('وقت مشاهدة التعليق من قبل ولي الامر');
+            $table->tinyInteger('status')->nullable()->default(0)->comment('حالت المشاهدة للتعليق من ولي الامر 0 لم يتم مشاهدته 1 تم مشاهدته');
+            $table->date('show_comment_at')->nullable()->default(date('Y-m-d H:i:s'))->comment('وقت مشاهدة التعليق من قبل ولي الامر');
+            
+            ## created_at ,updated_at ,deleted_at ##
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

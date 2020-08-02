@@ -21,7 +21,10 @@ class CreateLessonsTable extends Migration
             $table->time('end_time')->nullable()->comment('وقت نهاية الحصة');
             ##
             $table->bigInteger('level_id')->unsigned()->comment('رقم المستوى');
+            ## times
             $table->timestamps();
+            $table->softDeletes();
+            $table->timestamp('added_on')->nullable()->default(time());
         });
     }
 

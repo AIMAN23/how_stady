@@ -20,8 +20,10 @@ class CreateHealthDetailsTable extends Migration
             $table->tinyInteger('pronunciation')->nullable()->comment('النطق 1 جيد 2متوسط 3 ضعيف');
             $table->tinyInteger('has_other')->nullable()->comment('هل يعاني من اعاقة اخرى 1 نعم و 2 لا');
             $table->string('other')->nullable()->comment('مرض اخر');
-            ##
+            ## times
             $table->timestamps();
+            $table->softDeletes();
+            $table->timestamp('added_on')->nullable()->default(time());
         });
     }
 

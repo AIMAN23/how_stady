@@ -25,7 +25,10 @@ class CreateLevelsTable extends Migration
             $table->biginteger('school_id')->unsigned();
             $table->biginteger('supervisor_id')->unsigned()->comment('مشرف المرحلة');
             // timestamp
+            ## times
             $table->timestamps();
+            $table->softDeletes();
+            $table->timestamp('added_on')->nullable()->default(time());
         });
     }
 

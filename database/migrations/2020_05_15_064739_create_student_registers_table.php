@@ -31,7 +31,10 @@ class CreateStudentRegistersTable extends Migration
             $table->bigInteger('level_id')->nullable()->default(0)->comment('رقم المستوى');
             $table->bigInteger('classroom_id')->nullable()->default(0)->comment('رقم الشعبة الدراسي');
             $table->bigInteger('school_admin_id')->nullable()->default(0)->comment('رقم المسئول المدرسي الذي سجل الطالب');
+            ## times
             $table->timestamps();
+            $table->softDeletes();
+            $table->timestamp('added_on')->nullable()->default(time());
         });
     }
 

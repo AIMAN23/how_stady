@@ -19,7 +19,10 @@ class CreateDegreeTaypsTable extends Migration
             $table->tinyInteger('belongs')->nullable()->comment('الرقم 1 يعني شهري و2 يعني نهائي');
             ## العلاقات
             $table->bigInteger('school_id')->unsigned()->comment('رقم المدرسة');
+            ## times
             $table->timestamps();
+            $table->softDeletes();
+            $table->timestamp('added_on')->nullable()->default(time());
         });
     }
 

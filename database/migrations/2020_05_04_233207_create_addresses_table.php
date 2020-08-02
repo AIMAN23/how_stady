@@ -19,7 +19,10 @@ class CreateAddressesTable extends Migration
             $table->string('cite')->nullable();
             $table->string('street')->nullable();
             $table->smallinteger('zip')->nullable()->default(0000)->change();
+            ## times
             $table->timestamps();
+            $table->softDeletes();
+            $table->timestamp('added_on')->nullable()->default(time());
         });
     }
 

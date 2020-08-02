@@ -40,6 +40,8 @@ class CreatePareentsTable extends Migration
             $table->bigInteger('address_id')->unsigned()->default(0);
             // timestamp
             $table->timestamps();
+            $table->softDeletes();
+            $table->timestamp('added_on')->nullable()->default(time());
         });
     }
 

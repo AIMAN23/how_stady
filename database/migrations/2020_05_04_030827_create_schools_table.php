@@ -40,7 +40,10 @@ class CreateSchoolsTable extends Migration
             $table->bigInteger('address_id')->unsigned();
             ### كلمة السر
             $table->string('password');
+            ## times
             $table->timestamps();
+            $table->softDeletes();
+            $table->timestamp('added_on')->nullable()->default(time());
         });
     }
 

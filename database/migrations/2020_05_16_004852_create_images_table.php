@@ -19,7 +19,10 @@ class CreateImagesTable extends Migration
             $table->string('no')->nullable();
             $table->integer('status')->default(0)->comment('حالة التفعيل للصورة');
             $table->string('img')->default('user.jpg')->comment('عنوان الصورة');
+            
             $table->timestamps();
+            $table->softDeletes();
+            $table->timestamp('added_on')->nullable()->default(time());
         });
     }
 

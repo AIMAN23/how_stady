@@ -23,7 +23,10 @@ class CreateClassroomsTable extends Migration
             $table->integer('level_id')->unsigned();
             $table->integer('teacher_id')->unsigned()->comment('مربي الفصل');
             // timestamp
+            ## times
             $table->timestamps();
+            $table->softDeletes();
+            $table->timestamp('added_on')->nullable()->default(time());
         });
     }
 

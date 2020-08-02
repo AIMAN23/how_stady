@@ -21,7 +21,10 @@ class CreateStudentAttendancesTable extends Migration
             $table->bigInteger('student_register_id')->unsigned()->comment('رقم السجل للطالب');
             $table->bigInteger('teacher_id')->unsigned()->comment('رقم المعلم');
             $table->bigInteger('student_report_id')->unsigned()->comment('رقم التقرير تلقائي لعملية التحظير اليومية حسب نوع التحظير');
+            ## times
             $table->timestamps();
+            $table->softDeletes();
+            $table->timestamp('added_on')->nullable()->default(time());
         });
     }
 

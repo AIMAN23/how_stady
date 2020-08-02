@@ -19,7 +19,10 @@ class CreateSocialDetailsTable extends Migration
             $table->tinyInteger('educational_father')->nullable()->comment('تعليم الاب 1 جامعي 2 ثانوي 3 اساسي 4 غير متعلم');
             $table->tinyInteger('educational_mother')->nullable()->comment('تعليم الام 1 جامعي 2 ثانوي 3 اساسي 4 غير متعلم');
             $table->tinyInteger('live_with')->nullable()->comment('يعيش 1 مع اسرتة 2 اقاربة 3 منفرد');
+            ## times
             $table->timestamps();
+            $table->softDeletes();
+            $table->timestamp('added_on')->nullable()->default(time());
         });
     }
 

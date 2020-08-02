@@ -20,7 +20,10 @@ class CreateTeacherCommendsTable extends Migration
                 $table->smallInteger('vote')->nullable()->comment('عدد مرات الاستخدام للتعليق');
                 ##
                 $table->bigInteger('teacher_id')->unsigned()->comment('رقم المعلم صاحب التعليق');
+            ## times
             $table->timestamps();
+            $table->softDeletes();
+            $table->timestamp('added_on')->nullable()->default(time());
         });
     }
 

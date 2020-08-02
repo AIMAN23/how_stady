@@ -25,6 +25,8 @@ class CreateFilesTable extends Migration
             $table->bigInteger('school_admin_id')->nullable()->default(0)->comment('رقم الادمن');
             // 
             $table->timestamps();
+            $table->softDeletes();
+            $table->timestamp('added_on')->nullable()->default(time());
         });
     }
 

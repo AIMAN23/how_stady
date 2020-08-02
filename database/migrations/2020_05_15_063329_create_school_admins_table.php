@@ -41,7 +41,10 @@ class CreateSchoolAdminsTable extends Migration
             $table->bigInteger('school_id')->unsigned()->default(0);
             $table->bigInteger('address_id')->unsigned()->default(0);
             // timestamp
+            ## times
             $table->timestamps();
+            $table->softDeletes();
+            $table->timestamp('added_on')->nullable()->default(time());
         });
     }
 

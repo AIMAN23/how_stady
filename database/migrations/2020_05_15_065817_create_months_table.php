@@ -17,7 +17,10 @@ class CreateMonthsTable extends Migration
             $table->bigIncrements('id');
             $table->string('month')->nullable()->comment('اسم الشهر الدراسي');
             $table->tinyInteger('school_id')->unsigned()->comment('رقم المدرسة');
+            
             $table->timestamps();
+            $table->softDeletes();
+            $table->timestamp('added_on')->nullable()->default(time());
         });
     }
 

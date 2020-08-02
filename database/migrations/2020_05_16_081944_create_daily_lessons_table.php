@@ -23,6 +23,8 @@ class CreateDailyLessonsTable extends Migration
             $table->bigInteger('classroom_id')->unsigned();
             // زمن الاظافة والتعديل
             $table->timestamps();
+            $table->softDeletes();
+            $table->timestamp('added_on')->nullable()->default(time());
         });
     }
 

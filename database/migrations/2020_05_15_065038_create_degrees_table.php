@@ -23,7 +23,10 @@ class CreateDegreesTable extends Migration
             $table->bigInteger('subjcte_id')->unsigned()->comment('رقم المادة');
             $table->bigInteger('semester_id')->unsigned()->comment('رقم الفصل الدراسي');
             $table->bigInteger('student_report_id')->unsigned()->comment('رقم التقرير  لدرجة الطالب');
+            ## times
             $table->timestamps();
+            $table->softDeletes();
+            $table->timestamp('added_on')->nullable()->default(time());
         });
     }
 
