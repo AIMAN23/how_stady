@@ -5,8 +5,9 @@ namespace App\Models;
 // use Illuminate\Database\Eloquent\Model;
 
 //use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Foundation\Auth\User as AuthenticatableAdmin;
+// use Illuminate\Support\Facades\Hash;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as AuthenticatableAdmin;
 
 ## مودل مسئول النظام للمدرسة
 class SchoolAdmin extends AuthenticatableAdmin
@@ -26,6 +27,7 @@ class SchoolAdmin extends AuthenticatableAdmin
         'image_id',
         'address_id',
         'school_id',
+        'password',
         // 'socialdetail_id',
         // 'healthdetail_id',
         ## detetime columns
@@ -63,8 +65,18 @@ class SchoolAdmin extends AuthenticatableAdmin
             }
     ##############   end Relationes has    ##############
 
+    //accessors
+    // public function setGenderAttribute($value){
+    //   return  $value =='M'? 1:2 ;
+    // }
+    // public function setPasswordAttribute($value){
+    //   return  ;
+      
+    // }
 
-
+    public function getGenderAttribute($value){
+      return  $value == 1 ?'male' : 'female';
+    }
 
 
      /**
