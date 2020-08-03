@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use config\subjctes;
 use App\Models\School;
-use App\Traits\imgTrait;
 // use App\Http\Requests\Step2;
+use App\Traits\imgTrait;
 use Illuminate\Support\Str;
 use App\Http\Requests\Step1;
 use Illuminate\Http\Request;
@@ -144,15 +145,31 @@ class SchoolController extends Controller
                             // $data_level = Level::where('name', $level)->first();
                             // $school->levels()->attach($data_level->id);
                             // $school->levels()->sync($data_level->id);
-                            $school->levels()->create([
+                            $l=$school->levels()->create([
                                 'uuid'=>Str::uuid(),
                                 'name'=>$level,
                                 'code_in_school'=>'',
-                                'code'=>'',
+                                'code'=>$level,
                                 'description'=>'وصف المرحلة',
                                 'school_id'=>$school->id,
                                 'supervisor_id'=>0,
                             ]);
+                            ##
+                            // اظافة المواد الدراسية لكل مرحلة يتم تسجيلها
+                            foreach (config('subjctes.' .  $l->code .   '.sub') as $sub ) {
+                                
+                                $school->subjctes()->create([
+                                    'name'=>$sub['name'],
+                                    'code'=>$sub['id'],
+                                    'description'=>'',
+                                    'school_id'=>$school->id,
+                                    'level_id'=>$l->id,
+                                    'teacher_id'=>0,
+    
+                                ]);
+                            }
+
+
                             // $school->levels()->syncWithoutDetaching($data_level->id);
                         }
                     }
@@ -180,6 +197,13 @@ class SchoolController extends Controller
 
 
 
+    /**
+     * ارسال رسالة الى البريد الخاص بلمدرسة 
+     * للتحقق من الايميل واكمال البيانات الخاصة بها
+     *
+     * @param string $school_uuid
+     * @return view(school.register.step1)
+     */
     public function sendEmailRegisterSchool($school_uuid)
     {
         $uuid = $school_uuid;
@@ -198,8 +222,20 @@ class SchoolController extends Controller
         }
     }
     ##
+
+
+    /**
+     * حفظ بيانات المدرسة 
+     *
+     * @param School $school
+     * @param Step1 $request
+     * @param string $imgName
+     * @param mixed $address
+     * @return mixed
+     */
     public function seveDataSchool($school, $request, $imgName, $address)
     {
+
         return $school->create([
             'uuid' => Str::uuid(),
             'status' => 1, // seting step 1 free true
@@ -213,10 +249,18 @@ class SchoolController extends Controller
             'no' =>NO_school,
             // address_id الربط عنوان المدرسة من جدول العناوين
             'address_id' => $address->id,
-            'password' => Password_define,
+            'password' => Hash::make(NO_school),
         ]);
     }
     ##
+
+
+    /**
+     * طباعة بطائق المستخدمين للنظام من قبل المدرسة
+     *
+     * @param mixed $school_uuid
+     * @return view('school.register.step3',$card)
+     */
     public function step3($school_uuid){
 
         $school = $this->getSchoolAndAddress($school_uuid);
@@ -241,6 +285,18 @@ class SchoolController extends Controller
         }
     }
     ##
+
+
+
+
+    /**
+     * حفظ عنوان المدرسة 
+     *
+     * 
+     * @param Request $request
+     * @param mixed $school
+     * @return mixed
+     */
     public function seveAddressSchool($request, $school)
     {
         return  $school->address()->create([
@@ -251,6 +307,17 @@ class SchoolController extends Controller
         ]);
     }
     ###
+
+
+
+
+
+    /**
+     * نقل الصورة الخاصة بلمدرسة الى مخزن|مجلد الصور الخاص بلمدرسة
+     *
+     * @param mixed $request
+     * @return string
+     */
     public function moveLogoSchool($request)
     {
         if ($request->hasFile('logo')) {
@@ -260,18 +327,53 @@ class SchoolController extends Controller
         }
     }
     ###
+
+
+
+
+
+    /**
+     * اظافة الكود الخاص بلمدرسة الى السشن للتعرف على بيانات المدرسة في باقي الصفحات حتى اكمال التسجيل
+     *
+     * @param string $value
+     * @return bool  true : false
+     */
     public function add_Uuid_School_Session($value)
     {
         return (session()->put('School.uuid', $value)) ? true : false;
     }
+    ###
+
+
+
+
+
+
+
+
+
+
+
     ######################################################################
     ###
+    /**
+     * تقوم بالاستعلام عن بيانات المدرسة والعنوان  من حلال الكود الخاص بها 
+     *
+     * @param string $uuid
+     * @return School::with(address)
+     */
     public function getSchoolAndAddress($uuid = null)
     {
         $s= School::where('uuid',$uuid)->first();
         return School::with('address')->find($s->id);
     }
     ###
+    /**
+     * تقوم بالاستعلام عن بيانات المدرسة والعنوان  من حلال الكود الخاص بها 
+     *
+     * @param string $uuid
+     * @return School
+     */
     public function getSchool($uuid = null)
     {
         return School::where('uuid',$uuid)->first();
