@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.lte')
 @section('content')
   <section class="content">
     <div class="container col-md-8">
@@ -55,7 +55,7 @@
 
                   
                   <br>
-                  <form method="POST" action="{{ route('password.update') }}">
+                  <form method="POST" action="{{ route('admin.password.update',Auth::user()->id) }}">
                     @csrf
 
                     {{-- <input type="hidden" name="token" value="{{ $token }}"> --}}
@@ -122,6 +122,7 @@
               if (cur.value != '') {
                 var option = $('option:selected', cur).attr('code');
                 $('#country_code').val(option);
+                $('#mobile').val(option);
                 $('.country_code').html(option);
               } else
                 $('.country_code').html('');

@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.lte')
 @section('content')
   <section class="content">
     <div class="container">
@@ -53,46 +53,52 @@
                     </div>
                   </div>
 
-                  <form id="register-form" method="POST" action="" novalidate="novalidate">
+                  <form id="register-form" method="POST" action="{{ route('admin.store', Auth::user()->id) }}" novalidate="novalidate">
                     @csrf
-                    {{-- <!-- 
-                      -first_name 
-                      -second_name 
-                      -third_name 
-                      -last_name --> --}}
+                    
+                    {{-- name --}}
                     <fieldset>
+                      <legend>اسم المستخدم</legend>
+                      <div class="row">
+                        <div class="form-group col-6 col-md-3">
+                          <label for="name" class="control-label">Last Name</label>
+                          <div class="elVal">
+                            <input type="text" name="name" id="name" maxlength="15"
+                              class="form-control" placeholder="Last Name">
+                          </div>
+                        </div>
+                      </div>
+                    </fieldset>
+                    
+                    {{-- <!-- 
+                      -f_name 
+                      -p_name 
+                      -l_name --> --}}
+                      <fieldset>
                       <legend>الاسم الرباعي</legend>
                       <div class="row">
 
                         <div class="form-group required col-6 col-md-3" aria-required="true">
-                          <label for="first_name" class="control-label">First Name</label>
+                          <label for="f_name" class="control-label">First Name</label>
                           <div class="elVal">
-                            <input type="text" name="first_name" id="first_name" minlength="3" maxlength="15"
+                            <input type="text" name="f_name" id="f_name" minlength="3" maxlength="15"
                               class="form-control" placeholder="First Name">
                           </div>
                         </div>
                         <div class="form-group required col-6 col-md-3" aria-required="true">
-                          <label for="second_name" class="control-label">Second Name</label>
+                          <label for="p_name" class="control-label">Second Name</label>
                           <div class="elVal">
-                            <input type="text" name="second_name" id="second_name" minlength="3" maxlength="15"
+                            <input type="text" name="p_name" id="p_name" minlength="3" maxlength="15"
                               class="form-control" placeholder="Second Name">
                           </div>
                         </div>
                         <div class="form-group required col-6 col-md-3" aria-required="true">
-                          <label for="third_name" class="control-label">Third Name</label>
+                          <label for="l_name" class="control-label">Third Name</label>
                           <div class="elVal">
-                            <input type="text" name="third_name" id="third_name" minlength="3" maxlength="15"
+                            <input type="text" name="l_name" id="l_name" minlength="3" maxlength="15"
                               class="form-control" placeholder="Third Name">
                           </div>
                         </div>
-                        <div class="form-group col-6 col-md-3">
-                          <label for="lastname" class="control-label">Last Name</label>
-                          <div class="elVal">
-                            <input type="text" name="last_name" id="last_name" maxlength="15"
-                              class="form-control" placeholder="Last Name">
-                          </div>
-                        </div>
-
                       </div>
                     </fieldset>
                     
@@ -257,25 +263,6 @@
 
           </div>
           <!--POPUP MODAL-->
-          {{-- <script>
-            function get_code(cur) {
-              if (cur.value != '') {
-                var option = $('option:selected', cur).attr('code');
-                $('#country_code').val(option);
-                $('.country_code').html(option);
-              } else
-                $('.country_code').html('');
-              //alert(option);    
-            }
-            function myFunction() {
-              var x = document.getElementById("myTopnav");
-              if (x.className === "topnav") {
-                x.className += " responsive";
-              } else {
-                x.className = "topnav";
-              }
-            }
-          </script> --}}
 
 
         </div>
@@ -294,6 +281,7 @@
      if(cur.value!=''){ 
       var option = $('option:selected', cur).attr('code');  
       $('#country_code').val(option);
+      $('#mobile').val(option);
       $('.country_code').html(option);
      }else
          $('.country_code').html('');
@@ -341,5 +329,5 @@
         });
 
         });
-</script>    
+</script>
 @endsection
