@@ -9,6 +9,7 @@ class Subjcte extends Model
     protected $fillable =[
         'id',
         'name',
+        'code',
         'description',
         'school_id',
         'level_id',
