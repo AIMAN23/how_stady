@@ -50,6 +50,7 @@ class SwitchController extends Controller
         {
             // او يتم التالي
             # code...
+            session()->put('userguard',$request['tayp-login']);
             session()->put('datalogin',[
                 'taypuser' => $request['tayp-login'] ,
                 // 'backurl'  => route('v.switch.login') ,
@@ -69,7 +70,7 @@ class SwitchController extends Controller
             # code...
             // $request->route();
             if(auth($guard)->check()){
-                $guardname= $guard;
+                $guardname= (string) $guard;
             }
         }//end foreach 
 
