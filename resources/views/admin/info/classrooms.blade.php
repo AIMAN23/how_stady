@@ -36,33 +36,18 @@
                           </tr>
                           </thead>
                           <tbody>
-                          <tr>
-                            <td>Trident</td>
-                            <td>Internet
-                              Explorer 4.0
-                            </td>
-                            <td>Win 95+</td>
-                            <td> 4</td>
-                            <td>X</td>
-                          </tr>
-                          <tr>
-                            <td>Trident</td>
-                            <td>Internet
-                              Explorer 5.0
-                            </td>
-                            <td>Win 95+</td>
-                            <td>5</td>
-                            <td>C</td>
-                          </tr>
-                          <tr>
-                            <td>Trident</td>
-                            <td>Internet
-                              Explorer 5.5
-                            </td>
-                            <td>Win 95+</td>
-                            <td>5.5</td>
-                            <td>A</td>
-                          </tr>
+                            @foreach (Auth::user()->school->classrooms as $item)
+                                
+                            <tr>
+                              <td>{{ $item->name }}</td>
+                              <td>{{ $item->code }}</td>
+                              <td>{{ $item->created_at }}</td>
+                              <td> 4</td>
+                              <td>X</td>
+                            </tr>
+                            @endforeach
+
+
                           </tbody>
                           <tfoot>
                           <tr>
@@ -79,7 +64,7 @@
                     </div>
                     <!-- /.card -->
         
-                    <div class="card">
+                    {{-- <div class="card">
                       <div class="card-header">
                         <h3 class="card-title">DataTable with default features</h3>
                       </div>
@@ -136,7 +121,7 @@
                       </div>
                       <!-- /.card-body -->
                     </div>
-                    <!-- /.card -->
+                    <!-- /.card --> --}}
                   </div>
     </div>
 </div><!-- /.container-fluid -->
