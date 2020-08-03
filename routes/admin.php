@@ -46,6 +46,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 			Route::get('/step_2', function () {
 				return response( view('admin.setting.step_2') );
 			})->name('admin.option.setting.step_2');
+			Route::post('store/{id}-'.md5('admin'),'SchoolAdminController@store' )->name('admin.store');
+			Route::post('update/'.md5('password').'/{id}-'.md5('admin'),'SchoolAdminController@passwordUpdate' )->name('admin.password.update');
 		});
 		#---------------
 		###############################################
