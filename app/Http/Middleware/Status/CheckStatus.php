@@ -9,8 +9,8 @@ use Illuminate\Support\Facades\Auth;
 
 class CheckStatus 
 {
-    public $guard;
-    public $status;
+    protected $guard;
+    protected $status;
 
     /**
      * Class constructor.
@@ -18,7 +18,7 @@ class CheckStatus
     public function __construct()
     {
         $this->guard = Auth::user()->guard;
-        $this->status = $this->status;
+        $this->status = Auth::user()->status;
     }
     
     /**
@@ -31,10 +31,10 @@ class CheckStatus
     public function handle($request, Closure $next)
     {
         // 
-        return response();
+        
         if ($this->guard=='student')     {  return response('');  }
         if ($this->guard=='pareent')     {  return response('');  }
-        if ($this->guard=='admin')       {  return response('');  }
+        if ($this->guard=='admin' and $this->checkAdminSetting() !='')       {  return redirect()->route($this->checkAdminSetting());  }
         if ($this->guard=='teacher')     {  return response('');  }
         if ($this->guard=='supervisor')  {  return response('');  }
         if ($this->guard=='secretary')   {  return response('');  }
@@ -103,14 +103,15 @@ class CheckStatus
 
         if ($this->status == 0) {
             // اعداد البيانات الشخصية لمسؤل النظام
-            return view('admin.setting.step_1');
-            // return redirect()->route('admin.option.setting.step_1');
+            // return 'admin.setting.step_1';
+            return ('admin.option.setting.step_1');
         }
 
         if ($this->status == 1) {
-            return view('admin.setting.step_1');
-            // return redirect()->route('admin.option.setting.step_2');
+            // return 'admin.setting.step_1';
+            return ('admin.option.setting.step_2');
         }
+        return '';
         
     }
     /**
