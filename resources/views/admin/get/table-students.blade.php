@@ -3,13 +3,13 @@
     <div class="">
         {{--  --}}
         @if ($students->count() <= 0 )
-            <table id="example2" class="table table-hover ">
+            <table id="tableEX" class="table table-hover ">
                 <tr>
                     <td>لايوجد طلاب في هاذه الشعبة الدراسية</td>
                 </tr>
             </table>
         @else
-        <table id="example1" class="table table-bordered table-striped text-nowrap">
+        <table id="tableEX" class="table table-bordered table-striped text-nowrap">
             <thead>
                 <tr>
                     <th></th>
@@ -69,21 +69,32 @@
         {{--  --}}
     </div>
 </div>
-{{-- <script>
+
+@endif
+<script>
+    $(function() {
+        $('#tableEX').dataTable({
+        "responsive": true,
+        "paginate": false,
+        "sort": true
+        
+        
+        
+        });
+    } );
     $(function () {
-        $("#example1").DataTable({
+    $("#example1").dataTable({
         "responsive": true,
         "autoWidth": false,
-        });
-        $('#example2').DataTable({
-        "paging": true,
+    });
+    $('#example2').dataTable({
+        "paginate": true,
         "lengthChange": false,
-        "searching": false,
+        "searching": true,
         "ordering": true,
         "info": true,
         "autoWidth": false,
         "responsive": true,
-        });
     });
-</script> --}}
-@endif
+    });
+</script>

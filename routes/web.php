@@ -1,6 +1,6 @@
 <?php
 
-// no users
+// All NO for users .
 define('NO_time_and_random_int',time().random_int(1,99));
 define('NO_school', 'HSSC'.NO_time_and_random_int );
 define('NO_manager', 'HSMA'.NO_time_and_random_int );
@@ -9,6 +9,7 @@ define('NO_admins', 'HSAD'.NO_time_and_random_int );
 define('NO_financial', 'HSFI'.NO_time_and_random_int );
 define('NO_secretary', 'HSSE'.NO_time_and_random_int );
 define('NO_specialist', 'HSSP'.NO_time_and_random_int );
+define('NO_supervisor', 'HSSU'.NO_time_and_random_int );
 define('NO_Supervisor', 'HSSU'.NO_time_and_random_int );
 // 
 define('New_Uuid', Illuminate\Support\Str::uuid() );

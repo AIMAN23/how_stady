@@ -63,4 +63,8 @@ class Level extends Model
     
 
     
+    public function langname(){
+
+        return __('lang.Level.'.$this->name) ;
+    }
 }

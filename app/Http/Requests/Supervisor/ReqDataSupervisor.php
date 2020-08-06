@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Admin;
+namespace App\Http\Requests\Supervisor;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ReqDataAdmin extends FormRequest
+class ReqDataSupervisor extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -37,7 +37,7 @@ class ReqDataAdmin extends FormRequest
             "nationality" => 'required|string|max:100',
             "birthdate" => 'date|date_format:Y-m-d', //|exists:table,column
             "confirmation_email" => 'required|email|same:email',
-            "email" => 'required|max:100|email|unique:school_admins,email,'.Auth()->user()->id.',id|same:confirmation_email',
+            "email" => 'required|max:100|email|unique:supervisors,email,'.Auth()->user()->id.',id|same:confirmation_email',
             "mobile" => 'required|string|max:100',
             // "email_verified_at"=>'required|string|max:100', 
             // "remember_token"=>'required|string|max:100', 

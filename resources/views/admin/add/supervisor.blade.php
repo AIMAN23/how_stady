@@ -50,23 +50,9 @@
                 }
             });
     // ===========================
-    $(function () {
-      $("#example1").DataTable({
-        "responsive": true,
-        "autoWidth":  true,
-        // "paging": false,
-      });
-      $('#example2').DataTable({
-        "paging": true,
-        "lengthChange": false,
-        "searching": false,
-        "ordering": true,
-        "info": true,
-        "autoWidth": false,
-        "responsive": true,
-      });
-    });
+   
   // ====================
+  
 
 
             // ======================
@@ -75,7 +61,7 @@
                 // e.preventDefault();
                 // var id=$id;
                 var route= $('#supervisors').attr('sid');
-                 swet('تم بنجاح .','info');
+                 
                 $.ajax({
                     type:"get",
                     url:route,
@@ -94,9 +80,37 @@
                       swet('error','info');
                     }
                 });
+        var refresh ='<div id="overlay" class="overlay"><i class="fas fa-2x fa-sync-alt fa-spin"></i></div> ';
+        $('form.add_supervisor:submit').submit(function(e){
+            e.preventDefault();
+            var formData= new FormData($(this)[0]);
+            var route=$(this).attr('data-route');
+            $("#content_loud").append(refresh);
+    
+            $.ajax({
+                type:'POST',
+                url:route,
+                data: formData,
+                processData: false,
+                contentType: false,
+                cache: false,
+    
+                success:function(databack){
+                    swet();
+                },
+                error:function(xhr,status,error){
+                    swetto();
+                }
+    
+            })
+    
+    });
+
+                
             // });
 
 
         });
+    
 </script>
 @endsection

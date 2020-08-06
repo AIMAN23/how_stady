@@ -121,5 +121,15 @@ class School extends Authenticatable
         }
         
     ##############   end Relationes has     ##############
+    /**
+     * Scope a query to only include 
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function Levelnotsuper()
+    {
+        return $this->levels()->where('status',0)->orwhere('supervisor_id',0);
+    }
 }
 

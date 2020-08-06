@@ -66,7 +66,7 @@
                     </li>
                 </ul>
 
-                <!-- SEARCH FORM -->
+                {{-- <!-- SEARCH FORM -->
                     <!-- <form class="form-inline ml-3">
                     <div class="input-group input-group-sm">
                         <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
@@ -77,7 +77,7 @@
                         </div>
                     </div>
                     </form>
-                -->
+                --> --}}
 
                 <!-- Right navbar links -->
                 <ul class="navbar-nav ml-auto">
@@ -135,23 +135,6 @@
                           </li>
                         </ul>
                       </li>
-                    {{-- <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->name }} <span class="caret"></span>
-                        </a>
-
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" 
-                            onclick="event.preventDefault();
-                                            document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
-                            </a>
-
-                            <form id="logout-form" action="{{ route('financial.logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
-                        </div>
-                    </li> --}}
                     @endguest
                     <li class="nav-item bg-c">
                         <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">

@@ -30,39 +30,10 @@
                     <i class="fas fa-times"></i></button>
             </div>
         </div>
-        <div class="card-body text-right table-responsive p-1">
-            <table id="example1" data-route="{{ route('all.student') }}" class="table text-nowrap table-striped projects ">
-                <thead>
-                    <tr class="">
-                        <td></td>
-                        <td class="text-center">{{ __('image') }}</td>
-                        <th style="">
-                            {{ __('lang.student.name') }}
-                        </th>
-                        <th style="" class="text-center">
-                            #{{ __('code') }}
-                        </th>
-                        <th style="" class="text-center">
-                            #{{ __('pareent') }}
-                        </th>
-                        <th style="" class="text-center">
-                            {{ __('admin.stu.created_at') }}
-                        </th>
-                        <th class="text-center">
-                            {{ __('admin.level') }}
-                        </th>
-                        <th style="" class="text-center">
-                            {{ __('admin.classroom') }}
-                        </th>
-                        <th style="">
-                        </th>
-                    </tr>
-                </thead>
-                <tbody id="tbody-all-student">
-                    {{-- سوف يتم عرض بيانات كل الطلاب هنا بعد اكتمال تحميل الصفحة --}}
-                </tbody>
-
-            </table>
+        <div class="card-body">
+            <div id="tbody-all-student" class="p-0 m-0 text-right tbody-all-student" data-route="{{ route('all.student') }}">
+            {{--  --}}
+            </div>
         </div>
         <!-- /.card-body -->
     </div>
@@ -239,8 +210,9 @@
 {{-- كود الجكويري لعرض بيانات الطلاب --}}
 @section('ajax')
     <script>
+       
         $(document).ready(function(){
-            var route= $('#example1').attr('data-route');
+            var route= $('#tbody-all-student').attr('data-route');
             // swet('تم بنجاح .','info');
             $.ajax({
                 type:"get",
@@ -248,7 +220,7 @@
                 // لو تم جلب البيانات بنجاح
                 success:function(data){
                     // يتم اظافة البانات في المكان المحدد سابقاُ في الاعلى
-                    $('#tbody-all-student').html(data);
+                    $('.tbody-all-student').append(data);
                     // عرض رسالة نجاح
                     swet('تم عرض بيانات الطلاب بنجاح .','success');
     

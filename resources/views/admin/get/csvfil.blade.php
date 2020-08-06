@@ -1,58 +1,76 @@
 
 {{--  count  --}}
-@if (isset($count))
-    {{ $count }}
-@else
-    {{ 'no count' }}
-@endif
+
+    
+
 
 {{--  DBF  --}}
 @if (isset($DBF))
-  <table class="table table-bordered">
-      @foreach ($DBF as $FILE)
-      {{--  <B>{{ $FILE->created_at ?? 'created_at' }}</B>  --}}
+<div class="card card-info">
+  <div class="card-header">
+    <h3 class="card-title">
+        @if (isset($count))
+        {{ $count . '  Files' }}
+        @else
+        {{ 'لايوجد اي كشوفات طلاب قد تم رفعها' }}
+        @endif
+    </h3>
 
-      <tr>
-        <td>{{ $FILE->id ?? 'id' }}</td>
-        <td class="project-state">
-            <span class="badge badge-success">Success</span>
-        </td>
-        <td>{{ $FILE->no ?? 'no' }}</td>
-         <td>{{ $FILE->status ?? 'status' }}</td> 
-        {{-- <td> --}}
-          {{-- <a href={{ Illuminate\Support\Facades\Storage::url(FILE_SCHOOL.'_'.Auth::user()->school->uuid.'/'.$FILE->filename) }}> --}}
-          {{-- {{ $FILE->filename ?? 'filename' }}</a></td> --}}
-        {{--  <td></td>  --}}
-        <td>{{ $FILE->description ?? 'description' }}</td>
-        <td class="project-actions text-right">
-          <a class="btn btn-primary btn-sm" href="{{ url($FILE->path ?? 'path') }}">
-              <i class="fas fa-folder">
-              </i>
-              {{ __('lang.btn.Download') }}
-          </a>
-         
-        </td>
-        <td>
+    <div class="card-tools">
+      <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+        <i class="fas fa-minus"></i></button>
+    </div>
+  </div>
+  <div class="card-body p-0">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>{{ 'File Name' }}</th>
+          <th>{{ 'File Description' }}</th>
+          <th>{{ 'Status' }}</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach ($DBF as $FILE)
+        <tr>
+          <td>{{ $FILE->no ?? 'no' }}</td>
+          <td>{{ $FILE->description ?? 'description' }}</td>
+          <td>
+            {{ $FILE->status ?? 'status' }}
+            + {{ $FILE->id ?? 'id' }}
+          </td> 
+          
+          <td class="text-right py-0 align-middle">
+            <div class="btn-group btn-group-sm">
+              <a href="{{ url($FILE->path ?? 'path') }}" class="btn btn-info">
+                <i class="fas fa-eye"></i>
+                <i class="fas fa-folder"></i>
+              </a>
+              <a href="#" id="deletecsv"route="{{ route('delete.file', $FILE->filename ) }}" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+            </div>
+          </td>
+        
+        
+        </tr>
+        @endforeach
+      </tbody>
+    </table>
+  </div>
+  <!-- /.card-body -->
+</div>
+  {{--  --}}
+  
+  
 
-          <button id="deletecsv" class="btn btn-danger btn-sm" route="{{ route('delete.file', $FILE->filename ) }}" >
-            <i class="fas fa-trash"></i>
-            {{ __('lang.btn.Delete') }}
-          </button>
-        </td>
-        {{-- <td>{{ $FILE->school_id ?? 'school_id' }}</td> --}}
-        {{-- <td>{{ $FILE->school_admin_id ?? 'school_admin_id' }}</td> --}}
-        {{--  <td>{{ $FILE->created_at ?? 'created_at' }}</td>  --}}
-        {{--  <td>{{ $FILE->updated_at ?? 'updated_at' }}</td>  --}}
-      </tr>
-      @endforeach
-  </table>
+  
 @else
   <hr>{{ 'no DBF' }}<hr>
 @endif
 
 
 {{--  allcsv  --}}
-@if (isset($allcsv))
+@if (isset($allcsv_x))
 
   @if (is_array($allcsv ))
   {{-- All file count is {{ \array_count_values($allcsv) }} --}}
@@ -80,9 +98,9 @@
   @endif
     
   @else
-    <ul>
+    {{-- <ul>
       <li>no fiels</li>
-    </ul>
+    </ul> --}}
 @endif
 
 @if(isset($record))

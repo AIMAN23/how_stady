@@ -28,6 +28,28 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
          * الخاصة به
          *
          */
+        #2// الروابط الخاصة بـ:الاعدادات للمستخدم
+		###############################################		
+		#---------------
+		Route::group(['prefix' => '/option/setting','middleware' => ['auth:supervisor']], function () {
+			
+			// اظافة البيانات الشخصية له
+			// Route::get('/step_1', function () {
+			// 	return response( view('admin.setting.step_1') );
+            // })->name('admin.option.setting.step_1');
+            
+			// انشاء كلمت المرور عند اول تسجيل دخول
+			// Route::get('/step_2', function () {
+			// 	return response( view('admin.setting.step_2') );
+            // })->name('admin.option.setting.step_2');
+            
+            // تعديل المعلومات الشخصية
+            Route::post('store/{id}-'.md5('supervisor'),'SupervisorController@store' )->name('supervisor.store');
+            // تغير كلمت المرور
+			Route::post('update/'.md5('password').'/{id}-'.md5('supervisor'),'SupervisorController@passwordUpdate' )->name('supervisor.password.update');
+		});
+		#---------------
+		###############################################
         Route::group(['middleware' => ['auth:supervisor'] ], function () {
             // رابط الصفحة الرئيسية له بعد تسجيل الدخول
             Route::get('/', function () {

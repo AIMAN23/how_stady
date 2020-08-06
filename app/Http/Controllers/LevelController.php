@@ -6,6 +6,7 @@ use App\Models\Image;
 use App\Models\Level;
 use App\Models\School;
 use App\Models\Classroom;
+use App\Models\Supervisor;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\StudentRegister;
@@ -66,27 +67,7 @@ class LevelController extends Controller
                     'img' => 'supervisor.png',
                 ]);
 
-                $supervisor = $level->supervisor()
-                    ->create([
-                        'no' => NO_Supervisor,
-                        'uuid' => New_Uuid,
-                        'status' => 0,
-                        'name' => 'اسم المشرف',
-                        'f_name' => 'الاسم الاول',
-                        'p_name' => 'اسم الاب',
-                        'l_name' => 'القب',
-                        'gender' => 3,
-                        'nationality' => 'الجنسية',
-                        // 'birthdate'=>'',
-                        // 'email'=>'',
-                        'mobile' => '+967'.random_int(10,999999999),
-                        // 'email_verified_at'=>'',
-                        'password' => Password_define,
-                        'image_id' => $img->id,
-                        'school_id' => School_id ?? $school->id,
-                        'address_id' => 0,
-                    ]);
-                $level->update(['supervisor_id' => $supervisor->id]);
+                
             */
                 $data= $s->supervisors();//->get();
                 return response()->json($data);
@@ -136,5 +117,44 @@ class LevelController extends Controller
         }
         return 'no ajax';
         
+    }
+
+    /**
+     * add supervisor in to level
+     */
+    public function storeSupervisor($uuid,Request $request,Level $level){
+        $level=$level->where('uuid',$uuid)->first();
+
+        $super=Supervisor::where('name',$request->supervisor_name )->first();
+        // return response()->json($super);
+        if (!empty($super->name)) {
+            # code...
+            $supervisor = $super;
+        }else {
+            # code...
+            $supervisor = $level->supervisor()
+                        ->create([
+                            'no' => NO_Supervisor,
+                            'uuid' => Str::uuid(),
+                            'status' => 0,
+                            'name' => $request->supervisor_name ??'اسم المشرف',
+                            // 'f_name' => 'الاسم الاول',
+                            // 'p_name' => 'اسم الاب',
+                            // 'l_name' => 'القب',
+                            // 'gender' => 3,
+                            // 'nationality' => 'الجنسية',
+                            // 'birthdate'=>'',
+                            // 'email'=>'',
+                            // 'mobile' => '+967'.random_int(10,999999999),
+                            // 'email_verified_at'=>'',
+                            'password' => Hash::make(NO_Supervisor) ?? Password_define,
+                            // 'image_id' => $img->id,
+                            'school_id' => School_id ?? $level->school->id,
+                            // 'address_id' => 0,
+                        ]);
+        }
+
+        $level->update(['supervisor_id' => $supervisor->id]);
+        return redirect()->back()->withInput(['success' => 'تم اظافة مشرف المرحلة بنجاح']) ;
     }
 }

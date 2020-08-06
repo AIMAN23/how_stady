@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -76,16 +77,19 @@
 
                 <!-- Right navbar links -->
                 <ul class="navbar-nav ml-auto">
-                    @guest('supervisor')
+                    @guest(session('userguard'))
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        <a class="nav-link" href="{{ route(session('userguard').'login') }}">{{ __('Login') }}</a>
                     </li>
                         @if (Route::has('register'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            <a class="nav-link" href="{{ route(session('userguard').'register') }}">{{ __('Register') }}</a>
                         </li>
                         @endif
                     @else
+                    
+                    {{-- @{{ This will not be processed by Blade }} --}}
+                    {{-- {!! Form::selectMonth('month', '6') !!} --}}
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }} <span class="caret"></span>
@@ -98,7 +102,7 @@
                                 {{ __('Logout') }}
                             </a>
 
-                            <form id="logout-form" action="{{ route('supervisor.logout') }}" method="POST" style="display: none;">
+                            <form id="logout-form" action="{{ route(session('userguard').'.logout') }}" method="POST" style="display: none;">
                                 @csrf
                             </form>
                         </div>
@@ -220,21 +224,23 @@
                 </section>
 
                 <!-- Main content -->
-                @include('includes.messages')
-                <iframe src="" name="s" frameborder="1">
+                {{-- <iframe src="" name="s" frameborder="1"> --}}
                 <section class="content">
-
-                    @yield('content')
-                    
+                    <div class="card" id="content_loud">
+                        <div class="card-body">
+                            @include('includes.messages')
+                            @yield('content')
+                        </div>
+                    </div>
                 </section>
-            </iframe>
+            {{-- </iframe> --}}
             <style>
                 iframe[name='s'] {
-    display: block;
-    width: 100%;
-    height:100vmax ;
-    border: none;
-}
+                        display: block;
+                        width: 100%;
+                        height:100vmax ;
+                        border: none;
+                    }
             </style>
                 <!-- /.content -->
             </div>
@@ -248,14 +254,30 @@
                         </div>
                         <div class="card-body">
                           <p>Add the classes <code>.btn.btn-app</code> to an <code>&lt;a&gt;</code> tag to achieve the following:</p> --}}
+                        <h3 class="bg-box bg-center bg-gradient-success">{{ "المراحل الدراسية" }}</h3>
+                        @if (session('super.levels'))
+                        @foreach (session('super.levels') as $level)
+                        <a class="btn btn-sm btn-app">
+                            <i class="fas fa-user-cog"></i> {{ $level->langname() }}
+                           
+                        </a>
+                        {{-- @foreach ($level->subjctes  as $subjctes)
+                        {{ $subjctes->name }} <br>
+                        {{ $subjctes->teacher->name }} <hr>
+
+                        @endforeach --}}
+                        @endforeach
+                        @endif
+                        <h3 class="bg-box bg-center bg-gradient-success">{{ "المراحل الدراسية" }}</h3>
+                          
                           <a class="btn btn-sm btn-app">
-                            <i class="fas fa-edit"></i> Edit
+                            <i class="fas fa-user-lock"></i> Edit
                           </a>
                           <a class="btn btn-sm btn-app">
-                            <i class="fas fa-play"></i> Play
+                            <i class="fas fa-user-friends"></i> Play
                           </a>
                           <a class="btn btn-sm btn-app">
-                            <i class="fas fa-pause"></i> Pause
+                            <i class="fas fa-group"></i> Pause
                           </a>
                           <a class="btn btn-sm btn-app">
                             <i class="fas fa-save"></i> Save

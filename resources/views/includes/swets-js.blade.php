@@ -4,7 +4,7 @@
     const Toast = Swal.mixin({
       toast: true,
       position: 'top-end',
-      showConfirmButton: false,
+      showConfirmButton: true,
       timer: 3000
     });
 
@@ -156,18 +156,31 @@
 </script>
 {{-- swet --}}
 <script>
-function swet(titlet = 'تم',icont = 'success') {
+function swet(titlet = 'تم',icont = 'success',timer=6000) {
   $(function() {
     const Toast = Swal.mixin({
-    toast: true,
-    position: 'top-end',
-    showConfirmButton: false,
-    timer: 3000
-    });
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: true,
+      timer: timer
+      });
     Toast.fire({
-    icon: icont ,
-    title: titlet
+      icon: icont ,
+      title: titlet
     });
+    swetto();
   });
+  function swetto(titlet='',body='messages her',timer=2000,autohide=true){
+    $(document).Toasts('create', {
+      autohide:autohide,          
+      delay: 2500,
+      class: 'bg-success mt-5 mr-5', 
+      title: titlet,
+      icon: 'fas fa-envelope fa-lg',
+      body: body,
+      timer:timer
+    });
+  }
 }
+
 </script>

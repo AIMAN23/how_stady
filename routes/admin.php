@@ -67,17 +67,24 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 				// 	return $download;
 				// });
 			// روابط الاضافة
-			Route::group(['prefix' =>'add/'.md5('admin')], function () {		
-			##################### add #########################
-				Route::get('/student/csv/{school_uuid}${admin_uuid}$', 'StudentRegisterController@addStudentsCsv')->name('add.students.csv.view');
-				Route::post('/student/csv', 'StudentRegisterController@addStudentsCsv')->name('add.students.csv');
-				Route::get('/student/{school_uuid}${admin_uuid}$', 'SchoolAdminController@addStudent')->name('add.student');
-				Route::post('/student/{school_uuid}${admin_uuid}$', 'SchoolAdminController@addStudent');
-				Route::get('/teacher/{school_uuid}${admin_uuid}', 'SchoolAdminController@addTeacher')->name('add.teacher');
-				Route::get('/supervisor/{school_uuid}${admin_uuid}', 'SchoolAdminController@addSupervisor')->name('add.supervisor');
-				Route::get('/add/level/{school_uuid}', 'SchoolAdminController@addLevel')->name('add.level');
-				Route::get('/delete/level/{level_name}', 'SchoolAdminController@deleteLevelS1')->name('delete.level');
-				Route::get('/delete/{level_uuid}', 'SchoolAdminController@deleteLevelS2')->name('delete.level.ok');
+			Route::group(['prefix' =>'add'], function () {		
+				##################### add #########################
+				Route::group(['prefix' => md5('get')], function() {
+						// get
+						Route::get('/student/csv/{school_uuid}${admin_uuid}$', 'StudentRegisterController@addStudentsCsv')->name('add.students.csv.view');
+						Route::get('/student/{school_uuid}${admin_uuid}$', 'SchoolAdminController@addStudent')->name('add.student');
+						Route::get('/teacher/{school_uuid}${admin_uuid}', 'SchoolAdminController@addTeacher')->name('add.teacher');
+						Route::get('/supervisor/{school_uuid}${admin_uuid}', 'SchoolAdminController@addSupervisor')->name('add.supervisor');
+						Route::get('/add/level/{school_uuid}', 'SchoolAdminController@addLevel')->name('add.level');
+						Route::get('/delete/level/{level_name}', 'SchoolAdminController@deleteLevelS1')->name('delete.level');
+						Route::get('/delete/{level_uuid}', 'SchoolAdminController@deleteLevelS2')->name('delete.level.ok');
+				});
+				Route::group(['prefix' => md5('store')], function () {	
+					// post
+						Route::post('/student/csv', 'StudentRegisterController@addStudentsCsv')->name('add.students.csv');
+						Route::post('/student/{school_uuid}${admin_uuid}$', 'SchoolAdminController@addStudent');
+						Route::post('/supervisor/{uuid}/store', 'LevelController@storeSupervisor')->name('admin.add_supervisor');
+					});
 			});
 
 

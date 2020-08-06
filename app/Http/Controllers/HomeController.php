@@ -43,7 +43,7 @@ class HomeController extends Controller
         // $adm=[];
         // $AS=$admin->school()->find($admin->id);
         
-        return view('admin.home')->with('school',$school);
+        return view('admin.home')->with('school',$school)->with(['tab_pane_3'=>'active']);
     }
     public function supervisor(Request $request)
     {
