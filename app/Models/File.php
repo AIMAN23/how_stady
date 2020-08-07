@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
+use App\Traits\memberAt;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 
 class File extends Model
 {
+    use memberAt;
     ## مودل الملفات
     protected $fillable = [
         ##

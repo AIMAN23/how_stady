@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use App\Traits\memberAt;
 use Illuminate\Database\Eloquent\Model;
 
 class StudentAttendance extends Model
 {
+    use memberAt;
     protected $fillable = ['id' , 'attendance' , 'datetime' , 'student_register_id' , 'teacher_id' , 'student_report_id'];
     protected $table = "student_attendances";
     protected $hidden =['created_at','updated_at'];

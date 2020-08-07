@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use App\Traits\memberAt;
 use Illuminate\Database\Eloquent\Model;
 
 class Image extends Model
 {
+    use memberAt;
     ## مودل الصور
     protected $fillable = [
         'id',

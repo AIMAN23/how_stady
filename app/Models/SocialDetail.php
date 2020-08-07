@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use App\Traits\memberAt;
 use Illuminate\Database\Eloquent\Model;
 
 class SocialDetail extends Model
 {
+    use memberAt;
     protected $fillable = ['id', 'order_in_family' , 'educational_father' ,'educational_mother', 'live_with'];
     protected $table = "social_details";
     protected $hidden =['created_at','updated_at'];

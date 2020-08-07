@@ -11,6 +11,7 @@ class Pareent extends Authenticatable
 {
     use memberAt;
     use Notifiable;
+    protected $guard='pareent';
 
     /**
      * The attributes that are mass assignable.

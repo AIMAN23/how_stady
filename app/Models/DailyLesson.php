@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use App\Traits\memberAt;
 use Illuminate\Database\Eloquent\Model;
 
 class DailyLesson extends Model
 {
+    use memberAt;
     protected $table = "daily_lessons";
     protected $fillable =[
             'title',

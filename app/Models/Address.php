@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use App\Traits\memberAt;
 use Illuminate\Database\Eloquent\Model;
 
 class Address extends Model
 {
+    use memberAt;
     protected $table = "addresses";
     protected $fillable = [
         'id',

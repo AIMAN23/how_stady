@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use App\Traits\memberAt;
 use Illuminate\Database\Eloquent\Model;
 
 class Level extends Model
 {
+    use memberAt;
     #################### 
     protected $table = "levels";
     protected $fillable = [

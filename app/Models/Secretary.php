@@ -2,12 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Traits\memberAt;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 ## مودل السكرتارية للمدرسة
 class Secretary extends Authenticatable
 {
+    use memberAt;
     use Notifiable;
+    protected $guard='secretary';
     protected $table = "secretaries";
     protected $fillable=[
         'id','no','uuid','status',

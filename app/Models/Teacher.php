@@ -2,13 +2,17 @@
 
 namespace App\Models;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Traits\memberAt;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 ## مودل المعلم
 class Teacher extends Authenticatable
 {
     //
+    use memberAt;
     use Notifiable;
+    protected $guard='teacher';
+    protected $table='teachers';
     protected $fillable = [
         'id','no','uuid','status',
         ## 

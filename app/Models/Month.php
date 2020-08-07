@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use App\Traits\memberAt;
 use Illuminate\Database\Eloquent\Model;
 
 class Month extends Model
 {
+    use memberAt;
     protected $fillable = ['id' , 'month' , 'school_id' ];
     protected $table = "months";
     protected $hidden =['created_at','updated_at'];

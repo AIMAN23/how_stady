@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use App\Traits\memberAt;
 use Illuminate\Database\Eloquent\Model;
 
 class Classroom extends Model
 {
+    use memberAt;
     protected $table = "classrooms";
     protected $fillable=[
         'id',

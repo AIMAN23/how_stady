@@ -6,13 +6,16 @@ namespace App\Models;
 
 //use Illuminate\Contracts\Auth\MustVerifyEmail;
 // use Illuminate\Support\Facades\Hash;
+use App\Traits\memberAt;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as AuthenticatableAdmin;
 
 ## مودل مسئول النظام للمدرسة
 class SchoolAdmin extends AuthenticatableAdmin
 {
+    use memberAt;
     use Notifiable;
+    protected $guard='admin';
     protected $fillable = [
         'id','no','uuid','status',
         ## 
@@ -87,7 +90,5 @@ class SchoolAdmin extends AuthenticatableAdmin
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    
-    public $guard = 'admin';
 
 }

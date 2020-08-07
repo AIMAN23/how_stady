@@ -2,12 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Traits\memberAt;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 ## مودل المشرف للمرحلة الدراسية
 class Supervisor extends Authenticatable
 {
+    use memberAt;
     use Notifiable;
+    protected $guard='supervisor';
     protected $fillable =[
         'id','no','uuid','status',
         ## 
@@ -32,7 +35,7 @@ class Supervisor extends Authenticatable
         'password',
         'remember_token',
     ];
-
+    
     public function address()
     {
         return $this->belongsTo('App\Models\Address','address_id');

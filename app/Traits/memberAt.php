@@ -6,6 +6,23 @@ use DateTime;
 
 Trait  memberAt
 {
+    // protected $c_at =$this->created_at;
+    // protected $u_at=$this->updated_at;
+    function userguard(){
+        return $this->guard;
+     }
+    function created_ago(string $created_at=null)
+    {
+        $date=($created_at == null)?  $this->created_at : $created_at ;
+        return 'تم الاضافة منذ '. $this->Member($date);
+    }
+    
+    function updated_ago(string $updated_at =null)
+    {
+        $date=($updated_at == null)? $this->updated_at : $updated_at ;
+        return 'تم التحديث منذ '. $this->Member($date);
+    }
+   
     // protected $DegreeTayp = array(
         //     1=>'شفوي',
         //     2=>'واجبات',
@@ -26,8 +43,13 @@ Trait  memberAt
         //     2=>'الشهر الثاني',
         //     3=>'الشهر الثالث',
         // );
-    
-    function Member($date_at= null)
+    /**
+     * Undocumented function
+     *
+     * @param string $date_at
+     * @return string|array|null|int|void
+     */
+    function Member(string $date_at= null)
     {
         if (is_null($date_at)) {
             # code...
@@ -47,6 +69,14 @@ Trait  memberAt
         $odd=$this->formatTime($format,$date_at);
         return  $odd;
     }
+    /**
+     * تقوم هاذه العملية بـ:اعادة الزمن منذ متى كان
+     *
+     * @param int $secs 
+     * $secs= time() - Timestamp for ago date
+     * $secs  هي الوقت الحالي ناقص الوقت السابق او المراد معرفة منذ متى كان
+     * @param string $data التاريخ الاصلي
+     */
     function formatTime($secs , $data)
     {
          $timeFormats = [
@@ -86,7 +116,9 @@ Trait  memberAt
                     if (2 == \count($format)) {
                         return $format[1];
                     }
+                    app()->setLocale('ar');
                     $lang=app()->getLocale();
+                    
                     if($lang=='ar'){
                         
                         return $format[1].' '.floor($secs / $format[2]);

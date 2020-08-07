@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use App\Traits\memberAt;
 use Illuminate\Database\Eloquent\Model;
 
 class DegreeTayp extends Model
 {
+    use memberAt;
     protected $fillable = ['id' , 'tayp' ,'belongs', 'school_id'   ];
     protected $table = "degree_tayps";
     protected $hidden =['created_at','updated_at'];

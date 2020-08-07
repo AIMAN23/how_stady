@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use App\Traits\memberAt;
 use Illuminate\Database\Eloquent\Model;
 
 class StudentReport extends Model
 {
+    use memberAt;
     protected $fillable =[ 'id' , 'autocomment' , 'comment' , 'status' , 'show_comment_at' ];
     protected $table = "student_reports";
     protected $hidden =['created_at','updated_at'];

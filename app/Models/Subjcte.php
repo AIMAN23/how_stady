@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use App\Traits\memberAt;
 use Illuminate\Database\Eloquent\Model;
 
 class Subjcte extends Model
 {
+    use memberAt;
     protected $fillable =[
         'id',
         'name',

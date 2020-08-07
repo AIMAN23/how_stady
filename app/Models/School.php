@@ -3,10 +3,13 @@
 namespace App\Models;
 
 // use Illuminate\Database\Eloquent\Model;
+use App\Traits\memberAt;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class School extends Authenticatable
 {
+    use memberAt;
+    protected $guard='school';
     ##
      
     protected $fillable = [
@@ -34,7 +37,6 @@ class School extends Authenticatable
         'remember_token',
     ];
 
-    protected $guard ='admin';
     ##############   Start Relationes  belongsTo   ##############
         ############ address to school عنوان كل مدرسة
         public function address()
