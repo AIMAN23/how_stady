@@ -21,7 +21,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
         ## عرض صفحة تسجيل الدخول
         Route::get('/login', 'Auth\manager\LoginController@showLoginForm')->name('manager.login');
         ## رابط التحقق من اسم المستخدم وكلمة المرور
-        // -- لو صحيحة يتم التحويل للصفحة الرئيسي لمشرف
+        // -- لو صحيحة يتم التحويل للصفحة الرئيسي 
         Route::post('/login', 'Auth\manager\LoginController@login')->name('manager.login.seve');
         /**
          * كل الروابط بعد تسجيل الدخول

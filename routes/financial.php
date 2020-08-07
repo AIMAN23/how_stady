@@ -12,7 +12,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 
 
   /**
-   *  روابط مدراء المدارس
+   *  روابط المسؤل المالي في المدارس
    *
    *  البداية
    */
@@ -21,7 +21,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
         ## عرض صفحة تسجيل الدخول
         Route::get('/login', 'Auth\financial\LoginController@showLoginForm')->name('financial.login');
         ## رابط التحقق من اسم المستخدم وكلمة المرور
-        // -- لو صحيحة يتم التحويل للصفحة الرئيسي لمشرف
+        // -- لو صحيحة يتم التحويل للصفحة الرئيسي 
         Route::post('/login', 'Auth\financial\LoginController@login')->name('financial.login.seve');
         /**
          * كل الروابط بعد تسجيل الدخول

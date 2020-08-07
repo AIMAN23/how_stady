@@ -12,7 +12,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 
 
 //   /**
-//    *  روابط مدراء المدارس
+//    *  روابط الوكلاء في المدارس
 //    *
 //    *  البداية
 //    */
@@ -21,7 +21,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 //         ## عرض صفحة تسجيل الدخول
 //         Route::get('/login', 'Auth\agent\LoginController@showLoginForm')->name('agent.login');
 //         ## رابط التحقق من اسم المستخدم وكلمة المرور
-//         // -- لو صحيحة يتم التحويل للصفحة الرئيسي لمشرف
+//         // -- لو صحيحة يتم التحويل للصفحة الرئيسي 
 //         Route::post('/login', 'Auth\agent\LoginController@login')->name('agent.login.seve');
 //         /**
 //          * كل الروابط بعد تسجيل الدخول
@@ -49,7 +49,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 
 
 
-      /**
+  /**
    * 
    * روابط الوكيل للمدرسة 
    *  *  *  *  *  * 

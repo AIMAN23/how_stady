@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -11,11 +12,12 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 {
 
 
-  /**
-   *  روابط مدراء المدارس
-   *
-   *  البداية
-   */
+    /**
+     *  روابط المشرفين 
+     * للمستويات الدراسية 
+     *  *  *  *  *  *
+     *  *  *  * 
+     */
     Route::group(['prefix' => 'supervisor'], function () {
         // supervisor
         ## عرض صفحة تسجيل الدخول
@@ -63,7 +65,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
             // هنا باقي الروابط
         });
         // رابط تسجيل الخروج
-        Route::post('/logout', 'Auth\supervisor\LoginController@logout')->name('supervisor.logout');
+        Route::group(['namespace' =>'Auth\supervisor'], function () {
+            Route::post('/logout', 'LoginController@logout')->name('supervisor.logout');
+        });
     });
     //------------------------------------- النهاية لروابط
 });

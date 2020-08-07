@@ -12,7 +12,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 
 
   /**
-   *  روابط مدراء المدارس
+   *  روابط السكرتاريا شوؤن الطلاب
    *
    *  البداية
    */
@@ -21,7 +21,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
         ## عرض صفحة تسجيل الدخول
         Route::get('/login', 'Auth\secretary\LoginController@showLoginForm')->name('secretary.login');
         ## رابط التحقق من اسم المستخدم وكلمة المرور
-        // -- لو صحيحة يتم التحويل للصفحة الرئيسي لمشرف
+        // -- لو صحيحة يتم التحويل للصفحة الرئيسي 
         Route::post('/login', 'Auth\secretary\LoginController@login')->name('secretary.login.seve');
         /**
          * كل الروابط بعد تسجيل الدخول

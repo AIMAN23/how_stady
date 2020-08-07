@@ -130,51 +130,11 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
   
 
   
-  /**
-   *  روابط المشرفين 
-   * للمستويات الدراسية 
-   *  *  *  *  *  *
-   *  *  *  * 
-   * 
-   */
-  Route::group(['prefix' => 'supervisor'], function () {
-    ## عرض صفحة تسجيل الدخول
-    Route::get('/login', 'Auth\supervisor\LoginController@showLoginForm')->name('supervisor.login');
-    ## رابط التحقق من اسم المستخدم وكلمة المرور
-    // -- لو صحيحة يتم التحويل للصفحة الرئيسي لمشرف
-    Route::post('/login', 'Auth\supervisor\LoginController@login')->name('supervisor.login.seve');
-    /**
-     * كل الروابط بعد تسجيل الدخول
-     * الخاصة به
-     * 
-     */
-    Route::group(['middleware' => ['auth:supervisor'] ], function () {
-      // رابط الصفحة الرئيسية له بعد تسجيل الدخول
-      Route::get('/', function () { return redirect()->route('supervisor.home');  });
-      // او هاذا لصفحة الرئيسية
-      Route::get('home', 'HomeController@supervisor')->name('supervisor.home');
 
-
-      
-                    // باقي الروابط
-
-      
-    });
-    // رابط تسجيل الخروج
-    Route::post('/logout', 'Auth\supervisor\LoginController@logout')->name('supervisor.logout');
-  });//------------------------------------- النهاية لروابط 
   
 
 
-  /**
-   *  روابط المعلمين 
-   * 
-   *  البداية
-   */
-  Route::group(['prefix' => 'teacher'], function () {
-      // 
-  });  
-  //------------------------------------- النهاية لروابط
+
   
   
 
@@ -208,7 +168,10 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
   // ------------------------------------------------
   // -------رابط يعيد توجية المستخدم للصفحة الرئيسية
   // ------- في حالة لم يكن مسجل الدخول او حدث خطاء عند تسجيل الدخول
-  Route::get('/welcome/login@'.md5('/welcome/login'), function() { return view('welcome'); })->name('login');
+  Route::get(session('userguard').'/login/user'.md5('/welcome/login'), function() {
+    $route=(session()->has('userguard'))? session('userguard').'login' : 'welcome' ;
+     return redirect()->route($route); 
+  })->name('login');
   
   // ------------------------------------------------
   // -------- رابط يجيب اسماء الدول ورموزها

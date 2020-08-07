@@ -14,7 +14,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 
 
   /**
-   *  روابط مدراء المدارس
+   *  روابط اولياء الامور
    *
    *  البداية
    */

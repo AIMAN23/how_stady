@@ -30,18 +30,38 @@ class CheckStatus
      */
     public function handle($request, Closure $next)
     {
+        $request->session()->put('userguard',Auth::user()->userguard());
         // 
-        
-        if ($this->guard=='student')     {  return response('');  }
-        if ($this->guard=='pareent')     {  return response('');  }
-        if ($this->guard=='admin' and $this->checkAdminSetting() !='')       {  return redirect()->route($this->checkAdminSetting());  }
-        if ($this->guard=='teacher')     {  return response('');  }
-        if ($this->guard=='supervisor')  {  return response('');  }
-        if ($this->guard=='secretary')   {  return response('');  }
-        if ($this->guard=='financial')   {  return response('');  }
-        if ($this->guard=='specialist')  {  return response('');  }
-        if ($this->guard=='agent')       {  return response('');  }
-        if ($this->guard=='manager')     {  return response('');  }
+        if ($this->guard=='student')
+            {  return response('');  }
+            // =======================================
+        if ($this->guard=='pareent')
+            {  return response('');  }
+            // =======================================
+        if ($this->guard=='admin' and $this->checkAdminSetting() !='') 
+            {  return redirect()->route($this->checkAdminSetting());  }
+            // =======================================
+        if ($this->guard=='teacher')
+            {  return response('');  }
+            // =======================================
+        if ($this->guard=='supervisor')
+            {  return response('');  }
+            // =======================================
+        if ($this->guard=='secretary')
+            {  return response('');  }
+            // =======================================
+        if ($this->guard=='financial')
+            {  return response('');  }
+            // =======================================
+        if ($this->guard=='specialist')
+            {  return response('');  }
+            // =======================================
+        if ($this->guard=='agent')
+            {  return response('');  }
+            // =======================================
+        if ($this->guard=='manager')
+            {  return response('');  }
+            // =======================================
         // 
         return $next($request);
     }
