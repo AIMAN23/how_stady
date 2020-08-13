@@ -77,13 +77,13 @@
 
                 <!-- Right navbar links -->
                 <ul class="navbar-nav ml-auto">
-                    @guest(session('userguard'))
+                    @guest(session('guard'))
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route(session('userguard').'login') }}">{{ __('Login') }}</a>
+                        <a class="nav-link" href="{{ route(session('guard').'login') }}">{{ __('Login') }}</a>
                     </li>
                         @if (Route::has('register'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route(session('userguard').'register') }}">{{ __('Register') }}</a>
+                            <a class="nav-link" href="{{ route(session('guard').'register') }}">{{ __('Register') }}</a>
                         </li>
                         @endif
                     @else
@@ -102,7 +102,7 @@
                                 {{ __('Logout') }}
                             </a>
 
-                            <form id="logout-form" action="{{ route(session('userguard').'.logout') }}" method="POST" style="display: none;">
+                            <form id="logout-form" action="{{ route(session('guard').'.logout') }}" method="POST" style="display: none;">
                                 @csrf
                             </form>
                         </div>
@@ -156,8 +156,8 @@
                         {{-- <ul class="nav nav-pills nav-sidebar nav-child-indent flex-column nav-compact nav-flat" data-widget="treeview" role="menu" data-accordion="false"> --}}
                         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="true">
                             {{-- @yield('sidebar-li') --}}
-                            <li class="nav-item">
-                                <a href="/"  target="s" class="">
+                            <li class="nav-item has-treeview menu-open">
+                                <a href="#"   class="nav-link active">
                                     <i class="nav-icon fas fa-tachometer-alt"></i>
                                     <p>
                                         {{ __('supervisor.Dashboard') }}

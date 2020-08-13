@@ -116,7 +116,6 @@ Trait  memberAt
                     if (2 == \count($format)) {
                         return $format[1];
                     }
-                    app()->setLocale('ar');
                     $lang=app()->getLocale();
                     
                     if($lang=='ar'){

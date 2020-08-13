@@ -51,8 +51,10 @@ class HomeController extends Controller
         $supervisor=Supervisor::where('id',$user->id)->first();
         $school=$supervisor->school()->first();
         $request->session()->put('school', $school);
+        $request->session()->put('userguard', Auth::user()->guard);
         $request->session()->put('super.levels', $supervisor->level()->get());
         // SchoolAdminController::sessput($school->id);
+        
 
 
         // $adm=[];

@@ -62,7 +62,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
             });
 
             Route::group(['prefix' => 'student'], function () {
-                Route::get('show/{code}', function ($code) {
+                Route::get('show/{code}/'.md5(date('Y-m-d')), function ($code) {
                     $student= App\Models\StudentRegister::where('code',$code)->first();
                     return view('pareent.get.student_views.home', compact('student') );
                 })->name('pareent.student.show');

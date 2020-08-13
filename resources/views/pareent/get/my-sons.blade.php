@@ -13,18 +13,13 @@
     {{  __('lang.Level.'.$level) }}
 @endforeach  --}}
 {{--  {{ time() }}  --}}
+<div class="col-12 col-sm-12 col-md-12 ">
+  {{-- <div class="col-12"> --}}
+    <div class="h3">{{ Auth::user()->studentRegister->count() }} ابناء</div>
+  {{-- </div> --}}
+</div>
+@forelse (Auth::user()->studentRegister as $student)
 
-{{ Auth::user()->studentRegister->count() }} <hr>
-@if (Auth::user()->studentRegister->count() == 0 )
-    
-    <h1>{{ __('lang.pareent.not-has.student') }}</h1>
-
-    <button id="problem_a" name="problem_a"type="button" data-url="{{ route('pareent.help',['problem'=> 'I dont have sons']) }}" >
-      {{ ('pareent.help') }}
-    </button>
-
-@else
-  @foreach (Auth::user()->studentRegister as $student)
   <!-- 1 -->
   <div class="col-12 col-sm-6 col-md-4" style="direction: rtl;">
     <div class="card">
@@ -67,7 +62,12 @@
               </div>
               <!-- /.info-box-content -->
             </div>
-            {{ Auth::user()->Member($student->updated_at) }}
+            <div class="text-sm-right">
+              {{-- {{ Auth::user()->Member($student->updated_at) }} --}}
+              {{ Auth::user()->created_ago() }}
+              <hr>
+              {{ Auth::user()->updated_ago() }}
+            </div>
           </a>
         </div>
       
@@ -77,5 +77,12 @@
     <!-- /.info-box -->
   </div>
   <!-- /.col -->
-  @endforeach
-@endif
+
+@empty
+
+  <h1>{{ __('lang.pareent.not-has.student') }}</h1>
+  <button id="problem_a" name="problem_a"type="button" data-url="{{ route('pareent.help',['problem'=> 'I dont have sons']) }}" >
+    {{ ('pareent.help') }}
+  </button>
+
+@endforelse

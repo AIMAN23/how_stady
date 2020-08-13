@@ -6,7 +6,63 @@
 
 
 {{--  عنوان الصفحة:الصفحة الشخصية للمشرف --}}
-@section('content-header')<h1>{{ __('admin.Profile') }}</h1>@endsection
+@section('content-header')
+<div class="col-md-12">
+        <!-- Widget: user widget style 1 -->
+        <div class="card card-widget widget-user">
+            <!-- Add the bg color to the header using any of the bg-* classes -->
+            <div class="widget-user-header bg-blue text-white"
+                style="background: url('../dist/img/photo1.png') center center;">
+                <h3 class="widget-user-username text-right">{{ auth()->user()->name }}</h3>
+                <h5 class="widget-user-desc text-right">{{ __('lang.'.session('guard')) }}</h5>
+            </div>
+            <div class="widget-user-image">
+                <img class="img-circle" src="{{ asset('/lte/dist/img/userP-128x128.jpg') }}" alt="User Avatar">
+            </div>
+            <div class="card-footer">
+                <div class="row">
+                    <div class="col-sm-4 border-right">
+                        <div class="description-block">
+                            <h5 class="description-header">{{ '...' }}</h5>
+                            <span class="description-text">{{ '...' }}</span>
+                        </div>
+                        <!-- /.description-block -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-sm-4 border-right">
+                        <div class="description-block">
+                            <h5 class="description-header">
+                                {{ '...' }}
+                            </h5>
+                                    
+                            <span class="description-text">
+                                <a href="#" class="btn btn-block btn-primary">
+                                    {{ '...' }}
+                                </a>                                
+                            </span>
+                        </div>
+                        <!-- /.description-block -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-sm-4">
+                        <div class="description-block">
+                            <h5 class="description-header">
+                                <a href="#" class="btn btn-block btn-primary">
+                                    {{ '...' }}
+                                </a>
+                            </h5>
+                            <span class="description-text">{{ '...' }}</span>
+                        </div>
+                        <!-- /.description-block -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div>
+        </div>
+        <!-- /.widget-user -->
+    </div>
+@endsection
 {{-- نهاية العنوان --}}
 
 
@@ -14,46 +70,8 @@
 
 @section('content')
 
-<div class="col-md-12">
-    <!-- Widget: user widget style 1 -->
-    <div class="card card-widget widget-user">
-        <!-- Add the bg color to the header using any of the bg-* classes -->
-        <div class="widget-user-header bg-blue text-white"
-            style="background: url('../dist/img/photo1.png') center center;">
-            <h3 class="widget-user-username text-right">{{ auth()->user()->name }}</h3>
-            <h5 class="widget-user-desc text-right">{{ __('lang.'.session('userguard')) }}</h5>
-        </div>
-        <div class="widget-user-image">
-            <img class="img-circle" src="{{ asset('/lte/dist/img/userP-128x128.jpg') }}" alt="User Avatar">
-        </div>
-        <div class="card-footer">
-            <div class="row">
-                <div class="col-sm-4 border-right">
-                    <div class="description-block">
-                        <h5 class="description-header">{{ '...' }}</h5>
-                        <span class="description-text">{{ '...' }}</span>
-                    </div>
-                    <!-- /.description-block -->
-                </div>
-                <!-- /.col -->
-                <div class="col-sm-4 border-right">
-                    <div class="description-block">
-                        <h5 class="description-header">{{ '...' }}</h5>
-                        <span class="description-text">{{ '...' }}</span>
-                    </div>
-                    <!-- /.description-block -->
-                </div>
-                <!-- /.col -->
-                <div class="col-sm-4">
-                    <div class="description-block">
-                        <h5 class="description-header">{{ '...' }}</h5>
-                        <span class="description-text">{{ '...' }}</span>
-                    </div>
-                    <!-- /.description-block -->
-                </div>
-                <!-- /.col -->
-            </div>
-            <!-- /.row -->
+
+    
 
 <div class="container-fluid">
     <div class="row">
@@ -169,7 +187,7 @@
 
                                     <br>
                                     <form method="POST"
-                                        action="{{ route(session('userguard') .'.password.update',Auth::user()->id) }}">
+                                        action="{{ route(session('guard') .'.password.update',Auth::user()->id) }}">
                                         @csrf
 
                                         {{-- <input type="hidden" name="token" value="{{ $token }}"> --}}
@@ -250,7 +268,7 @@
                         <!-- 3 .tab-pane -->
                         <div class="{{ $tab_pane_3 ?? '' }} tab-pane" id="settings">
                             <form id="register-form" method="POST"
-                                action="{{ route(session('userguard') .'.store', Auth::user()->id) }}"
+                                action="{{ route(session('guard') .'.store', Auth::user()->id) }}"
                                 novalidate="novalidate">
                                 @csrf
 
@@ -542,53 +560,6 @@
     <!-- /.col -->
 </div>
 </div><!-- /.container-fluid -->
-
-
-
-</div>
-</div>
-<!-- /.widget-user -->
-</div>
-
-{{-- الاديتور لبتستراب --}}
-<section class="content">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card card-outline card-info">
-                <div class="card-header">
-                    <h3 class="card-title">
-                        Bootstrap WYSIHTML5
-                        <small>Simple and fast</small>
-                    </h3>
-                    <!-- tools box -->
-                    <div class="card-tools">
-                        <button type="button" class="btn btn-tool btn-sm" data-card-widget="collapse"
-                            data-toggle="tooltip" title="Collapse">
-                            <i class="fas fa-minus"></i></button>
-                        <button type="button" class="btn btn-tool btn-sm" data-card-widget="remove"
-                            data-toggle="tooltip" title="Remove">
-                            <i class="fas fa-times"></i></button>
-                    </div>
-                    <!-- /. tools -->
-                </div>
-                <!-- /.card-header -->
-                <div class="card-body pad">
-                    <div class="mb-3">
-                        <textarea class="textarea" placeholder="Place some text here"
-                            style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
-                    </div>
-                    <p class="text-sm mb-0">
-                        Editor <a href="https://github.com/summernote/summernote">Documentation and license
-                            information.</a>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <!-- /.col-->
-    </div>
-    <!-- ./row -->
-</section>
-{{-- انتهاء الاديتور --}}
 @endsection
 
 

@@ -4,12 +4,18 @@ namespace App\Models;
 
 use App\Traits\memberAt;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 ## مودل المشرف للمرحلة الدراسية
 class Supervisor extends Authenticatable
 {
+
+    use SoftDeletes;
+    protected $dates = ['deleted_at'];
+    // 
     use memberAt;
     use Notifiable;
+    // 
     protected $guard='supervisor';
     protected $fillable =[
         'id','no','uuid','status',
