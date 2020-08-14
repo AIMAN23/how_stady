@@ -24,6 +24,9 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
-        "admin-lte": "^3.0.5"
+        "admin-lte": "^3.0.5",
+        "emojis-list": "^3.0.0",
+        "jquery-mousewheel": "^3.1.13",
+        "jquery-validation": "^1.19.2"
     }
 }
