@@ -170,9 +170,9 @@ class SchoolAdminController extends Controller
                 }
                 $action = $action;
                 if ($action == 'store') {
-                    // return $new_address;
+                    return $new_address;
                 } else {
-                    // return redirect()->route('admin.home')->with(['success'=>__('lang.'.$action.'.success')]);
+                    return redirect()->route('admin.home')->with(['success'=>__('lang.'.$action.'.success')]);
                 }
                 // $a->update($request->all());
             }
