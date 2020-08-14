@@ -119,7 +119,7 @@ class SchoolAdminController extends Controller
         $validator = Validator::make($Data->all(), $reqData->rules());
          $validator->validated();
         if ($validator->fails()) {
-            // return redirect()->route('admin.home')->withErrors($validator)->withInput();
+            return redirect()->route('admin.home')->withErrors($validator)->withInput();
         } else {
             // # code...
 
@@ -128,9 +128,9 @@ class SchoolAdminController extends Controller
             $new_data = $admin->update($data);
             if ($action == 'store') {
                 # code...
-                // return $new_data;
+                return $new_data;
             } else {
-                // return redirect()->route('admin.home')->with(['success'=>__('lang.'.$action.'.success')]);
+                return redirect()->route('admin.home')->with(['success'=>__('lang.'.$action.'.success')]);
             }
         }
     }
