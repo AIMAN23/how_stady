@@ -19,7 +19,7 @@ class ClassroomController extends Controller
         $data=$level->classrooms;
         // return response()->json($level->classrooms);
         // return response()->json($data);
-        return view('admin.get.input.classroom')->with(['data'=>$level->classrooms]);
+        return view('admin.get.input.Classroom')->with(['data'=>$level->classrooms]);
     }
     //
 }
