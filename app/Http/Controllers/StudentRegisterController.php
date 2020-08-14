@@ -274,7 +274,7 @@ class StudentRegisterController extends Controller
         return $pareent;
     }
     public function firstOrCreatePareent($mobile,$name,$all=null)
-    {
+    {$all= request();
         //  اذا تم ارسال رقم هاتف ولي الامر مع البيانات للطالب
         if (!empty($mobile)) {
             // يتم التأكد من رقم ولي الامر لو موجود في السجل
@@ -282,7 +282,7 @@ class StudentRegisterController extends Controller
             $pareent = Pareent::firstOrCreate([
                 // اذالم يتم ايجاد رقم الهاتف يتم اضافة ولي امر جديد 
                 'mobile' =>$mobile,
-            ],[
+             ],[
                 // يتم اظافة سجل ولي امر برقم الهاتف لربطة مع سجل الطالب
                 'uuid' => Str::uuid(),
                 'name' => $all->p_name.Space.$all->gad_name.Space.$all->l_name ?? $name ?? null,

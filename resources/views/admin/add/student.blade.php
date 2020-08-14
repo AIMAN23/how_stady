@@ -65,7 +65,7 @@
                 <fieldset style="border:1px blue solid; margin: 10px;padding: revert;">
                     <legend style="width: auto; padding: 10px;">{{ __('admin.add student') }}</legend>
 
-                    <form role="form"
+                    <form role="form" id="myForm"
                         action="{{ route('new.student') }}"
                         method="POST">
                         @csrf
@@ -226,15 +226,44 @@
 {{-- نهاية محتوا الصفحة --}}
 
 {{-- كود الجكويري لعرض بيانات الطلاب --}}
-
+<script src="{{ asset('js/app.js') }}"></script>
 @section('ajax')
     
     <script>
        
         $(document).ready(function(){
-            $('#nationality').load("{{ route('get.Option.Country') }}")
+            $('#nationality').load("{{ route('get.Option.Country') }}");
             var route= $('#tbody-all-student').attr('data-route');
+            $('.tbody-all-student').load(route);
+            swet('تم عرض بيانات الطلاب بنجاح .','success');
             // swet('تم بنجاح .','info');
+            
+        });
+
+        $('#select-level').change(function(e){
+            
+            
+            
+            getClassroomsForLevel(e.target.value,"{{ route('admin.getClassroomsForLevel') }}",'#input_classRoome','');
+            ajaxGet(e.target.value,"{{ route('get.Option.Country') }}",'#nationality','');
+            //console.log(d);
+        });
+         	
+    </script>
+    {{-- <script>
+            $("#myForm").validate({
+                rules: {
+                    p_name: {required: true},
+                    l_name: {required: true},
+                    gad_name: {required: true},
+                    name: {required: true},
+                    //classroom: {required: true},
+                    gnder: {required: true},
+                    
+                }
+             });
+    </script> --}}
+    {{-- <script>
             $.ajax({
                 type:"get",
                 url:route,
@@ -261,17 +290,6 @@
                     swet(error,'danger');
                 }
             });
-        });
-
-        $('#select-level').change(function(e){
-            
-            
-            
-            getClassroomsForLevel(e.target.value,"{{ route('admin.getClassroomsForLevel') }}",'#input_classRoome','');
-            ajaxGet(e.target.value,"{{ route('get.Option.Country') }}",'#nationality','');
-            //console.log(d);
-        });
-        
-    </script>
+    </script> --}}
 @endsection
 {{-- انتهاء الجكويري --}}

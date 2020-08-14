@@ -29,10 +29,10 @@
         <link rel="stylesheet" href="{{ asset('lte/dist/css/adminlte.min.css') }}">
         <link rel="stylesheet" href="{{ asset('lte/dist/css/lte.min.css') }}">
         <!-- Google Font: Source Sans Pro -->
-        <link href="{{ 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700' }}" rel="stylesheet">
+        {{-- <link href="{{ 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700' }}" rel="stylesheet"> --}}
         <!-- Fonts laravel app-->
         {{-- <link rel="dns-prefetch" href="https://fonts.gstatic.com"> --}}
-        <link href="{{ 'https://fonts.googleapis.com/css?family=Nunito' }}" rel="stylesheet" type="text/css">
+        {{-- <link href="{{ 'https://fonts.googleapis.com/css?family=Nunito' }}" rel="stylesheet" type="text/css"> --}}
         {{-- <link rel="stylesheet" href="{{ asset('css/app.css') }}"> --}}
         
     </head>
@@ -398,8 +398,10 @@
              
               
         });
+        //const emojis = require('emojis-list')
+        //console.log(emojis[0]);
         </script>
-        
+        <script src="{{ asset('js/all.js') }}"></script>
         @include('includes.swets-js')
         @yield('ajax')
     </body>
