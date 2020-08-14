@@ -136,6 +136,6 @@ class HomeController extends Controller
         ]);
     }
     public function getOptionCountry(){
-        return view('includes\country_'.app()->getLocale());
+        return view('includes.country_'.app()->getLocale());
     }
 }

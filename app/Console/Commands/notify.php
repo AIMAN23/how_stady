@@ -44,7 +44,7 @@ class notify extends Command
     {
         // $users =User::select('email')->get();
         $emails =School::pluck('email')->toArray();
-        $data =['title'=>'eny title' , 'body'=>'ene body'];
+        $data =['title'=>'Any title' , 'body'=>'any body'];
         if (!is_array($emails) and $emails != null) {
             # code...
             File::create([

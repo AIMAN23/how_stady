@@ -1,6 +1,7 @@
 <?php
 
 // All NO for users .
+define('Space'," ");
 define('NO_time_and_random_int',time().random_int(1,99));
 define('NO_school', 'HSSC'.NO_time_and_random_int );
 define('NO_manager', 'HSMA'.NO_time_and_random_int );
@@ -169,7 +170,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
   // -------رابط يعيد توجية المستخدم للصفحة الرئيسية
   // ------- في حالة لم يكن مسجل الدخول او حدث خطاء عند تسجيل الدخول
   Route::get(session('userguard').'/login/user'.md5('/welcome/login'), function() {
-    $route=(session()->has('userguard'))? session('guard').'login' : 'welcome' ;
+    $route=(session()->has('userguard'))? session('guard').'.login' : 'welcome' ;
      return redirect()->route($route); 
   })->name('login');
   
@@ -215,6 +216,8 @@ Route::get('/home', 'HomeController@index')->name('home');
  ######### الروابط الخاصة بعرض المخطط التجريبي #####
     Route::get('chart-line', 'ChartController@chartLine');
     Route::get('chart-line-ajax', 'ChartController@chartLineAjax');
+    Route::get('chart-line-ajax2', 'ChartController@chartLineAjaxClassroms');
+    Route::get('chart-line-ajax3', 'ChartController@chartLineAjaxSupervisor');
  #######
 ### نهاية روابط تجريبية ##
 

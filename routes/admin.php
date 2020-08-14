@@ -3,6 +3,7 @@
 	
 
 // use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -11,6 +12,9 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 {
+	App::setLocale('ar');
+	$value=App::getLocale()=='ar'? 'ltr':'rtl';
+	session()->put('dir', $value);
 	/*
 	|--------------------------------------------------------------------------
 	| Admin Routes
@@ -83,7 +87,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 				
 				##################### POST #########################
 				Route::group(['prefix' => md5('POST')], function () {	
-						Route::post('/student/csv', 'StudentRegisterController@addStudentsCsv')->name('add.students.csv');
+						Route::post('/students/csv', 'StudentRegisterController@addStudentsCsv')->name('add.students.csv');
+						Route::post('/student', 'StudentRegisterController@addStudentsCsv')->name('new.student');
 						Route::post('/student/{school_uuid}${admin_uuid}$', 'SchoolAdminController@addStudent');
 						Route::post('/supervisor/{uuid}/store', 'LevelController@storeSupervisor')->name('admin.add_supervisor');
 					});
@@ -102,12 +107,12 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 			Route::group(['prefix' => 'all'], function () {
 				// رابط يقوم بجلب سجلات الطلاب المسجلين في المدرسة
 				Route::get('student', function () {		return view('admin.get.all-student');		})->name('all.student');
-				Route::get('chunk', function () {		return  response()->json(session('chunk'));		});
+				Route::get('chunk', function () {		return  response()->json(session('chunk'));		})->name('admin.get.session.chunk');
 			});
 
 
 			// روابط جلب البيانات
-			Route::group(['prefix' => '/get/'.md5('get') ], function () {
+			Route::group(['prefix' => 'get/'.md5('get') ], function () {
 			##################### get #########################
 				Route::get(md5('classrooms').'/{level_code}','LevelController@getClassRooms')->name('get.classrooms');
 				Route::get('classroom/info/{classroome_uuid}','LevelController@getClassroomInfo')->name('get.classroom.info');
@@ -115,6 +120,12 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 				Route::get('all/csv/','StudentRegisterController@allCsvIndirectory')->name('get.all.csv');
 				Route::get('all/supervisors/{school_id}','SchoolAdminController@getaAllSupervisors')->name('get.supervisors');
 				Route::get('level/{level_code}/supervisor','LevelController@getlevel_And_Supervisor')->name('get.level.supervisor');
+				// new_register_student
+				// getClassroomsForLevel
+				Route::group(['prefix' => md5('new_register_student')],function () {
+													
+					Route::get(md5('getClassroomsForLevel'), 'ClassroomController@getClassroomsForLevel')->name('admin.getClassroomsForLevel');
+				});
 			});
 			Route::group(['prefix' => 'file'.md5('file')], function () {
 					Route::get('delete'.md5('delete').'/{filename}', 'FileController@destroy')->name('delete.file');

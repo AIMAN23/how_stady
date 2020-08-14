@@ -77,6 +77,34 @@ class StudentRegisterController extends Controller
                 // return 'no has file csv';
 
         }
+        if ($request->method() == 'POST') {
+            # code...
+            $school=School::find(Auth::user()->school_id);
+            $level=Level::where('uuid',$request->level)->first();
+            $classroom=$level->classrooms()->where('uuid',$request->classroom)->first();
+            
+            $stu['no']=$s['no_student'] ??NO_time_and_random_int ;
+                $stu['name']=$request->name;
+                $stu['pareent_mobile']=$request->pareent_mobile ?? NO_time_and_random_int;
+                $stu['pareent_name']=$request->p_name ." ". $request->l_name ;
+                $stu['stu_gender']=$request->gnder;
+           
+                $student=$this->registerStudent($stu,$school,$level,$classroom);
+                // $student->birthdate=$request->birthdate;
+            // $student=StudentRegister::firstOrCreate([
+            //     'name'=>'',
+            //     'f_name'=>'',
+            //     'p_name'=>'',
+            //     'l_name'=>'',
+            //     'birthdate'=>'',
+            //     'gender'=>'',
+            //     'nationality'=>'',
+            //     'level_id'=>'',
+            //     'classroom_id'=>'',
+            // ]);
+            
+            return $student;
+        }
         return 'no ajax';
     }
     //
@@ -145,18 +173,20 @@ class StudentRegisterController extends Controller
             $student = $school->
             registers()
                 ->firstOrCreate([
-                    'code' => str::random(3) . time(),
-                    'no' => $attr['no'],
-                    'status' => $attr['status'] ?? 0,
                     'name' => $attr['name'],
-                    'img' => $attr['img'] ?? 'student.png',
                     'school_year' => $attr['school_year'] ?? $df . '-' . $dn,
-                    'student_id' => 0,
                     'school_id' => $school->id,
                     'level_id' => $level->id,
                     'classroom_id' => $classroom->id,
+                ],[
+                    'status' => $attr['status'] ?? 0,
+                    'no' => $attr['no']?? Str::upper(Str::str_random(14)) ?? \random_int(100000000000,100000000000),
+                    'img' => $attr['img'] ?? 'student.png',
+                    'student_id' => 0,
                     'school_admin_id' => Auth::id(),
-                ]);
+                    'code' => str::random(3) . time(),
+                ]
+            );
             // ثم اكمال بيانات ولي الامر نفس ما تم في المرحلة السابقة
         }else {
             $student = $student_validation->first();
@@ -180,28 +210,104 @@ class StudentRegisterController extends Controller
     #####################################
     // اظافة او التأكد من حساب ولي الامر
     #####################################
-    public function firstOrCreatePareent($mobile,$name)
+    /**
+     * Undocumented function
+     *
+     * @param Request|"" $register or "null".
+     * @param null|string $csvname default is null or the parent name in csv file.
+     * @return array parent name['name','f_name','p_name','l_name'] by type of form.
+     */
+    public function namePareentByTypeOfForm($register,$csvname=null){
+        $name=[];
+        if ($csvname == null) {
+            // 
+            if($register->form_is =="student")
+            {
+                $name['f_name']=$register->p_name ;$name['p_name']=$register->gad_name ;$name['l_name']=$register->l_name ;
+            }
+            // 
+            if ($register->form_is =="pareent")
+            {
+                $name['f_name']=$register->f_name ;$name['p_name']=$register->p_name ;$name['l_name']=$register->l_name ;
+            }
+            $name['name']= $name['f_name'].Space.$name['p_name'].Space.$name['l_name'] ;
+
+        }else{
+            $name['f_name']='' ;$name['p_name']='' ;$name['l_name']='' ;
+            $name['name']=$csvname;
+        }
+
+        return $name;
+    }
+
+
+
+    /**
+     * Undocumented function
+     *
+     * @param Request $request this request of the student form or parent form ,
+     * by type of value for a field "form_is_action" in form ,
+     * <input name="form_is_action" type="hidden" value="student|pareent" /> 
+     * @param Pareent $pareent 
+     * @return \App\Models\Pareent after finished firstOrCreate_Pareent.
+     */
+    public function firstOrCreate_Pareent($request,Pareent $pareent){
+        
+        
+        $pareent->firstOrCreate([
+            'mobile'=>$request->pareent_mobile,
+        ],[
+            'uuid' => Str::uuid(),
+            'password'=> Hash::make($request->pareent_mobile),
+            'status'=>1,
+            // في حالة تم اظافة طالب واحد فقط
+            // 'f_name'=> $f_name   ?? '',
+            // 'p_name'=> $p_name   ?? '',
+            // 'l_name'=> $l_name   ?? '',
+        ]);
+
+        // يتم اظافة تفصيل الاسم لولي الامر
+        $name=$this->namePareentByTypeOfForm($request);
+        // 
+        $pareent->update($name);
+
+        return $pareent;
+    }
+    public function firstOrCreatePareent($mobile,$name,$all=null)
     {
-        // يتم التأكد من رقم ولي الامر لو موجود في السجل
+        //  اذا تم ارسال رقم هاتف ولي الامر مع البيانات للطالب
         if (!empty($mobile)) {
-            // يتم اظافة سجل ولي امر برقم الهاتف لربطة مع سجل الطالب
+            // يتم التأكد من رقم ولي الامر لو موجود في السجل
+            $mobile=$all->pareent_mobile ?? $mobile;
             $pareent = Pareent::firstOrCreate([
-                'mobile' => $mobile,
+                // اذالم يتم ايجاد رقم الهاتف يتم اضافة ولي امر جديد 
+                'mobile' =>$mobile,
+            ],[
+                // يتم اظافة سجل ولي امر برقم الهاتف لربطة مع سجل الطالب
+                'uuid' => Str::uuid(),
+                'name' => $all->p_name.Space.$all->gad_name.Space.$all->l_name ?? $name ?? null,
+                'status'=>1000,// 1000 يعني انه تم اظافة حساب جديد ولا يملك كلمة مرور
+                // في حالة تم اظافة طالب واحد فقط
+                // يتم اظافة تفصيل الاسم لولي الامر
+                'f_name'=> $all->p_name   ?? '',
+                'p_name'=> $all->gad_name ?? '',
+                'l_name'=> $all->l_name   ?? '',
             ]);
-            $p_mobile=$pareent->mobile;
+            // اذا تم تسجيل ولي امر جديد يتم اظافة رقم الهاتف ككلمة مرور مبدئية حتى يتم تغيرها
+            if($pareent->status == 1000){
+                $pareent->update([
+                    'password'=> Hash::make($mobile),
+                    'status'=>0,
+                ]);
+            }
+            // $p_mobile=$pareent->mobile;
             // اظافة كلمة المرور رقم الهاتف في هاذة الحالة
             // $this->addNewPassNamePareent($pareent, $name, $pareent->mobile);
-            $pareent->update([
-                'uuid' => Str::uuid(),
-                'name' => $name ?? null,
-                'password'=> Hash::make($p_mobile),
-                'status'=>1,
-            ]);
             // ارجاع بيانات ولي الامر
             return $pareent;
         } else {
             # code...
-            // اذا كان رقم ولي الامر غير مسجل مع البيانات في ملف الاكسل الذي تم رفعة
+            // اذا لم يتم ارسال رقم هاتف ولي الامر مع البيانات للطالب
             // يتم اضافة حساب ولي امر بكود مكون من 12 رقم و3 حروف انجليزية ليتمكن من تسجيل الدخول
             $pareent = Pareent::firstOrCreate([
                 'no' => 'PAR' . NO_time_and_random_int,

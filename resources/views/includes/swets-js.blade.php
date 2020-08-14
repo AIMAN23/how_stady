@@ -184,3 +184,74 @@ function swet(titlet = 'تم',icont = 'success',timer=6000) {
 }
 
 </script>
+<script>
+    function getClassroomsForLevel(code,murl,div,msg=''){
+        
+        var route = murl+"?code="+code;
+        
+        // swet('تم بنجاح .','info');
+        $.ajax({
+            type:"get",
+            url:route,
+            // لو تم جلب البيانات بنجاح
+            success:function(data){
+                // يتم اظافة البانات في المكان المحدد سابقاُ في الاعلى
+                $(div).html(data);
+                // عرض رسالة نجاح
+                swet(msg,'success');
+               
+                // $(this).html(data);
+                // $('#body').html(data);
+                // $('#addcsv').attr("style")
+                
+                // console.log(data);
+            },
+            // لو هناك خطاء اثناء عرض البيانات
+            error:function(xhr,status,error){
+                // يتم عرض رسالة خطاء
+                //swet('error','danger');
+                // نوع الخطاء
+                swet(status,'danger');
+                // رسسالة الخطاء
+                swet(error,'danger');
+                
+            }
+        });
+        
+    }
+    function ajaxGet(code,murl,div,msg=''){
+        
+        var route = murl+"?code="+code;
+        
+        // swet('تم بنجاح .','info');
+        $.ajax({
+            type:"get",
+            url:route,
+            // لو تم جلب البيانات بنجاح
+            success:function(data){
+                // يتم اظافة البانات في المكان المحدد سابقاُ في الاعلى
+                $(div).html(data);
+                // عرض رسالة نجاح
+                swet(msg,'success');
+               
+                // $(this).html(data);
+                // $('#body').html(data);
+                // $('#addcsv').attr("style")
+                
+                // console.log(data);
+            },
+            // لو هناك خطاء اثناء عرض البيانات
+            error:function(xhr,status,error){
+                // يتم عرض رسالة خطاء
+                //swet('error','danger');
+                // نوع الخطاء
+                swet(status,'danger');
+                // رسسالة الخطاء
+                swet(error,'danger');
+                
+            }
+        });
+        
+    }
+
+</script>

@@ -17,17 +17,14 @@
 <section class="content">
 
     <!-- Default box -->
-    <div class="card">
+    <div class="card collapsed-card">
         <div class="card-header">
             <h3 class="card-title">{{ __('admin.students') }}</h3>
 
             <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"
-                    title="Collapse">
-                    <i class="fas fa-minus"></i></button>
-                <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip"
-                    title="Remove">
-                    <i class="fas fa-times"></i></button>
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fas fa-plus"> السجل </i></button>
+                <button type="button" class="btn btn-tool" data-card-widget="maximize"><i class="fas fa-expand"></i></button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove"><i class="fas fa-times"></i></button>
             </div>
         </div>
         <div class="card-body">
@@ -40,7 +37,7 @@
     <!-- /.card -->
 
 </section><!-- /.content -->
-{{-- نهاية سجل عرض سجل الطلاب --}}
+{{-- نهاية  عرض سجل الطلاب --}}
 
 {{-- بداية فورم اظافة طالب واحد --}}
 <div class="container-fluid hidden">
@@ -69,9 +66,10 @@
                     <legend style="width: auto; padding: 10px;">{{ __('admin.add student') }}</legend>
 
                     <form role="form"
-                        action="{{ route('add.student',['school_uuid'=>session('school.uuid') ,'admin_uuid'=>Auth::user()->uuid]) }}"
+                        action="{{ route('new.student') }}"
                         method="POST">
                         @csrf
+                        <input  name="form_is" type="hidden" value="student">
                         <div class="card-body">
                             <div class="row">
                                 {{-- <div class="col-sm-4">
@@ -83,14 +81,20 @@
                                 <div class="col-sm-4">
                                     <div class="form-group">
                                         <label for="level">{{ __('admin.levels') }}</label>
-                                        <select id="select-level" class="form-control form-control-sm " name="level"
-                                            id="level">
+                                        <select id="select-level"   class="form-control form-control-sm " name="level">
                                             <option>{{ __('admin.levels') }}</option>
                                             @foreach (session('levels') as $level)
-                                            <option value="{{ $level->id }}">{{ __('lang.Level.'.$level->name) }}
+                                            <option value="{{ $level->uuid }}">{{ __('lang.Level.'.$level->name) }}
                                             </option>
                                             @endforeach
                                         </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        {{--  <label for="level">{{ __('admin.levels') }}</label>  --}}
+                                        <div id="input_classRoome" class="input_classRoome">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -116,11 +120,19 @@
                                 </div>
                                 <div class="col-sm-3">
                                     <div class="form-group">
+                                        <label for="gad_name">{{ __('lang.student.gad_name') }}</label>
+                                        <input name="gad_name" type="text" class="form-control form-control-sm "
+                                            id="gad_name" placeholder="{{ __('lang.student.Enter gad_name') }}">
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group">
                                         <label for="l_name">{{ __('lang.student.l_name') }}</label>
                                         <input name="l_name" type="text" class="form-control form-control-sm "
                                             id="l_name" placeholder="{{ __('lang.student.Enter l_name') }}">
                                     </div>
                                 </div>
+                               
                                 <div class="col-sm-3">
                                     <div class="form-group">
                                         <label for="birthdate">{{ __('lang.student.birthdate') }}</label>
@@ -130,7 +142,13 @@
                                 </div>
                             </div>
                             <div class="row">
-
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="pareent_mobile">{{ __('lang.student.pareent_mobile') }}</label>
+                                        <input name="pareent_mobile" type="text" class="form-control form-control-sm " id="pareent_mobile"
+                                            placeholder="{{ __('lang.student.Enter pareent_mobile') }}">
+                                    </div>
+                                </div>
                                 <div class="col-sm-4">
                                     <div class="form-group">
                                         <label>{{ __('lang.student.gender') }}</label>
@@ -208,10 +226,13 @@
 {{-- نهاية محتوا الصفحة --}}
 
 {{-- كود الجكويري لعرض بيانات الطلاب --}}
+
 @section('ajax')
+    
     <script>
        
         $(document).ready(function(){
+            $('#nationality').load("{{ route('get.Option.Country') }}")
             var route= $('#tbody-all-student').attr('data-route');
             // swet('تم بنجاح .','info');
             $.ajax({
@@ -220,7 +241,7 @@
                 // لو تم جلب البيانات بنجاح
                 success:function(data){
                     // يتم اظافة البانات في المكان المحدد سابقاُ في الاعلى
-                    $('.tbody-all-student').append(data);
+                    $('.tbody-all-student').prepend(data);
                     // عرض رسالة نجاح
                     swet('تم عرض بيانات الطلاب بنجاح .','success');
     
@@ -240,7 +261,17 @@
                     swet(error,'danger');
                 }
             });
-        })
+        });
+
+        $('#select-level').change(function(e){
+            
+            
+            
+            getClassroomsForLevel(e.target.value,"{{ route('admin.getClassroomsForLevel') }}",'#input_classRoome','');
+            ajaxGet(e.target.value,"{{ route('get.Option.Country') }}",'#nationality','');
+            //console.log(d);
+        });
+        
     </script>
 @endsection
 {{-- انتهاء الجكويري --}}

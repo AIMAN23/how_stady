@@ -504,24 +504,28 @@ class SchoolAdminController extends Controller
         // $school->levels()->syncWithoutDetaching($data_level->id);
         $schoolID = session('school.id');
         $school = School::find($schoolID);
-        $step1 = $school->levels()->firstOrCreate([
+        $FC_level = $school->levels()->firstOrCreate([
             'name' => $level_name,
-            'code_in_school' => '',
-            'code' => '',
-            'description' => 'وصف المرحلة',
             'school_id' => $school->id,
-            'supervisor_id' => 0,
+        ], [
+            'uuid' => Str::uuid(),
+            'code' => \strtoupper(Str::random()),
+            'code_in_school' => '',
+            'description' => __('ling.Description level'),
+            'supervisor_id' => 0
         ]);
-        if ($step1) {
-            $step2 = $step1->update([
-                'uuid' => Str::uuid(),
-            ]);
-        }
+        // if ($step1) {
+            // $step2 = $step1->update([
+                
+            // ]);
+        // }
 
         if (!$this->sessput($schoolID)) {
             return false;
         }
-        return redirect()->back()->with(['success' => __('lang.add.level.success')]);
+        return redirect()->back()->with([
+            'success' => __('lang.add.level.success', ['Level'=>$FC_level->langname()])
+            ]);
     }
 
 
@@ -544,6 +548,7 @@ class SchoolAdminController extends Controller
     {
         $school = session('school');
         $data_level = $school->Levels()->where('name', $level_name)->first();
+        $level=$data_level->langname();
         // $school->levels()->attach($data_level->id);
         // $school->levels()->sync($data_level->id);
         // $school->levels()->syncWithoutDetaching($data_level->id);
@@ -552,7 +557,13 @@ class SchoolAdminController extends Controller
         // if(!$this->sessput(session('school.id'))){
         //     return false;
         // }
-        return redirect()->back()->with(['w' => ' are you shor delete level' . __('lang.Level.' . $data_level->name), 'link' => route('delete.level.ok', $data_level->uuid)]);
+        return redirect()->back()->with([
+            'w' => __('lang.delete.level.delete!', ['Level' => $level]) .'<br>code is :'.$data_level->code,
+            'link' => route(
+                'delete.level.ok',
+                $data_level->uuid
+            )
+        ]);
         // return $level_name;
     }
 
@@ -578,6 +589,7 @@ class SchoolAdminController extends Controller
     {
         $school = session('school');
         $data_level = $school->Levels()->where('uuid', $level_uuid)->first();
+        $level=$data_level->langname();
         $data_level->delete();
         // $data_level = Level::where('name', $level_name)->first();
         // $school->levels()->attach($data_level->id);
@@ -588,7 +600,7 @@ class SchoolAdminController extends Controller
         if (!$this->sessput(session('school.id'))) {
             return false;
         }
-        return redirect()->back()->with(['d' => 'delete level success']);
+        return redirect()->back()->with(['d' => __('lang.delete.level.success',['Level'=>$level])]);
         // return $level_name;
     }
 

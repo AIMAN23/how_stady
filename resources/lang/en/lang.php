@@ -145,6 +145,21 @@ return [
         'Download'=>'Download',
     ],
 
+    'add'=>[
+        'level'=>[
+            'success'=>'Success add :Level .'
+            ]
+        ],
+
+    'delete'=>[
+        'level'=>[
+            'delete!'=>'سوف يتم حذف :Level وجميع البيانات الخاصة بها,'."\n".'
+                        ولا يمكن استعادت البيانات مرة اخرى,'."\n".'
+                        هل انت متأكد من حذف :Level ? '."\n".' ',
+            'success'=>'تم حذف:Level بنجاح .'
+            ]
+        ],
+
     'time'=>[
 
         'now'=>'now',
