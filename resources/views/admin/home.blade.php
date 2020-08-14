@@ -411,7 +411,7 @@
                                             {{--  --}}
                                             <input id="cite" type="text"
                                                 class="form-control @error('cite') is-invalid @enderror"
-                                                value="{{old('cite')?? auth::user()->address->cite  }}" name="cite"
+                                                value="{{old('cite')?? auth::user()->address->cite ??''  }}" name="cite"
                                                 placeholder="City *" required="required">
                                             {{--  --}}
                                             @error('cite')
@@ -426,7 +426,7 @@
                                             {{--  --}}
                                             <input id="street" type="text"
                                                 class="form-control @error('street') is-invalid @enderror"
-                                                value="{{old('street')?? auth::user()->address->street }}" name="street"
+                                                value="{{old('street')?? auth::user()->address->street ??'' }}" name="street"
                                                 placeholder="Area,Street,befor... *" required="required">
                                             {{--  --}}
                                             @error('street')
@@ -543,7 +543,7 @@
     //alert(option);    
   }
   function set_code(){
-      var code="{!! Auth::user()->address->zip !!}";
+      var code="{!! Auth::user()->address->zip ??'' !!}";
     var v=$("select").children('option');
     for(i=0;i<v.length-1;i++){
         if($(v[i]).attr('code')==code ){
