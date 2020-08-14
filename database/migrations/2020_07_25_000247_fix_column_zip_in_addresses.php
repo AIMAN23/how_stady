@@ -15,7 +15,7 @@ class FixColumnZipInAddresses extends Migration
     {
         Schema::table('addresses', function (Blueprint $table) {
             //
-            $table->mediumInteger('zip')->nullable()->default(111111);
+            $table->mediumInteger('zip')->nullable();
         });
     }
 
